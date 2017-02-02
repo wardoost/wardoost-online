@@ -1,5 +1,6 @@
 import {resolve} from 'path'
 import webpack from 'webpack'
+import CleanWebpackPlugin from 'clean-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
@@ -74,7 +75,9 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: './favicon.ico', to: './' }
     ])
-  ]).concat(ENV === 'production' ? [] : [
+  ]).concat(ENV === 'production' ? [
+    new CleanWebpackPlugin('./build/*')
+  ] : [
     new webpack.HotModuleReplacementPlugin()
   ]),
 
