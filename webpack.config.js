@@ -1,6 +1,7 @@
 const {resolve} = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const ENV = process.env.NODE_ENV || 'development'
 
 module.exports = {
@@ -40,23 +41,30 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader?modules',
-          'postcss-loader',
-        ],
+        use: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: [
+            'css-loader',
+            'postcss-loader'
+          ]
+        })
       },
     ],
   },
 
   plugins: ([
     new webpack.NoEmitOnErrorsPlugin(),
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: resolve(__dirname, 'public/index.html')
+    new ExtractTextPlugin({
+      filename: 'style.css',
+      allChunks: true,
+      disable: ENV !== 'production'
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(ENV)
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: resolve(__dirname, 'public/index.html')
     }),
   ]).concat(ENV === 'production' ? [] : [
     new webpack.HotModuleReplacementPlugin()
