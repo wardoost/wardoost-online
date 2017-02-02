@@ -1,21 +1,28 @@
-const path = require('path')
+const {resolve} = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ENV = process.env.NODE_ENV || 'development'
 
 module.exports = {
+  context: resolve(__dirname, 'src'),
+
   entry: {
-    main: [
+    main: (ENV === 'production' ? [] : [
       'react-hot-loader/patch',
       'webpack-dev-server/client?http://localhost:8080',
-      'webpack/hot/only-dev-server',
-      './index.js'
-    ]
+      'webpack/hot/only-dev-server'
+    ]).concat('./index.js')
   },
 
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: resolve(__dirname, 'build'),
     publicPath : '/',
-    filename: '[name].js'
+    filename: '[name].js',
+    chunkFilename: '[id].chunk.js'
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
 
   module: {
@@ -23,16 +30,12 @@ module.exports = {
       {
         test: /\.jsx?$/,
         enforce: 'pre',
-        use: [
-          'standard-loader'
-        ],
+        use: ['standard-loader'],
         exclude: /node_modules/
       },
       {
         test: /\.jsx?$/,
-        use: [
-          'babel-loader',
-        ],
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
       {
@@ -46,24 +49,27 @@ module.exports = {
     ],
   },
 
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+  plugins: ([
+    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
-      template: path.resolve(__dirname, 'public/index.html')
-    })
-  ],
-
-  context: path.resolve(__dirname, 'src'),
+      template: resolve(__dirname, 'public/index.html')
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(ENV)
+    }),
+  ]).concat(ENV === 'production' ? [] : [
+    new webpack.HotModuleReplacementPlugin()
+  ]),
 
   resolve: {
-    modules: [path.resolve(__dirname, 'src'), 'node_modules']
+    modules: [resolve(__dirname, 'src'), 'node_modules']
   },
 
-  devtool: 'inline-source-map',
+  devtool: ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
 
   devServer: {
-    contentBase: path.resolve(__dirname, 'public'),
+    contentBase: resolve(__dirname, 'public'),
     publicPath: '/',
     hot: true,
     open: true
