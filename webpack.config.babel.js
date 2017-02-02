@@ -1,8 +1,8 @@
-const {resolve} = require('path')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+import {resolve} from 'path'
+import webpack from 'webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 
 const ENV = process.env.NODE_ENV || 'development'
 
@@ -19,13 +19,14 @@ module.exports = {
 
   output: {
     path: resolve(__dirname, 'build'),
-    publicPath : '/',
+    publicPath: '/',
     filename: '[name].js',
     chunkFilename: '[id].chunk.js'
   },
 
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    modules: [resolve(__dirname, 'src'), 'node_modules']
   },
 
   module: {
@@ -33,7 +34,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         enforce: 'pre',
-        use: ['standard-loader'],
+        use: ['eslint-loader'],
         exclude: /node_modules/
       },
       {
@@ -50,8 +51,8 @@ module.exports = {
             'postcss-loader'
           ]
         })
-      },
-    ],
+      }
+    ]
   },
 
   plugins: ([
@@ -68,7 +69,7 @@ module.exports = {
       inject: true,
       template: './index.ejs',
       minify: { collapseWhitespace: true },
-      publicPath : '/'
+      publicPath: '/'
     }),
     new CopyWebpackPlugin([
       { from: './favicon.ico', to: './' }
@@ -76,10 +77,6 @@ module.exports = {
   ]).concat(ENV === 'production' ? [] : [
     new webpack.HotModuleReplacementPlugin()
   ]),
-
-  resolve: {
-    modules: [resolve(__dirname, 'src'), 'node_modules']
-  },
 
   devtool: ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map'
 }
