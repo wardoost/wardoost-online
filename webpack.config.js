@@ -2,6 +2,8 @@ const {resolve} = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 const ENV = process.env.NODE_ENV || 'development'
 
 module.exports = {
@@ -64,8 +66,13 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      template: resolve(__dirname, 'public/index.html')
+      template: './index.ejs',
+      minify: { collapseWhitespace: true },
+      publicPath : '/'
     }),
+    new CopyWebpackPlugin([
+      { from: './favicon.ico', to: './' }
+    ])
   ]).concat(ENV === 'production' ? [] : [
     new webpack.HotModuleReplacementPlugin()
   ]),
@@ -74,12 +81,5 @@ module.exports = {
     modules: [resolve(__dirname, 'src'), 'node_modules']
   },
 
-  devtool: ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
-
-  devServer: {
-    contentBase: resolve(__dirname, 'public'),
-    publicPath: '/',
-    hot: true,
-    open: true
-  }
+  devtool: ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map'
 }

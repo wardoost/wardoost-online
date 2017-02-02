@@ -1,0 +1,44 @@
+# React SPA with Webpack 2
+
+- [Installation](#installation)
+- [Development](#development)
+- [Deployment](#deployment)
+
+## Installation
+
+```sh
+npm install
+```
+
+> You're done installing! You can now start developing.
+
+## Development
+
+```sh
+npm run dev
+```
+
+> This starts a web server and opens your app in your browser. When you make changes in the `src` folder, it will rebuild your app and refresh your browser.
+
+```sh
+npm start
+```
+
+> This simulates a production server with gzip. It starts a static file server with the contents of the `build` folder.
+
+
+## Deployment
+
+```sh
+npm run build
+```
+
+> You can now deploy the `build` folder to your live server!
+
+
+---
+
+
+## License
+
+MIT
