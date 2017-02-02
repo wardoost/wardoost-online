@@ -11,11 +11,7 @@ module.exports = {
   context: resolve(__dirname, 'src'),
 
   entry: {
-    main: (ENV === 'production' ? [] : [
-      'react-hot-loader/patch',
-      'webpack-dev-server/client?http://localhost:8080',
-      'webpack/hot/only-dev-server'
-    ]).concat('./index.js')
+    main: './index.js'
   },
 
   output: {
@@ -40,7 +36,11 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        use: ['babel-loader'],
+        use: (ENV === 'production' ? [] : [
+          'react-hot-loader'
+        ]).concat([
+          'babel-loader'
+        ]),
         exclude: /node_modules/
       },
       {
@@ -48,7 +48,7 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallbackLoader: 'style-loader',
           loader: [
-            'css-loader',
+            'css-loader?modules',
             'postcss-loader'
           ]
         })
@@ -78,7 +78,7 @@ module.exports = {
   ]).concat(ENV === 'production' ? [
     new CleanWebpackPlugin('./build/*')
   ] : [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.NamedModulesPlugin()
   ]),
 
   devtool: ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map'
