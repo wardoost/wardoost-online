@@ -1,10 +1,11 @@
 import {resolve} from 'path'
 import webpack from 'webpack'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import CleanWebpackPlugin from 'clean-webpack-plugin'
-import WebpackMd5Hash from 'webpack-md5-hash'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+import WebpackMd5Hash from 'webpack-md5-hash'
+import CleanWebpackPlugin from 'clean-webpack-plugin'
 import OfflinePlugin from 'offline-plugin'
 
 const PROD = process.env.NODE_ENV === 'production'
@@ -13,14 +14,18 @@ module.exports = {
   context: resolve(__dirname, 'src'),
 
   entry: {
+    vendor: [
+      'react',
+      'react-dom'
+    ],
     main: './index.js'
   },
 
   output: {
     path: resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: PROD ? '[name].[hash:8].js' : '[name].js',
-    chunkFilename: PROD ? '[name].[chunkhash:8].js' : '[name].js'
+    filename: PROD ? '[name].[chunkhash].js' : '[name].js',
+    chunkFilename: PROD ? '[name].[chunkhash].js' : '[name].js'
   },
 
   resolve: {
@@ -60,21 +65,31 @@ module.exports = {
 
   plugins: ([
     new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
     new ExtractTextPlugin({
-      filename: PROD ? '[name].[chunkhash:8].css' : '[name].css',
+      filename: PROD ? '[name].[chunkhash].css' : '[name].css',
       allChunks: true,
       disable: !PROD
     }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['vendor', 'manifest'],
+      minChunks: Infinity
+    }),
+    new webpack.SourceMapDevToolPlugin({
+      exclude: 'manifest'
     }),
     new HtmlWebpackPlugin({
       inject: true,
       template: './index.ejs',
       minify: { collapseWhitespace: true },
-      title: 'SPA React',
+      title: 'Single Page App React',
       description: 'Single page app with React',
       publicPath: '/'
+    }),
+    new ScriptExtHtmlWebpackPlugin({
+      inline: ['manifest']
     }),
     new CopyWebpackPlugin([
       { from: './assets/**/*', to: './' },
@@ -83,6 +98,7 @@ module.exports = {
   ]).concat(PROD ? [
     new CleanWebpackPlugin('./build/*'),
     new WebpackMd5Hash(),
+    new webpack.HashedModuleIdsPlugin(),
     new OfflinePlugin({
       relativePaths: false,
       AppCache: false,
@@ -92,7 +108,5 @@ module.exports = {
     })
   ] : [
     new webpack.NamedModulesPlugin()
-  ]),
-
-  devtool: PROD ? 'source-map' : 'cheap-module-eval-source-map'
+  ])
 }
