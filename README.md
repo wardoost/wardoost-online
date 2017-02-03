@@ -1,9 +1,20 @@
-# React SPA with Webpack 2
+# SPA React
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
+- [Features](#features)
 - [Installation](#installation)
 - [Development](#development)
 - [Deployment](#deployment)
+
+## Features
+- [React](https://facebook.github.io/react/) as the view
+- Hot reloading of changes in `src`
+- Optimised for long-term caching
+- Progressive Web Application ready via a Service Worker, with offline support
+- Long term browser caching of assets with automated cache invalidation
+- Source bundled with [Webpack 2](https://webpack.js.org/) so tree-shaking is enabled
+- [Standard Javascript](http://standardjs.com/) ESlint configuration
+
 
 ## Installation
 
