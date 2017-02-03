@@ -75,14 +75,14 @@ module.exports = {
       title: 'SPA React',
       description: 'Single page app with React',
       publicPath: '/'
-    })
-  ]).concat(ENV === 'production' ? [
-    new CleanWebpackPlugin('./build/*'),
-    new WebpackMd5Hash(),
+    }),
     new CopyWebpackPlugin([
       { from: './assets/**/*', to: './' },
       { from: './manifest.json', to: './' }
-    ]),
+    ])
+  ]).concat(ENV === 'production' ? [
+    new CleanWebpackPlugin('./build/*'),
+    new WebpackMd5Hash(),
     new OfflinePlugin({
       relativePaths: false,
       AppCache: false,

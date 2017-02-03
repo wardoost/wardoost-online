@@ -6,3 +6,9 @@ body {
 a {
   color: #00EA95;
 }
+
+button {
+  color: #222;
+  background-color: #00EA95;
+  border: 0;
+}
