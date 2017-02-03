@@ -7,7 +7,7 @@ import WebpackMd5Hash from 'webpack-md5-hash'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import OfflinePlugin from 'offline-plugin'
 
-const ENV = process.env.NODE_ENV || 'development'
+const PROD = process.env.NODE_ENV === 'production'
 
 module.exports = {
   context: resolve(__dirname, 'src'),
@@ -19,8 +19,8 @@ module.exports = {
   output: {
     path: resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: `[name]${ENV === 'production' ? '.[hash:8]' : ''}.js`,
-    chunkFilename: `[name]${ENV === 'production' ? '.[chunkhash:8]' : ''}.js`
+    filename: PROD ? '[name].[hash:8].js' : '[name].js',
+    chunkFilename: PROD ? '[name].[chunkhash:8].js' : '[name].js'
   },
 
   resolve: {
@@ -38,7 +38,7 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        use: (ENV === 'production' ? [] : [
+        use: (PROD ? [] : [
           'react-hot-loader'
         ]).concat([
           'babel-loader'
@@ -61,12 +61,12 @@ module.exports = {
   plugins: ([
     new webpack.NoEmitOnErrorsPlugin(),
     new ExtractTextPlugin({
-      filename: `[name]${ENV === 'production' ? '.[chunkhash:8]' : ''}.css`,
+      filename: PROD ? '[name].[chunkhash:8].css' : '[name].css',
       allChunks: true,
-      disable: ENV !== 'production'
+      disable: !PROD
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(ENV)
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new HtmlWebpackPlugin({
       inject: true,
@@ -80,7 +80,7 @@ module.exports = {
       { from: './assets/**/*', to: './' },
       { from: './manifest.json', to: './' }
     ])
-  ]).concat(ENV === 'production' ? [
+  ]).concat(PROD ? [
     new CleanWebpackPlugin('./build/*'),
     new WebpackMd5Hash(),
     new OfflinePlugin({
@@ -94,5 +94,5 @@ module.exports = {
     new webpack.NamedModulesPlugin()
   ]),
 
-  devtool: ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map'
+  devtool: PROD ? 'source-map' : 'cheap-module-eval-source-map'
 }
