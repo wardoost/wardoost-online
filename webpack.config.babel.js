@@ -1,9 +1,11 @@
 import {resolve} from 'path'
 import webpack from 'webpack'
-import CleanWebpackPlugin from 'clean-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import CleanWebpackPlugin from 'clean-webpack-plugin'
+import WebpackMd5Hash from 'webpack-md5-hash'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+import OfflinePlugin from 'offline-plugin'
 
 const ENV = process.env.NODE_ENV || 'development'
 
@@ -17,8 +19,8 @@ module.exports = {
   output: {
     path: resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: '[name].js',
-    chunkFilename: '[id].chunk.js'
+    filename: `[name]${ENV === 'production' ? '.[hash:8]' : ''}.js`,
+    chunkFilename: `[name]${ENV === 'production' ? '.[chunkhash:8]' : ''}.js`
   },
 
   resolve: {
@@ -59,7 +61,7 @@ module.exports = {
   plugins: ([
     new webpack.NoEmitOnErrorsPlugin(),
     new ExtractTextPlugin({
-      filename: 'style.css',
+      filename: `[name]${ENV === 'production' ? '.[chunkhash:8]' : ''}.css`,
       allChunks: true,
       disable: ENV !== 'production'
     }),
@@ -70,13 +72,24 @@ module.exports = {
       inject: true,
       template: './index.ejs',
       minify: { collapseWhitespace: true },
+      title: 'SPA React',
+      description: 'Single page app with React',
       publicPath: '/'
-    }),
-    new CopyWebpackPlugin([
-      { from: './favicon.ico', to: './' }
-    ])
+    })
   ]).concat(ENV === 'production' ? [
-    new CleanWebpackPlugin('./build/*')
+    new CleanWebpackPlugin('./build/*'),
+    new WebpackMd5Hash(),
+    new CopyWebpackPlugin([
+      { from: './assets/**/*', to: './' },
+      { from: './manifest.json', to: './' }
+    ]),
+    new OfflinePlugin({
+      relativePaths: false,
+      AppCache: false,
+      ServiceWorker: {
+        events: true
+      }
+    })
   ] : [
     new webpack.NamedModulesPlugin()
   ]),

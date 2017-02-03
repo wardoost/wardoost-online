@@ -2,9 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="<%= htmlWebpackPlugin.files.publicPath %>favicon.ico">
-    <title>React wih Webpack 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
+    <link rel="shortcut icon" href="<%= htmlWebpackPlugin.options.publicPath %>assets/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#673ab8">
+    <meta name="msapplication-TileImage" content="./assets/icons/mstile-150x150.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="<%= htmlWebpackPlugin.options.title %>">
+    <meta name="application-name" content="<%= htmlWebpackPlugin.options.title %>">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#673ab8">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= htmlWebpackPlugin.options.publicPath %>assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="<%= htmlWebpackPlugin.options.publicPath %>assets/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="<%= htmlWebpackPlugin.options.publicPath %>assets/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="./manifest.json">
   </head>
   <body>
     <div id="app"></div>
