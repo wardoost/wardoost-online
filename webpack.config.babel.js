@@ -44,7 +44,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         use: (PROD ? [] : [
-          'react-hot-loader'
+          'react-hot-loader/webpack'
         ]).concat([
           'babel-loader'
         ]),
@@ -53,8 +53,8 @@ module.exports = {
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: [
+          fallback: 'style-loader',
+          use: [
             'css-loader?modules',
             'postcss-loader'
           ]

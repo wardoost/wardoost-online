@@ -1,20 +1,16 @@
 import React, {Component} from 'react'
+import {autobind} from 'core-decorators'
 import styles from './App.css'
 
 export default class App extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      clicked: 0
-    }
-
-    this.handleClick = this.handleClick.bind(this)
+  state = {
+    count: 0
   }
 
-  handleClick (e) {
+  @autobind
+  handleClick () {
     this.setState(prevState => ({
-      clicked: prevState.clicked + 1
+      count: prevState.count + 1
     }))
   }
 
@@ -22,7 +18,7 @@ export default class App extends Component {
     return (
       <div className={styles.app}>
         <p>Hello, world!</p>
-        <button onClick={this.handleClick}>You clicked me {this.state.clicked} times</button>
+        <button onClick={this.handleClick}>You clicked me {this.state.count} times</button>
       </div>
     )
   }
