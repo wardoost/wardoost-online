@@ -5,6 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import WebpackMd5Hash from 'webpack-md5-hash'
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 import CleanWebpackPlugin from 'clean-webpack-plugin'
 import OfflinePlugin from 'offline-plugin'
 
@@ -118,6 +119,11 @@ module.exports = {
     }),
     new WebpackMd5Hash(),
     new webpack.HashedModuleIdsPlugin(),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.css$/g,
+      cssProcessorOptions: { discardComments: { removeAll: true } },
+      canPrint: true
+    }),
     new OfflinePlugin({
       relativePaths: false,
       AppCache: false,

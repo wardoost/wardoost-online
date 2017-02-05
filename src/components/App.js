@@ -8,7 +8,9 @@ export default class App extends Component {
   }
 
   @autobind
-  handleClick () {
+  handleClick (e) {
+    e.preventDefault()
+
     this.setState(prevState => ({
       count: prevState.count + 1
     }))
