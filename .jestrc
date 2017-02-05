@@ -1,0 +1,18 @@
+{
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx}"
+  ],
+  "testPathIgnorePatterns": [
+    "<rootDir>[/\\\\](build|node_modules)[/\\\\]"
+  ],
+  "testURL": "http://localhost",
+  "transform": {
+    "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+    "^.+\\.css$": "<rootDir>/node_modules/jest-css-modules"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+  ],
+  "collectCoverage": true,
+  "coverageReporters": ["text-summary", "html"]
+}

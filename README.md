@@ -4,7 +4,9 @@
 - [Features](#features)
 - [Installation](#installation)
 - [Development](#development)
+- [Testing](#testing)
 - [Deployment](#deployment)
+
 
 ## Features
 - [React](https://facebook.github.io/react/) as the view
@@ -14,6 +16,7 @@
 - Long term browser caching of assets with automated cache invalidation
 - Source bundled with [Webpack 2](https://webpack.js.org/) so tree-shaking is enabled
 - [Standard Javascript](http://standardjs.com/) ESlint configuration
+- Testing with
 
 
 ## Installation
@@ -24,19 +27,35 @@ npm install
 
 > You're done installing! You can now start developing.
 
+
 ## Development
 
 ```sh
 npm run dev
 ```
 
-> This starts a web server and opens your app in your browser. When you make changes in the `src` folder, it will rebuild your app and refresh your browser.
+> Starts a web server and open your app in your browser. When you make changes in the `src` folder, it will rebuild your app and refresh your browser.
+
+```sh
+npm run lint
+```
+
+> Lint your code and automatically fix lint errors.
 
 ```sh
 npm start
 ```
 
-> This simulates a production server with gzip. It starts a static file server with the contents of the `build` folder.
+> Simulates a production server with gzip. It starts a static file server with the contents of the `build` folder.
+
+
+## Testing
+
+```sh
+npm run test
+```
+
+> This outputs a report of all your tests to the `coverage` folder and serves the report with [serve](https://github.com/zeit/serve).
 
 
 ## Deployment

@@ -5,13 +5,16 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --history-api-fallback --progress --open",
     "prestart": "npm run build",
-    "start": "serve build -s -c 1",
-    "build": "cross-env NODE_ENV=production webpack --progress"
+    "start": "serve build --single --cache 1",
+    "build": "cross-env NODE_ENV=production webpack --progress",
+    "test": "eslint {src,test} && cross-env NODE_ENV=test jest --config=.jestrc && serve coverage",
+    "lint": "eslint {src,test} --fix"
   },
   "author": "Ward Oosterlijnck <wardoosterlijnck@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.22.1",
+    "babel-jest": "^18.0.0",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
@@ -29,9 +32,13 @@
     "eslint-plugin-standard": "^2.0.1",
     "extract-text-webpack-plugin": "^2.0.0-rc.2",
     "html-webpack-plugin": "^2.26.0",
+    "jest": "^18.1.0",
+    "jest-css-modules": "^1.1.0",
     "offline-plugin": "^4.5.5",
     "postcss-loader": "^1.2.2",
+    "react-addons-test-utils": "^15.4.2",
     "react-hot-loader": "^1.3.1",
+    "react-test-renderer": "^15.4.2",
     "script-ext-html-webpack-plugin": "^1.5.0",
     "serve": "^3.1.0",
     "style-loader": "^0.13.1",
