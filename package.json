@@ -7,8 +7,11 @@
     "prestart": "npm run build",
     "start": "serve build --single --cache 1",
     "build": "cross-env NODE_ENV=production webpack --progress",
-    "test": "eslint {src,test} && cross-env NODE_ENV=test jest --config=.jestrc && serve coverage",
-    "lint": "eslint {src,test} --fix"
+    "lint": "eslint {src,test} --fix",
+    "pretest": "eslint {src,test}",
+    "test": "cross-env NODE_ENV=test jest --config=.jestrc --watchAll",
+    "precoverage": "cross-env NODE_ENV=test jest --config=.jestrc --coverage",
+    "coverage": "serve coverage"
   },
   "author": "Ward Oosterlijnck <wardoosterlijnck@gmail.com>",
   "license": "MIT",

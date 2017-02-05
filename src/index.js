@@ -9,5 +9,5 @@ if (process.env.NODE_ENV === 'production') {
 
 render(
   <App />,
-  document.getElementById('app')
+  document.getElementById('root')
 )

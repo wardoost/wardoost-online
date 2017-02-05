@@ -16,7 +16,7 @@
 - Long term browser caching of assets with automated cache invalidation
 - Source bundled with [Webpack 2](https://webpack.js.org/) so tree-shaking is enabled
 - [Standard Javascript](http://standardjs.com/) ESlint configuration
-- Testing with
+- Testing with [Jest](https://facebook.github.io/jest/)
 
 
 ## Installation
@@ -40,13 +40,13 @@ npm run dev
 npm run lint
 ```
 
-> Lint your code and automatically fix lint errors.
+> Lint your code and automatically fix lint errors with [ESLint](http://eslint.org/).
 
 ```sh
 npm start
 ```
 
-> Simulates a production server with gzip. It starts a static file server with the contents of the `build` folder.
+> Simulate a production server with gzip. It starts a static file server with the contents of the `build` folder.
 
 
 ## Testing
@@ -55,7 +55,13 @@ npm start
 npm run test
 ```
 
-> This outputs a report of all your tests to the `coverage` folder and serves the report with [serve](https://github.com/zeit/serve).
+> Run all your tests with [Jest](https://facebook.github.io/jest/) and watch for file changes to restart the tests.
+
+```sh
+npm run coverage
+```
+
+> Output a report of all your tests to the `coverage` folder and serve the report with [serve](https://github.com/zeit/serve).
 
 
 ## Deployment

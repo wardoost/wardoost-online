@@ -13,6 +13,5 @@
   "transformIgnorePatterns": [
     "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
   ],
-  "collectCoverage": true,
   "coverageReporters": ["text-summary", "html"]
 }
