@@ -3,18 +3,14 @@ import {autobind} from 'core-decorators'
 import CSSModules from 'react-css-modules'
 import FaAsterisk from 'react-icons/lib/fa/asterisk'
 import Button from './common/Button'
+import Img from './common/Img'
 import styles from './App.css'
+import placeholder from '../assets/placeholder.jpg'
 
-@CSSModules(styles, {allowMultiple: true})
+@CSSModules(styles)
 export default class App extends Component {
   state = {
-    count: 0,
     loading: false
-  }
-
-  @autobind
-  updateCounter () {
-    this.setState(prevState => ({count: prevState.count + 1}))
   }
 
   @autobind
@@ -27,33 +23,30 @@ export default class App extends Component {
   }
 
   render () {
-    const {loading, count} = this.state
+    const {loading} = this.state
 
     return (
       <div styleName='app'>
         <h1>Hello, world!</h1>
-        <ul styleName='buttons'>
-          <li>
-            <Button onClick={this.simulateLoading} loading={loading} disabled={loading}>
-              Loading button
-            </Button>
-          </li>
-          <li>
-            <Button onClick={this.simulateLoading} loading={loading} LoadIcon={FaAsterisk} ref='loading1' disabled={loading} styleName='button-alt'>
-              Loading with custom icon
-            </Button>
-          </li>
-          <li>
-            <Button onClick={this.updateCounter}>
-              You clicked me {count} times
-            </Button>
-          </li>
-          <li>
-            <Button disabled>
-              Disabled button
-            </Button>
-          </li>
-        </ul>
+        <div styleName='button-group' role='group' aria-label='Different types of buttons'>
+          <Button>
+            Default button
+          </Button>
+          <Button disabled type='primary'>Disabled primary button</Button>
+          <Button type='success'>Success button</Button>
+          <Button type='warning'>Warning button</Button>
+          <Button type='error'>Danger button</Button>
+          <Button onClick={this.simulateLoading} loading={loading} disabled={loading}>
+            Simulate loading
+          </Button>
+          <Button onClick={this.simulateLoading} loading={loading} LoadIcon={FaAsterisk} disabled={loading} type='primary'>
+            Loading button with custom icon
+          </Button>
+          <Button onClick={this.simulateLoading} loading={loading}>
+            Button with mixed content
+            <Img src={placeholder} />
+          </Button>
+        </div>
       </div>
     )
   }

@@ -1,25 +1,45 @@
 .button {
-  text-align: center;
+  composes: pure-button from 'purecss/build/buttons.css';
+  font-weight: bold;
 }
 
-.loading-button {
+.button-primary {
+  composes: button;
+  composes: pure-button-primary from 'purecss/build/buttons.css';
+}
+
+.button-success {
+  composes: button;
+  background-color: rgb(103, 218, 0);
+  color: #fff;
+}
+
+.button-warning {
+  composes: button;
+  background-color: rgb(218, 177, 0);
+  color: #fff;
+}
+
+.button-error {
+  composes: button;
+  background-color: rgb(218, 39, 0);
+  color: #fff;
+}
+
+.button-loading {
   overflow: hidden;
   position: relative;
 }
 
-.loading-button:disabled {
-  color: #fff;
-}
-
-.loading-button:disabled .label {
-  color: rgba(255, 255, 255, 0.75);
+.button-loading:disabled .label {
+  opacity: 0.5;
 }
 
 .label {
   display: inline-block;
   position: relative;
   left: 0;
-  transition: left 500ms cubic-bezier(0.680, -0.550, 0.440, 1.000); /* easeInBackEaseOutQuart */
+  transition: opacity 300ms linear, left 500ms cubic-bezier(0.680, -0.550, 0.440, 1.000); /* easeInBackEaseOutQuart */
 }
 
 .icon {
@@ -30,18 +50,26 @@
   transition: opacity 100ms linear 200ms, transform 300ms cubic-bezier(0.600, -0.280, 0.735, 0.045); /* easeInBack */
 }
 
-.icon svg {
+.icon * {
   display: inline-block;
   position: relative;
   left: -0.25em;
 }
 
-.loading-active .label {
-  left: -0.75em;
-  transition: left 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275); /* easeOutBack */
+.button-loading-active {
+  composes: button-loading;
 }
 
-.loading-active .icon {
+.button-loading-active:disabled {
+  opacity: 1;
+}
+
+.button-loading-active .label {
+  left: -0.75em;
+  transition: opacity 300ms linear, left 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275); /* easeOutBack */
+}
+
+.button-loading-active .icon {
   opacity: 1;
   transform: scale(1) translateY(-50%);
   transition: opacity 100ms linear, transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275); /* easeOutBack */

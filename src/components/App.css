@@ -1,24 +1,26 @@
+@import url('purecss/build/base.css');
+
+body {
+  background-color: #222;
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  text-size-adjust: none;
+}
+
+a {
+  color: #00ea95;
+}
+
 .app {
   padding: 20px 30px;
 }
 
-.buttons {
-  list-style-type: none;
-  padding-left: 0;
+.button-group {
+  composes: pure-button-group from 'purecss/build/buttons.css';
 }
 
-.buttons li {
+.button-group button {
+  min-width: 100%;
   margin-bottom: 5px;
-}
-
-.buttons button {
   font-size: 1.3em;
-}
-
-.button-alt {
-  background-color: #5500ff
-}
-
-.button-alt:disabled {
-  background-color: #7431fb
 }

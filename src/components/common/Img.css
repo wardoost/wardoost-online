@@ -1,0 +1,3 @@
+.img {
+  composes: pure-img from 'purecss/build/base.css';
+}
