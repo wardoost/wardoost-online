@@ -27,7 +27,7 @@ export default class Button extends Component {
     return (
       <button styleName={classNames('button', {'loading-button': loading !== undefined, 'loading-active': loading})} {...props}>
         <span styleName={loading !== undefined ? 'label' : ''}>{children}</span>
-        {loading !== undefined ? <span styleName='icon'><LoadIcon styleName='icon-spin' /></span> : null}
+        {loading !== undefined ? <span styleName={'icon'}><LoadIcon styleName='icon-spin' /></span> : null}
       </button>
     )
   }
