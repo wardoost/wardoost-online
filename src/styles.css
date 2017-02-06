@@ -1,14 +1,26 @@
 body {
   background-color: #222;
-  color: #FFF;
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  text-size-adjust: none;
 }
 
 a {
-  color: #00EA95;
+  color: #00ea95;
 }
 
 button {
-  color: #222;
-  background-color: #00EA95;
+  color: #fff;
+  background-color: #00ea95;
   border: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
+  padding: 1em 1.2em;
+  border-radius: 3px;
+  transition: background-color 300ms linear, color 300ms linear;
+}
+
+button:disabled {
+  color: rgba(255, 255, 255, 0.75);
+  background-color: #4bffbe;
 }
