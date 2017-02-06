@@ -24,3 +24,7 @@ button:disabled {
   color: rgba(255, 255, 255, 0.75);
   background-color: #4bffbe;
 }
+
+img {
+  max-width: 100%;
+}

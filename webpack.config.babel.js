@@ -67,6 +67,24 @@ module.exports = {
             { loader: 'postcss-loader' }
           ]
         })
+      },
+      {
+        test: /\.json$/,
+        use: 'json-loader'
+      },
+      {
+        test: /\.(xml|html|txt|md)$/,
+        use: 'raw-loader'
+      },
+      {
+        test: /\.(svg|woff2?|ttf|eot|jpe?g|png|gif)(\?.*)?$/i,
+        use: {
+          loader: 'url-loader',
+          options: {
+            name: `[path][name]${PROD ? '-[hash:base64:5]' : ''}.[ext]`,
+            limit: 8192
+          }
+        }
       }
     ]
   },
@@ -100,7 +118,7 @@ module.exports = {
       inline: ['manifest']
     }),
     new CopyWebpackPlugin([
-      { from: './assets/**/*', to: './' },
+      { from: './assets/icons/**/*', to: './' },
       { from: './manifest.json', to: './' },
       { from: './_redirects', to: './' }
     ])
