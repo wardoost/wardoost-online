@@ -2,7 +2,23 @@
   padding: 20px 30px;
 }
 
-.button {
+.buttons {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.buttons li {
+  margin-bottom: 5px;
+}
+
+.buttons button {
   font-size: 1.3em;
-  width: 100%;
+}
+
+.button-alt {
+  background-color: #5500ff
+}
+
+.button-alt:disabled {
+  background-color: #7431fb
 }

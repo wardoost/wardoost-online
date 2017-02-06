@@ -16,6 +16,7 @@ module.exports = {
 
   entry: {
     vendor: [
+      'babel-polyfill',
       'react',
       'react-dom'
     ],
@@ -60,8 +61,7 @@ module.exports = {
               loader: 'css-loader',
               options: {
                 modules: true,
-                importModules: true,
-                localIdentName: '[local]-[hash:base64:8]'
+                importModules: true
               }
             },
             { loader: 'postcss-loader' }

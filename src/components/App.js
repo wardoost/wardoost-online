@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {autobind} from 'core-decorators'
 import CSSModules from 'react-css-modules'
+import FaAsterisk from 'react-icons/lib/fa/asterisk'
 import Button from './common/Button'
 import styles from './App.css'
 
@@ -17,7 +18,7 @@ export default class App extends Component {
   }
 
   @autobind
-  simulateLoading () {
+  simulateLoading (e) {
     this.setState({loading: true})
 
     setTimeout(() => {
@@ -31,15 +32,28 @@ export default class App extends Component {
     return (
       <div styleName='app'>
         <h1>Hello, world!</h1>
-        <Button styleName='button' onClick={this.simulateLoading} loading={loading} disabled={loading}>
-          Loading button
-        </Button>
-        <Button styleName='button' onClick={this.updateCounter}>
-          You clicked me {count} times
-        </Button>
-        <Button styleName='button' disabled>
-          Disabled button
-        </Button>
+        <ul styleName='buttons'>
+          <li>
+            <Button onClick={this.simulateLoading} loading={loading} disabled={loading}>
+              Loading button
+            </Button>
+          </li>
+          <li>
+            <Button onClick={this.simulateLoading} loading={loading} LoadIcon={FaAsterisk} ref='loading1' disabled={loading} styleName='button-alt'>
+              Loading with custom icon
+            </Button>
+          </li>
+          <li>
+            <Button onClick={this.updateCounter}>
+              You clicked me {count} times
+            </Button>
+          </li>
+          <li>
+            <Button disabled>
+              Disabled button
+            </Button>
+          </li>
+        </ul>
       </div>
     )
   }
