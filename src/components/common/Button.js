@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import CSSModules from 'react-css-modules'
 import FaCircleONotch from 'react-icons/lib/fa/circle-o-notch'
-import styles from './Button.css'
+import styles from './Button.scss'
 
 @CSSModules(styles, {allowMultiple: true})
 export default class Button extends Component {
@@ -9,24 +9,27 @@ export default class Button extends Component {
     children: React.PropTypes.node,
     type: React.PropTypes.string,
     loading: React.PropTypes.bool,
-    LoadIcon: React.PropTypes.func
+    LoadIcon: React.PropTypes.func,
+    loadReplace: React.PropTypes.bool
   }
 
   static defaultProps = {
-    LoadIcon: FaCircleONotch
+    LoadIcon: FaCircleONotch,
+    loadReplace: false
   }
 
   render () {
-    const {children, loading, LoadIcon, type} = this.props
+    const {children, type, loading, LoadIcon, loadReplace} = this.props
 
     let props = {...this.props}
     delete props.children
     delete props.type
     delete props.loading
     delete props.LoadIcon
+    delete props.loadReplace
 
     return (
-      <button styleName={`${!type ? 'button' : `button-${type}`} ${loading === undefined ? '' : loading ? 'button-loading-active' : 'button-loading'}`} {...props}>
+      <button styleName={`${!type ? 'button' : `button-${type}`} ${loading === undefined ? '' : loading ? 'button-loading-active' : 'button-loading'} ${loadReplace ? 'button-loading-replace' : ''}`} {...props}>
         {loading === undefined
         ? children
         : <span styleName='label'>{children}</span>}

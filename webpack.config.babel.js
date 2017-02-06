@@ -53,7 +53,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -61,10 +61,12 @@ module.exports = {
               loader: 'css-loader',
               options: {
                 modules: true,
-                importModules: true
+                importModules: true,
+                localIdentName: PROD ? '[hash:8]' : '[local]-[hash:8]'
               }
             },
-            { loader: 'postcss-loader' }
+            { loader: 'postcss-loader' },
+            { loader: 'sass-loader' }
           ]
         })
       },

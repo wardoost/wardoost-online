@@ -29,10 +29,10 @@
 .button-loading {
   overflow: hidden;
   position: relative;
-}
 
-.button-loading:disabled .label {
-  opacity: 0.5;
+  &:disabled .label {
+    opacity: 0.5;
+  }
 }
 
 .label {
@@ -46,33 +46,50 @@
   position: absolute;
   top: 50%;
   opacity: 0;
-  transform: scale(2) translateY(-25%);
+  transform: scale(2) translate(-25%, -25%);
   transition: opacity 100ms linear 200ms, transform 300ms cubic-bezier(0.600, -0.280, 0.735, 0.045); /* easeInBack */
-}
 
-.icon * {
-  display: inline-block;
-  position: relative;
-  left: -0.25em;
+  * {
+    display: inline-block;
+    position: relative;
+  }
 }
 
 .button-loading-active {
   composes: button-loading;
+
+  &:disabled {
+    opacity: 1;
+  }
+
+  .label {
+    left: -0.75em;
+    transition: opacity 300ms linear, left 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275); /* easeOutBack */
+  }
+
+  .icon {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -50%);
+    transition: opacity 100ms linear, transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275); /* easeOutBack */
+  }
 }
 
-.button-loading-active:disabled {
-  opacity: 1;
-}
-
-.button-loading-active .label {
-  left: -0.75em;
-  transition: opacity 300ms linear, left 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275); /* easeOutBack */
-}
-
-.button-loading-active .icon {
-  opacity: 1;
-  transform: scale(1) translateY(-50%);
-  transition: opacity 100ms linear, transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275); /* easeOutBack */
+.button-loading-replace {
+  .label {
+    left: 0;
+    transition: opacity 100ms linear 200ms;
+  }
+  .icon {
+    left: 50%;
+    * {
+      position: relative;
+      left: 0em;
+    }
+  }
+  &.button-loading-active .label {
+    opacity: 0;
+    transition: opacity 100ms linear;
+  }
 }
 
 .icon-spin {
