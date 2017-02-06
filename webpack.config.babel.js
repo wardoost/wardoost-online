@@ -101,7 +101,8 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: './assets/**/*', to: './' },
-      { from: './manifest.json', to: './' }
+      { from: './manifest.json', to: './' },
+      { from: './_redirects', to: './' }
     ])
   ]).concat(PROD ? [
     new CleanWebpackPlugin('./build/*'),
@@ -127,6 +128,7 @@ module.exports = {
     }),
     new OfflinePlugin({
       relativePaths: false,
+      excludes: ['**/.*', '**/*.map', '_redirects'],
       AppCache: false,
       ServiceWorker: {
         events: true
