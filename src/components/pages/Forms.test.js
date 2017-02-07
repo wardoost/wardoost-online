@@ -1,9 +1,9 @@
 /* eslint-env jest */
 import React from 'react'
 import {render} from 'react-dom'
-import Img from './Button'
+import Forms from './Forms'
 
 it('renders without crashing', () => {
   const div = document.createElement('div')
-  render(<Img />, div)
+  render(<Forms />, div)
 })

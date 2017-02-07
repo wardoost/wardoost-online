@@ -1,0 +1,15 @@
+@import '~styles/helpers';
+
+.form {
+  composes: pure-form from 'purecss/build/forms.css';
+}
+
+.form-stacked {
+  composes: form;
+  composes: pure-form-stacked from 'purecss/build/forms.css';
+}
+
+.form-aligned {
+  composes: form;
+  composes: pure-form-aligned from 'purecss/build/forms.css';
+}

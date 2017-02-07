@@ -2,10 +2,7 @@ import React, {Component} from 'react'
 import {autobind} from 'core-decorators'
 import CSSModules from 'react-css-modules'
 import FaAsterisk from 'react-icons/lib/fa/asterisk'
-import Grid from '../ui/Grid'
-import Unit from '../ui/Unit'
-import Button from '../ui/Button'
-import Img from '../ui/Img'
+import {Grid, Unit, Button, Image} from '../ui'
 import styles from './Buttons.scss'
 import placeholder from '../../assets/placeholder.jpg'
 
@@ -54,7 +51,7 @@ export default class Buttons extends Component {
               </Button>
               <Button styleName='button' onClick={this.simulateLoading} loading={loading} loadReplace>
                 Hide button content
-                <Img src={placeholder} styleName='button-img' />
+                <Image src={placeholder} styleName='button-img' />
               </Button>
             </div>
           </Unit>

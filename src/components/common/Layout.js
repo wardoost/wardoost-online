@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import CSSModules from 'react-css-modules'
 import {autobind} from 'core-decorators'
-import {Link, IndexLink} from 'react-router'
+import {IndexLink} from 'react-router'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import MdMenu from 'react-icons/lib/md/menu'
 import MdClose from 'react-icons/lib/md/close'
 import MdBlurOn from 'react-icons/lib/md/blur-on'
+import Navigation from './Navigation'
 import Footer from './Footer'
 import styles from './Layout.scss'
 
@@ -42,24 +43,17 @@ export default class Layout extends Component {
       <div styleName={`layout ${menuActive ? 'menu-active' : ''}`}>
         <span styleName='menu-heading'>
           <IndexLink to='/' styleName='menu-brand' onClick={this.hideMenu}>
-            <span styleName='menu-link'>
+            <span styleName='heading-link'>
               <i><MdBlurOn /></i>
             </span>
           </IndexLink>
           <a href='#menu' styleName='menu-toggle' onClick={this.toggleMenu}>
-            <span styleName='menu-link'>
+            <span styleName='heading-link'>
               <i>{menuActive ? <MdClose /> : <MdMenu />}</i>
             </span>
           </a>
         </span>
-        <nav styleName='nav' id='menu'>
-          <div styleName='menu' onClick={this.hideMenu}>
-            <ul styleName='menu-list'>
-              <li styleName='menu-item'><Link styleName='menu-link' to='/buttons'>Buttons</Link></li>
-              <li styleName='menu-item'><Link styleName='menu-link' to='/404'>404</Link></li>
-            </ul>
-          </div>
-        </nav>
+        <Navigation hideMenu={this.hideMenu} active={menuActive} />
         <div styleName='overlay' onClick={this.hideMenu} />
         <main styleName='main'>
           {this.props.children
