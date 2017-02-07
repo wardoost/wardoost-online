@@ -62,11 +62,17 @@ module.exports = {
               options: {
                 modules: true,
                 importModules: true,
-                localIdentName: PROD ? '[hash:8]' : '[local]-[hash:8]'
+                localIdentName: PROD ? '[hash:8]' : '[local]-[hash:8]',
+                sourceMap: !PROD
               }
             },
             { loader: 'postcss-loader' },
-            { loader: 'sass-loader' }
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: !PROD
+              }
+            }
           ]
         })
       },

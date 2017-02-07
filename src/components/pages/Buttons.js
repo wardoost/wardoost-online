@@ -36,6 +36,7 @@ export default class Buttons extends Component {
             <div styleName='button-group' role='group' aria-label='Different types of buttons'>
               <Button styleName='button'>Default</Button>
               <Button styleName='button' type='primary'>Primary</Button>
+              <Button styleName='button' type='secondary'>Secondary</Button>
               <Button styleName='button' type='success'>Success</Button>
               <Button styleName='button' type='warning'>Warning</Button>
               <Button styleName='button' type='error'>Danger</Button>
@@ -43,16 +44,16 @@ export default class Buttons extends Component {
             </div>
           </Unit>
           <Unit size='1' mdSize='1-2' xlSize='1-3'>
-            <h2>Button loading animation</h2>
+            <h2>Button loading</h2>
             <div styleName='button-group' role='group' aria-label='Different types of buttons'>
               <Button styleName='button' onClick={this.simulateLoading} loading={loading} disabled={loading}>
                 Default button
               </Button>
               <Button styleName='button' onClick={this.simulateLoading} loading={loading} LoadIcon={FaAsterisk} disabled={loading} type='primary'>
-                Custom icon
+                Custom button
               </Button>
               <Button styleName='button' onClick={this.simulateLoading} loading={loading} loadReplace>
-                Mixed content
+                Hide button content
                 <Img src={placeholder} styleName='button-img' />
               </Button>
             </div>

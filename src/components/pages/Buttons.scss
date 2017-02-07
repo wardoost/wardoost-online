@@ -1,9 +1,12 @@
+@import '~styles/helpers';
+
 .button-group {
   composes: pure-button-group from 'purecss/build/buttons.css';
 
   .button {
+    font-weight: bold;
     min-width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: $padding-sm;
     font-size: 1.3em;
     border-right: 0;
   }
@@ -11,6 +14,6 @@
 
 .button-img {
   width: 200px;
-  margin: 10px auto;
+  margin: $padding-sm auto;
   border-radius: 5px;
 }

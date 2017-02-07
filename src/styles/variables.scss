@@ -1,0 +1,30 @@
+$primary: #00ea95;
+$secondary: #5500ff;
+$success: #67da00;
+$warning: #dab100;
+$error: #da2700;
+
+$white: #fff;
+$gray-lighter: darken($white, 3%);
+$gray-light: darken($white, 20%);
+$gray: darken($white, 50%);
+$gray-dark: darken($white, 70%);
+$gray-darker: darken($white, 90%);
+$black: #000;
+
+$padding-sm: 10px;
+$padding-md: 20px;
+$padding-lg: 30px;
+
+$nav-height: 48px;
+$menu-width: 150px;
+$footer-height: 32px;
+
+$sm-min: 'screen and (min-width: 35.5em)';
+$sm-max: 'screen and (max-width: 35.5em)';
+$md-min: 'screen and (min-width: 48em)';
+$md-max: 'screen and (max-width: 48em)';
+$lg-min: 'screen and (min-width: 64em)';
+$lg-max: 'screen and (max-width: 64em)';
+$xl-min: 'screen and (min-width: 80em)';
+$xl-max: 'screen and (max-width: 80em)';

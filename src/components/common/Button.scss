@@ -1,30 +1,37 @@
+@import '~styles/helpers';
+
 .button {
   composes: pure-button from 'purecss/build/buttons.css';
-  font-weight: bold;
 }
 
 .button-primary {
   composes: button;
   composes: pure-button-primary from 'purecss/build/buttons.css';
-  background-color: #00ea95
+  background-color: $primary;
+}
+
+.button-secondary {
+  composes: button;
+  background-color: $secondary;
+  color: $white;
 }
 
 .button-success {
   composes: button;
-  background-color: rgb(103, 218, 0);
-  color: #fff;
+  background-color: $success;
+  color: $white;
 }
 
 .button-warning {
   composes: button;
-  background-color: rgb(218, 177, 0);
-  color: #fff;
+  background-color: $warning;
+  color: $white;
 }
 
 .button-error {
   composes: button;
-  background-color: rgb(218, 39, 0);
-  color: #fff;
+  background-color: $error;
+  color: $white;
 }
 
 .button-loading {

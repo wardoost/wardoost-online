@@ -56,7 +56,7 @@ export default class Layout extends Component {
           <div styleName='menu' onClick={this.hideMenu}>
             <ul styleName='menu-list'>
               <li styleName='menu-item'><Link styleName='menu-link' to='/buttons'>Buttons</Link></li>
-              <li styleName='menu-item'><Link styleName='menu-link' to='/error'>Error</Link></li>
+              <li styleName='menu-item'><Link styleName='menu-link' to='/404'>404</Link></li>
             </ul>
           </div>
         </nav>

@@ -1,15 +1,41 @@
+@import '~styles/helpers';
+
 html, body, :global(#root) {
   height: 100%;
 }
 
+@font-face {
+  font-family: system;
+  font-style: normal;
+  font-weight: 300;
+  src: local('.SFNSText-Light'), local('.HelveticaNeueDeskInterface-Light'), local('.LucidaGrandeUI'), local('Ubuntu Light'), local('Segoe UI Light'), local('Roboto-Light'), local('DroidSans'), local('Tahoma');
+}
+
 body {
-  background-color: #fcfcfc;
-  color: #222;
-  font-family: 'Courier New', Courier, monospace;
+  background-color: $white;
+  font-family: 'system';
+  color: $gray-dark;
   text-size-adjust: none;
 }
 
+p {
+  margin: $padding-md 0;
+}
+
 a {
-  color: #00ea95;
+  color: $primary;
   text-decoration: none;
+}
+
+blockquote {
+  margin: 1em 3em;
+  padding: $padding-md $padding-lg;
+  border-left: $gray-lighter $padding-sm/2 solid;
+  font-style: italic;
+}
+
+code {
+  display: block;
+  padding: $padding-md $padding-lg;
+  background-color: $gray-lighter;
 }

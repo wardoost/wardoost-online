@@ -1,21 +1,24 @@
+@import '~styles/helpers';
+
 .footer {
   position: absolute;
   left: 0;
   bottom: 0;
   right: 0;
-  height: 40px;
-  background-color: #00ea95;
+  height: $footer-height;
+  background-color: $gray-lighter;
+  font-size: 0.7em;
 }
 
 .link-code {
-  color: #fff;
+  color: $gray-light;
   position: absolute;
-  right: 20px;
+  right: $padding-md;
   top: 50%;
   transform: translateY(-50%);
   transition: color 150ms linear;
 
   &:hover {
-    color: #006a43;
+    color: darken($primary, 10%);
   }
 }
