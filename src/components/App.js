@@ -1,52 +1,31 @@
 import React, {Component} from 'react'
-import {autobind} from 'core-decorators'
 import CSSModules from 'react-css-modules'
-import FaAsterisk from 'react-icons/lib/fa/asterisk'
-import Button from './common/Button'
-import Img from './common/Img'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import Navigation from './common/Navigation'
+import Footer from './common/Footer'
 import styles from './App.scss'
-import placeholder from '../assets/placeholder.jpg'
 
 @CSSModules(styles)
 export default class App extends Component {
-  state = {
-    loading: false
-  }
-
-  @autobind
-  simulateLoading (e) {
-    this.setState({loading: true})
-
-    setTimeout(() => {
-      this.setState({loading: false})
-    }, 1000)
+  static propTypes = {
+    children: React.PropTypes.node.isRequired
   }
 
   render () {
-    const {loading} = this.state
-
     return (
       <div styleName='app'>
-        <h1>Hello, world!</h1>
-        <div styleName='button-group' role='group' aria-label='Different types of buttons'>
-          <Button styleName='button'>
-            Default button
-          </Button>
-          <Button styleName='button' disabled type='primary'>Disabled primary button</Button>
-          <Button styleName='button' type='success'>Success button</Button>
-          <Button styleName='button' type='warning'>Warning button</Button>
-          <Button styleName='button' type='error'>Danger button</Button>
-          <Button styleName='button' onClick={this.simulateLoading} loading={loading} disabled={loading}>
-            Simulate loading
-          </Button>
-          <Button styleName='button' onClick={this.simulateLoading} loading={loading} LoadIcon={FaAsterisk} disabled={loading} type='primary'>
-            Loading button with custom icon
-          </Button>
-          <Button styleName='button' onClick={this.simulateLoading} loading={loading} loadReplace>
-            Button with mixed content
-            <Img src={placeholder} styleName='button-img' />
-          </Button>
-        </div>
+        <Navigation>
+          <ReactCSSTransitionGroup
+            transitionName={styles}
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}
+          >
+            {React.cloneElement(this.props.children, {
+              key: window.location.pathname
+            })}
+          </ReactCSSTransitionGroup>
+        </Navigation>
+        <Footer />
       </div>
     )
   }

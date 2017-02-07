@@ -1,29 +1,46 @@
+html, body, :global(#root) {
+  height: 100%;
+}
+
 body {
-  background-color: #222;
-  color: #fff;
+  background-color: #fcfcfc;
+  color: #222;
   font-family: 'Courier New', Courier, monospace;
   text-size-adjust: none;
 }
 
 a {
   color: #00ea95;
+  text-decoration: none;
 }
 
 .app {
-  padding: 20px 30px;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  bottom: 40px;
+  left: 0;
 }
 
-.button-group {
-  composes: pure-button-group from 'purecss/build/buttons.css';
+.enter {
+  opacity: 0;
 }
 
-.button {
-  min-width: 100%;
-  margin-bottom: 5px;
-  font-size: 1.3em;
+.enterActive {
+  opacity: 1;
+  transition: opacity 300ms linear 200ms;
 }
 
-.button-img {
-  width: 100px;
-  margin: 10px auto;
+.leave {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  right: 20px;
+  bottom: 70px;
+  opacity: 1;
+}
+
+.leaveActive {
+  opacity: 0;
+  transition: opacity 300ms linear;
 }

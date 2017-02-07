@@ -1,0 +1,15 @@
+.button-group {
+  composes: pure-button-group from 'purecss/build/buttons.css';
+}
+
+.button {
+  min-width: 100%;
+  margin-bottom: 5px;
+  font-size: 1.3em;
+}
+
+.button-img {
+  width: 200px;
+  margin: 10px auto;
+  border-radius: 5px;
+}

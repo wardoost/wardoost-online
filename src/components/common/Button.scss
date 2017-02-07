@@ -6,6 +6,7 @@
 .button-primary {
   composes: button;
   composes: pure-button-primary from 'purecss/build/buttons.css';
+  background-color: #00ea95
 }
 
 .button-success {
