@@ -13,34 +13,3 @@ a {
   color: #00ea95;
   text-decoration: none;
 }
-
-.app {
-  position: absolute;
-  top: 40px;
-  right: 0;
-  bottom: 40px;
-  left: 0;
-}
-
-.enter {
-  opacity: 0;
-}
-
-.enterActive {
-  opacity: 1;
-  transition: opacity 300ms linear 200ms;
-}
-
-.leave {
-  position: absolute;
-  top: 30px;
-  left: 20px;
-  right: 20px;
-  bottom: 70px;
-  opacity: 1;
-}
-
-.leaveActive {
-  opacity: 0;
-  transition: opacity 300ms linear;
-}

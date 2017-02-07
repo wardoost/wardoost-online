@@ -2,13 +2,15 @@ import React, {Component} from 'react'
 import CSSModules from 'react-css-modules'
 import {autobind} from 'core-decorators'
 import {Link, IndexLink} from 'react-router'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import MdMenu from 'react-icons/lib/md/menu'
 import MdClose from 'react-icons/lib/md/close'
-import FaHome from 'react-icons/lib/fa/home'
-import styles from './Navigation.scss'
+import MdBlurOn from 'react-icons/lib/md/blur-on'
+import Footer from './Footer'
+import styles from './Layout.scss'
 
 @CSSModules(styles, {allowMultiple: true})
-export default class Navigation extends Component {
+export default class Layout extends Component {
   static propTypes = {
     children: React.PropTypes.node
   }
@@ -41,7 +43,7 @@ export default class Navigation extends Component {
         <span styleName='menu-heading'>
           <IndexLink to='/' styleName='menu-brand' onClick={this.hideMenu}>
             <span styleName='menu-link'>
-              <i><FaHome /></i>
+              <i><MdBlurOn /></i>
             </span>
           </IndexLink>
           <a href='#menu' styleName='menu-toggle' onClick={this.toggleMenu}>
@@ -58,9 +60,18 @@ export default class Navigation extends Component {
             </ul>
           </div>
         </nav>
+        <div styleName='overlay' onClick={this.hideMenu} />
         <main styleName='main'>
-          <div styleName='overlay' onClick={this.hideMenu} />
-          {this.props.children}
+          <ReactCSSTransitionGroup
+            transitionName={styles}
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}
+          >
+            {React.cloneElement(this.props.children, {
+              key: window.location.pathname
+            })}
+          </ReactCSSTransitionGroup>
+          <Footer />
         </main>
       </div>
     )

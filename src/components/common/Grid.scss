@@ -1,0 +1,18 @@
+.grid {
+  composes: pure-g from 'purecss/build/grids.css';
+  font-family: inherit;
+
+  [class *= "unit"] {
+    font-family: inherit;
+  }
+}
+
+.grid-padded {
+  @composes grid;
+  margin: 0 -10px;
+
+  [class *= "unit"] {
+    box-sizing: border-box;
+    padding: 0 10px;
+  }
+}
