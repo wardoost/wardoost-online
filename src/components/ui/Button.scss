@@ -55,7 +55,7 @@
   top: 50%;
   opacity: 0;
   transform: scale(2) translate(-25%, -25%);
-  transition: opacity 100ms linear 200ms, transform 300ms cubic-bezier(0.600, -0.280, 0.735, 0.045); /* easeInBack */
+  transition: opacity 100ms linear 200ms, transform 300ms ease(in-back);
 
   * {
     display: inline-block;
@@ -72,13 +72,13 @@
 
   .label {
     left: -0.75em;
-    transition: opacity 300ms linear, left 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275); /* easeOutBack */
+    transition: opacity 300ms linear, left 500ms ease(out-back);
   }
 
   .icon {
     opacity: 1;
     transform: scale(1) translate(-50%, -50%);
-    transition: opacity 100ms linear, transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275); /* easeOutBack */
+    transition: opacity 100ms linear, transform 300ms ease(out-back);
   }
 }
 
