@@ -1,18 +1,18 @@
-import {resolve} from 'path'
-import webpack from 'webpack'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
-import WebpackMd5Hash from 'webpack-md5-hash'
-import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
-import CleanWebpackPlugin from 'clean-webpack-plugin'
-import OfflinePlugin from 'offline-plugin'
+const path = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const WebpackMd5Hash = require('webpack-md5-hash')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const OfflinePlugin = require('offline-plugin')
 
 const PROD = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  context: resolve(__dirname, 'src'),
+  context: path.resolve(__dirname, 'src'),
 
   entry: {
     vendor: [
@@ -24,7 +24,7 @@ module.exports = {
   },
 
   output: {
-    path: resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'build'),
     publicPath: '/',
     filename: PROD ? '[name].[chunkhash].js' : '[name].js',
     chunkFilename: PROD ? '[name].[chunkhash].js' : '[name].js'
@@ -32,7 +32,7 @@ module.exports = {
 
   resolve: {
     extensions: ['.js', '.jsx'],
-    modules: [resolve(__dirname, 'src'), 'node_modules']
+    modules: [path.resolve(__dirname, 'src'), 'node_modules']
   },
 
   module: {

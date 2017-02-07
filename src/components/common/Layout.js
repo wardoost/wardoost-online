@@ -62,7 +62,8 @@ export default class Layout extends Component {
         </nav>
         <div styleName='overlay' onClick={this.hideMenu} />
         <main styleName='main'>
-          <ReactCSSTransitionGroup
+          {this.props.children
+          ? <ReactCSSTransitionGroup
             transitionName={styles}
             transitionEnterTimeout={500}
             transitionLeaveTimeout={500}
@@ -71,6 +72,7 @@ export default class Layout extends Component {
               key: window.location.pathname
             })}
           </ReactCSSTransitionGroup>
+          : null}
           <Footer />
         </main>
       </div>

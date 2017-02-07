@@ -6,11 +6,12 @@
     "<rootDir>[/\\\\](build|node_modules)[/\\\\]"
   ],
   "testURL": "http://localhost",
-  "transform": {
-    "^.+\\.(js|jsx)$": "babel-jest"
-  },
   "moduleNameMapper": {
-    "^.+\\.css$": "identity-obj-proxy"
+    "^.+\\.s?css$": "identity-obj-proxy",
+    "^.+\\.(svg|woff2?|ttf|eot|jpe?g|png|gif)$": "null-loader"
+  },
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest"
   },
   "transformIgnorePatterns": [
     "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
