@@ -76,6 +76,13 @@ export default class Buttons extends PureComponent {
             </Button>
           </Unit>
         </Grid>
+        <h1>Button groups</h1>
+        <Button styleName='standalone'>Standalone button</Button>
+        <ButtonGroup aria-label='Button groups' styleName='group'>
+          <Button>Buttons</Button>
+          <Button>In</Button>
+          <Button>Group</Button>
+        </ButtonGroup>
       </div>
     )
   }

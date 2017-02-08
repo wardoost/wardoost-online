@@ -20,7 +20,7 @@ export default class Buttons extends PureComponent {
         <h1>Forms</h1>
         <Grid>
           <Unit size='1'>
-            <h2>Types</h2>
+            <h2>Kinds</h2>
             <Form>
               <fieldset>
                 <legend>Inline form</legend>

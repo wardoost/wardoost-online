@@ -1,5 +1,13 @@
 @import '~styles/helpers';
 
+.standalone {
+  margin-right: 0.25em;
+}
+
+.group {
+  display: inline;
+}
+
 .button-mixed {
   width: 100%;
   padding: $padding-md $padding-lg;
