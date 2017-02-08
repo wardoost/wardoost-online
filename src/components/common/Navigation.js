@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import {Link} from 'react-router'
 import styles from './Navigation.scss'
 
 @CSSModules(styles, {allowMultiple: true})
-export default class Layout extends Component {
+export default class Layout extends PureComponent {
   static propTypes = {
     active: React.PropTypes.bool,
     hideMenu: React.PropTypes.func

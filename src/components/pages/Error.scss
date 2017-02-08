@@ -46,8 +46,17 @@
   color: $gray-dark;
   text-align: center;
 
+  span {
+    vertical-align: middle;
+  }
+
   @media #{$md-min} {
     text-align: left;
     vertical-align: middle;
   }
+}
+
+.emoji {
+  font-size: 2em;
+  margin-left: 0.5em;
 }

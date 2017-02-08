@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {autobind} from 'core-decorators'
 import CSSModules from 'react-css-modules'
 import FaAsterisk from 'react-icons/lib/fa/asterisk'
@@ -7,7 +7,7 @@ import styles from './Buttons.scss'
 import placeholder from '../../assets/placeholder.jpg'
 
 @CSSModules(styles)
-export default class Buttons extends Component {
+export default class Buttons extends PureComponent {
   state = {
     loading: false
   }

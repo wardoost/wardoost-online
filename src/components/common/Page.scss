@@ -1,0 +1,9 @@
+.footer {
+  opacity: 1;
+  transition: opacity 200ms linear 200ms;
+}
+
+.footer-hide {
+  opacity: 0;
+  transition: opacity 200ms linear;
+}

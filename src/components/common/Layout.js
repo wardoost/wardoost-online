@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import {autobind} from 'core-decorators'
 import {IndexLink} from 'react-router'
@@ -7,11 +7,11 @@ import MdMenu from 'react-icons/lib/md/menu'
 import MdClose from 'react-icons/lib/md/close'
 import MdBlurOn from 'react-icons/lib/md/blur-on'
 import Navigation from './Navigation'
-import Footer from './Footer'
+import Page from './Page'
 import styles from './Layout.scss'
 
 @CSSModules(styles, {allowMultiple: true})
-export default class Layout extends Component {
+export default class Layout extends PureComponent {
   static propTypes = {
     children: React.PropTypes.node
   }
@@ -61,13 +61,12 @@ export default class Layout extends Component {
         <div styleName='overlay' onClick={this.hideMenu} />
         <div styleName='content'>
           {this.props.children
-          ? <Animate component='main' transitionName={styles}>
+          ? <Animate component={Page} transitionName={styles}>
             {React.cloneElement(this.props.children, {
               key: window.location.pathname
             })}
           </Animate>
           : null}
-          <Footer />
         </div>
       </div>
     )

@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {Link} from 'react-router'
 import {Image} from '../ui'
 import placeholder from '../../assets/placeholder.jpg'
 
-export default class Home extends Component {
+export default class Home extends PureComponent {
   render () {
     return (
       <div>

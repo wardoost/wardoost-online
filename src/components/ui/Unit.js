@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import styles from './Unit.scss'
 
 @CSSModules(styles, {allowMultiple: true})
-export default class Unit extends Component {
+export default class Unit extends PureComponent {
   static propTypes = {
     size: React.PropTypes.string,
     smSize: React.PropTypes.string,

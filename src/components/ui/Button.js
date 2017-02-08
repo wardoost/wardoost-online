@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import FaCircleONotch from 'react-icons/lib/fa/circle-o-notch'
 import styles from './Button.scss'
 
 @CSSModules(styles, {allowMultiple: true})
-export default class Button extends Component {
+export default class Button extends PureComponent {
   static propTypes = {
     children: React.PropTypes.node,
     type: React.PropTypes.string,

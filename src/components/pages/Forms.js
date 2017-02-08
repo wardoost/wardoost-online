@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {Grid, Unit, Form, FormGroup, Input} from '../ui'
 
-export default class Buttons extends Component {
+export default class Buttons extends PureComponent {
   render () {
     return (
       <div>

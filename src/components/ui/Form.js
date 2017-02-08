@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import styles from './Form.scss'
 
 @CSSModules(styles)
-export default class Form extends Component {
+export default class Form extends PureComponent {
   static propTypes = {
     children: React.PropTypes.node,
     type: React.PropTypes.string

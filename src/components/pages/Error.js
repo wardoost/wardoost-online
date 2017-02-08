@@ -1,10 +1,12 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import {Grid, Unit} from '../ui'
 import styles from './Error.scss'
 
+const emojis = ['😭', '😡', '🙄', '🤔', '😕', '🙁', '😦', '😵', '😪', '🤥', '🐒', '😰', '😢', '😱', '😳', '☠️', '💥', '🖕', '👎', '🙃', '😖', '😩', '😫', '😤']
+
 @CSSModules(styles)
-export default class Error extends Component {
+export default class Error extends PureComponent {
   static propTypes = {
     title: React.PropTypes.string,
     message: React.PropTypes.string
@@ -12,11 +14,12 @@ export default class Error extends Component {
 
   static defaultProps = {
     title: '404',
-    message: 'This page could not be found.'
+    message: 'This page could not be found'
   }
 
   render () {
     const {title, message} = this.props
+    const emoji = emojis[Math.floor(Math.random() * emojis.length)]
 
     return (
       <div>
@@ -26,7 +29,8 @@ export default class Error extends Component {
               <h1>{title}</h1>
             </Unit>
             <Unit mdSize='3-5' styleName='message'>
-              <p>{message}</p>
+              <span>{message}</span>
+              <span styleName='emoji'>{emoji}</span>
             </Unit>
           </Grid>
         </div>

@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import styles from './Grid.scss'
 
 @CSSModules(styles)
-export default class Grid extends Component {
+export default class Grid extends PureComponent {
   static propTypes = {
     padding: React.PropTypes.string
   }
