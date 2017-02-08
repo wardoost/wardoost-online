@@ -6,14 +6,18 @@ import styles from './Form.scss'
 export default class Form extends PureComponent {
   static propTypes = {
     children: React.PropTypes.node,
-    type: React.PropTypes.string
+    kind: React.PropTypes.oneOf(['inline', 'stacked', 'aligned'])
+  }
+
+  static defaultProps = {
+    kind: 'inline'
   }
 
   render () {
-    const {children, type, ...props} = this.props
+    const {children, kind, ...props} = this.props
 
     return (
-      <form styleName={type ? `form-${type}` : 'form'} {...props}>
+      <form styleName={`form-${kind}`} {...props}>
         {children}
       </form>
     )

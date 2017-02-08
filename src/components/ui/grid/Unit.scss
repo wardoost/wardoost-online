@@ -7,7 +7,7 @@ $breakPoints: 'sm', 'md', 'lg', 'xl';
     @if ($grid % $width != 0) or ($width == 1) {
       @if ($grid == 1) and ($width == 1) {
         .unit-#{$grid} {
-          composes: pure-u-#{$width}-#{$grid} from 'purecss/build/grids.css';
+          composes: pure-u-#{$grid} from 'purecss/build/grids.css';
         }
       }
       .unit-#{$width}-#{$grid} {

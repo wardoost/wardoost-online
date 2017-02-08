@@ -1,13 +1,14 @@
-$grids: 1, 2, 3, 4, 5;
-
-.input-1 {
-  composes: pure-input-1 from 'purecss/build/forms.css';
-}
+$grids: 1, 2, 3, 4;
 
 @for $i from 1 through length($grids) {
   $grid: nth($grids, $i);
   @for $width from 1 through $grid {
     @if ($grid % $width != 0) or ($width == 1) {
+      @if ($grid == 1) and ($width == 1) {
+        .input-#{$grid} {
+          composes: pure-u-#{$grid} from 'purecss/build/grids.css';
+        }
+      }
       .input-#{$width}-#{$grid} {
         composes: pure-input-#{$width}-#{$grid} from 'purecss/build/forms.css';
       }

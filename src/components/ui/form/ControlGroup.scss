@@ -1,0 +1,5 @@
+@import '~styles/helpers';
+
+.control-group {
+  composes: pure-control-group from 'purecss/build/forms.css';
+}

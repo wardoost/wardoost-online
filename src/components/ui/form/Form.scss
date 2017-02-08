@@ -2,6 +2,56 @@
 
 .form {
   composes: pure-form from 'purecss/build/forms.css';
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="url"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="week"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"],
+  select,
+  textarea {
+    border-radius: $radius;
+
+    &:focus {
+      border-color: $primary;
+
+      &[required] {
+        border-color: $error;
+      }
+    }
+
+    &[class *= "input-rounded"] {
+      border-radius: 2em;
+    }
+  }
+
+  fieldset[class *= "group"] {
+    input:first-child,
+    textarea:first-child {
+      border-radius: $radius $radius 0 0;
+    }
+
+    input:last-child,
+    textarea:last-child {
+      border-radius: 0 0 $radius $radius;
+    }
+  }
+}
+
+.form-inline {
+  composes: form;
+
+  fieldset > * {
+    margin-right: $padding-xs;
+  }
 }
 
 .form-stacked {
@@ -12,4 +62,8 @@
 .form-aligned {
   composes: form;
   composes: pure-form-aligned from 'purecss/build/forms.css';
+
+  [class *= "controls"] > * {
+    display: block;
+  }
 }

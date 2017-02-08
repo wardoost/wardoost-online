@@ -1,5 +1,17 @@
 import React, {PureComponent} from 'react'
-import {Grid, Unit, Form, FormGroup, Input, Checkbox, Radio} from '../ui'
+import {
+  Grid,
+  Unit,
+  Form,
+  FormMessage,
+  FormGroup,
+  ControlGroup,
+  Controls,
+  Input,
+  Checkbox,
+  Radio,
+  Button
+} from '../ui'
 
 export default class Buttons extends PureComponent {
   render () {
@@ -8,53 +20,86 @@ export default class Buttons extends PureComponent {
         <h1>Forms</h1>
         <Grid>
           <Unit size='1'>
-            <h2>Default</h2>
+            <h2>Types</h2>
             <Form>
               <fieldset>
-                <Input type='text' placeholder='First name' />
-                <Input type='text' placeholder='Last name' />
+                <legend>Inline form</legend>
+                <Input type='text' placeholder='Name' />
+                <Input type='password' placeholder='Password' />
+                <Checkbox id='remember'>Remember me</Checkbox>
+                <Button type='submit' kind='primary'>Submit</Button>
               </fieldset>
             </Form>
-            <h2>Stacked</h2>
-            <Form type='stacked'>
+            <Form kind='stacked'>
               <fieldset>
+                <legend>Stacked form</legend>
                 <Input type='text' placeholder='First name' />
+                <FormMessage>This is a required field</FormMessage>
                 <Input type='text' placeholder='Last name' />
+                <label htmlFor='state'>State</label>
+                <select id='state'>
+                  <option>AL</option>
+                  <option>CA</option>
+                  <option>IL</option>
+                </select>
+                <Button type='submit' kind='primary'>Submit</Button>
               </fieldset>
             </Form>
-            <h2>Aligned</h2>
-            <Form type='aligned'>
+            <Form kind='aligned'>
               <fieldset>
-                <Input type='text' placeholder='First name' />
-                <Input type='text' placeholder='Last name' />
+                <legend>Aligned inline form</legend>
+                <ControlGroup>
+                  <label htmlFor='first'>First name</label>
+                  <Input id='first' type='text' placeholder='First name' />
+                  <FormMessage inline>This is a required field</FormMessage>
+                </ControlGroup>
+                <ControlGroup>
+                  <label htmlFor='last'>Last name</label>
+                  <Input id='last' type='text' placeholder='Last name' />
+                </ControlGroup>
+                <Controls>
+                  <Checkbox value='' id='agree'>I've read the terms and conditions</Checkbox>
+                  <Button type='submit' kind='primary'>Submit</Button>
+                </Controls>
               </fieldset>
+            </Form>
+            <h2>Input states</h2>
+            <Form kind='stacked'>
+              <Input type='text' placeholder='Required input' required />
+              <Input type='text' placeholder='Disabled input' disabled />
+              <Input type='text' placeholder='Read-only input' readOnly />
             </Form>
             <h2>Grouped inputs</h2>
             <Form>
               <FormGroup>
-                <Input type='text' placeholder='First name' />
-                <Input type='text' placeholder='Last name' />
+                <Input type='email' placeholder='Email' />
+                <Input type='password' placeholder='Password' />
               </FormGroup>
+              <Button type='submit' kind='primary'>Submit</Button>
             </Form>
             <h2>Input sizing</h2>
             <Form>
               <fieldset>
-                <Input type='text' placeholder='First name' size='1' />
-                <Input type='text' placeholder='Last name' size='3-5' />
-                <Input type='text' placeholder='Third name' size='2-3' />
+                <Input type='text' placeholder='1' size='1' />
+                <Input type='text' placeholder='1-2' size='1-2' />
+                <Input type='text' placeholder='1-2' size='1-2' />
+                <Input type='text' placeholder='1-3' size='1-3' />
+                <Input type='text' placeholder='2-3' size='2-3' />
+                <Input type='text' placeholder='3-4' size='3-4' />
+                <Input type='text' placeholder='1-4' size='1-4' />
               </fieldset>
             </Form>
             <h2>Rounded input</h2>
             <Form>
               <fieldset>
-                <Input type='text' placeholder='First name' size='1' rounded />
+                <Input type='text' placeholder='First name' rounded />
               </fieldset>
             </Form>
             <h2>Checkboxes and radios</h2>
             <Form>
-              <Checkbox value='' id='option1'>Option 1</Checkbox>
-              <Radio value='' id='option2' name='options' defaultChecked>Option 2</Radio>
-              <Radio value='' id='option3' name='options'>Option 3</Radio>
+              <Checkbox value='' id='option1' align>Option 1</Checkbox>
+              <Radio value='' id='option2' name='options' align defaultChecked>Option 2</Radio>
+              <Radio value='' id='option3' name='options' align>Option 3</Radio>
             </Form>
           </Unit>
         </Grid>

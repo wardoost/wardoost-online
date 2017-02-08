@@ -7,7 +7,8 @@ import styles from './Button.scss'
 export default class Button extends PureComponent {
   static propTypes = {
     children: React.PropTypes.node,
-    type: React.PropTypes.string,
+    kind: React.PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'error']),
+    size: React.PropTypes.oneOf(['sm', 'lg', 'xl']),
     active: React.PropTypes.bool,
     loading: React.PropTypes.bool,
     LoadIcon: React.PropTypes.func,
@@ -21,10 +22,10 @@ export default class Button extends PureComponent {
   }
 
   render () {
-    const {children, type, active, loading, LoadIcon, loadReplace, ...props} = this.props
+    const {children, kind, size, active, loading, LoadIcon, loadReplace, ...props} = this.props
 
     return (
-      <button styleName={`${!type ? 'button' : `button-${type}`} ${active ? 'button-active' : ''} ${loading === undefined ? '' : loading ? 'button-loading-active' : 'button-loading'} ${loadReplace ? 'button-loading-replace' : ''}`} {...props}>
+      <button styleName={`${!kind ? 'button' : `button-${kind}`} ${active ? 'button-active' : ''} ${size ? `button-${size}` : ''} ${loading === undefined ? '' : loading ? 'button-loading-active' : 'button-loading'} ${loadReplace ? 'button-loading-replace' : ''}`} {...props}>
         {loading === undefined
         ? children
         : <span styleName='label'>{children}</span>}

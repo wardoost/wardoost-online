@@ -27,27 +27,34 @@ export default class Buttons extends PureComponent {
     return (
       <div>
         <h1>Buttons</h1>
-        <h2>Button types</h2>
-        <ButtonGroup aria-label='Button types'>
-          <Button>Default</Button>
-          <Button type='primary'>Primary</Button>
-          <Button type='secondary'>Secondary</Button>
-          <Button type='success'>Success</Button>
-          <Button type='warning'>Warning</Button>
-          <Button type='error'>Danger</Button>
-        </ButtonGroup>
         <h2>Button states</h2>
         <ButtonGroup aria-label='Button states'>
           <Button>Default</Button>
           <Button disabled>Disabled</Button>
           <Button active>Active</Button>
         </ButtonGroup>
+        <h2>Button sizes</h2>
+        <ButtonGroup aria-label='Button sizes'>
+          <Button size='sm'>Small</Button>
+          <Button>Default</Button>
+          <Button size='lg'>Large</Button>
+          <Button size='xl'>Extra large</Button>
+        </ButtonGroup>
+        <h2>Button kinds</h2>
+        <ButtonGroup aria-label='Button kinds'>
+          <Button>Default</Button>
+          <Button kind='primary'>Primary</Button>
+          <Button kind='secondary'>Secondary</Button>
+          <Button kind='success'>Success</Button>
+          <Button kind='warning'>Warning</Button>
+          <Button kind='error'>Danger</Button>
+        </ButtonGroup>
         <h2>Loading buttons</h2>
         <ButtonGroup aria-label='Loading buttons'>
           <Button onClick={this.simulateLoading} loading={loading} disabled={loading}>
             Default button
           </Button>
-          <Button onClick={this.simulateLoading} loading={loading} LoadIcon={FaAsterisk} disabled={loading} type='primary'>
+          <Button onClick={this.simulateLoading} loading={loading} LoadIcon={FaAsterisk} disabled={loading} kind='primary'>
             Custom button
           </Button>
           <Button onClick={this.simulateLoading} loading={loading} loadReplace>

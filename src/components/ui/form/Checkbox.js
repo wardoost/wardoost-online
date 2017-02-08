@@ -6,14 +6,15 @@ import styles from './Checkbox.scss'
 export default class Checkbox extends PureComponent {
   static propTypes = {
     children: React.PropTypes.node,
-    id: React.PropTypes.string.isRequired
+    id: React.PropTypes.string.isRequired,
+    align: React.PropTypes.bool
   }
 
   render () {
-    const {children, ...props} = this.props
+    const {children, align, ...props} = this.props
 
     return (
-      <label htmlFor={this.props.id} styleName='checkbox'>
+      <label htmlFor={this.props.id} styleName={align ? 'checkbox-align' : 'checkbox'}>
         <input type='checkbox' {...props} />
         {children}
       </label>

@@ -1,8 +1,12 @@
 @import '~styles/helpers';
 
 .checkbox {
-  composes: pure-checkbox from 'purecss/build/forms.css';
   input {
     margin-right: $padding-sm;
   }
+}
+
+.checkbox-align {
+  composes: pure-checkbox from 'purecss/build/forms.css';
+  composes: checkbox;
 }

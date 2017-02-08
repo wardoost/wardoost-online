@@ -2,8 +2,8 @@ import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import {autobind} from 'core-decorators'
 import {Link, IndexLink} from 'react-router'
-import MdMenu from 'react-icons/lib/md/menu'
-import MdClose from 'react-icons/lib/md/close'
+import FaBars from 'react-icons/lib/fa/bars'
+import FaClose from 'react-icons/lib/fa/close'
 import MdBlurOn from 'react-icons/lib/md/blur-on'
 import styles from './Navigation.scss'
 
@@ -70,7 +70,7 @@ export default class Layout extends PureComponent {
           </IndexLink>
           <a styleName='menu-toggle' onClick={toggleMenu}>
             <span styleName='heading-link'>
-              <i>{menuActive ? <MdClose /> : <MdMenu />}</i>
+              <i>{menuActive ? <FaClose /> : <FaBars />}</i>
             </span>
           </a>
         </span>

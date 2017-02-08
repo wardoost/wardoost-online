@@ -7,14 +7,19 @@ export default class Radio extends PureComponent {
   static propTypes = {
     children: React.PropTypes.node,
     id: React.PropTypes.string.isRequired,
-    name: React.PropTypes.string.isRequired
+    name: React.PropTypes.string.isRequired,
+    align: React.PropTypes.bool
+  }
+
+  static defaultProps = {
+    align: false
   }
 
   render () {
-    const {children, ...props} = this.props
+    const {children, align, ...props} = this.props
 
     return (
-      <label htmlFor={this.props.id} styleName='radio'>
+      <label htmlFor={this.props.id} styleName={align ? 'radio-align' : 'radio'}>
         <input type='radio' {...props} />
         {children}
       </label>

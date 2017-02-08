@@ -5,7 +5,7 @@ import styles from './Grid.scss'
 @CSSModules(styles)
 export default class Grid extends PureComponent {
   static propTypes = {
-    padding: React.PropTypes.string
+    padding: React.PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl'])
   }
 
   render () {

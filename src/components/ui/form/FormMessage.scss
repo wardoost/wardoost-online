@@ -1,0 +1,9 @@
+@import '~styles/helpers';
+
+.form-message {
+  composes: pure-form-message from 'purecss/build/forms.css';
+}
+
+.form-message-inline {
+  composes: pure-form-message-inline from 'purecss/build/forms.css';
+}

@@ -2,6 +2,7 @@
 
 .button {
   composes: pure-button from 'purecss/build/buttons.css';
+  border-radius: $radius;
 }
 
 .button-primary {
@@ -36,6 +37,22 @@
 
 .button-active {
   composes: pure-button-active from 'purecss/build/buttons.css';
+}
+
+.button-xs {
+  font-size: 70%;
+}
+
+.button-sm {
+  font-size: 85%;
+}
+
+.button-lg {
+  font-size: 110%;
+}
+
+.button-xl {
+  font-size: 125%;
 }
 
 .button-loading {

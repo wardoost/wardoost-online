@@ -1,7 +1,6 @@
 @import '~styles/helpers';
 
 .page-middle {
-  box-sizing: border-box;
   position: relative;
   min-height: calc(100vh - #{$nav-height + $footer-height + 2 * $padding-lg});
   margin: -$padding-lg -#{$padding-md};
