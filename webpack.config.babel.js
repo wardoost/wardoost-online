@@ -103,7 +103,7 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new ExtractTextPlugin({
-      filename: PROD ? '[name].[chunkhash].css' : '[name].css',
+      filename: PROD ? '[name].[hash].css' : '[name].css',
       allChunks: true,
       disable: !PROD
     }),

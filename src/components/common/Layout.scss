@@ -55,7 +55,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  transition: left 300ms ease(out-expo);
+  transition: left 300ms ease(out-expo), right 300ms ease(out-expo);
 }
 
 .menu-toggle {
@@ -97,6 +97,7 @@
   left: $menu-width;
   .menu-brand {
     left: $menu-width;
+    right: $menu-width;
   }
   .menu-toggle {
     left: $menu-width - $nav-height;
@@ -107,10 +108,11 @@
   }
   @media #{$md-min} {
     .menu-brand {
-      left: 0
+      left: 0;
+      right: 0;
     }
     .menu-toggle {
-      left: 100%
+      left: 100%;
     }
     .overlay {
       pointer-events: none;

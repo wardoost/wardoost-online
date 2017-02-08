@@ -5,18 +5,14 @@ import styles from './Grid.scss'
 @CSSModules(styles)
 export default class Grid extends Component {
   static propTypes = {
-    padded: React.PropTypes.bool
-  }
-
-  static defaultProps = {
-    padded: false
+    padding: React.PropTypes.string
   }
 
   render () {
-    const {padded, ...props} = this.props
+    const {padding, ...props} = this.props
 
     return (
-      <div styleName={padded ? 'grid-padded' : 'grid'} {...props} />
+      <div styleName={padding ? `grid-padded-${padding}` : 'grid'} {...props} />
     )
   }
 }

@@ -14,7 +14,7 @@ $breakPoints: 'sm', 'md', 'lg', 'xl';
     @for $j from 1 through length($breakPoints) {
       $breakPoint: nth($breakPoints, $j);
       .unit-#{$breakPoint}-#{$width}-#{$grid} {
-         composes: pure-u-#{$breakPoint}-#{$width}-#{$grid} from 'purecss/build/grids-responsive.css';
+        composes: pure-u-#{$breakPoint}-#{$width}-#{$grid} from 'purecss/build/grids-responsive.css';
       }
     }
   }

@@ -27,7 +27,7 @@ export default class Buttons extends Component {
     return (
       <div>
         <h1>Buttons</h1>
-        <Grid padded>
+        <Grid padding='md'>
           <Unit size='1' mdSize='1-2' xlSize='1-3'>
             <h2>Button types</h2>
             <div styleName='button-group' role='group' aria-label='Different types of buttons'>

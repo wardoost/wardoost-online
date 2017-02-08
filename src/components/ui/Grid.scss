@@ -9,12 +9,20 @@
   }
 }
 
-.grid-padded {
-  @composes grid;
-  margin: 0 -$padding-sm;
+$paddings: (
+  sm: $padding-sm,
+  md: $padding-md,
+  lg: $padding-lg
+);
 
-  [class *= "unit"] {
-    box-sizing: border-box;
-    padding: 0 $padding-sm;
+@each $padding, $size in $paddings {
+  .grid-padded-#{$padding} {
+    @composes grid;
+    margin: 0 #{-$size};
+
+    [class *= "unit"] {
+      box-sizing: border-box;
+      padding: 0 $size;
+    }
   }
 }

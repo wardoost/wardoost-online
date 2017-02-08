@@ -4,22 +4,50 @@
   box-sizing: border-box;
   position: relative;
   min-height: calc(100vh - #{$nav-height + $footer-height + 2 * $padding-lg});
+
   > * {
     position: absolute;
     top: 50%;
     left: 0;
-    width: 100%;
+    right: 0;
     transform: translateY(-50%);
   }
 }
 
 .title {
-  text-align: right;
-  vertical-align: middle;
-  border-right: $gray-lighter $padding-sm/2 solid;
+  position: relative;
+  text-align: center;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: $padding-sm / 2;
+    background-color: $gray-lighter;
+  }
+
+  @media #{$md-min} {
+    text-align: right;
+    vertical-align: middle;
+
+    &:after {
+      top: 0;
+      left: auto;
+      right: -$padding-sm / 4;
+      height: auto;
+      width: $padding-sm / 2;
+    }
+  }
 }
 
 .message {
   color: $gray-dark;
-  vertical-align: middle;
+  text-align: center;
+
+  @media #{$md-min} {
+    text-align: left;
+    vertical-align: middle;
+  }
 }

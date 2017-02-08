@@ -21,11 +21,11 @@ export default class Error extends Component {
     return (
       <div>
         <div styleName='page-middle'>
-          <Grid padded>
-            <Unit size='2-5' styleName='title'>
+          <Grid padding='lg'>
+            <Unit mdSize='2-5' styleName='title'>
               <h1>{title}</h1>
             </Unit>
-            <Unit size='3-5' styleName='message'>
+            <Unit mdSize='3-5' styleName='message'>
               <p>{message}</p>
             </Unit>
           </Grid>
