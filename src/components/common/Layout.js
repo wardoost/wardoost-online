@@ -23,6 +23,8 @@ export default class Layout extends Component {
   @autobind
   toggleMenu () {
     this.setState(prevState => {
+      document.body.style.overflow = !prevState.menuActive ? 'hidden' : null
+
       return {
         menuActive: !prevState.menuActive
       }
@@ -31,6 +33,8 @@ export default class Layout extends Component {
 
   @autobind
   hideMenu () {
+    document.body.style.overflow = null
+
     this.setState({
       menuActive: false
     })

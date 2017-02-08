@@ -34,6 +34,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    height: 1.3em;
   }
 }
 
@@ -66,7 +67,7 @@
   transition: left 300ms ease(out-expo);
 
   @media #{$md-min} {
-    left: 100%;
+    display: none;
   }
 
   .heading-link {
@@ -131,7 +132,7 @@
 .enterActive {
   opacity: 1;
   transform: translateX(0);
-  transition: all 300ms ease(out-expo) 100ms;
+  transition: opacity 300ms linear 200ms, transform 300ms ease(out-quint) 200ms;
 }
 
 .leave {
@@ -142,5 +143,5 @@
 .leaveActive {
   opacity: 0;
   transform: translateX($menu-width);
-  transition: all 300ms ease(out-expo);
+  transition: opacity 300ms linear, transform 300ms ease(in-quint);
 }
