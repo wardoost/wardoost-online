@@ -1,0 +1,25 @@
+@import '~styles/helpers';
+
+.page-middle {
+  box-sizing: border-box;
+  position: relative;
+  min-height: calc(100vh - #{$nav-height + $footer-height + 2 * $padding-lg});
+  > * {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+  }
+}
+
+.title {
+  text-align: right;
+  vertical-align: middle;
+  border-right: $gray-lighter $padding-sm/2 solid;
+}
+
+.message {
+  color: $gray-dark;
+  vertical-align: middle;
+}

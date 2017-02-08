@@ -10,11 +10,7 @@ export default class Form extends Component {
   }
 
   render () {
-    const {children, type} = this.props
-
-    let props = {...this.props}
-    delete props.children
-    delete props.type
+    const {children, type, ...props} = this.props
 
     return (
       <form styleName={type ? `form-${type}` : 'form'} {...props}>

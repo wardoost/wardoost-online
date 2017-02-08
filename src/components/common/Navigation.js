@@ -11,11 +11,7 @@ export default class Layout extends Component {
   }
 
   render () {
-    const {active, hideMenu} = this.props
-
-    let props = {...this.props}
-    delete props.active
-    delete props.hideMenu
+    const {active, hideMenu, ...props} = this.props
 
     return (
       <nav styleName={active ? 'nav-active' : 'nav'} id='menu' {...props}>

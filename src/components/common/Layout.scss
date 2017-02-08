@@ -1,14 +1,12 @@
 @import '~styles/helpers';
 
 .layout {
+  box-sizing: border-box;
+  padding: $nav-height 0 $footer-height;
+  min-height: 100%;
   position: relative;
   left: 0;
-  padding-left: 0;
-  min-height: 100%;
   transition: left 300ms ease(out-expo);
-  padding-top: $nav-height;
-  padding-bottom: $footer-height;
-  box-sizing: border-box;
 
   @media #{$md-min} {
     left: $menu-width;
@@ -76,10 +74,8 @@
   }
 }
 
-.main {
+.content {
   padding: $padding-lg $padding-md;
-  min-height: 100%;
-  transition: height 500ms ease(in-out-expo);
 }
 
 .overlay {
@@ -129,18 +125,22 @@
   right: $padding-md;
   bottom: $footer-height + $padding-lg;
   opacity: 0;
+  transform: translateX(-$menu-width);
 }
 
 .enterActive {
   opacity: 1;
-  transition: opacity 300ms linear 200ms;
+  transform: translateX(0);
+  transition: all 300ms ease(out-expo) 100ms;
 }
 
 .leave {
   opacity: 1;
+  transform: translateX(0);
 }
 
 .leaveActive {
   opacity: 0;
-  transition: opacity 300ms linear;
+  transform: translateX($menu-width);
+  transition: all 300ms ease(out-expo);
 }

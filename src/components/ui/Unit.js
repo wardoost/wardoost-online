@@ -17,14 +17,7 @@ export default class Unit extends Component {
   }
 
   render () {
-    const {size, smSize, mdSize, lgSize, xlSize} = this.props
-
-    let props = {...this.props}
-    delete props.size
-    delete props.smSize
-    delete props.mdSize
-    delete props.lgSize
-    delete props.xlSize
+    const {size, smSize, mdSize, lgSize, xlSize, ...props} = this.props
 
     return (
       <div styleName={`unit-${size} ${smSize ? `unit-sm-${smSize}` : ''} ${mdSize ? `unit-md-${mdSize}` : ''} ${lgSize ? `unit-lg-${lgSize}` : ''} ${xlSize ? `unit-xl-${xlSize}` : ''}`} {...props} />

@@ -19,14 +19,7 @@ export default class Button extends Component {
   }
 
   render () {
-    const {children, type, loading, LoadIcon, loadReplace} = this.props
-
-    let props = {...this.props}
-    delete props.children
-    delete props.type
-    delete props.loading
-    delete props.LoadIcon
-    delete props.loadReplace
+    const {children, type, loading, LoadIcon, loadReplace, ...props} = this.props
 
     return (
       <button styleName={`${!type ? 'button' : `button-${type}`} ${loading === undefined ? '' : loading ? 'button-loading-active' : 'button-loading'} ${loadReplace ? 'button-loading-replace' : ''}`} {...props}>

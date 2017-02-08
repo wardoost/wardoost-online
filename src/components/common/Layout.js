@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import CSSModules from 'react-css-modules'
 import {autobind} from 'core-decorators'
 import {IndexLink} from 'react-router'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import Animate from 'rc-animate'
 import MdMenu from 'react-icons/lib/md/menu'
 import MdClose from 'react-icons/lib/md/close'
 import MdBlurOn from 'react-icons/lib/md/blur-on'
@@ -55,20 +55,16 @@ export default class Layout extends Component {
         </span>
         <Navigation hideMenu={this.hideMenu} active={menuActive} />
         <div styleName='overlay' onClick={this.hideMenu} />
-        <main styleName='main'>
+        <div styleName='content'>
           {this.props.children
-          ? <ReactCSSTransitionGroup
-            transitionName={styles}
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={500}
-          >
+          ? <Animate component='main' transitionName={styles}>
             {React.cloneElement(this.props.children, {
               key: window.location.pathname
             })}
-          </ReactCSSTransitionGroup>
+          </Animate>
           : null}
           <Footer />
-        </main>
+        </div>
       </div>
     )
   }

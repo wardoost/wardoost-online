@@ -10,11 +10,7 @@ export default class Input extends Component {
   }
 
   render () {
-    const {size, rounded} = this.props
-
-    let props = {...this.props}
-    delete props.size
-    delete props.rounded
+    const {size, rounded, ...props} = this.props
 
     return (
       <input styleName={`${size ? `input-${size}` : ''} ${rounded ? 'input-rounded' : ''}`} {...props} />

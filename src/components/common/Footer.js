@@ -7,7 +7,7 @@ import styles from './Footer.scss'
 export default class Footer extends Component {
   render () {
     return (
-      <footer styleName='footer'>
+      <footer styleName='footer' {...this.props}>
         <a href='https://www.wardoost.online/' target='_blank' styleName='link-code'>
           <GoCode /> by Ward
         </a>

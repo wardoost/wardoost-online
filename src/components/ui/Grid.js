@@ -13,10 +13,7 @@ export default class Grid extends Component {
   }
 
   render () {
-    const {padded} = this.props
-
-    let props = {...this.props}
-    delete props.padded
+    const {padded, ...props} = this.props
 
     return (
       <div styleName={padded ? 'grid-padded' : 'grid'} {...props} />
