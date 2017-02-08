@@ -25,10 +25,10 @@ export default class Error extends PureComponent {
       <div>
         <div styleName='page-middle'>
           <Grid padding='xl'>
-            <Unit mdSize='2-5' styleName='title'>
+            <Unit mdSize='1-3' lgSize='2-5' styleName='title'>
               <h1>{title}</h1>
             </Unit>
-            <Unit mdSize='3-5' styleName='message'>
+            <Unit mdSize='2-3' lgSize='3-5' styleName='message'>
               <span>{message}</span>
               <span styleName='emoji'>{emoji}</span>
             </Unit>

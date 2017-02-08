@@ -51,7 +51,7 @@ export default class Layout extends PureComponent {
               <i><MdBlurOn /></i>
             </span>
           </IndexLink>
-          <a href='#menu' styleName='menu-toggle' onClick={this.toggleMenu}>
+          <a styleName='menu-toggle' onClick={this.toggleMenu}>
             <span styleName='heading-link'>
               <i>{menuActive ? <MdClose /> : <MdMenu />}</i>
             </span>
@@ -59,15 +59,13 @@ export default class Layout extends PureComponent {
         </span>
         <Navigation hideMenu={this.hideMenu} active={menuActive} />
         <div styleName='overlay' onClick={this.hideMenu} />
-        <div styleName='content'>
-          {this.props.children
-          ? <Animate component={Page} transitionName={styles}>
-            {React.cloneElement(this.props.children, {
-              key: window.location.pathname
-            })}
-          </Animate>
-          : null}
-        </div>
+        {this.props.children
+        ? <Animate component={Page} transitionName={styles}>
+          {React.cloneElement(this.props.children, {
+            key: window.location.pathname
+          })}
+        </Animate>
+        : null}
       </div>
     )
   }

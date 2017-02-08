@@ -4,6 +4,8 @@
   box-sizing: border-box;
   position: relative;
   min-height: calc(100vh - #{$nav-height + $footer-height + 2 * $padding-lg});
+  margin: -$padding-lg -#{$padding-md};
+
 
   > * {
     position: absolute;
@@ -45,6 +47,7 @@
 .message {
   color: $gray-dark;
   text-align: center;
+  margin: 1.33em 0;
 
   span {
     vertical-align: middle;

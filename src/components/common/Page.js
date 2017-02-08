@@ -23,7 +23,7 @@ export default class Page extends PureComponent {
     const {animating} = this.state
 
     return (
-      <main>
+      <main styleName='content'>
         {this.props.children}
         <Footer styleName={animating ? 'footer-hide' : 'footer'} />
       </main>

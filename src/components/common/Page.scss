@@ -1,3 +1,9 @@
+@import '~styles/helpers';
+
+.content {
+  padding: $padding-lg $padding-md;
+}
+
 .footer {
   opacity: 1;
   transition: opacity 200ms linear 200ms;
