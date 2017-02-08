@@ -61,19 +61,15 @@ export default class Layout extends PureComponent {
     const toggleMenu = active === undefined ? this.toggleMenu : onToggle
 
     return (
-      <nav {...props} styleName={menuActive ? 'nav-active' : 'nav'}>
-        <span styleName='menu-heading'>
+      <nav styleName={menuActive ? 'nav-active' : 'nav'}>
+        <div {...props} styleName='menu-heading'>
           <IndexLink to='/' styleName='menu-brand' onClick={hideMenu}>
-            <span styleName='heading-link'>
-              <i><MdBlurOn /></i>
-            </span>
+            <i><MdBlurOn /></i>
           </IndexLink>
           <a styleName='menu-toggle' onClick={toggleMenu}>
-            <span styleName='heading-link'>
-              <i>{menuActive ? <FaClose /> : <FaBars />}</i>
-            </span>
+            <i>{menuActive ? <FaClose /> : <FaBars />}</i>
           </a>
-        </span>
+        </div>
         <div styleName='menu' onClick={this.hideMenu}>
           <ul styleName='menu-list'>
             {this.createMenu(menu, location)}
