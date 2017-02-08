@@ -47,6 +47,16 @@ export default class Buttons extends PureComponent {
           </Button>
           <Button styleName='button' onClick={this.simulateLoading} loading={loading} loadReplace>
             Hide button content
+          </Button>
+        </ButtonGroup>
+        <h2>Mixed content</h2>
+        <ButtonGroup aria-label='Mixed content buttons'>
+          <Button styleName='button-mixed' onClick={this.simulateLoading} loading={loading}>
+            With an image
+            <Image src={placeholder} styleName='button-img' />
+          </Button>
+          <Button styleName='button-mixed' onClick={this.simulateLoading} loading={loading} loadReplace>
+            Hide button content
             <Image src={placeholder} styleName='button-img' />
           </Button>
         </ButtonGroup>

@@ -62,7 +62,7 @@ module.exports = {
               options: {
                 modules: true,
                 importModules: true,
-                localIdentName: PROD ? '[hash:8]' : '[local]-[hash:8]',
+                localIdentName: '[local]-[hash:8]',
                 sourceMap: !PROD
               }
             },

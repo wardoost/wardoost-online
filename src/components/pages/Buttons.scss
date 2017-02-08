@@ -4,6 +4,11 @@
   font-weight: bold;
 }
 
+.button-mixed {
+  composes: button;
+  padding: $padding-md $padding-lg;
+}
+
 .button-img {
   width: 200px;
   margin: $padding-sm auto;
