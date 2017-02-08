@@ -3,7 +3,7 @@ import CSSModules from 'react-css-modules'
 import {Link} from 'react-router'
 import styles from './Navigation.scss'
 
-@CSSModules(styles, {allowMultiple: true})
+@CSSModules(styles)
 export default class Layout extends PureComponent {
   static propTypes = {
     active: React.PropTypes.bool,

@@ -1,11 +1,6 @@
 @import '~styles/helpers';
 
-.button {
-  font-weight: bold;
-}
-
 .button-mixed {
-  composes: button;
   padding: $padding-md $padding-lg;
 }
 

@@ -29,23 +29,23 @@ export default class Buttons extends PureComponent {
         <h1>Buttons</h1>
         <h2>Button types</h2>
         <ButtonGroup aria-label='Button types'>
-          <Button styleName='button'>Default</Button>
-          <Button styleName='button' type='primary'>Primary</Button>
-          <Button styleName='button' type='secondary'>Secondary</Button>
-          <Button styleName='button' type='success'>Success</Button>
-          <Button styleName='button' type='warning'>Warning</Button>
-          <Button styleName='button' type='error'>Danger</Button>
-          <Button styleName='button' disabled>Disabled</Button>
+          <Button>Default</Button>
+          <Button type='primary'>Primary</Button>
+          <Button type='secondary'>Secondary</Button>
+          <Button type='success'>Success</Button>
+          <Button type='warning'>Warning</Button>
+          <Button type='error'>Danger</Button>
+          <Button disabled>Disabled</Button>
         </ButtonGroup>
         <h2>Loading buttons</h2>
         <ButtonGroup aria-label='Loading buttons'>
-          <Button styleName='button' onClick={this.simulateLoading} loading={loading} disabled={loading}>
+          <Button onClick={this.simulateLoading} loading={loading} disabled={loading}>
             Default button
           </Button>
-          <Button styleName='button' onClick={this.simulateLoading} loading={loading} LoadIcon={FaAsterisk} disabled={loading} type='primary'>
+          <Button onClick={this.simulateLoading} loading={loading} LoadIcon={FaAsterisk} disabled={loading} type='primary'>
             Custom button
           </Button>
-          <Button styleName='button' onClick={this.simulateLoading} loading={loading} loadReplace>
+          <Button onClick={this.simulateLoading} loading={loading} loadReplace>
             Hide button content
           </Button>
         </ButtonGroup>

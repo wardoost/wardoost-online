@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react'
-import {Grid, Unit, Form, FormGroup, Input, Checkbox} from '../ui'
+import {Grid, Unit, Form, FormGroup, Input, Checkbox, Radio} from '../ui'
 
 export default class Buttons extends PureComponent {
   render () {
@@ -52,9 +52,9 @@ export default class Buttons extends PureComponent {
             </Form>
             <h2>Checkboxes and radios</h2>
             <Form>
-              <Checkbox type='checkbox' value='' id='option1'>Option 1</Checkbox>
-              <Checkbox type='radio' value='' id='option2' name='options' defaultChecked>Option 2</Checkbox>
-              <Checkbox type='radio' value='' id='option3' name='options'>Option 3</Checkbox>
+              <Checkbox value='' id='option1'>Option 1</Checkbox>
+              <Radio value='' id='option2' name='options' defaultChecked>Option 2</Radio>
+              <Radio value='' id='option3' name='options'>Option 3</Radio>
             </Form>
           </Unit>
         </Grid>
