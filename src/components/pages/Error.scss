@@ -50,6 +50,13 @@
 
   span {
     vertical-align: middle;
+    display: block;
+  }
+
+  @media #{$xs-min} {
+    span {
+      display: inline;
+    }
   }
 
   @media #{$md-min} {
