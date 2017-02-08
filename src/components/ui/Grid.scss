@@ -12,17 +12,18 @@
 $paddings: (
   sm: $padding-sm,
   md: $padding-md,
-  lg: $padding-lg
+  lg: $padding-lg,
+  xl: $padding-xl
 );
 
 @each $padding, $size in $paddings {
   .grid-padded-#{$padding} {
     @composes grid;
-    margin: 0 #{-$size};
+    margin: 0 #{-$size / 2};
 
     [class *= "unit"] {
       box-sizing: border-box;
-      padding: 0 $size;
+      padding: 0 #{$size / 2};
     }
   }
 }

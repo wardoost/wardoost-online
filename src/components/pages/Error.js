@@ -21,7 +21,7 @@ export default class Error extends Component {
     return (
       <div>
         <div styleName='page-middle'>
-          <Grid padding='lg'>
+          <Grid padding='xl'>
             <Unit mdSize='2-5' styleName='title'>
               <h1>{title}</h1>
             </Unit>
