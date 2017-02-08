@@ -1,68 +1,59 @@
 import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import {autobind} from 'core-decorators'
-import {IndexLink} from 'react-router'
 import Animate from 'rc-animate'
-import MdMenu from 'react-icons/lib/md/menu'
-import MdClose from 'react-icons/lib/md/close'
-import MdBlurOn from 'react-icons/lib/md/blur-on'
 import Navigation from './Navigation'
 import Page from './Page'
 import styles from './Layout.scss'
 
+const menu = [
+  {
+    label: 'Buttons',
+    to: '/buttons'
+  },
+  {
+    label: 'Forms',
+    to: '/forms'
+  },
+  {
+    label: 'Error page',
+    to: '/404'
+  }
+]
+
 @CSSModules(styles, {allowMultiple: true})
 export default class Layout extends PureComponent {
   static propTypes = {
-    children: React.PropTypes.node
+    children: React.PropTypes.node,
+    location: React.PropTypes.object
   }
 
   state = {
-    menuActive: false
+    navActive: false
   }
 
   @autobind
-  toggleMenu () {
+  toggleNav () {
+    document.body.style.overflow = !this.state.navActive ? 'hidden' : null
+
     this.setState(prevState => {
-      document.body.style.overflow = !prevState.menuActive ? 'hidden' : null
-
-      return {
-        menuActive: !prevState.menuActive
-      }
+      return { navActive: !prevState.navActive }
     })
   }
 
   @autobind
-  hideMenu () {
+  hideNav () {
     document.body.style.overflow = null
-
-    this.setState({
-      menuActive: false
-    })
-  }
-
-  componentWillReceiveProps (nextProps) {
-    this.hideMenu()
+    this.setState({navActive: false})
   }
 
   render () {
-    const {menuActive} = this.state
+    const {navActive} = this.state
 
     return (
-      <div styleName={`layout ${menuActive ? 'menu-active' : ''}`}>
-        <span styleName='menu-heading'>
-          <IndexLink to='/' styleName='menu-brand' onClick={this.hideMenu}>
-            <span styleName='heading-link'>
-              <i><MdBlurOn /></i>
-            </span>
-          </IndexLink>
-          <a styleName='menu-toggle' onClick={this.toggleMenu}>
-            <span styleName='heading-link'>
-              <i>{menuActive ? <MdClose /> : <MdMenu />}</i>
-            </span>
-          </a>
-        </span>
-        <Navigation hideMenu={this.hideMenu} active={menuActive} />
-        <div styleName='overlay' onClick={this.hideMenu} />
+      <div styleName={`layout ${navActive ? 'menu-active' : ''}`}>
+        <Navigation menu={menu} location={this.props.location} onToggle={this.toggleNav} onHide={this.hideNav} active={navActive} />
+        <div styleName='overlay' onClick={this.hideNav} />
         {this.props.children
         ? <Animate component={Page} transitionName={styles}>
           {React.cloneElement(this.props.children, {
