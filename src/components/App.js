@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-import {Router, Route, IndexRoute, browserHistory} from 'react-router'
-import {scrollTop} from '../utils/scroll'
-import Layout from './common/Layout'
-import {Home, Buttons, Forms, Error} from './pages'
+import {Router, browserHistory} from 'react-router'
+import routes from '../core/routes'
+import {scrollTop} from '../core/scroll'
 import './App.scss'
 
 export default class App extends Component {
@@ -14,14 +13,7 @@ export default class App extends Component {
 
   render () {
     return (
-      <Router history={browserHistory} onUpdate={this.handleUpdate}>
-        <Route path='/' component={Layout}>
-          <IndexRoute component={Home} />
-          <Route path='buttons' component={Buttons} />
-          <Route path='forms' component={Forms} />
-          <Route path='*' component={Error} />
-        </Route>
-      </Router>
+      <Router history={browserHistory} onUpdate={this.handleUpdate} routes={routes} />
     )
   }
 }

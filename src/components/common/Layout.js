@@ -5,21 +5,7 @@ import Animate from 'rc-animate'
 import Navigation from './Navigation'
 import Page from './Page'
 import styles from './Layout.scss'
-
-const menu = [
-  {
-    label: 'Buttons',
-    to: '/buttons'
-  },
-  {
-    label: 'Forms',
-    to: '/forms'
-  },
-  {
-    label: 'Error page',
-    to: '/404'
-  }
-]
+import menu from '../../core/menu'
 
 @CSSModules(styles, {allowMultiple: true})
 export default class Layout extends PureComponent {
