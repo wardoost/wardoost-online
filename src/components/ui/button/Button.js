@@ -8,21 +8,23 @@ export default class Button extends PureComponent {
   static propTypes = {
     children: React.PropTypes.node,
     type: React.PropTypes.string,
+    active: React.PropTypes.bool,
     loading: React.PropTypes.bool,
     LoadIcon: React.PropTypes.func,
     loadReplace: React.PropTypes.bool
   }
 
   static defaultProps = {
+    active: false,
     LoadIcon: FaCircleONotch,
     loadReplace: false
   }
 
   render () {
-    const {children, type, loading, LoadIcon, loadReplace, ...props} = this.props
+    const {children, type, active, loading, LoadIcon, loadReplace, ...props} = this.props
 
     return (
-      <button styleName={`${!type ? 'button' : `button-${type}`} ${loading === undefined ? '' : loading ? 'button-loading-active' : 'button-loading'} ${loadReplace ? 'button-loading-replace' : ''}`} {...props}>
+      <button styleName={`${!type ? 'button' : `button-${type}`} ${active ? 'button-active' : ''} ${loading === undefined ? '' : loading ? 'button-loading-active' : 'button-loading'} ${loadReplace ? 'button-loading-replace' : ''}`} {...props}>
         {loading === undefined
         ? children
         : <span styleName='label'>{children}</span>}

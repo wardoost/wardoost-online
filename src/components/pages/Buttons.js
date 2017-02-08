@@ -36,6 +36,7 @@ export default class Buttons extends PureComponent {
           <Button type='warning'>Warning</Button>
           <Button type='error'>Danger</Button>
           <Button disabled>Disabled</Button>
+          <Button active>Active</Button>
         </ButtonGroup>
         <h2>Loading buttons</h2>
         <ButtonGroup aria-label='Loading buttons'>

@@ -34,6 +34,10 @@
   color: $white;
 }
 
+.button-active {
+  composes: pure-button-active from 'purecss/build/buttons.css';
+}
+
 .button-loading {
   overflow: hidden;
   position: relative;
