@@ -7,8 +7,10 @@ $grids: 1, 2, 3, 4, 5;
 @for $i from 1 through length($grids) {
   $grid: nth($grids, $i);
   @for $width from 1 through $grid {
-    .input-#{$width}-#{$grid} {
-      composes: pure-input-#{$width}-#{$grid} from 'purecss/build/forms.css';
+    @if ($grid % $width != 0) or ($width == 1) {
+      .input-#{$width}-#{$grid} {
+        composes: pure-input-#{$width}-#{$grid} from 'purecss/build/forms.css';
+      }
     }
   }
 }

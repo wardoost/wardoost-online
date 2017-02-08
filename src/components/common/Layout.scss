@@ -124,22 +124,22 @@
   right: $padding-md;
   bottom: $footer-height + $padding-lg;
   opacity: 0;
-  transform: translateX(-$menu-width);
+  transform: translateY(-100px);
 }
 
 .enterActive {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
   transition: opacity 300ms linear 200ms, transform 300ms ease(out-quint) 200ms;
 }
 
 .leave {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 .leaveActive {
   opacity: 0;
-  transform: translateX($menu-width);
+  transform: translateY(100px);
   transition: opacity 300ms linear, transform 300ms ease(in-quint);
 }

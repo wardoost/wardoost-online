@@ -40,6 +40,10 @@ export default class Layout extends PureComponent {
     })
   }
 
+  componentWillReceiveProps (nextProps) {
+    this.hideMenu()
+  }
+
   render () {
     const {menuActive} = this.state
 

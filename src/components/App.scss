@@ -9,7 +9,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: $gray-dark;
   text-size-adjust: none;
-  font-size: 1.25em;
+  font-size: 1.2em;
+  @media #{$sm-min} {
+    font-size: 1.1em;
+  }
   @media #{$md-min} {
     font-size: 1em;
   }
