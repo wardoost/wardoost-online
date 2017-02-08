@@ -28,6 +28,10 @@
       }
     }
 
+    &[class *= "input"] {
+      margin-right: 0;
+    }
+
     &[class *= "input-rounded"] {
       border-radius: 2em;
     }
@@ -49,8 +53,12 @@
 .form-inline {
   composes: form;
 
+  input,
+  select,
+  textarea,
   fieldset > * {
-    margin-right: $padding-xs;
+    margin-right: 0.25em;
+    margin-bottom: 0.25em;
   }
 }
 

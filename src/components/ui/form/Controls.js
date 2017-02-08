@@ -6,7 +6,7 @@ import styles from './Controls.scss'
 export default class Controls extends PureComponent {
   render () {
     return (
-      <fieldset styleName='controls' {...this.props} />
+      <div styleName='controls' {...this.props} />
     )
   }
 }

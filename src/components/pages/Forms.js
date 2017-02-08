@@ -33,7 +33,7 @@ export default class Buttons extends PureComponent {
             <Form kind='stacked'>
               <fieldset>
                 <legend>Stacked form</legend>
-                <Input type='text' placeholder='First name' />
+                <Input type='text' placeholder='First name' required />
                 <FormMessage>This is a required field</FormMessage>
                 <Input type='text' placeholder='Last name' />
                 <label htmlFor='state'>State</label>
@@ -51,7 +51,6 @@ export default class Buttons extends PureComponent {
                 <ControlGroup>
                   <label htmlFor='first'>First name</label>
                   <Input id='first' type='text' placeholder='First name' />
-                  <FormMessage inline>This is a required field</FormMessage>
                 </ControlGroup>
                 <ControlGroup>
                   <label htmlFor='last'>Last name</label>
@@ -64,7 +63,7 @@ export default class Buttons extends PureComponent {
               </fieldset>
             </Form>
             <h2>Input states</h2>
-            <Form kind='stacked'>
+            <Form>
               <Input type='text' placeholder='Required input' required />
               <Input type='text' placeholder='Disabled input' disabled />
               <Input type='text' placeholder='Read-only input' readOnly />
@@ -75,7 +74,6 @@ export default class Buttons extends PureComponent {
                 <Input type='email' placeholder='Email' />
                 <Input type='password' placeholder='Password' />
               </FormGroup>
-              <Button type='submit' kind='primary'>Submit</Button>
             </Form>
             <h2>Input sizing</h2>
             <Form>
@@ -92,7 +90,7 @@ export default class Buttons extends PureComponent {
             <h2>Rounded input</h2>
             <Form>
               <fieldset>
-                <Input type='text' placeholder='First name' rounded />
+                <Input type='text' placeholder='Search' rounded />
               </fieldset>
             </Form>
             <h2>Checkboxes and radios</h2>
