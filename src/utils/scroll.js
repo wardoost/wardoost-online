@@ -1,5 +1,5 @@
 export function scrollTop (duration) {
-  scrollTo(document.body, 0, duration)
+  scrollTo(document.body, 0, duration || 1000)
 }
 
 export function scrollTo (element, to, duration) {

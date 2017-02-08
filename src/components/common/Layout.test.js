@@ -5,5 +5,5 @@ import Layout from './Layout'
 
 it('renders without crashing', () => {
   const div = document.createElement('div')
-  render(<Layout />, div)
+  render(<Layout location={{pathname: '/'}} />, div)
 })

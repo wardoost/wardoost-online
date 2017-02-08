@@ -9,7 +9,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
 
-const PROD = process.env.NODE_ENV === 'production'
+const DEV = process.env.NODE_ENV === 'development'
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -26,8 +26,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: PROD ? '[name].[chunkhash].js' : '[name].js',
-    chunkFilename: PROD ? '[name].[chunkhash].js' : '[name].js'
+    filename: DEV ? '[name].js' : '[name].[chunkhash].js',
+    chunkFilename: DEV ? '[name].js' : '[name].[chunkhash].js'
   },
 
   resolve: {
@@ -45,9 +45,9 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        use: (PROD ? [] : [
+        use: (DEV ? [
           'react-hot-loader/webpack'
-        ]).concat([
+        ] : []).concat([
           'babel-loader'
         ]),
         exclude: /node_modules/
@@ -63,14 +63,14 @@ module.exports = {
                 modules: true,
                 importModules: true,
                 localIdentName: '[local]-[hash:8]',
-                sourceMap: !PROD
+                sourceMap: DEV
               }
             },
             { loader: 'postcss-loader' },
             {
               loader: 'sass-loader',
               options: {
-                sourceMap: !PROD
+                sourceMap: DEV
               }
             }
           ]
@@ -89,7 +89,7 @@ module.exports = {
         use: {
           loader: 'url-loader',
           options: {
-            name: `[path][name]${PROD ? '-[hash:base64:5]' : ''}.[ext]`,
+            name: `[path][name]${DEV ? '' : '-[hash:base64:5]'}.[ext]`,
             limit: 8192
           }
         }
@@ -103,9 +103,9 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new ExtractTextPlugin({
-      filename: PROD ? '[name].[hash].css' : '[name].css',
+      filename: DEV ? '[name].css' : '[name].[hash].css',
       allChunks: true,
-      disable: !PROD
+      disable: DEV
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: ['vendor', 'manifest'],
@@ -130,7 +130,9 @@ module.exports = {
       { from: './manifest.json', to: './' },
       { from: './_redirects', to: './' }
     ])
-  ]).concat(PROD ? [
+  ]).concat(DEV ? [
+    new webpack.NamedModulesPlugin()
+  ] : [
     new CleanWebpackPlugin('./build/*'),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -160,7 +162,5 @@ module.exports = {
         events: true
       }
     })
-  ] : [
-    new webpack.NamedModulesPlugin()
   ])
 }

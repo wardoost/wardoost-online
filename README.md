@@ -46,7 +46,7 @@ npm run lint
 npm start
 ```
 
-> Simulate a production server with gzip. It starts a static file server with the contents of the `build` folder.
+> Simulate a production server with gzip. It starts a static file server with [serve](https://github.com/zeit/serve) with the `build` folder as root.
 
 
 ## Testing
@@ -61,7 +61,7 @@ npm run test
 npm run coverage
 ```
 
-> Output a report of all your tests to the `coverage` folder and serve the report with [serve](https://github.com/zeit/serve).
+> Create and open the coverage report of all your tests.
 
 
 ## Deployment

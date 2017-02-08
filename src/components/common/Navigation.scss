@@ -121,6 +121,7 @@
   right: auto;
   width: $nav-height;
   transform: none;
+  cursor: pointer;
   transition: left 300ms ease(out-expo);
 
   @media #{$md-min} {

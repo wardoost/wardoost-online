@@ -57,7 +57,7 @@ export default class Layout extends PureComponent {
         {this.props.children
         ? <Animate component={Page} transitionName={styles}>
           {React.cloneElement(this.props.children, {
-            key: window.location.pathname
+            key: this.props.location.pathname
           })}
         </Animate>
         : null}

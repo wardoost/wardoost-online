@@ -17,6 +17,10 @@ export default class Layout extends PureComponent {
     onHide: React.PropTypes.func
   }
 
+  static defaultProps = {
+    menu: []
+  }
+
   state = {
     active: false
   }
