@@ -4,6 +4,15 @@ import {render} from 'react-dom'
 import App from './components/App'
 
 if (process.env.NODE_ENV === 'production') {
+  // Disable React devtools
+  if (
+    window.__REACT_DEVTOOLS_GLOBAL_HOOK__ &&
+    Object.keys(window.__REACT_DEVTOOLS_GLOBAL_HOOK__._renderers).length
+  ) {
+    window.__REACT_DEVTOOLS_GLOBAL_HOOK__._renderers = {}
+  }
+
+  // Enable service worker
   require('./pwa')
 }
 
