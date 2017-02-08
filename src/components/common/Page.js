@@ -10,12 +10,12 @@ export default class Page extends PureComponent {
   }
 
   state = {
-    animating: this.props.children.length === 2
+    animating: this.props.children ? this.props.children.length > 1 : false
   }
 
   componentWillReceiveProps (nextProps) {
     this.setState({
-      animating: nextProps.children.length === 2
+      animating: nextProps.children ? nextProps.children.length > 1 : false
     })
   }
 
