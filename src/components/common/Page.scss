@@ -1,7 +1,9 @@
 @import '~styles/helpers';
 
 .content {
-  padding: $padding-lg $padding-md;
+  position: relative;
+  padding: $padding-lg $padding-md $padding-lg + $footer-height;
+  min-height: calc(100vh - #{$nav-height});
 }
 
 .footer {

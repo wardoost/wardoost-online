@@ -7,46 +7,45 @@ import FaClose from 'react-icons/lib/fa/close'
 import MdBlurOn from 'react-icons/lib/md/blur-on'
 import styles from './Navigation.scss'
 
-@CSSModules(styles)
+@CSSModules(styles, {allowMultiple: true})
 export default class Layout extends PureComponent {
   static propTypes = {
-    active: React.PropTypes.bool,
+    children: React.PropTypes.node,
     menu: React.PropTypes.array,
     location: React.PropTypes.object,
-    onToggle: React.PropTypes.func,
-    onHide: React.PropTypes.func
-  }
-
-  static defaultProps = {
-    menu: []
+    active: React.PropTypes.bool,
+    onToggle: React.PropTypes.func
   }
 
   state = {
-    active: false
+    menuActive: this.props.active !== undefined ? this.props.active : false
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.active !== undefined && nextProps.active !== this.state.menuActive) {
+      this.setState({menuActive: nextProps.active})
+    }
   }
 
   @autobind
-  toggleMenu () {
-    this.setState(prevState => {
-      return { active: !prevState.active }
-    })
-
-    this.props.onToggle()
+  toggleMenu (state) {
+    const newState = typeof state === 'boolean' ? state : !this.state.menuActive
+    if (this.props.onToggle) this.props.onToggle(newState)
+    this.setState({ menuActive: newState })
   }
 
-  @autobind
-  hideMenu () {
-    this.setState({active: false})
-    this.props.onHide()
-  }
+  hideMenu = () => this.toggleMenu(false)
 
   createMenu (menu, location) {
     return menu.map((item, i) => {
-      const active = item.to === location.pathname
+      const hash = item.to.split('#')[1]
+      const pathMatch = location ? item.to.split('#')[0] === location.pathname : false
+      const hashMatch = location ? hash === location.hash.substring(1) : false
+      const active = hash ? pathMatch && hashMatch : pathMatch
 
       return (
         <li key={i} styleName='menu-item'>
-          <Link styleName={active ? 'menu-link-active' : 'menu-link'} to={!active ? item.to : null}>
+          <Link styleName={`${active ? 'menu-link-active' : 'menu-link'} ${hash ? 'menu-link-sub' : ''}`} to={!active ? item.to : null}>
             {item.label}
           </Link>
         </li>
@@ -55,24 +54,23 @@ export default class Layout extends PureComponent {
   }
 
   render () {
-    const {active, menu, location, onToggle, onHide, ...props} = this.props
-    const menuActive = active === undefined ? menuActive : active
-    const hideMenu = active === undefined ? this.toggleMenu : onHide
-    const toggleMenu = active === undefined ? this.toggleMenu : onToggle
+    // eslint-disable-next-line no-unused-vars
+    const {children, menu, location, active, onToggle, ...props} = this.props
+    const {menuActive} = this.state
 
     return (
-      <nav styleName={menuActive ? 'nav-active' : 'nav'}>
-        <div {...props} styleName='menu-heading'>
-          <IndexLink to='/' styleName='menu-brand' onClick={hideMenu}>
+      <nav styleName={menuActive ? 'nav-active' : 'nav'} {...props}>
+        <div styleName='menu-heading'>
+          <IndexLink to='/' styleName='menu-brand' onClick={this.hideMenu}>
             <i><MdBlurOn /></i>
           </IndexLink>
-          <a styleName='menu-toggle' onClick={toggleMenu}>
+          <a styleName='menu-toggle' onClick={this.toggleMenu}>
             <i>{menuActive ? <FaClose /> : <FaBars />}</i>
           </a>
         </div>
         <div styleName='menu' onClick={this.hideMenu}>
           <ul styleName='menu-list'>
-            {this.createMenu(menu, location)}
+            {menu ? this.createMenu(menu, location) : children}
           </ul>
         </div>
       </nav>

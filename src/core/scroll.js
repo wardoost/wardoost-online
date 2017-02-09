@@ -1,10 +1,12 @@
-export function scrollTop (duration) {
-  scrollTo(document.body, 0, duration || 1000)
+export function scrollTop (duration = 1000) {
+  scrollTo(0, duration)
 }
 
-export function scrollTo (element, to, duration) {
+export function scrollTo (to, duration = 1000, correction = 0, element = document.body) {
   const start = element.scrollTop
-  const change = to - start
+  const child = document.getElementById(to)
+  const end = (typeof to === 'string' ? to ? child ? child.offsetTop : start : 0 : to) + correction
+  const change = end - start
   const increment = 20
 
   const animateScroll = elapsedTime => {
@@ -17,7 +19,6 @@ export function scrollTo (element, to, duration) {
       }, increment)
     }
   }
-
   animateScroll(0)
 }
 

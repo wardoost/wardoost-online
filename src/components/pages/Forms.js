@@ -20,7 +20,7 @@ export default class Buttons extends PureComponent {
         <h1>Forms</h1>
         <Grid>
           <Unit size='1'>
-            <h2>Kinds</h2>
+            <h2 id='kinds'>Kinds</h2>
             <Form>
               <fieldset>
                 <legend>Inline form</legend>
@@ -62,20 +62,20 @@ export default class Buttons extends PureComponent {
                 </Controls>
               </fieldset>
             </Form>
-            <h2>Input states</h2>
+            <h2 id='input-states'>Input states</h2>
             <Form>
               <Input type='text' placeholder='Required input' required />
               <Input type='text' placeholder='Disabled input' disabled />
               <Input type='text' placeholder='Read-only input' readOnly />
             </Form>
-            <h2>Grouped inputs</h2>
+            <h2 id='grouped-inputs'>Grouped inputs</h2>
             <Form>
               <FormGroup>
                 <Input type='email' placeholder='Email' />
                 <Input type='password' placeholder='Password' />
               </FormGroup>
             </Form>
-            <h2>Input sizing</h2>
+            <h2 id='input-sizing'>Input sizing</h2>
             <Form>
               <fieldset>
                 <Input type='text' placeholder='1' size='1' />
@@ -87,13 +87,13 @@ export default class Buttons extends PureComponent {
                 <Input type='text' placeholder='1-4' size='1-4' />
               </fieldset>
             </Form>
-            <h2>Rounded input</h2>
+            <h2 id='rounded-input'>Rounded input</h2>
             <Form>
               <fieldset>
                 <Input type='text' placeholder='Search' rounded />
               </fieldset>
             </Form>
-            <h2>Checkboxes and radios</h2>
+            <h2 id='checkbox-and-radio'>Checkboxes and radios</h2>
             <Form>
               <Checkbox value='' id='option1' align>Option 1</Checkbox>
               <Radio value='' id='option2' name='options' align defaultChecked>Option 2</Radio>

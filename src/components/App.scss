@@ -20,6 +20,10 @@ body {
   }
 }
 
+:global(#root) {
+  padding-top: $nav-height;
+}
+
 p {
   margin: $padding-md 0;
 }

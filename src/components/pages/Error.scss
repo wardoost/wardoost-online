@@ -3,14 +3,12 @@
 .page-middle {
   position: relative;
   min-height: calc(100vh - #{$nav-height + $footer-height + 2 * $padding-lg});
-  margin: -$padding-lg -#{$padding-md};
-
 
   > * {
     position: absolute;
     top: 50%;
-    left: 0;
-    right: 0;
+    left: $padding-md;
+    right: $padding-md;
     transform: translateY(-50%);
   }
 }

@@ -1,7 +1,6 @@
 @import '~styles/helpers';
 
 .layout {
-  padding: $nav-height 0 $footer-height;
   min-height: 100%;
   position: relative;
   left: 0;
@@ -42,28 +41,24 @@
 }
 
 .enter {
-  position: absolute;
-  top: $nav-height + $padding-lg;
-  left: $padding-md;
-  right: $padding-md;
-  bottom: $footer-height + $padding-lg;
   opacity: 0;
-  transform: translateY(-100px);
 }
 
 .enterActive {
   opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms linear 200ms, transform 300ms ease(out-quint) 200ms;
+  transition: opacity 300ms linear 200ms;
 }
 
 .leave {
+  position: absolute;
+  top: $padding-lg;
+  left: $padding-md;
+  right: $padding-md;
+  bottom: $footer-height + $padding-lg;
   opacity: 1;
-  transform: translateY(0);
 }
 
 .leaveActive {
   opacity: 0;
-  transform: translateY(100px);
-  transition: opacity 300ms linear, transform 300ms ease(in-quint);
+  transition: opacity 300ms linear,;
 }
