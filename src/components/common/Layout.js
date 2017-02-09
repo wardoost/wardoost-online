@@ -19,6 +19,14 @@ export default class Layout extends PureComponent {
     navActive: false
   }
 
+  componentDidMount () {
+    setTimeout(() => {
+      const child = document.getElementById(this.props.location ? this.props.location.hash.substring(1) : '')
+      const offset = child ? child.offsetTop : 0
+      document.body.scrollTop = offset
+    })
+  }
+
   componentDidUpdate (prevProps) {
     const {location} = this.props
 
