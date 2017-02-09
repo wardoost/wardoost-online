@@ -51,7 +51,7 @@
 
 .leave {
   position: absolute;
-  top: $padding-lg;
+  top: $nav-height + $padding-lg;
   left: $padding-md;
   right: $padding-md;
   bottom: $footer-height + $padding-lg;

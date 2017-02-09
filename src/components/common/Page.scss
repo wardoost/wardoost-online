@@ -2,13 +2,13 @@
 
 .content {
   position: relative;
-  padding: $padding-lg $padding-md $padding-lg + $footer-height;
+  padding: $padding-lg + $nav-height $padding-md $padding-lg + $footer-height;
   min-height: calc(100vh - #{$nav-height});
 }
 
 .footer {
   opacity: 1;
-  transition: opacity 200ms linear 200ms;
+  transition: opacity 300ms linear;
 }
 
 .footer-hide {

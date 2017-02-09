@@ -7,11 +7,11 @@ import styles from './Page.scss'
 @CSSModules(styles)
 export default class Page extends PureComponent {
   static propTypes = {
-    children: React.PropTypes.node
+    children: React.PropTypes.node.isRequired
   }
 
   state = {
-    animating: this.props.children ? this.props.children.length > 1 : false,
+    animating: this.props.children.length > 1,
     animationHeight: window.innerHeight
   }
 

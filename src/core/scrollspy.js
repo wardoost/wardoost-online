@@ -1,14 +1,16 @@
 import {throttle, autobind} from 'core-decorators'
 
 export default class ScrollSpy {
-  constructor (linkRefs, cb, loc) {
+  constructor (linkRefs, loc, cb, duration = 1000, offset = 0, element = document.body) {
     if (typeof cb !== 'function') {
       throw new Error('callback should be a function')
     }
 
-    this._cb = cb
     this._linkRefs = linkRefs.reverse()
-    this._activeHash
+    this._cb = cb
+    this._duration = duration
+    this._offset = offset
+    this._element = element
     this.scrollTop = window.pageYOffset
 
     this.init(loc)
@@ -16,7 +18,9 @@ export default class ScrollSpy {
 
   init (loc) {
     this.updateTargets(loc)
-    window.addEventListener('scroll', this.onScroll)
+    setTimeout(() => {
+      window.addEventListener('scroll', this.onScroll)
+    }, 500)
   }
 
   @autobind
@@ -29,9 +33,11 @@ export default class ScrollSpy {
     ? this._targets.find(item => scrollCheck > item.top)
     : this._targets.find(item => scrollCheck > item.top)
 
-    if (activeItem ? activeItem.hash !== this._activeHash : true) {
-      this._activeHash = activeItem ? activeItem.hash : ''
-      this._cb(activeItem ? `#${activeItem.hash}` : '')
+    if (activeItem) {
+      if (activeItem.hash !== this._activeHash) {
+        this._activeHash = activeItem ? activeItem.hash : ''
+        this._cb(activeItem.hash)
+      }
     }
 
     this._scrollTop = scrollTop
@@ -61,22 +67,25 @@ export default class ScrollSpy {
     } else if (prevLoc.hash !== loc.hash && loc.action !== 'REPLACE') {
       this.scrollTo(loc.hash.substring(1))
     }
+    this._activeHash = loc.hash.substring(1)
   }
 
-  scrollTo (to, duration = 1000, offset = 0, element = document.body) {
-    const start = element.scrollTop
+  scrollTo (to, duration) {
+    const dur = duration || this._duration
+    const max = document.body.clientHeight - window.innerHeight
+    const start = this._element.scrollTop
     const child = document.getElementById(to)
-    const end = (typeof to === 'number' ? to : to ? child ? child.offsetTop : start : 0) + offset
-    const change = end - start
+    const end = (typeof to === 'number' ? to : to ? child ? child.offsetTop : start : 0) - this._offset
+    const change = (end > max ? max : end) - start
     const increment = 20
 
     window.removeEventListener('scroll', this.onScroll)
 
     const animateScroll = elapsedTime => {
       elapsedTime += increment
-      var position = this.easeInOut(elapsedTime, start, change, duration)
-      element.scrollTop = position
-      if (elapsedTime < duration) {
+      var position = this.easeInOut(elapsedTime, start, change, dur)
+      this._element.scrollTop = position
+      if (elapsedTime < dur) {
         setTimeout(() => {
           animateScroll(elapsedTime)
         }, increment)
@@ -87,8 +96,8 @@ export default class ScrollSpy {
     animateScroll(0)
   }
 
-  scrollTop (duration = 1000) {
-    this.scrollTo(0, duration)
+  scrollTop (duration) {
+    this.scrollTo(0, duration || this._duration)
   }
 
   easeInOut (currentTime, start, change, duration) {

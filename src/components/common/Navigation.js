@@ -20,15 +20,14 @@ export default class Layout extends PureComponent {
 
   state = {
     menuActive: this.props.active !== undefined ? this.props.active : false,
-    activeHash: this.props.location.hash
+    activeHash: this.props.location.hash.substring(1)
   }
 
   menuItems = []
 
   componentDidMount () {
     const {location} = this.props
-
-    this.scrollSpy = new ScrollSpy(this.menuItems, this.updateHash, location)
+    this.scrollSpy = new ScrollSpy(this.menuItems, location, this.updateHash, 600, 48 + 30)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -45,9 +44,7 @@ export default class Layout extends PureComponent {
 
   @autobind
   updateHash (hash) {
-    if (hash !== this.state.activeHash) {
-      this.setState({activeHash: hash})
-    }
+    this.setState({activeHash: hash})
   }
 
   @autobind
@@ -65,7 +62,7 @@ export default class Layout extends PureComponent {
     return menu.map((item, i) => {
       const hash = item.to.split('#')[1]
       const pathMatch = location ? item.to.split('#')[0] === location.pathname : false
-      const hashMatch = hash === this.state.activeHash.substring(1)
+      const hashMatch = hash === this.state.activeHash
       const active = hash ? pathMatch && hashMatch : pathMatch
 
       return (

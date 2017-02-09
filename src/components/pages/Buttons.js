@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react'
 import {autobind} from 'core-decorators'
 import CSSModules from 'react-css-modules'
 import FaAsterisk from 'react-icons/lib/fa/asterisk'
-import {Grid, Unit, Button, ButtonGroup, Image} from '../ui'
+import {Button, ButtonGroup, Image} from '../ui'
 import styles from './Buttons.scss'
 import placeholder from '../../assets/placeholder.jpg'
 
@@ -71,20 +71,14 @@ export default class Buttons extends PureComponent {
         </section>
         <section id='mixed-content'>
           <h2 id='mixed-content'>Mixed content</h2>
-          <Grid padding='lg'>
-            <Unit size='1' smSize='1-2'>
-              <Button styleName='button-mixed' onClick={this.simulateLoading} loading={loading}>
-                With an image
-                <Image src={placeholder} styleName='button-img' />
-              </Button>
-            </Unit>
-            <Unit size='1' smSize='1-2'>
-              <Button styleName='button-mixed' onClick={this.simulateLoading} loading={loading} loadReplace>
-                Hide button content
-                <Image src={placeholder} styleName='button-img' />
-              </Button>
-            </Unit>
-          </Grid>
+          <Button styleName='button-mixed' onClick={this.simulateLoading} loading={loading}>
+            With an image
+            <Image src={placeholder} styleName='button-img' />
+          </Button>
+          <Button styleName='button-mixed' onClick={this.simulateLoading} loading={loading} loadReplace>
+            Hide button content
+            <Image src={placeholder} styleName='button-img' />
+          </Button>
         </section>
         <section id='groups'>
           <h1>Button groups</h1>
