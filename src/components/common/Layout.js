@@ -2,7 +2,6 @@ import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import {autobind} from 'core-decorators'
 import Animate from 'rc-animate'
-import {scrollTop, scrollTo} from '../../core/scroll'
 import menu from '../../core/menu'
 import Navigation from './Navigation'
 import Page from './Page'
@@ -17,32 +16,6 @@ export default class Layout extends PureComponent {
 
   state = {
     navActive: false
-  }
-
-  componentDidMount () {
-    setTimeout(() => {
-      const child = document.getElementById(this.props.location ? this.props.location.hash.substring(1) : '')
-      const offset = child ? child.offsetTop : 0
-      document.body.scrollTop = offset
-    })
-  }
-
-  componentDidUpdate (prevProps) {
-    const {location} = this.props
-
-    if (prevProps.location !== location) {
-      if (prevProps.location.pathname !== location.pathname && !location.hash) {
-        scrollTop(500)
-      } else if (prevProps.location.pathname !== location.pathname && location.hash) {
-        const to = location.hash.substring(1)
-        const child = document.getElementById(to)
-        scrollTo(to, 500, child ? child.offsetParent.offsetTop : 0)
-      } else if (prevProps.location.pathname === location.pathname && location.hash) {
-        scrollTo(location.hash.substring(1), 500)
-      } else {
-        scrollTop(500)
-      }
-    }
   }
 
   @autobind

@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import {autobind} from 'core-decorators'
 import {Link, IndexLink} from 'react-router'
+import ScrollSpy from '../../core/scrollspy'
 import FaBars from 'react-icons/lib/fa/bars'
 import FaClose from 'react-icons/lib/fa/close'
 import MdBlurOn from 'react-icons/lib/md/blur-on'
@@ -18,12 +19,34 @@ export default class Layout extends PureComponent {
   }
 
   state = {
-    menuActive: this.props.active !== undefined ? this.props.active : false
+    menuActive: this.props.active !== undefined ? this.props.active : false,
+    activeHash: this.props.location.hash
+  }
+
+  menuItems = []
+
+  componentDidMount () {
+    const {location} = this.props
+
+    this.scrollSpy = new ScrollSpy(this.menuItems, this.updateHash, location)
   }
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.active !== undefined && nextProps.active !== this.state.menuActive) {
       this.setState({menuActive: nextProps.active})
+    }
+  }
+
+  componentDidUpdate (prevProps) {
+    if (prevProps.location !== this.props.location) {
+      this.scrollSpy.updateLocation(this.props.location, prevProps.location)
+    }
+  }
+
+  @autobind
+  updateHash (hash) {
+    if (hash !== this.state.activeHash) {
+      this.setState({activeHash: hash})
     }
   }
 
@@ -37,15 +60,21 @@ export default class Layout extends PureComponent {
   hideMenu = () => this.toggleMenu(false)
 
   createMenu (menu, location) {
+    this.menuItems = []
+
     return menu.map((item, i) => {
       const hash = item.to.split('#')[1]
       const pathMatch = location ? item.to.split('#')[0] === location.pathname : false
-      const hashMatch = location ? hash === location.hash.substring(1) : false
+      const hashMatch = hash === this.state.activeHash.substring(1)
       const active = hash ? pathMatch && hashMatch : pathMatch
 
       return (
         <li key={i} styleName='menu-item'>
-          <Link styleName={`${active ? 'menu-link-active' : 'menu-link'} ${hash ? 'menu-link-sub' : ''}`} to={!active ? item.to : null}>
+          <Link
+            styleName={`${active ? 'menu-link-active' : 'menu-link'} ${hash ? 'menu-link-sub' : ''}`}
+            to={item.to}
+            ref={link => { this.menuItems.push(link) }}
+          >
             {item.label}
           </Link>
         </li>

@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react'
+import {findDOMNode} from 'react-dom'
 import CSSModules from 'react-css-modules'
 import Footer from './Footer'
 import styles from './Page.scss'
@@ -10,20 +11,22 @@ export default class Page extends PureComponent {
   }
 
   state = {
-    animating: this.props.children ? this.props.children.length > 1 : false
+    animating: this.props.children ? this.props.children.length > 1 : false,
+    animationHeight: window.innerHeight
   }
 
   componentWillReceiveProps (nextProps) {
     this.setState({
-      animating: nextProps.children ? nextProps.children.length > 1 : false
+      animating: nextProps.children.length > 1,
+      animationHeight: findDOMNode(this).clientHeight
     })
   }
 
   render () {
-    const {animating} = this.state
+    const {animating, animationHeight} = this.state
 
     return (
-      <main styleName='content'>
+      <main id='content' styleName='content' style={animating ? {height: animationHeight} : null}>
         {this.props.children}
         <Footer styleName={animating ? 'footer-hide' : 'footer'} />
       </main>

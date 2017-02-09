@@ -25,64 +25,76 @@ export default class Buttons extends PureComponent {
     const {loading} = this.state
 
     return (
-      <div>
+      <div styleName='buttons'>
         <h1>Buttons</h1>
-        <h2 id='states'>Button states</h2>
-        <ButtonGroup aria-label='Button states'>
-          <Button>Default</Button>
-          <Button disabled>Disabled</Button>
-          <Button active>Active</Button>
-        </ButtonGroup>
-        <h2 id='sizes'>Button sizes</h2>
-        <ButtonGroup aria-label='Button sizes'>
-          <Button size='sm'>Small</Button>
-          <Button>Default</Button>
-          <Button size='lg'>Large</Button>
-          <Button size='xl'>Extra large</Button>
-        </ButtonGroup>
-        <h2 id='kinds'>Button kinds</h2>
-        <ButtonGroup aria-label='Button kinds'>
-          <Button>Default</Button>
-          <Button kind='primary'>Primary</Button>
-          <Button kind='secondary'>Secondary</Button>
-          <Button kind='success'>Success</Button>
-          <Button kind='warning'>Warning</Button>
-          <Button kind='error'>Danger</Button>
-        </ButtonGroup>
-        <h2 id='loading'>Loading buttons</h2>
-        <ButtonGroup aria-label='Loading buttons'>
-          <Button onClick={this.simulateLoading} loading={loading} disabled={loading}>
-            Default button
-          </Button>
-          <Button onClick={this.simulateLoading} loading={loading} LoadIcon={FaAsterisk} disabled={loading} kind='primary'>
-            Custom button
-          </Button>
-          <Button onClick={this.simulateLoading} loading={loading} loadReplace>
-            Hide button content
-          </Button>
-        </ButtonGroup>
-        <h2 id='mixed-content'>Mixed content</h2>
-        <Grid padding='lg'>
-          <Unit size='1' smSize='1-2'>
-            <Button styleName='button-mixed' onClick={this.simulateLoading} loading={loading}>
-              With an image
-              <Image src={placeholder} styleName='button-img' />
+        <section id='states'>
+          <h2>Button states</h2>
+          <ButtonGroup aria-label='Button states'>
+            <Button>Default</Button>
+            <Button disabled>Disabled</Button>
+            <Button active>Active</Button>
+          </ButtonGroup>
+        </section>
+        <section id='sizes'>
+          <h2>Button sizes</h2>
+          <ButtonGroup aria-label='Button sizes'>
+            <Button size='sm'>Small</Button>
+            <Button>Default</Button>
+            <Button size='lg'>Large</Button>
+            <Button size='xl'>Extra large</Button>
+          </ButtonGroup>
+        </section>
+        <section id='kinds'>
+          <h2>Button kinds</h2>
+          <ButtonGroup aria-label='Button kinds'>
+            <Button>Default</Button>
+            <Button kind='primary'>Primary</Button>
+            <Button kind='secondary'>Secondary</Button>
+            <Button kind='success'>Success</Button>
+            <Button kind='warning'>Warning</Button>
+            <Button kind='error'>Danger</Button>
+          </ButtonGroup>
+        </section>
+        <section id='loading'>
+          <h2>Loading buttons</h2>
+          <ButtonGroup aria-label='Loading buttons'>
+            <Button onClick={this.simulateLoading} loading={loading} disabled={loading}>
+              Default button
             </Button>
-          </Unit>
-          <Unit size='1' smSize='1-2'>
-            <Button styleName='button-mixed' onClick={this.simulateLoading} loading={loading} loadReplace>
+            <Button onClick={this.simulateLoading} loading={loading} LoadIcon={FaAsterisk} disabled={loading} kind='primary'>
+              Custom button
+            </Button>
+            <Button onClick={this.simulateLoading} loading={loading} loadReplace>
               Hide button content
-              <Image src={placeholder} styleName='button-img' />
             </Button>
-          </Unit>
-        </Grid>
-        <h1 id='groups'>Button groups</h1>
-        <Button styleName='standalone'>Standalone button</Button>
-        <ButtonGroup aria-label='Button groups' styleName='group'>
-          <Button>Buttons</Button>
-          <Button>In</Button>
-          <Button>Group</Button>
-        </ButtonGroup>
+          </ButtonGroup>
+        </section>
+        <section id='mixed-content'>
+          <h2 id='mixed-content'>Mixed content</h2>
+          <Grid padding='lg'>
+            <Unit size='1' smSize='1-2'>
+              <Button styleName='button-mixed' onClick={this.simulateLoading} loading={loading}>
+                With an image
+                <Image src={placeholder} styleName='button-img' />
+              </Button>
+            </Unit>
+            <Unit size='1' smSize='1-2'>
+              <Button styleName='button-mixed' onClick={this.simulateLoading} loading={loading} loadReplace>
+                Hide button content
+                <Image src={placeholder} styleName='button-img' />
+              </Button>
+            </Unit>
+          </Grid>
+        </section>
+        <section id='groups'>
+          <h1>Button groups</h1>
+          <Button styleName='standalone'>Standalone button</Button>
+          <ButtonGroup aria-label='Button groups' styleName='group'>
+            <Button>Buttons</Button>
+            <Button>In</Button>
+            <Button>Group</Button>
+          </ButtonGroup>
+        </section>
       </div>
     )
   }

@@ -2,7 +2,7 @@
 @import 'purecss/build/base.css';
 
 html, body, :global(#root) {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
