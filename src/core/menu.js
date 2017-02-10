@@ -1,5 +1,21 @@
 const menu = [
   {
+    label: 'About',
+    to: '/#about'
+  },
+  {
+    label: 'Work',
+    to: '/#work'
+  },
+  {
+    label: 'Contact',
+    to: '/#contact'
+  },
+  {
+    label: 'Text',
+    to: '/text'
+  },
+  {
     label: 'Grids',
     to: '/grids'
   },

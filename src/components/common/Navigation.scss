@@ -19,7 +19,6 @@
   transition: left 300ms ease(out-expo);
 
   @media #{$md-min} {
-    background-color: darken($primary, 20%);
     margin-left: 0;
   }
 }
@@ -40,17 +39,8 @@
 
   &:hover,
   &:focus {
+    color: $primary;
     background-color: $gray-lighter;
-  }
-
-  @media #{$md-min} {
-    color: $white;
-
-    &:hover,
-    &:focus {
-      color: $white;
-      background-color: $primary;
-    }
   }
 }
 
@@ -103,6 +93,7 @@
   &:hover,
   &:focus {
     background-color: darken($primary, 10%);
+    color: $white;
   }
 
   i {

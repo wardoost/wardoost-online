@@ -3,7 +3,19 @@
 .page {
   position: relative;
   padding: $padding-lg + $nav-height $padding-md $padding-lg + $footer-height;
-  min-height: calc(100vh - #{$nav-height});
+  min-height: 100vh;
+
+  section {
+    margin: 0 #{-$padding-md};
+    padding: $padding-lg $padding-md;
+
+    &:first-child {
+      margin-top: -$padding-lg;
+    }
+    &:last-child {
+      margin-bottom: -$padding-lg;
+    }
+  }
 }
 
 .footer {

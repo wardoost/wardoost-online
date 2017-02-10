@@ -6,12 +6,12 @@
   bottom: 0;
   right: 0;
   height: $footer-height;
-  background-color: $gray-lighter;
+  background-color: $secondary;
   font-size: 0.7em;
 }
 
 .link-code {
-  color: $gray-light;
+  color: $white;
   position: absolute;
   right: $padding-md;
   top: 50%;
@@ -19,6 +19,6 @@
   transition: color 150ms linear;
 
   &:hover {
-    color: darken($primary, 10%);
+    color: $primary;
   }
 }

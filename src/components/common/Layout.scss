@@ -32,12 +32,6 @@
     pointer-events: inherit;
     opacity: 1;
   }
-  @media #{$md-min} {
-    .overlay {
-      pointer-events: none;
-      opacity: 0;
-    }
-  }
 }
 
 .enter {

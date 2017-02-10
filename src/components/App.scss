@@ -20,6 +20,10 @@ body {
   }
 }
 
+h1, h2, h3, h4, h5 {
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono", "Source Code Pro", monospace;
+}
+
 p {
   margin: $padding-md 0;
 }
@@ -27,6 +31,12 @@ p {
 a {
   color: $primary;
   text-decoration: none;
+  transition: color 100ms linear;
+
+  &:hover,
+  &:focus {
+    color: darken($primary, 10%)
+  }
 }
 
 * {

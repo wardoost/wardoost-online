@@ -30,7 +30,7 @@ export default class Layout extends PureComponent {
     this.scrollSpy = new ScrollSpy(this.menuItems, location, {
       callback: this.updateActiveHash,
       duration: 400,
-      offset: 48 + 30
+      offset: 48
     })
   }
 
@@ -68,15 +68,16 @@ export default class Layout extends PureComponent {
     this.menuItems = []
 
     return menu.map((item, i) => {
+      const path = item.to.split('#')[0]
       const hash = item.to.split('#')[1]
-      const pathMatch = location ? item.to.split('#')[0] === location.pathname : false
+      const pathMatch = location ? path === location.pathname : false
       const hashMatch = hash === this.state.activeHash
       const active = hash ? pathMatch && hashMatch : pathMatch
 
       return (
         <li key={i} styleName='menu-item'>
           <Link
-            styleName={`${active ? 'menu-link-active' : 'menu-link'} ${hash ? 'menu-link-sub' : ''}`}
+            styleName={`${active ? 'menu-link-active' : 'menu-link'} ${hash && path !== '/' ? 'menu-link-sub' : ''}`}
             to={active && !hash ? null : item.to}
             ref={link => { this.menuItems.push(link) }}
             onClick={this.removeFocus}
