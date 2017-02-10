@@ -11,6 +11,7 @@ import {
   Radio,
   Button
 } from '../ui'
+import Section from '../common/Section'
 import styles from './Forms.scss'
 
 @CSSModules(styles)
@@ -19,7 +20,7 @@ export default class Buttons extends PureComponent {
     return (
       <div styleName='forms'>
         <h1>Forms</h1>
-        <section id='kinds'>
+        <Section id='kinds'>
           <h2>Kinds</h2>
           <Form>
             <fieldset>
@@ -62,16 +63,16 @@ export default class Buttons extends PureComponent {
               </Controls>
             </fieldset>
           </Form>
-        </section>
-        <section id='input-states'>
+        </Section>
+        <Section id='input-states'>
           <h2>Input states</h2>
           <Form>
             <Input type='text' placeholder='Required input' required />
             <Input type='text' placeholder='Disabled input' disabled />
             <Input type='text' placeholder='Read-only input' readOnly />
           </Form>
-        </section>
-        <section id='grouped-inputs'>
+        </Section>
+        <Section id='grouped-inputs'>
           <h2>Grouped inputs</h2>
           <Form>
             <FormGroup>
@@ -79,8 +80,8 @@ export default class Buttons extends PureComponent {
               <Input type='password' placeholder='Password' />
             </FormGroup>
           </Form>
-        </section>
-        <section id='input-sizing'>
+        </Section>
+        <Section id='input-sizing'>
           <h2>Input sizing</h2>
           <Form>
             <fieldset>
@@ -93,23 +94,23 @@ export default class Buttons extends PureComponent {
               <Input type='text' placeholder='1-4' size='1-4' />
             </fieldset>
           </Form>
-        </section>
-        <section id='rounded-input'>
+        </Section>
+        <Section id='rounded-input'>
           <h2>Rounded input</h2>
           <Form>
             <fieldset>
               <Input type='text' placeholder='Search' rounded />
             </fieldset>
           </Form>
-        </section>
-        <section id='checkbox-and-radio'>
+        </Section>
+        <Section id='checkbox-and-radio'>
           <h2>Checkboxes and radios</h2>
           <Form>
             <Checkbox value='' id='option1' align>Option 1</Checkbox>
             <Radio value='' id='option2' name='options' align defaultChecked>Option 2</Radio>
             <Radio value='' id='option3' name='options' align>Option 3</Radio>
           </Form>
-        </section>
+        </Section>
       </div>
     )
   }

@@ -1,0 +1,15 @@
+@import '~styles/helpers';
+
+.copy {
+  float: right;
+  padding: $padding-xs $padding-sm;
+  margin-right: $padding-xs;
+  border-radius: 2em;
+  cursor: pointer;
+  transition: background-color 100ms linear;
+
+  &:hover,
+  &:focus {
+    background-color: $gray-light;
+  }
+}

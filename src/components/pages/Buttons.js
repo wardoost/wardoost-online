@@ -3,6 +3,7 @@ import {autobind} from 'core-decorators'
 import CSSModules from 'react-css-modules'
 import FaAsterisk from 'react-icons/lib/fa/asterisk'
 import {Button, ButtonGroup, Image} from '../ui'
+import Section from '../common/Section'
 import styles from './Buttons.scss'
 import placeholder from '../../assets/placeholder.jpg'
 
@@ -27,15 +28,15 @@ export default class Buttons extends PureComponent {
     return (
       <div styleName='buttons'>
         <h1>Buttons</h1>
-        <section id='states'>
+        <Section id='states'>
           <h2>Button states</h2>
           <ButtonGroup aria-label='Button states'>
             <Button>Default</Button>
             <Button disabled>Disabled</Button>
             <Button active>Active</Button>
           </ButtonGroup>
-        </section>
-        <section id='sizes'>
+        </Section>
+        <Section id='sizes'>
           <h2>Button sizes</h2>
           <ButtonGroup aria-label='Button sizes'>
             <Button size='sm'>Small</Button>
@@ -43,8 +44,8 @@ export default class Buttons extends PureComponent {
             <Button size='lg'>Large</Button>
             <Button size='xl'>Extra large</Button>
           </ButtonGroup>
-        </section>
-        <section id='kinds'>
+        </Section>
+        <Section id='kinds'>
           <h2>Button kinds</h2>
           <ButtonGroup aria-label='Button kinds'>
             <Button>Default</Button>
@@ -54,8 +55,8 @@ export default class Buttons extends PureComponent {
             <Button kind='warning'>Warning</Button>
             <Button kind='error'>Danger</Button>
           </ButtonGroup>
-        </section>
-        <section id='loading'>
+        </Section>
+        <Section id='loading'>
           <h2>Loading buttons</h2>
           <ButtonGroup aria-label='Loading buttons'>
             <Button onClick={this.simulateLoading} loading={loading} disabled={loading}>
@@ -68,8 +69,8 @@ export default class Buttons extends PureComponent {
               Hide button content
             </Button>
           </ButtonGroup>
-        </section>
-        <section id='mixed-content'>
+        </Section>
+        <Section id='mixed-content'>
           <h2 id='mixed-content'>Mixed content</h2>
           <Button styleName='button-mixed' onClick={this.simulateLoading} loading={loading}>
             With an image
@@ -79,8 +80,8 @@ export default class Buttons extends PureComponent {
             Hide button content
             <Image src={placeholder} styleName='button-img' />
           </Button>
-        </section>
-        <section id='groups'>
+        </Section>
+        <Section id='groups'>
           <h1>Button groups</h1>
           <Button styleName='standalone'>Standalone button</Button>
           <ButtonGroup aria-label='Button groups' styleName='group'>
@@ -88,7 +89,7 @@ export default class Buttons extends PureComponent {
             <Button>In</Button>
             <Button>Group</Button>
           </ButtonGroup>
-        </section>
+        </Section>
       </div>
     )
   }
