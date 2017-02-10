@@ -1,43 +1,57 @@
 import {throttle, autobind} from 'core-decorators'
 
 export default class ScrollSpy {
-  constructor (linkRefs, loc, cb, duration = 1000, offset = 0, element = document.body) {
-    if (typeof cb !== 'function') {
-      throw new Error('callback should be a function')
-    }
+  constructor (linkRefs, location, options) {
+    if (typeof linkRefs !== 'object') throw new Error('linkRefs should be an object')
+    if (typeof location !== 'object') throw new Error('location should be an object')
+    if (typeof options !== 'object') throw new Error('options should be a number')
 
     this._linkRefs = linkRefs.reverse()
-    this._cb = cb
-    this._duration = duration
-    this._offset = offset
-    this._element = element
-    this.scrollTop = window.pageYOffset
+    this._cb = options.callback || function () {}
+    this._duration = options.duration || 1000
+    this._offset = options.offset || 0
+    this._element = options.element || document.body
+    this._scrollTop = this._element.scrollTop + this._offset
+    this._delay = 50
 
-    this.init(loc)
+    this.init(location)
   }
 
-  init (loc) {
-    this.updateTargets(loc)
+  get linkRefs () {
+    return this._linkRefs
+  }
+
+  set linkRefs (linkRefs) {
+    if (typeof linkRefs !== 'object') throw new Error('linkRefs should be an object')
+    this._linkRefs = linkRefs.reverse()
+  }
+
+  init (location) {
+    this._cb(location.hash.substring(1))
     setTimeout(() => {
+      this.updateTargets(location)
       window.addEventListener('scroll', this.onScroll)
-    }, 500)
+    }, this._delay)
   }
 
   @autobind
   @throttle(100)
   onScroll (e) {
-    const scrollTop = window.pageYOffset
-    const maxScroll = document.body.clientHeight - window.innerHeight
-    const scrollCheck = scrollTop + scrollTop / maxScroll * window.innerHeight
+    const offset = this._offset + window.innerHeight / 10
+    const scrollTop = this._element.scrollTop + offset
+    const scrollHeight = window.innerHeight - offset
+    const maxScroll = this._element.clientHeight - scrollHeight
+    const correctionThreshold = maxScroll - scrollHeight / 2
+    const correction = (scrollTop > correctionThreshold ? (scrollTop - correctionThreshold) / (maxScroll - correctionThreshold) : 0) * scrollHeight
+    const scrollCheck = scrollTop + correction
     const activeItem = scrollTop > this._scrollTop
     ? this._targets.find(item => scrollCheck > item.top)
     : this._targets.find(item => scrollCheck > item.top)
+    const newHash = activeItem ? activeItem.hash : ''
 
-    if (activeItem) {
-      if (activeItem.hash !== this._activeHash) {
-        this._activeHash = activeItem ? activeItem.hash : ''
-        this._cb(activeItem.hash)
-      }
+    if (newHash !== this._activeHash) {
+      this._activeHash = newHash
+      this._cb(newHash)
     }
 
     this._scrollTop = scrollTop
@@ -53,26 +67,28 @@ export default class ScrollSpy {
         if (pathMatch && target) {
           this._targets.push({
             hash: hash,
-            top: target.offsetTop - target.scrollTop
+            top: target.offsetTop
           })
         }
       }
     })
   }
 
-  updateLocation (loc, prevLoc) {
-    if (prevLoc.pathname !== loc.pathname) {
-      this.updateTargets(loc)
-      this.scrollTo(loc.hash.substring(1))
-    } else if (prevLoc.hash !== loc.hash && loc.action !== 'REPLACE') {
-      this.scrollTo(loc.hash.substring(1))
+  updateLocation (location, prevLocation) {
+    if (prevLocation.pathname !== location.pathname) {
+      setTimeout(() => {
+        this.updateTargets(location)
+        this.scrollTo(location.hash.substring(1))
+      }, this._delay)
+    } else {
+      this.scrollTo(location.hash.substring(1))
     }
-    this._activeHash = loc.hash.substring(1)
+    this._activeHash = location.hash.substring(1)
   }
 
   scrollTo (to, duration) {
     const dur = duration || this._duration
-    const max = document.body.clientHeight - window.innerHeight
+    const max = this._element.clientHeight - window.innerHeight
     const start = this._element.scrollTop
     const child = document.getElementById(to)
     const end = (typeof to === 'number' ? to : to ? child ? child.offsetTop : start : 0) - this._offset
@@ -80,6 +96,7 @@ export default class ScrollSpy {
     const increment = 20
 
     window.removeEventListener('scroll', this.onScroll)
+    this._cb(to)
 
     const animateScroll = elapsedTime => {
       elapsedTime += increment
@@ -90,7 +107,9 @@ export default class ScrollSpy {
           animateScroll(elapsedTime)
         }, increment)
       } else {
-        window.addEventListener('scroll', this.onScroll)
+        setTimeout(() => {
+          window.addEventListener('scroll', this.onScroll)
+        }, increment)
       }
     }
     animateScroll(0)

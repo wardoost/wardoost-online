@@ -1,6 +1,6 @@
 @import '~styles/helpers';
 
-.content {
+.page {
   position: relative;
   padding: $padding-lg + $nav-height $padding-md $padding-lg + $footer-height;
   min-height: calc(100vh - #{$nav-height});

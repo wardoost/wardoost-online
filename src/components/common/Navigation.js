@@ -27,7 +27,11 @@ export default class Layout extends PureComponent {
 
   componentDidMount () {
     const {location} = this.props
-    this.scrollSpy = new ScrollSpy(this.menuItems, location, this.updateHash, 600, 48 + 30)
+    this.scrollSpy = new ScrollSpy(this.menuItems, location, {
+      callback: this.updateActiveHash,
+      duration: 400,
+      offset: 48 + 30
+    })
   }
 
   componentWillReceiveProps (nextProps) {
@@ -43,7 +47,7 @@ export default class Layout extends PureComponent {
   }
 
   @autobind
-  updateHash (hash) {
+  updateActiveHash (hash) {
     this.setState({activeHash: hash})
   }
 
@@ -55,6 +59,10 @@ export default class Layout extends PureComponent {
   }
 
   hideMenu = () => this.toggleMenu(false)
+
+  removeFocus (e) {
+    e.target.blur()
+  }
 
   createMenu (menu, location) {
     this.menuItems = []
@@ -69,8 +77,9 @@ export default class Layout extends PureComponent {
         <li key={i} styleName='menu-item'>
           <Link
             styleName={`${active ? 'menu-link-active' : 'menu-link'} ${hash ? 'menu-link-sub' : ''}`}
-            to={item.to}
+            to={active && !hash ? null : item.to}
             ref={link => { this.menuItems.push(link) }}
+            onClick={this.removeFocus}
           >
             {item.label}
           </Link>
