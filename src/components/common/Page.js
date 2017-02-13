@@ -26,10 +26,10 @@ export default class Page extends PureComponent {
     const {animating, animationHeight} = this.state
 
     return (
-      <main styleName='page' style={animating ? {minHeight: animationHeight} : null}>
+      <div styleName='page' style={animating ? {minHeight: animationHeight} : null}>
         {this.props.children}
         <Footer styleName={animating ? 'footer-hide' : 'footer'} />
-      </main>
+      </div>
     )
   }
 }

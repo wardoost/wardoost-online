@@ -8,6 +8,10 @@ const menu = [
     to: '/#work'
   },
   {
+    label: 'Social',
+    to: '/#social'
+  },
+  {
     label: 'Contact',
     to: '/#contact'
   },

@@ -1,10 +1,1 @@
 @import '~styles/helpers';
-
-.about {
-  background-color: $secondary;
-  color: $white;
-
-  background: linear-gradient(90deg, $secondary, darken($primary, 5%));
-  background-size: 150% 100%;
-  animation: moveBg 20s alternate infinite;
-}

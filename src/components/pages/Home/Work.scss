@@ -1,24 +1,15 @@
 @import '~styles/helpers';
 
-.work {
-  background-color: darken($primary, 10%);
-  color: $white;
-
-  background: linear-gradient(90deg, darken($primary, 5%), $secondary);
-  background-size: 180% 100%;
-  animation: moveBg 30s alternate infinite;
+.work-header {
+  background-color: $white;
+  padding: $padding-md;
 }
 
 .work-item {
-  &:hover {
-    .work-img {
-      opacity: 1;
-      transform: scale(1.05);
-    }
+  > :global(.animated) {
+    background-color: $white;
+    padding: $padding-md;
+    margin-top: $padding-xs;
+    transition: opacity 200ms linear, background-color 200ms linear;
   }
-}
-
-.work-img {
-  opacity: 0.7;
-  transition: opacity 200ms linear, transform 300ms ease(out-back);
 }

@@ -1,7 +1,7 @@
 @import '~styles/helpers';
 
-.buttons section {
-  padding-top: 0;
+.buttons {
+  padding: $padding-lg $padding-md;
 }
 
 .standalone {

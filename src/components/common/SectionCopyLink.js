@@ -4,10 +4,10 @@ import {autobind} from 'core-decorators'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import FaChain from 'react-icons/lib/fa/chain'
 import FaCheck from 'react-icons/lib/fa/check'
-import styles from './Section.scss'
+import styles from './SectionCopyLink.scss'
 
 @CSSModules(styles)
-export default class Section extends PureComponent {
+export default class SectionCopyLink extends PureComponent {
   static propTypes = {
     children: React.PropTypes.node,
     id: React.PropTypes.string.isRequired

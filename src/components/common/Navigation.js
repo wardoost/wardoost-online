@@ -26,8 +26,8 @@ export default class Layout extends PureComponent {
   menuItems = []
 
   componentDidMount () {
-    const {location} = this.props
-    this.scrollSpy = new ScrollSpy(this.menuItems, location, {
+    this.scrollSpy = new ScrollSpy(this.menuItems, {
+      location: this.props.location,
       callback: this.updateActiveHash,
       duration: 400,
       offset: 48

@@ -1,9 +1,9 @@
+import {findDOMNode} from 'react-dom'
 import {throttle, autobind} from 'core-decorators'
 
 export default class ScrollSpy {
-  constructor (linkRefs, location, options) {
+  constructor (linkRefs, options) {
     if (typeof linkRefs !== 'object') throw new Error('linkRefs should be an object')
-    if (typeof location !== 'object') throw new Error('location should be an object')
     if (typeof options !== 'object') throw new Error('options should be a number')
 
     this._linkRefs = linkRefs.reverse()
@@ -14,7 +14,7 @@ export default class ScrollSpy {
     this._scrollTop = this._element.scrollTop + this._offset
     this._delay = 50
 
-    this.init(location)
+    this.init(options.location || window.location)
   }
 
   get linkRefs () {
@@ -70,6 +70,11 @@ export default class ScrollSpy {
             top: target.offsetTop
           })
         }
+      } else if (item.props.id) {
+        this._targets.push({
+          hash: item.props.id,
+          top: findDOMNode(item).offsetTop
+        })
       }
     })
   }

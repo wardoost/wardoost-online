@@ -6,8 +6,10 @@
   bottom: 0;
   right: 0;
   height: $footer-height;
-  background-color: $secondary;
   font-size: 0.7em;
+  background-size: 200% 100%;
+  background-image: linear-gradient(90deg, $error, darken($primary, 5%));
+  animation: moveBg 15s infinite alternate;
 }
 
 .link-code {
@@ -19,6 +21,6 @@
   transition: color 150ms linear;
 
   &:hover {
-    color: $primary;
+    color: $secondary;
   }
 }
