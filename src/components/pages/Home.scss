@@ -1,17 +1,21 @@
 @import '~styles/helpers';
 
 .about {
-  background-image: linear-gradient(45deg, $warning, darken($primary, 5%), $secondary);
+  background-color: $primary;
+  background-image: linear-gradient(10deg, $primary, $warning);
 }
 
 .work {
-  background-image: linear-gradient(135deg, $warning, darken($primary, 5%), $secondary);
+  background-color: $secondary;
+  background-image: linear-gradient(-10deg, $secondary, $primary);
 }
 
 .social {
-  background-image: linear-gradient(45deg, $error, darken($primary, 5%), $secondary);
+  background-color: $error;
+  background-image: linear-gradient(10deg, $error, $secondary);
 }
 
 .contact {
-  background-image: linear-gradient(135deg, $error, darken($primary, 5%), $secondary);
+  background-color: $warning;
+  background-image: linear-gradient(-10deg, $warning, $error);
 }

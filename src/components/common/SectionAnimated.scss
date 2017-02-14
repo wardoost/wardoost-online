@@ -3,8 +3,6 @@
 .section-container {
   position: relative;
   padding: $padding-sm / 2 $padding-sm;
-  background-size: 200% 100%;
-  animation: moveBg 30s infinite alternate;
   margin-bottom: $padding-sm / 2;
   pointer-events: none;
 

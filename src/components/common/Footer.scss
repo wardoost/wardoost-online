@@ -7,9 +7,8 @@
   right: 0;
   height: $footer-height;
   font-size: 0.7em;
-  background-size: 200% 100%;
-  background-image: linear-gradient(90deg, mix($error, darken($primary, 5%)), darken($primary, 5%), $secondary);
-  animation: moveBg 30s infinite alternate;
+  background-color: $primary;
+  background-image: linear-gradient(1deg, $primary, $warning);
 }
 
 .link-code {
@@ -18,9 +17,10 @@
   right: $padding-md;
   top: 50%;
   transform: translateY(-50%);
-  transition: color 150ms linear;
+  transition: color 150ms linear, font-size 150ms ease(out-expo);
 
   &:hover {
-    color: $gray-light;
+    color: $gray-lighter;
+    font-size: 1.2em;
   }
 }
