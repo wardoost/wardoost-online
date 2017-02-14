@@ -1,20 +1,22 @@
 @import '~styles/helpers';
 
+$button-down-height: 80px;
+
 .intro {
   padding: $padding-md $padding-lg;
-  min-height: calc(100vh - #{$nav-height + 2 * $padding-sm - $padding-sm / 2 + 80 + 2 * $padding-xs});
-  margin-bottom: 80px;
+  min-height: calc(100vh - #{$nav-height + 2 * $padding-sm - $padding-sm / 2 + 2 * $padding-xs});
 
   @media #{$sm-min} {
-    min-height: calc(100vh - #{$nav-height + 2 * $padding-md - $padding-md / 2 + 80 + 2 * $padding-xs});
+    min-height: calc(100vh - #{$nav-height + 2 * $padding-md - $padding-md / 2 + $button-down-height + 2 * $padding-xs});
+    margin-bottom: $button-down-height + $padding-xs;
   }
 
   @media #{$md-min} {
-    min-height: calc(100vh - #{$nav-height + 2 * $padding-lg - $padding-lg / 2 + 80 + 2 * $padding-xs});
+    min-height: calc(100vh - #{$nav-height + 2 * $padding-lg - $padding-lg / 2 + $button-down-height + 2 * $padding-xs});
   }
 
   @media #{$lg-min} {
-    min-height: calc(100vh - #{$nav-height + 2 * $padding-xl - $padding-xl / 2 + 80 + 2 * $padding-xs});
+    min-height: calc(100vh - #{$nav-height + 2 * $padding-xl - $padding-xl / 2 + $button-down-height + 2 * $padding-xs});
   }
 }
 
@@ -25,7 +27,7 @@
   left: $padding-sm + $padding-xs;
   bottom: $padding-sm / 2 + $padding-xs;
   right: $padding-sm + $padding-xs;
-  height: 80px - $padding-xs;
+  height: $button-down-height;
 
   a {
     display: block;
