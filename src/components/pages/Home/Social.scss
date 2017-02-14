@@ -30,7 +30,6 @@
   }
 
   > :global(.section-animated-bg) {
-    padding: 0;
     background-color: transparent;
     margin-top: $padding-xs;
     transition: opacity 200ms linear, background-color 200ms linear;

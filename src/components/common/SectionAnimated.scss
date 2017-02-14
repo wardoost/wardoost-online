@@ -45,13 +45,8 @@
 
   :global(.section-animated),
   :global(.section-animated-bg) {
-    padding: $padding-md $padding-sm;
     opacity: 0;
     transition: opacity 200ms linear;
-
-    @media #{$md-min} {
-      padding: $padding-xl $padding-lg;
-    }
   }
 
   :global(.section-animated) {

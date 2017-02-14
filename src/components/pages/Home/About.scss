@@ -1,6 +1,7 @@
 @import '~styles/helpers';
 
 .intro {
+  padding: $padding-md $padding-lg;
   min-height: calc(100vh - #{$nav-height + 2 * $padding-sm - $padding-sm / 2 + 80 + 2 * $padding-xs});
   margin-bottom: 80px;
 
