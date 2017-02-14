@@ -2,25 +2,25 @@
 
 .section-container {
   position: relative;
-  padding: $padding-sm;
+  padding: $padding-sm / 2 $padding-sm;
   background-size: 200% 100%;
   animation: moveBg 30s infinite alternate;
-  margin-bottom: $padding-sm;
+  margin-bottom: $padding-sm / 2;
   pointer-events: none;
 
   @media #{$sm-min} {
-    padding: $padding-md;
-    margin-bottom: $padding-md;
+    padding: $padding-md / 2 $padding-md;
+    margin-bottom: $padding-md / 2;
   }
 
   @media #{$md-min} {
-    padding: $padding-lg;
-    margin-bottom: $padding-lg;
+    padding: $padding-lg / 2 $padding-lg;
+    margin-bottom: $padding-lg / 2;
   }
 
   @media #{$lg-min} {
-    padding: $padding-xl;
-    margin-bottom: $padding-xl;
+    padding: $padding-xl / 2 $padding-xl;
+    margin-bottom: $padding-xl / 2;
   }
 
   &:before {
@@ -37,10 +37,6 @@
     @media #{$md-min} {
       transition-duration: 500ms;
     }
-  }
-
-  &:first-child {
-    min-height: calc(100vh - #{$nav-height});
   }
 
   section {
@@ -72,18 +68,18 @@
   pointer-events: auto;
 
   &:before {
-    border-width: $padding-sm;
+    border-width: $padding-sm / 2 $padding-sm;
 
     @media #{$sm-min} {
-      border-width: $padding-md;
+      border-width: $padding-md / 2 $padding-md;
     }
 
     @media #{$md-min} {
-      border-width: $padding-lg;
+      border-width: $padding-lg / 2 $padding-lg;
     }
 
     @media #{$lg-min} {
-      border-width: $padding-xl;
+      border-width: $padding-xl / 2 $padding-xl;
     }
   }
 

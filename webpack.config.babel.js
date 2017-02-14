@@ -61,7 +61,6 @@ module.exports = {
               loader: 'css-loader',
               options: {
                 modules: true,
-                importModules: true,
                 localIdentName: '[local]-[hash:8]',
                 sourceMap: DEV
               }
@@ -162,5 +161,9 @@ module.exports = {
         events: true
       }
     })
-  ])
+  ]),
+
+  devServer: {
+    contentBase: path.join(__dirname, 'src')
+  }
 }

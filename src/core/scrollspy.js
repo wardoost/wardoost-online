@@ -14,6 +14,7 @@ export default class ScrollSpy {
     this._element = options.element || document.body
     this._scrollTop = this._element.scrollTop
     this._delay = options.delay || 50
+    this._enabled = true
 
     this.init()
   }
@@ -111,7 +112,7 @@ export default class ScrollSpy {
     const increment = 20
 
     window.removeEventListener('scroll', this.onScroll)
-    this._cb(to)
+    if (this._enabled) this._cb(to)
 
     const animateScroll = elapsedTime => {
       elapsedTime += increment
@@ -141,5 +142,17 @@ export default class ScrollSpy {
     }
     currentTime -= 1
     return -change / 2 * (currentTime * (currentTime - 2) - 1) + start
+  }
+
+  enable () {
+    this._enabled = true
+    window.addEventListener('scroll', this.onScroll)
+    window.addEventListener('resize', this.updateTargets)
+  }
+
+  disable () {
+    this._enabled = false
+    window.removeEventListener('scroll', this.onScroll)
+    window.removeEventListener('resize', this.updateTargets)
   }
 }

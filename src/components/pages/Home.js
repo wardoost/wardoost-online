@@ -35,6 +35,10 @@ export default class Home extends PureComponent {
     }
   }
 
+  componentWillUnmount () {
+    this.scrollSpy.disable()
+  }
+
   @autobind
   updateActiveSection (id) {
     this.setState({activeSection: id})

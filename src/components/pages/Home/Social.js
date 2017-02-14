@@ -34,7 +34,7 @@ export default class Social extends PureComponent {
           </Unit>
           <Unit size='1-2' smSize='1-4' styleName='social'>
             <div className='section-animated-bg' style={{transitionDelay: `0.${active ? '2' : '3'}s`}}>
-              <a href='https://github.com/wardoost' target='_blank' title='My coding lifestyle on GitHub'>
+              <a href='https://github.com/wardoost' target='_blank' title='My coding style on GitHub'>
                 <div styleName='icon'>
                   <FaGithub />
                 </div>
