@@ -1,7 +1,6 @@
 @import '~styles/helpers';
 
 .contact-header {
-  background-color: $white;
   padding: $padding-md;
 }
 
@@ -13,6 +12,7 @@
     background-color: $white;
     width: 100%;
     padding: $padding-lg;
+    margin-top: $padding-xs;
     transition: color 0.2s linear, background-color 0.2s linear;
 
     .icon {
@@ -31,7 +31,14 @@
 
   > :global(.section-animated-bg) {
     background-color: transparent;
-    margin-top: $padding-xs;
     transition: opacity 200ms linear, background-color 200ms linear;
+  }
+}
+
+.contact-form {
+  margin-top: $padding-xs;
+
+  > :global(.section-animated-bg) {
+    padding: $padding-md;
   }
 }
