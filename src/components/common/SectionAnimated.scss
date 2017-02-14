@@ -2,13 +2,25 @@
 
 .section-container {
   position: relative;
-  padding: $padding-lg;
-  min-height: 100vh;
+  padding: $padding-sm;
   background-size: 200% 100%;
-  animation: moveBg 15s infinite alternate;
+  animation: moveBg 30s infinite alternate;
+  margin-bottom: $padding-sm;
+  pointer-events: none;
+
+  @media #{$sm-min} {
+    padding: $padding-md;
+    margin-bottom: $padding-md;
+  }
+
+  @media #{$md-min} {
+    padding: $padding-lg;
+    margin-bottom: $padding-lg;
+  }
 
   @media #{$lg-min} {
     padding: $padding-xl;
+    margin-bottom: $padding-xl;
   }
 
   &:before {
@@ -20,41 +32,63 @@
     left: 0;
     border: 0 $white solid;
     pointer-events: none;
-    transition: border-width 500ms ease(out-quart);
+    transition: border-width 300ms ease(out-quart);
+
+    @media #{$md-min} {
+      transition-duration: 500ms;
+    }
   }
 
   &:first-child {
     min-height: calc(100vh - #{$nav-height});
   }
 
-  &:last-child {
-    min-height: auto;
-  }
-
   section {
     padding: $padding-xs;
   }
 
-  :global(.section-animated) {
-    background-color: $white;
-    padding: $padding-md $padding-lg;
+  :global(.section-animated),
+  :global(.section-animated-bg) {
+    padding: $padding-md $padding-sm;
     opacity: 0;
     transition: opacity 200ms linear;
+
+    @media #{$md-min} {
+      padding: $padding-xl $padding-lg;
+    }
+  }
+
+  :global(.section-animated) {
+    color: $white;
+  }
+
+  :global(.section-animated-bg) {
+    background-color: $white;
   }
 }
 
 .section-container-active {
   composes: section-container;
+  pointer-events: auto;
 
   &:before {
-    border-width: $padding-lg;
+    border-width: $padding-sm;
+
+    @media #{$sm-min} {
+      border-width: $padding-md;
+    }
+
+    @media #{$md-min} {
+      border-width: $padding-lg;
+    }
 
     @media #{$lg-min} {
       border-width: $padding-xl;
     }
   }
 
-  :global(.section-animated) {
+  :global(.section-animated),
+  :global(.section-animated-bg) {
     opacity: 1;
   }
 }

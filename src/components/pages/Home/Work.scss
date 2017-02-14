@@ -1,15 +1,5 @@
 @import '~styles/helpers';
 
-.work-header {
-  background-color: $white;
-  padding: $padding-md;
-}
-
 .work-item {
-  > :global(.section-animated) {
-    background-color: $white;
-    padding: $padding-md;
-    margin-top: $padding-xs;
-    transition: opacity 200ms linear, background-color 200ms linear;
-  }
+  margin-top: $padding-xs;
 }

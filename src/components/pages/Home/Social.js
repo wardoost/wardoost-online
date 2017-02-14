@@ -9,16 +9,22 @@ import styles from './Social.scss'
 
 @CSSModules(styles)
 export default class Social extends PureComponent {
+  static propTypes = {
+    active: React.PropTypes.bool
+  }
+
   render () {
+    const {active, ...props} = this.props
+
     return (
-      <div {...this.props}>
-        <div styleName='social-header' className='section-animated'>
+      <div {...props}>
+        <div styleName='social-header' className='section-animated-bg'>
           <h1>Social</h1>
           <p>Want to know more about me? Stalk me here</p>
         </div>
         <Grid padding='xs'>
-          <Unit size='1-4' styleName='twitter'>
-            <div className='section-animated' style={{transitionDelay: '0.1s'}}>
+          <Unit size='1-2' smSize='1-4' styleName='social'>
+            <div className='section-animated-bg' style={{transitionDelay: `0.${active ? '1' : '4'}s`}}>
               <a href='https://twitter.com/wardoost' target='_blank' title='Follow me on Twitter'>
                 <div styleName='icon'>
                   <FaTwitter />
@@ -26,8 +32,8 @@ export default class Social extends PureComponent {
               </a>
             </div>
           </Unit>
-          <Unit size='1-4' styleName='github'>
-            <div className='section-animated' style={{transitionDelay: '0.2s'}}>
+          <Unit size='1-2' smSize='1-4' styleName='social'>
+            <div className='section-animated-bg' style={{transitionDelay: `0.${active ? '2' : '3'}s`}}>
               <a href='https://github.com/wardoost' target='_blank' title='My coding lifestyle on GitHub'>
                 <div styleName='icon'>
                   <FaGithub />
@@ -35,8 +41,8 @@ export default class Social extends PureComponent {
               </a>
             </div>
           </Unit>
-          <Unit size='1-4' styleName='linkedin'>
-            <div className='section-animated' style={{transitionDelay: '0.3s'}}>
+          <Unit size='1-2' smSize='1-4' styleName='social'>
+            <div className='section-animated-bg' style={{transitionDelay: `0.${active ? '3' : '2'}s`}}>
               <a href='https://www.linkedin.com/in/wardoost' target='_blank' title='My professional life on LinkedIn'>
                 <div styleName='icon'>
                   <FaLinkedin />
@@ -44,8 +50,8 @@ export default class Social extends PureComponent {
               </a>
             </div>
           </Unit>
-          <Unit size='1-4' styleName='medium'>
-            <div className='section-animated' style={{transitionDelay: '0.4s'}}>
+          <Unit size='1-2' smSize='1-4' styleName='social'>
+            <div className='section-animated-bg' style={{transitionDelay: `0.${active ? '4' : '1'}s`}}>
               <a href='https://medium.com/@wardoost' target='_blank' title='What I read on Medium'>
                 <div styleName='icon'>
                   <FaMedium />

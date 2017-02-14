@@ -42,7 +42,7 @@ export default class Layout extends PureComponent {
 
   componentDidUpdate (prevProps) {
     if (prevProps.location !== this.props.location) {
-      this.scrollSpy.updateLocation(this.props.location, prevProps.location)
+      this.scrollSpy.updateLocation(this.props.location)
     }
   }
 

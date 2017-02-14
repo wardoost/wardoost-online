@@ -10,11 +10,12 @@ export default class ScrollSpy {
     this._cb = options.callback || function () {}
     this._duration = options.duration || 1000
     this._offset = options.offset || 0
+    this._location = options.location || window.location
     this._element = options.element || document.body
     this._scrollTop = this._element.scrollTop
-    this._delay = 50
+    this._delay = options.delay || 50
 
-    this.init(options.location || window.location)
+    this.init()
   }
 
   get linkRefs () {
@@ -24,13 +25,15 @@ export default class ScrollSpy {
   set linkRefs (linkRefs) {
     if (typeof linkRefs !== 'object') throw new Error('linkRefs should be an object')
     this._linkRefs = linkRefs.reverse()
+    this.updateTargets()
   }
 
-  init (location) {
+  init () {
     setTimeout(() => {
-      this.updateTargets(location)
+      this.updateTargets()
       this.onScroll()
       window.addEventListener('scroll', this.onScroll)
+      window.addEventListener('resize', this.updateTargets)
     }, this._delay)
   }
 
@@ -58,11 +61,13 @@ export default class ScrollSpy {
     this._scrollTop = scrollTop
   }
 
-  updateTargets (location) {
+  @autobind
+  @throttle(500)
+  updateTargets () {
     this._targets = []
     this._linkRefs.forEach(item => {
       if (item.props.to) {
-        const pathMatch = item.props.to.split('#')[0] === location.pathname
+        const pathMatch = item.props.to.split('#')[0] === this._location.pathname
         const hash = item.props.to.split('#')[1]
         const target = document.getElementById(hash)
         if (pathMatch && target) {
@@ -80,16 +85,20 @@ export default class ScrollSpy {
     })
   }
 
-  updateLocation (location, prevLocation) {
-    if (prevLocation.pathname !== location.pathname) {
-      setTimeout(() => {
-        this.updateTargets(location)
-        this.scrollTo(location.hash.substring(1))
-      }, this._delay)
-    } else {
-      this.scrollTo(location.hash.substring(1))
+  updateLocation (location) {
+    if (location !== this._location) {
+      const prevLocation = this._location
+      this._location = location
+      if (prevLocation.pathname !== this._location.pathname) {
+        setTimeout(() => {
+          this.updateTargets()
+          this.scrollTo(this._location.hash.substring(1))
+        }, this._delay)
+      } else {
+        this.scrollTo(this._location.hash.substring(1))
+      }
+      this._activeHash = this._location.hash.substring(1)
     }
-    this._activeHash = location.hash.substring(1)
   }
 
   scrollTo (to, duration) {

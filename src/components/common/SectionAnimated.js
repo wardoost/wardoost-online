@@ -10,13 +10,21 @@ export default class SectionAnimated extends PureComponent {
     active: React.PropTypes.bool
   }
 
+  renderChildren (children) {
+    return React.Children.map(children, child => {
+      return React.cloneElement(child, {
+        active: this.props.active
+      })
+    })
+  }
+
   render () {
     const {active, children, ...props} = this.props
 
     return (
       <div {...props} styleName={active ? 'section-container-active' : 'section-container'}>
         <section>
-          {children}
+          {this.renderChildren(children)}
         </section>
       </div>
     )

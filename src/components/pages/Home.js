@@ -11,6 +11,10 @@ import styles from './Home.scss'
 
 @CSSModules(styles)
 export default class Home extends PureComponent {
+  static propTypes = {
+    location: React.PropTypes.object
+  }
+
   state = {
     activeSection: window.location.hash.substring(1)
   }
@@ -25,12 +29,20 @@ export default class Home extends PureComponent {
     })
   }
 
+  componentDidUpdate (prevProps) {
+    if (prevProps.location !== this.props.location) {
+      this.scrollSpy.updateLocation(this.props.location)
+    }
+  }
+
   @autobind
   updateActiveSection (id) {
     this.setState({activeSection: id})
   }
 
   render () {
+    this.sections = []
+
     return (
       <main>
         <SectionAnimated

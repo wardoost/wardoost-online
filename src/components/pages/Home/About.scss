@@ -1,24 +1,53 @@
 @import '~styles/helpers';
 
-.about {
-  padding: $padding-lg $padding-xl;
-  color: $white;
-}
-
-.icon-down {
+.icon-down:global(.section-animated) {
+  display: none;
   position: absolute;
-  left: 0;
-  bottom: $padding-lg;
-  right: 0;
-  color: $white;
-  font-size: 3em;
-  text-align: center;
+  padding: 0;
+  left: $padding-sm + $padding-xs;
+  bottom: $padding-sm + $padding-xs;
+  right: $padding-sm + $padding-xs;
 
-  &:hover {
-    color: $gray-light;
+  a {
+    display: block;
+    color: $white;
+    font-size: 3em;
+    text-align: center;
+    transition: background-color 200ms linear;
+
+    svg {
+      margin-top: -0.2em;
+      animation: fadeInOutDown 2s infinite;
+    }
   }
 
-  svg {
-    animation: fadeInOutDown 2s infinite;
+  @media #{$sm-min} {
+    display: block;
+  }
+
+  @media #{$sm-min} {
+    left: $padding-md + $padding-xs;
+    bottom: $padding-md + $padding-xs;
+    right: $padding-md + $padding-xs;
+  }
+
+  @media #{$md-min} {
+    left: $padding-lg + $padding-xs;
+    bottom: $padding-lg + $padding-xs;
+    right: $padding-lg + $padding-xs;
+  }
+
+  @media #{$lg-min} {
+    left: $padding-xl + $padding-xs;
+    bottom: $padding-xl + $padding-xs;
+    right: $padding-xl + $padding-xs;
+  }
+
+  a:hover {
+    color: $primary;
+    background-color: $white;
+    svg {
+      animation: none;
+    }
   }
 }
