@@ -20,7 +20,8 @@ export default class Home extends PureComponent {
   componentDidMount () {
     this.scrollSpy = new ScrollSpy(this.sections, {
       callback: this.updateActiveSection,
-      duration: 400
+      duration: 400,
+      offset: 48
     })
   }
 

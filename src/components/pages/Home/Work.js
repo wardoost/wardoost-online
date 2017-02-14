@@ -11,12 +11,12 @@ export default class Work extends PureComponent {
   render () {
     return (
       <div {...this.props}>
-        <div styleName='work-header' className='animated'>
+        <div styleName='work-header' className='section-animated'>
           <h1>Work</h1>
         </div>
         <Grid padding='xs'>
           <Unit size='1' smSize='1-2' lgSize='1-3' styleName='work-item'>
-            <div className='animated' style={{transitionDelay: '0.1s'}}>
+            <div className='section-animated' style={{transitionDelay: '0.1s'}}>
               <h2>Oïnk Agency</h2>
               <p><a href='https://www.oink.agency/'>www.oink.agency</a></p>
               <Image src={oink} />
@@ -24,7 +24,7 @@ export default class Work extends PureComponent {
             </div>
           </Unit>
           <Unit size='1' smSize='1-2' lgSize='1-3' styleName='work-item'>
-            <div className='animated' style={{transitionDelay: '0.2s'}}>
+            <div className='section-animated' style={{transitionDelay: '0.2s'}}>
               <h2>TinderMe Cards</h2>
               <p><a href='http://www.tinderme.cards/'>www.tinderme.cards</a></p>
               <Image src={tinderMeCards} />
@@ -32,7 +32,7 @@ export default class Work extends PureComponent {
             </div>
           </Unit>
           <Unit size='1' smSize='1-2' lgSize='1-3' styleName='work-item'>
-            <div className='animated' style={{transitionDelay: '0.3s'}}>
+            <div className='section-animated' style={{transitionDelay: '0.3s'}}>
               <h2>Shooting the Apes</h2>
               <p><a href='https://vimeo.com/shootingtheapes'>Vimeo profile</a></p>
               <Image src={shootingTheApes} />

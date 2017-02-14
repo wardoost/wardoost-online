@@ -1,1 +1,24 @@
 @import '~styles/helpers';
+
+.about {
+  padding: $padding-lg $padding-xl;
+  color: $white;
+}
+
+.icon-down {
+  position: absolute;
+  left: 0;
+  bottom: $padding-lg;
+  right: 0;
+  color: $white;
+  font-size: 3em;
+  text-align: center;
+
+  &:hover {
+    color: $gray-light;
+  }
+
+  svg {
+    animation: fadeInOutDown 2s infinite;
+  }
+}

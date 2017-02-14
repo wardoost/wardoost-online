@@ -11,12 +11,12 @@ export default class SectionAnimated extends PureComponent {
   }
 
   render () {
-    const {active, ...props} = this.props
+    const {active, children, ...props} = this.props
 
     return (
       <div {...props} styleName={active ? 'section-container-active' : 'section-container'}>
         <section>
-          {this.props.children}
+          {children}
         </section>
       </div>
     )

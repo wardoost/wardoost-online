@@ -2,7 +2,7 @@
 
 .page-middle {
   position: relative;
-  min-height: calc(100vh - #{$nav-height + $footer-height + 2 * $padding-lg});
+  min-height: calc(100vh - #{$nav-height + $footer-height});
 
   > * {
     position: absolute;

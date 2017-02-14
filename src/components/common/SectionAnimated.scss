@@ -3,6 +3,7 @@
 .section-container {
   position: relative;
   padding: $padding-lg;
+  min-height: 100vh;
   background-size: 200% 100%;
   animation: moveBg 15s infinite alternate;
   &:before {
@@ -13,15 +14,23 @@
     bottom: 0;
     left: 0;
     border: 0 $white solid;
+    pointer-events: none;
     transition: border-width 500ms ease(out-quart);
   }
 
+  &:first-child {
+    min-height: calc(100vh - #{$nav-height});
+  }
+
+  &:last-child {
+    min-height: auto;
+  }
+
   section {
-    position: relative;
     padding: $padding-xs;
   }
 
-  :global(.animated) {
+  :global(.section-animated) {
     background-color: $white;
     padding: $padding-md $padding-lg;
     opacity: 0;
@@ -36,7 +45,7 @@
     border-width: $padding-lg;
   }
 
-  :global(.animated) {
+  :global(.section-animated) {
     opacity: 1;
   }
 }

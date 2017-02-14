@@ -11,7 +11,7 @@ export default class ScrollSpy {
     this._duration = options.duration || 1000
     this._offset = options.offset || 0
     this._element = options.element || document.body
-    this._scrollTop = this._element.scrollTop + this._offset
+    this._scrollTop = this._element.scrollTop
     this._delay = 50
 
     this.init(options.location || window.location)
@@ -27,9 +27,9 @@ export default class ScrollSpy {
   }
 
   init (location) {
-    this._cb(location.hash.substring(1))
     setTimeout(() => {
       this.updateTargets(location)
+      this.onScroll()
       window.addEventListener('scroll', this.onScroll)
     }, this._delay)
   }
@@ -37,16 +37,17 @@ export default class ScrollSpy {
   @autobind
   @throttle(100)
   onScroll (e) {
-    const offset = this._offset + window.innerHeight / 10
-    const scrollTop = this._element.scrollTop + offset
-    const scrollHeight = window.innerHeight - offset
+    const scrollTop = this._element.scrollTop
+    const scrollHeight = window.innerHeight
     const maxScroll = this._element.clientHeight - scrollHeight
-    const correctionThreshold = maxScroll - scrollHeight / 2
-    const correction = (scrollTop > correctionThreshold ? (scrollTop - correctionThreshold) / (maxScroll - correctionThreshold) : 0) * scrollHeight
-    const scrollCheck = scrollTop + correction
+    const correctionTopThreshold = scrollHeight / 2
+    const correctionTop = (scrollTop < correctionTopThreshold ? scrollTop / correctionTopThreshold : 1) * scrollHeight / 2
+    const correctionBottomThreshold = maxScroll - scrollHeight / 2
+    const correctionBottom = (scrollTop > correctionBottomThreshold ? (scrollTop - correctionBottomThreshold) / (maxScroll - correctionBottomThreshold) : 0) * scrollHeight / 2
+    const scrollCheck = scrollTop + correctionTop + correctionBottom + this._offset
     const activeItem = scrollTop > this._scrollTop
     ? this._targets.find(item => scrollCheck > item.top)
-    : this._targets.find(item => scrollCheck > item.top)
+    : this._targets.find(item => scrollCheck >= item.top)
     const newHash = activeItem ? activeItem.hash : ''
 
     if (newHash !== this._activeHash) {

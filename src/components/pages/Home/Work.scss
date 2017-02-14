@@ -6,7 +6,7 @@
 }
 
 .work-item {
-  > :global(.animated) {
+  > :global(.section-animated) {
     background-color: $white;
     padding: $padding-md;
     margin-top: $padding-xs;

@@ -7,7 +7,7 @@ import styles from './Contact.scss'
 export default class Contact extends PureComponent {
   render () {
     return (
-      <div className='animated' {...this.props}>
+      <div className='section-animated' {...this.props}>
         <h1>Contact</h1>
         <p>You want to hire me, work with me or just have something awesome to show me?</p>
         <a styleName='mail' href='mailto:wardoosterlijnck@gmail.com' target='_blank' title='Send me an email'>
