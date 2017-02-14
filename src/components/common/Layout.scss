@@ -5,11 +5,6 @@
   position: relative;
   left: 0;
   transition: left 300ms ease(out-expo);
-
-  @media #{$md-min} {
-    left: $menu-width;
-    margin-right: $menu-width;
-  }
 }
 
 .overlay {

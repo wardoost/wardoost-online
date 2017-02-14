@@ -17,10 +17,6 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   transition: left 300ms ease(out-expo);
-
-  @media #{$md-min} {
-    margin-left: 0;
-  }
 }
 
 .menu-list {
@@ -123,10 +119,6 @@
   cursor: pointer;
   z-index: 1000;
 
-  @media #{$md-min} {
-    display: none;
-  }
-
   .heading-link {
     left: 50%;
   }
@@ -152,18 +144,5 @@
   }
   .menu-toggle {
     left: $menu-width - $nav-height;
-  }
-
-  @media #{$md-min} {
-    .menu {
-      left: 0;
-    }
-    .menu-brand {
-      left: 0;
-      right: 0;
-    }
-    .menu-toggle {
-      left: 100%;
-    }
   }
 }

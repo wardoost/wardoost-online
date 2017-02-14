@@ -6,6 +6,11 @@
   min-height: 100vh;
   background-size: 200% 100%;
   animation: moveBg 15s infinite alternate;
+
+  @media #{$lg-min} {
+    padding: $padding-xl;
+  }
+
   &:before {
     content: '';
     position: absolute;
@@ -43,6 +48,10 @@
 
   &:before {
     border-width: $padding-lg;
+
+    @media #{$lg-min} {
+      border-width: $padding-xl;
+    }
   }
 
   :global(.section-animated) {
