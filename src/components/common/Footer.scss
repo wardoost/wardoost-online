@@ -17,10 +17,10 @@
   right: $padding-md;
   top: 50%;
   transform: translateY(-50%);
-  transition: color 150ms linear, font-size 150ms ease(out-expo);
+  transition: font-size 150ms ease(out-expo);
 
   &:hover {
-    color: $gray-lighter;
+    color: $white;
     font-size: 1.2em;
   }
 }

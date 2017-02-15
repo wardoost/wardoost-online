@@ -1,12 +1,11 @@
-import {findDOMNode} from 'react-dom'
 import {throttle, autobind} from 'core-decorators'
 
 export default class ScrollSpy {
-  constructor (linkRefs, options) {
-    if (typeof linkRefs !== 'object') throw new Error('linkRefs should be an object')
+  constructor (menu, options) {
+    if (typeof menu !== 'object') throw new Error('menu should be an object')
     if (typeof options !== 'object') throw new Error('options should be a number')
 
-    this._linkRefs = linkRefs.reverse()
+    this._menu = menu
     this._cb = options.callback || function () {}
     this._duration = options.duration || 1000
     this._offset = options.offset || 0
@@ -19,19 +18,20 @@ export default class ScrollSpy {
     this.init()
   }
 
-  get linkRefs () {
-    return this._linkRefs
+  get menu () {
+    return this._menu
   }
 
-  set linkRefs (linkRefs) {
-    if (typeof linkRefs !== 'object') throw new Error('linkRefs should be an object')
-    this._linkRefs = linkRefs.reverse()
+  set menu (menu) {
+    if (typeof menu !== 'object') throw new Error('menu should be an object')
+    this._menu = menu
     this.updateTargets()
   }
 
   init () {
     setTimeout(() => {
       this.updateTargets()
+      this.onScroll()
       this.onScroll()
       window.addEventListener('scroll', this.onScroll)
       window.addEventListener('resize', this.updateTargets)
@@ -41,7 +41,7 @@ export default class ScrollSpy {
   @autobind
   @throttle(100)
   onScroll (e) {
-    const scrollTop = this._element.scrollTop
+    const scrollTop = this._element.scrollTop < 0 ? 0 : this._element.scrollTop // Minimum of 0, Safari goes under 0
     const scrollHeight = window.innerHeight
     const maxScroll = this._element.clientHeight - scrollHeight
     const correctionTopThreshold = scrollHeight / 2
@@ -66,24 +66,18 @@ export default class ScrollSpy {
   @throttle(500)
   updateTargets () {
     this._targets = []
-    this._linkRefs.forEach(item => {
-      if (item.props.to) {
-        const pathMatch = item.props.to.split('#')[0] === this._location.pathname
-        const hash = item.props.to.split('#')[1]
-        const target = document.getElementById(hash)
-        if (pathMatch && target) {
-          this._targets.push({
-            hash: hash,
-            top: target.offsetTop
-          })
-        }
-      } else if (item.props.id) {
+    this._menu.forEach(item => {
+      const pathMatch = item.to.split('#')[0] === this._location.pathname
+      const hash = item.to.split('#')[1]
+      const target = document.getElementById(hash)
+      if (pathMatch && target) {
         this._targets.push({
-          hash: item.props.id,
-          top: findDOMNode(item).offsetTop
+          hash: hash,
+          top: target.offsetTop
         })
       }
     })
+    this._targets.reverse()
   }
 
   updateLocation (location) {
