@@ -82,11 +82,13 @@
     color: $white;
   }
 
-  i {
+  img {
     position: absolute;
-    top: calc(50% - 0.1em);
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: $nav-height / 2;
+    height: $nav-height / 2;
   }
 }
 
@@ -95,12 +97,16 @@
   left: 0;
   right: auto;
   width: $nav-height;
+  background-color: $white;
   transform: none;
   cursor: pointer;
   z-index: 1000;
 
-  .heading-link {
+  i {
+    position: absolute;
+    top: calc(50% - 0.1em);
     left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -119,7 +125,6 @@
     left: $menu-width;
   }
   .menu-brand {
-    color: $white;
     left: $menu-width;
   }
   .menu-toggle {

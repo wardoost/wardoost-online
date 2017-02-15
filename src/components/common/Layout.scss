@@ -3,8 +3,6 @@
 .layout {
   min-height: 100%;
   position: relative;
-  left: 0;
-  transition: left 300ms ease(out-expo);
 }
 
 .overlay {
@@ -22,7 +20,6 @@
 }
 
 .layout.menu-active {
-  left: $menu-width;
   .overlay {
     pointer-events: inherit;
     opacity: 1;
