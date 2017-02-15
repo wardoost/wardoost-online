@@ -22,7 +22,7 @@ export default class Contact extends PureComponent {
         </div>
         <Grid padding='xs'>
           <Unit size='1' smSize='1-5' styleName='mail'>
-            <div className='section-animated-bg' style={{transitionDelay: `0.1s`}}>
+            <div className='section-animated' style={{transitionDelay: `0.1s`}}>
               <a styleName='mail' href='mailto:wardoosterlijnck@gmail.com' target='_blank' title='Send me an email'>
                 <div styleName='icon'>
                   <FaEnvelope />

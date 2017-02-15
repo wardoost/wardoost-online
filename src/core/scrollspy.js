@@ -31,8 +31,6 @@ export default class ScrollSpy {
   init () {
     setTimeout(() => {
       this.updateTargets()
-      this.onScroll()
-      this.onScroll()
       window.addEventListener('scroll', this.onScroll)
       window.addEventListener('resize', this.updateTargets)
     }, this._delay)
@@ -78,6 +76,7 @@ export default class ScrollSpy {
       }
     })
     this._targets.reverse()
+    this.onScroll()
   }
 
   updateLocation (location) {

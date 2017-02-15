@@ -16,7 +16,7 @@
     transition: color 0.2s linear, background-color 0.2s linear;
 
     .icon {
-      margin-top: -0.2em;
+      margin-top: -0.3em;
       transition: transform 0.3s ease(out-back);
     }
 
@@ -28,17 +28,12 @@
       }
     }
   }
-
-  > :global(.section-animated-bg) {
-    background-color: transparent;
-    transition: opacity 200ms linear, background-color 200ms linear;
-  }
 }
 
 .contact-form {
   margin-top: $padding-xs;
 
-  > :global(.section-animated-bg) {
+  form {
     padding: $padding-md;
   }
 }

@@ -60,7 +60,8 @@
   :global(.section-animated),
   :global(.section-animated-bg) {
     opacity: 0;
-    transition: opacity 200ms linear;
+    transform: scale(0.5);
+    transition: opacity 200ms linear, transform 200ms ease(in-expo);
   }
 
   :global(.section-animated) {
@@ -114,5 +115,7 @@
   :global(.section-animated),
   :global(.section-animated-bg) {
     opacity: 1;
+    transform: scale(1);
+    transition: opacity 200ms linear, transform 300ms ease(out-expo);
   }
 }
