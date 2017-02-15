@@ -28,13 +28,20 @@ export default class Layout extends PureComponent {
   }
 
   @autobind
-  toggleMenu (state) {
-    const newState = typeof state === 'boolean' ? state : !this.state.menuActive
-    if (this.props.onToggle) this.props.onToggle(newState)
-    this.setState({ menuActive: newState })
+  toggleMenu (e) {
+    if (this.props.onToggle) this.props.onToggle(!this.state.menuActive)
+    this.setState(prevState => {
+      return { menuActive: !prevState.menuActive }
+    })
+    this.removeFocus(e)
   }
 
-  hideMenu = () => this.toggleMenu(false)
+  @autobind
+  hideMenu (e) {
+    if (this.props.onToggle) this.props.onToggle(false)
+    this.setState({ menuActive: false })
+    this.removeFocus(e)
+  }
 
   removeFocus (e) {
     e.target.blur()
