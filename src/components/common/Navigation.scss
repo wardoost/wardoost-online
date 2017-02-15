@@ -61,6 +61,9 @@
   height: $nav-height;
   padding: 0;
   background-color: $white;
+  background-image: linear-gradient(90deg, $warning, $primary, $secondary, $error, $warning);
+  background-size: 400% 100%;
+  animation: moveBg 120s infinite alternate;
 }
 
 .menu-brand {
@@ -72,23 +75,17 @@
   right: 0;
   z-index: 500;
   padding: 0;
-  font-size: 1.5em;
-  color: $primary;
-  transition: left 300ms ease(out-expo), background-color 100ms linear, color 100ms linear;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono", "Source Code Pro", monospace;
+  text-align: center;
+  color: $white;
+  text-transform: uppercase;
+  line-height: $nav-height;
+  transition: left 300ms ease(out-expo), background-color 200ms linear, color 100ms linear;
 
   &:hover,
   &:focus {
-    background-color: $primary;
     color: $white;
-  }
-
-  img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: $nav-height / 2;
-    height: $nav-height / 2;
+    background-color: rgba($white, 0.25);
   }
 }
 
@@ -97,7 +94,7 @@
   left: 0;
   right: auto;
   width: $nav-height;
-  background-color: $white;
+  font-size: 1.5em;
   transform: none;
   cursor: pointer;
   z-index: 1000;
@@ -111,16 +108,6 @@
 }
 
 .nav-active {
-  .menu-heading {
-    &:before {
-      background-image: linear-gradient(0deg, fade-out($white, 1), $white);
-    }
-
-    &:after {
-      background-color: rgba($black, 0.3);
-    }
-  }
-
   .menu {
     left: $menu-width;
   }
@@ -129,5 +116,14 @@
   }
   .menu-toggle {
     left: $menu-width - $nav-height;
+  }
+}
+
+@keyframes moveBg {
+  0%{
+    background-position: 0% 50%
+  }
+  100%{
+    background-position: 100% 50%
   }
 }

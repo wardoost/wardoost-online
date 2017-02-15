@@ -37,6 +37,22 @@
     }
   }
 
+  &:first-child {
+    padding: $padding-sm $padding-sm $padding-sm / 2;
+
+    @media #{$sm-min} {
+      padding: $padding-md $padding-md $padding-md / 2;
+    }
+
+    @media #{$md-min} {
+      padding: $padding-lg $padding-lg $padding-lg / 2;
+    }
+
+    @media #{$lg-min} {
+      padding: $padding-xl $padding-xl $padding-xl / 2;
+    }
+  }
+
   section {
     padding: $padding-xs;
   }
@@ -73,6 +89,25 @@
 
     @media #{$lg-min} {
       border-width: $padding-xl / 2 $padding-xl;
+    }
+  }
+
+  &:first-child {
+
+    &:before {
+      border-width: $padding-sm $padding-sm $padding-sm / 2;
+
+      @media #{$sm-min} {
+        border-width: $padding-md $padding-md $padding-md / 2;
+      }
+
+      @media #{$md-min} {
+        border-width: $padding-lg $padding-lg $padding-lg / 2;
+      }
+
+      @media #{$lg-min} {
+        border-width: $padding-xl $padding-xl $padding-xl / 2;
+      }
     }
   }
 

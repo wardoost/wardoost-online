@@ -4,7 +4,6 @@ import {autobind} from 'core-decorators'
 import {Link, IndexLink} from 'react-router'
 import FaBars from 'react-icons/lib/fa/bars'
 import FaClose from 'react-icons/lib/fa/close'
-import logo from '../../assets/logo.png'
 import styles from './Navigation.scss'
 
 @CSSModules(styles, {allowMultiple: true})
@@ -72,7 +71,7 @@ export default class Layout extends PureComponent {
       <nav styleName={menuActive ? 'nav-active' : 'nav'} {...props}>
         <div styleName='menu-heading'>
           <IndexLink to='/' styleName='menu-brand' onClick={this.hideMenu}>
-            <img src={logo} alt='Home' />
+            Ward Oosterlijnck
           </IndexLink>
           <a styleName='menu-toggle' onClick={this.toggleMenu}>
             <i>{menuActive ? <FaClose /> : <FaBars />}</i>
