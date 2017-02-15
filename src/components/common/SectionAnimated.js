@@ -13,7 +13,8 @@ export default class SectionAnimated extends PureComponent {
   renderChildren (children) {
     return React.Children.map(children, child => {
       return React.cloneElement(child, {
-        active: this.props.active
+        active: this.props.active,
+        className: 'section-content'
       })
     })
   }

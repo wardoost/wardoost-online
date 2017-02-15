@@ -19,7 +19,7 @@ $paddings: (
 
 @each $padding, $size in $paddings {
   .grid-padded-#{$padding} {
-    @composes grid;
+    composes: grid;
     margin: 0 #{-$size / 2};
 
     [class *= "unit"] {

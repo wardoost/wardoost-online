@@ -2,23 +2,19 @@
 
 .section-container {
   position: relative;
-  padding: $padding-sm / 2 $padding-sm;
-  margin-bottom: $padding-sm / 2;
+  padding: $padding-sm $padding-sm;
   pointer-events: none;
 
   @media #{$sm-min} {
-    padding: $padding-md / 2 $padding-md;
-    margin-bottom: $padding-md / 2;
+    padding: $padding-md $padding-md;
   }
 
   @media #{$md-min} {
-    padding: $padding-lg / 2 $padding-lg;
-    margin-bottom: $padding-lg / 2;
+    padding: $padding-lg $padding-lg;
   }
 
   @media #{$lg-min} {
-    padding: $padding-xl / 2 $padding-xl;
-    margin-bottom: $padding-xl / 2;
+    padding: $padding-xl $padding-xl;
   }
 
   &:before {
@@ -37,28 +33,21 @@
     }
   }
 
-  &:first-child {
-    padding: $padding-sm $padding-sm $padding-sm / 2;
-
-    @media #{$sm-min} {
-      padding: $padding-md $padding-md $padding-md / 2;
-    }
-
-    @media #{$md-min} {
-      padding: $padding-lg $padding-lg $padding-lg / 2;
-    }
-
-    @media #{$lg-min} {
-      padding: $padding-xl $padding-xl $padding-xl / 2;
-    }
-  }
-
   section {
     padding: $padding-xs;
   }
 
+  :global(.section-content) > *:not(:first-child):not([class *= "grid"]) {
+    margin-top: $padding-xs;
+  }
+
+  :global(.section-content) > [class *= "grid"] > [class *= "unit"] {
+    margin-top: $padding-xs;
+  }
+
   :global(.section-animated),
   :global(.section-animated-bg) {
+    height: 100%;
     opacity: 0;
     transform: scale(0.5);
     transition: opacity 200ms linear, transform 200ms ease(in-expo);
@@ -78,37 +67,18 @@
   pointer-events: auto;
 
   &:before {
-    border-width: $padding-sm / 2 $padding-sm;
+    border-width: $padding-sm;
 
     @media #{$sm-min} {
-      border-width: $padding-md / 2 $padding-md;
+      border-width: $padding-md;
     }
 
     @media #{$md-min} {
-      border-width: $padding-lg / 2 $padding-lg;
+      border-width: $padding-lg;
     }
 
     @media #{$lg-min} {
-      border-width: $padding-xl / 2 $padding-xl;
-    }
-  }
-
-  &:first-child {
-
-    &:before {
-      border-width: $padding-sm $padding-sm $padding-sm / 2;
-
-      @media #{$sm-min} {
-        border-width: $padding-md $padding-md $padding-md / 2;
-      }
-
-      @media #{$md-min} {
-        border-width: $padding-lg $padding-lg $padding-lg / 2;
-      }
-
-      @media #{$lg-min} {
-        border-width: $padding-xl $padding-xl $padding-xl / 2;
-      }
+      border-width: $padding-xl;
     }
   }
 

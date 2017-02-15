@@ -21,7 +21,7 @@ export default class Contact extends PureComponent {
           <p>You want to hire me, work with me or just have something awesome to show? Send me an email or fill the contact form</p>
         </div>
         <Grid padding='xs'>
-          <Unit size='1' smSize='1-5' styleName='mail'>
+          <Unit size='1' smSize='1-4' mdSize='1-5' styleName='mail'>
             <div className='section-animated' style={{transitionDelay: `0.1s`}}>
               <a styleName='mail' href='mailto:wardoosterlijnck@gmail.com' target='_blank' title='Send me an email'>
                 <div styleName='icon'>
@@ -30,7 +30,7 @@ export default class Contact extends PureComponent {
               </a>
             </div>
           </Unit>
-          <Unit size='1' smSize='4-5' styleName='contact-form'>
+          <Unit size='1' smSize='3-4' mdSize='4-5' styleName='contact-form'>
             <div className='section-animated-bg' style={{transitionDelay: `0.2s`}}>
               <Form kind='stacked'>
                 <fieldset>

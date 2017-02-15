@@ -4,34 +4,27 @@ $button-down-height: 80px;
 
 .intro {
   padding: $padding-md $padding-lg;
-  min-height: calc(100vh - #{$nav-height + 2 * $padding-sm + 2 * $padding-xs});
+  min-height: calc(100vh - #{$nav-height + 2 * $padding-sm + 3 * $padding-xs});
 
   @media #{$sm-min} {
-    min-height: calc(100vh - #{$nav-height + 2 * $padding-md + $button-down-height + 2 * $padding-xs});
-    margin-bottom: $button-down-height + $padding-xs;
+    min-height: calc(100vh - #{$nav-height + 2 * $padding-md + $button-down-height + 3 * $padding-xs});
   }
 
   @media #{$md-min} {
-    min-height: calc(100vh - #{$nav-height + 2 * $padding-lg + $button-down-height + 2 * $padding-xs});
+    min-height: calc(100vh - #{$nav-height + 2 * $padding-lg + $button-down-height + 3 * $padding-xs});
   }
 
   @media #{$lg-min} {
-    min-height: calc(100vh - #{$nav-height + 2 * $padding-xl + $button-down-height + 2 * $padding-xs});
+    min-height: calc(100vh - #{$nav-height + 2 * $padding-xl + $button-down-height + 3 * $padding-xs});
   }
 }
 
 .icon-down {
   display: none;
-  position: absolute;
-  padding: 0;
-  left: $padding-sm + $padding-xs;
-  bottom: $padding-sm / 2 + $padding-xs;
-  right: $padding-sm + $padding-xs;
-  height: $button-down-height;
 
   a {
     display: block;
-    height: 100%;
+    height: $button-down-height;
     color: $white;
     font-size: 3em;
     text-align: center;
@@ -45,24 +38,6 @@ $button-down-height: 80px;
 
   @media #{$sm-min} {
     display: block;
-  }
-
-  @media #{$sm-min} {
-    left: $padding-md + $padding-xs;
-    bottom: $padding-md / 2 + $padding-xs;
-    right: $padding-md + $padding-xs;
-  }
-
-  @media #{$md-min} {
-    left: $padding-lg + $padding-xs;
-    bottom: $padding-lg / 2 + $padding-xs;
-    right: $padding-lg + $padding-xs;
-  }
-
-  @media #{$lg-min} {
-    left: $padding-xl + $padding-xs;
-    bottom: $padding-xl / 2 + $padding-xs;
-    right: $padding-xl + $padding-xs;
   }
 
   a:hover {
