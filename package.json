@@ -1,7 +1,10 @@
 {
-  "name": "spa-react",
-  "version": "0.1.0",
-  "description": "Single page app with React",
+  "name": "wardoost-online",
+  "version": "1.0.0",
+  "description": "Online ego boost of Ward Oosterlijnck",
+  "homepage": "https://www.wardoost.online",
+  "author": "Ward Oosterlijnck <wardoosterlijnck@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --host=0.0.0.0 --hot --inline --history-api-fallback --progress --open",
     "prestart": "npm run build",
@@ -13,8 +16,6 @@
     "precoverage": "cross-env NODE_ENV=test jest --config=.jestrc --coverage",
     "coverage": "open coverage/index.html"
   },
-  "author": "Ward Oosterlijnck <wardoosterlijnck@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
@@ -66,7 +67,6 @@
     "purecss": "^0.6.2",
     "rc-animate": "^2.3.1",
     "react": "^15.4.2",
-    "react-copy-to-clipboard": "^4.2.3",
     "react-css-modules": "^4.1.0",
     "react-dom": "^15.4.2",
     "react-icons": "^2.2.3",

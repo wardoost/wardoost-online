@@ -117,8 +117,8 @@ module.exports = {
       inject: true,
       template: './index.ejs',
       minify: { collapseWhitespace: true },
-      title: 'Single Page App React',
-      description: 'Single page app with React',
+      title: 'Ward Oosterlijnck',
+      description: 'Online ego boost of Ward Oosterlijnck',
       publicPath: '/'
     }),
     new ScriptExtHtmlWebpackPlugin({

@@ -1,14 +1,12 @@
 import Layout from '../components/common/Layout'
-import {Home, Text, Buttons, Forms, Error} from '../components/pages'
+import Home from '../components/pages/Home'
+import Error from '../components/pages/Error'
 
 const routes = {
   path: '/',
   component: Layout,
   indexRoute: { component: Home },
   childRoutes: [
-    { path: 'text', component: Text },
-    { path: 'buttons', component: Buttons },
-    { path: 'forms', component: Forms },
     { path: '*', component: Error }
   ]
 }
