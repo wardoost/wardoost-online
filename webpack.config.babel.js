@@ -61,16 +61,12 @@ module.exports = {
               loader: 'css-loader',
               options: {
                 modules: true,
-                localIdentName: '[local]-[hash:8]',
-                sourceMap: DEV
+                localIdentName: '[local]-[hash:8]'
               }
             },
             { loader: 'postcss-loader' },
             {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: DEV
-              }
+              loader: 'sass-loader'
             }
           ]
         })
@@ -164,6 +160,6 @@ module.exports = {
   ]),
 
   devServer: {
-    contentBase: path.join(__dirname, 'src')
+    contentBase: path.resolve(__dirname, 'src')
   }
 }

@@ -1,21 +1,45 @@
 @import '~styles/helpers';
 
 .about {
-  background-color: $primary;
-  background-image: linear-gradient(10deg, $primary, $warning);
+  background-image: url(../../../assets/lappy1.jpg);
+  background-size: cover;
+  background-position: bottom;
+
+  &:before {
+    background-color: $primary;
+    background-image: linear-gradient(10deg, $primary, $warning);
+  }
 }
 
 .work {
-  background-color: $secondary;
-  background-image: linear-gradient(-10deg, $secondary, $primary);
+  background-image: url(../../../assets/lappy2.jpg);
+  background-size: cover;
+  background-position: bottom;
+
+  &:before {
+    background-color: $secondary;
+    background-image: linear-gradient(-10deg, $secondary, $primary);
+  }
 }
 
 .social {
-  background-color: $error;
-  background-image: linear-gradient(10deg, $error, $secondary);
+  background-image: url(../../../assets/lappy3.jpg);
+  background-size: cover;
+  background-position: left bottom;
+
+  &:before {
+    background-color: $error;
+    background-image: linear-gradient(10deg, $error, $secondary);
+  }
 }
 
 .contact {
-  background-color: $warning;
-  background-image: linear-gradient(-10deg, $warning, $error);
+  background-image: url(../../../assets/lappy4.jpg);
+  background-size: cover;
+  background-position: bottom;
+
+  &:before {
+    background-color: $warning;
+    background-image: linear-gradient(-10deg, $warning, $error);
+  }
 }
