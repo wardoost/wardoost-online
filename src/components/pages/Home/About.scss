@@ -5,6 +5,7 @@ $button-down-height: 80px;
 .intro {
   position: relative;
   min-height: calc(100vh - #{$nav-height + 2 * $padding-sm + $button-down-height + 4 * $padding-xs + $header-height-xs});
+  background-color: rgba($white, 0.2);
 
   @media #{$sm-min} {
     min-height: calc(100vh - #{$nav-height + 2 * $padding-md + $button-down-height + 4 * $padding-xs + $header-height-sm});
@@ -27,7 +28,6 @@ $button-down-height: 80px;
   transform: translateY(-50%);
 
   @media #{$sm-min} {
-    top: 45%;
     left: 20%;
     right: 20%;
   }

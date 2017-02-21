@@ -19,7 +19,7 @@ export default class About extends PureComponent {
         <div className='section-animated-header'>
           <h1>About</h1>
         </div>
-        <div className='section-animated-bg'>
+        <div className='section-animated'>
           <div styleName='intro'>
             <div styleName='intro-content'>
               <p>I’m a digital creative… in training at least. I&nbsp;say this because learning is one of the core characteristics of my profession. That became even more apparent when I moved to Melbourne at the end of 2016.</p>
