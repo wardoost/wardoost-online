@@ -32,16 +32,18 @@ export default class Contact extends PureComponent {
               </a>
             </div>
           </Unit>
-          <Unit size='1' smSize='3-4' mdSize='4-5' styleName='contact-form'>
+          <Unit size='1' smSize='3-4' mdSize='4-5'>
             <div className='section-animated-bg' style={{transitionDelay: `0.2s`}}>
-              <Form kind='stacked'>
-                <fieldset>
-                  <Input type='text' placeholder='Name' size='2-3' />
-                  <Input type='email' placeholder='Email' size='2-3' required />
-                  <textarea type='text' placeholder='Message' required />
-                  <Button type='submit' kind='primary'>Send</Button>
-                </fieldset>
-              </Form>
+              <div styleName='contact-form'>
+                <Form kind='stacked' name='contact' netlify>
+                  <fieldset>
+                    <Input type='text' placeholder='Name' size='1' />
+                    <Input type='email' placeholder='Email' size='1' required />
+                    <textarea type='text' placeholder='Message' required />
+                    <Button type='submit' kind='primary'>Send</Button>
+                  </fieldset>
+                </Form>
+              </div>
             </div>
           </Unit>
         </Grid>

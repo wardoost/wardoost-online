@@ -48,7 +48,21 @@
 }
 
 .contact-form {
+  margin: 0 auto;
+  @media #{$md-min} {
+    width: 80%;
+  }
+  @media #{$lg-min} {
+    width: 60%;
+  }
+
   form {
     padding: $padding-md;
+  }
+
+  textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: 7em;
   }
 }
