@@ -26,10 +26,10 @@ export default class Work extends PureComponent {
             <div styleName='work-item' className='section-animated-bg' style={{transitionDelay: `0.${active ? '1' : '3'}s`}}>
               <h2>Oïnk Agency</h2>
               <Grid padding='md'>
-                <Unit size='1-3'>
+                <Unit size='1-3' smSize='1' mdSize='1-3'>
                   <Image src={oink} styleName='work-img' />
                 </Unit>
-                <Unit size='2-3'>
+                <Unit size='2-3' smSize='1' mdSize='2-3'>
                   <p styleName='work-description'>
                     Loved working here for more than 3 years.
                   </p>
@@ -44,12 +44,12 @@ export default class Work extends PureComponent {
             <div styleName='work-item' className='section-animated-bg' style={{transitionDelay: '0.2s'}}>
               <h2>TinderMe Cards</h2>
               <Grid padding='md'>
-                <Unit size='1-3'>
+                <Unit size='1-3' smSize='1' mdSize='1-3'>
                   <Image src={tinderMeCards} styleName='work-img' />
                 </Unit>
-                <Unit size='2-3'>
+                <Unit size='2-3' smSize='1' mdSize='2-3'>
                   <p styleName='work-description'>
-                    Website to create business cards of your <a href='https://www.gotinder.com/'>Tinder</a> profile
+                    Website to create business cards of your <a href='https://www.gotinder.com/'>Tinder</a> profile.
                   </p>
                   <p styleName='work-link'>
                     <FaChain /> <a href='http://www.tinderme.cards/'>www.tinderme.cards</a>
@@ -62,12 +62,12 @@ export default class Work extends PureComponent {
             <div styleName='work-item' className='section-animated-bg' style={{transitionDelay: `0.${active ? '3' : '1'}s`}}>
               <h2>Shooting the Apes</h2>
               <Grid padding='md'>
-                <Unit size='1-3'>
+                <Unit size='1-3' smSize='1' mdSize='1-3'>
                   <Image src={shootingTheApes} styleName='work-img' />
                 </Unit>
-                <Unit size='2-3'>
+                <Unit size='2-3' smSize='1' mdSize='2-3'>
                   <p styleName='work-description'>
-                    Collective I co-created with <a href='http://www.jeroensmans.be/'>Jeroen Smans</a> to release aftermovies for events and festivals
+                    Collective I co-created with <a href='http://www.jeroensmans.be/'>Jeroen Smans</a> to release event movies for concerts and festivals.
                   </p>
                   <p styleName='work-link'>
                     <FaChain /> <a href='https://vimeo.com/shootingtheapes'>Vimeo profile</a>
