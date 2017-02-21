@@ -3,3 +3,18 @@
 .work-item {
   padding: $padding-md $padding-lg;
 }
+
+.work-img {
+  border-radius: $radius;
+  width: 125px;
+  margin: 0 auto;
+  box-shadow: 0 0 5px rgba($black, 0.2);
+}
+
+.work-description {
+  margin: 0;
+}
+
+.work-link {
+  text-align: right;
+}
