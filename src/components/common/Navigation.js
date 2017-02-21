@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import {autobind} from 'core-decorators'
-import {Link, IndexLink} from 'react-router'
+import {Link} from 'react-router'
 import FaBars from 'react-icons/lib/fa/bars'
 import FaClose from 'react-icons/lib/fa/close'
 import styles from './Navigation.scss'
@@ -60,8 +60,7 @@ export default class Layout extends PureComponent {
           <Link
             styleName={`${active ? 'menu-link-active' : 'menu-link'} ${hash && path !== '/' ? 'menu-link-sub' : ''}`}
             to={item.to}
-            onClick={this.removeFocus}
-          >
+            onClick={this.removeFocus}>
             {item.label}
           </Link>
         </li>
@@ -76,14 +75,9 @@ export default class Layout extends PureComponent {
 
     return (
       <nav styleName={menuActive ? 'nav-active' : 'nav'} {...props}>
-        <div styleName='menu-heading'>
-          <IndexLink to='/' styleName='menu-brand' onClick={this.hideMenu}>
-            Ward Oosterlijnck
-          </IndexLink>
-          <a styleName='menu-toggle' onClick={this.toggleMenu}>
-            <i>{menuActive ? <FaClose /> : <FaBars />}</i>
-          </a>
-        </div>
+        <a styleName='menu-toggle' onClick={this.toggleMenu}>
+          <i>{menuActive ? <FaClose /> : <FaBars />}</i>
+        </a>
         <div styleName='menu' onClick={this.hideMenu}>
           <ul styleName='menu-list'>
             {menu ? this.createMenu(menu, location) : children}

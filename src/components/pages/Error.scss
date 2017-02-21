@@ -2,7 +2,9 @@
 
 .page-middle {
   position: relative;
-  min-height: calc(100vh - #{$nav-height + $footer-height});
+  min-height: 100vh;
+  color: $white;
+  background-image: linear-gradient(-10deg, $error, $warning);
 
   > * {
     position: absolute;
@@ -24,7 +26,7 @@
     left: 25%;
     right: 25%;
     height: $padding-sm / 2;
-    background-color: $gray-lighter;
+    background-color: $white;
   }
 
   @media #{$md-min} {
@@ -42,7 +44,6 @@
 }
 
 .message {
-  color: $gray-dark;
   text-align: center;
   margin: 1.33em 0;
 
@@ -66,4 +67,5 @@
 .emoji {
   font-size: 2em;
   margin-left: 0.5em;
+  text-shadow: 0 0 5px rgba($black, 0.2);
 }

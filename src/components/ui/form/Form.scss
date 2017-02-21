@@ -19,16 +19,19 @@
   select,
   textarea {
     border-radius: $radius;
+    border: none;
     box-shadow: none;
+    background-color: rgba($white, 0.2);
+    transition: background-color 200ms linear;
+
+    @include placeholder {
+      color: rgba($white, 0.5);
+    }
 
     &:focus {
-      border-color: $primary;
-      box-shadow: inset 0 1px 3px $gray-light;
-
-      &[required] {
-        border-color: $error;
-      }
+      background-color: rgba($white, 0.3);
     }
+
 
     &[class *= "input"] {
       margin-right: 0;

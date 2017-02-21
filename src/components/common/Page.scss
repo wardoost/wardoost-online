@@ -2,16 +2,5 @@
 
 .page {
   position: relative;
-  padding: $nav-height 0 $footer-height;
   min-height: 100vh;
-}
-
-.footer {
-  opacity: 1;
-  transition: opacity 300ms linear;
-}
-
-.footer-hide {
-  opacity: 0;
-  transition: opacity 200ms linear;
 }

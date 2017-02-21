@@ -7,12 +7,11 @@
 
 .overlay {
   position: fixed;
-  top: $nav-height;
-  left: $menu-width;
+  top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: rgba( $black, 0.3 );
+  background-color: rgba($black, 0.3);
   pointer-events: none;
   z-index: 800;
   opacity: 0;
@@ -37,10 +36,10 @@
 
 .leave {
   position: absolute;
-  top: $nav-height;
+  top: 0;
   left: 0;
   right: 0;
-  bottom: $footer-height;
+  bottom: 0;
   opacity: 1;
 }
 

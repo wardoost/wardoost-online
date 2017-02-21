@@ -26,7 +26,7 @@ export default class Social extends PureComponent {
         </div>
         <Grid padding='xs'>
           <Unit size='1-2' smSize='1-4' styleName='social'>
-            <div className='section-animated' style={{transitionDelay: `0.${active ? '1' : '4'}s`}}>
+            <div className='section-animated-bg' style={{transitionDelay: `0.${active ? '1' : '4'}s`}}>
               <a href='https://twitter.com/wardoost' target='_blank' title='Follow me on Twitter'>
                 <div styleName='icon'>
                   <FaTwitter />
@@ -35,7 +35,7 @@ export default class Social extends PureComponent {
             </div>
           </Unit>
           <Unit size='1-2' smSize='1-4' styleName='social'>
-            <div className='section-animated' style={{transitionDelay: `0.${active ? '2' : '3'}s`}}>
+            <div className='section-animated-bg' style={{transitionDelay: `0.${active ? '2' : '3'}s`}}>
               <a href='https://github.com/wardoost' target='_blank' title='My coding style on GitHub'>
                 <div styleName='icon'>
                   <FaGithub />
@@ -44,7 +44,7 @@ export default class Social extends PureComponent {
             </div>
           </Unit>
           <Unit size='1-2' smSize='1-4' styleName='social'>
-            <div className='section-animated' style={{transitionDelay: `0.${active ? '3' : '2'}s`}}>
+            <div className='section-animated-bg' style={{transitionDelay: `0.${active ? '3' : '2'}s`}}>
               <a href='https://www.linkedin.com/in/wardoost' target='_blank' title='My professional life on LinkedIn'>
                 <div styleName='icon'>
                   <FaLinkedin />
@@ -53,7 +53,7 @@ export default class Social extends PureComponent {
             </div>
           </Unit>
           <Unit size='1-2' smSize='1-4' styleName='social'>
-            <div className='section-animated' style={{transitionDelay: `0.${active ? '4' : '1'}s`}}>
+            <div className='section-animated-bg' style={{transitionDelay: `0.${active ? '4' : '1'}s`}}>
               <a href='https://medium.com/@wardoost' target='_blank' title='What I read on Medium'>
                 <div styleName='icon'>
                   <FaMedium />

@@ -25,8 +25,7 @@ export default class Layout extends PureComponent {
     this.scrollSpy = new ScrollSpy(menu, {
       location: this.props.location,
       callback: this.updateActiveHash,
-      duration: 400,
-      offset: 48
+      duration: 400
     })
   }
 

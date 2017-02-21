@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react'
 import {findDOMNode} from 'react-dom'
 import CSSModules from 'react-css-modules'
-import Footer from './Footer'
 import styles from './Page.scss'
 
 @CSSModules(styles)
@@ -28,7 +27,6 @@ export default class Page extends PureComponent {
     return (
       <div styleName='page' style={animating ? {minHeight: animationHeight} : null}>
         {this.props.children}
-        <Footer styleName={animating ? 'footer-hide' : 'footer'} />
       </div>
     )
   }

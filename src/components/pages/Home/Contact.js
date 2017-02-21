@@ -24,7 +24,7 @@ export default class Contact extends PureComponent {
         </div>
         <Grid padding='xs'>
           <Unit size='1' smSize='1-4' mdSize='1-5' styleName='mail'>
-            <div className='section-animated' style={{transitionDelay: `0.1s`}}>
+            <div className='section-animated-bg' style={{transitionDelay: `0.1s`}}>
               <a styleName='mail' href='mailto:wardoosterlijnck@gmail.com' target='_blank' title='Send me an email'>
                 <div styleName='icon'>
                   <FaEnvelope />
@@ -35,7 +35,7 @@ export default class Contact extends PureComponent {
           <Unit size='1' smSize='3-4' mdSize='4-5'>
             <div className='section-animated-bg' style={{transitionDelay: `0.2s`}}>
               <div styleName='contact-form'>
-                <Form kind='stacked' name='contact' netlify>
+                <Form kind='stacked' name='contact'>
                   <fieldset>
                     <Input type='text' placeholder='Name' size='1' />
                     <Input type='email' placeholder='Email' size='1' required />
