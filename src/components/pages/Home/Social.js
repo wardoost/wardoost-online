@@ -18,9 +18,11 @@ export default class Social extends PureComponent {
 
     return (
       <div {...props}>
-        <div styleName='social-header' className='section-animated-bg'>
+        <div className='section-animated-header'>
           <h1>Social</h1>
-          <p>Want to know more about me? Stalk me here</p>
+        </div>
+        <div styleName='intro' className='section-animated-bg'>
+          <p>Want to know more about me? Stalk me on these.</p>
         </div>
         <Grid padding='xs'>
           <Unit size='1-2' smSize='1-4' styleName='social'>

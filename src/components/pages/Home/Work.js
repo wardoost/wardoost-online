@@ -17,7 +17,7 @@ export default class Work extends PureComponent {
 
     return (
       <div {...props}>
-        <div styleName='work-heading' className='section-animated-bg'>
+        <div className='section-animated-header'>
           <h1>Work</h1>
         </div>
         <Grid padding='xs'>

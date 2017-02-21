@@ -16,9 +16,11 @@ export default class Contact extends PureComponent {
 
     return (
       <div {...props}>
-        <div className='section-animated-bg' styleName='contact-header'>
+        <div className='section-animated-header'>
           <h1>Contact</h1>
-          <p>You want to hire me, work with me or just have something awesome to show? Send me an email or fill the contact form</p>
+        </div>
+        <div styleName='intro' className='section-animated-bg'>
+          <p>You want to hire me, work with me or just have something awesome to show?<br />Send me an email or fill the contact form.</p>
         </div>
         <Grid padding='xs'>
           <Unit size='1' smSize='1-4' mdSize='1-5' styleName='mail'>

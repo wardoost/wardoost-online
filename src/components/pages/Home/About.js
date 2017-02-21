@@ -16,11 +16,12 @@ export default class About extends PureComponent {
 
     return (
       <div {...props}>
-        <div styleName='intro' className='section-animated-bg'>
+        <div className='section-animated-header'>
           <h1>About</h1>
+        </div>
+        <div styleName='intro' className='section-animated-bg'>
           <p>Loving code, motion design and everything interactive.</p>
           <p>Voluptate est eiusmod occaecat nulla aute duis Lorem labore pariatur aliquip cupidatat irure est do incididunt nulla in. Excepteur sint enim non nulla incididunt eu incididunt ex ex deserunt esse ullamco cillum qui. Quis cillum fugiat nulla elit duis ea labore aute do aliquip nisi occaecat eu.</p>
-          <p>Consectetur cupidatat minim culpa consequat incididunt velit ipsum eu pariatur duis commodo culpa. Eu anim laboris ullamco excepteur culpa amet nulla sit in qui tempor reprehenderit ea duis non esse fugiat. Laboris anim cupidatat sit laborum est deserunt nostrud mollit aliquip reprehenderit. Id esse Lorem laborum minim amet qui quis duis occaecat veniam aliqua esse sint dolor occaecat.</p>
         </div>
         <div styleName='icon-down' className='section-animated'>
           <Link to='/#work'>

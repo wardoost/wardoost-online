@@ -4,18 +4,18 @@ $button-down-height: 80px;
 
 .intro {
   padding: $padding-md $padding-lg;
-  min-height: calc(100vh - #{$nav-height + 2 * $padding-sm + 3 * $padding-xs});
+  min-height: calc(100vh - #{$nav-height + 2 * $padding-sm + 3 * $padding-xs + $header-height-xs});
 
   @media #{$sm-min} {
-    min-height: calc(100vh - #{$nav-height + 2 * $padding-md + $button-down-height + 3 * $padding-xs});
+    min-height: calc(100vh - #{$nav-height + 2 * $padding-md + $button-down-height + 3 * $padding-xs + $header-height-sm});
   }
 
   @media #{$md-min} {
-    min-height: calc(100vh - #{$nav-height + 2 * $padding-lg + $button-down-height + 3 * $padding-xs});
+    min-height: calc(100vh - #{$nav-height + 2 * $padding-lg + $button-down-height + 3 * $padding-xs + $header-height-md});
   }
 
   @media #{$lg-min} {
-    min-height: calc(100vh - #{$nav-height + 2 * $padding-xl + $button-down-height + 3 * $padding-xs});
+    min-height: calc(100vh - #{$nav-height + 2 * $padding-xl + $button-down-height + 3 * $padding-xs + $header-height-lg});
   }
 }
 
