@@ -19,9 +19,14 @@ export default class About extends PureComponent {
         <div className='section-animated-header'>
           <h1>About</h1>
         </div>
-        <div styleName='intro' className='section-animated-bg'>
-          <p>Loving code, motion design and everything interactive.</p>
-          <p>Voluptate est eiusmod occaecat nulla aute duis Lorem labore pariatur aliquip cupidatat irure est do incididunt nulla in. Excepteur sint enim non nulla incididunt eu incididunt ex ex deserunt esse ullamco cillum qui. Quis cillum fugiat nulla elit duis ea labore aute do aliquip nisi occaecat eu.</p>
+        <div className='section-animated-bg'>
+          <div styleName='intro'>
+            <div styleName='intro-content'>
+              <p>I’m a digital creative… in training at least. I&nbsp;say this because learning is a core characteristic of my profession. That became even more apparent when I moved to Melbourne at the end of 2016.</p>
+              <p>When you scroll down you'll discover my love for code, color, motion and everything interactive. Those are the things I like to learn the most about.</p>
+              <p>Enjoy my online ego boost!</p>
+            </div>
+          </div>
         </div>
         <div styleName='icon-down' className='section-animated'>
           <Link to='/#work'>

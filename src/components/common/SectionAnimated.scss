@@ -82,11 +82,13 @@
 
     h1 {
       margin: 0;
-      font-size: 1.4 * $header-height-xs;
+      font-size: 1.9 * $header-height-xs;
+      font-weight: 900;
+      text-transform: uppercase;
       line-height: $header-height-xs;
       display: inline-block;
       color: $white;
-      background: -webkit-linear-gradient(45deg, $white, rgba($white, 0.6));
+      background: -webkit-linear-gradient(45deg, $white, rgba($white, 0.3));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -95,7 +97,7 @@
       height: $header-height-sm;
 
       h1 {
-        font-size: 1.4 * $header-height-sm;
+        font-size: 1.9 * $header-height-sm;
         line-height: $header-height-sm;
       }
     }
@@ -104,7 +106,7 @@
       height: $header-height-md;
 
       h1 {
-        font-size: 1.4 * $header-height-md;
+        font-size: 1.9 * $header-height-md;
         line-height: $header-height-md;
       }
     }
@@ -113,7 +115,7 @@
       height: $header-height-lg;
 
       h1 {
-        font-size: 1.4 * $header-height-lg;
+        font-size: 1.9 * $header-height-lg;
         line-height: $header-height-lg;
       }
     }
@@ -123,7 +125,7 @@
     text-align: right;
 
     h1 {
-      background: -webkit-linear-gradient(135deg, $white, rgba($white, 0.6));
+      background: -webkit-linear-gradient(135deg, $white, rgba($white, 0.3));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }

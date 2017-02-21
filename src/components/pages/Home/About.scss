@@ -3,25 +3,47 @@
 $button-down-height: 80px;
 
 .intro {
-  padding: $padding-md $padding-lg;
-  min-height: calc(100vh - #{$nav-height + 2 * $padding-sm + 3 * $padding-xs + $header-height-xs});
+  position: relative;
+  min-height: calc(100vh - #{$nav-height + 2 * $padding-sm + $button-down-height + 4 * $padding-xs + $header-height-xs});
 
   @media #{$sm-min} {
-    min-height: calc(100vh - #{$nav-height + 2 * $padding-md + $button-down-height + 3 * $padding-xs + $header-height-sm});
+    min-height: calc(100vh - #{$nav-height + 2 * $padding-md + $button-down-height + 4 * $padding-xs + $header-height-sm});
   }
 
   @media #{$md-min} {
-    min-height: calc(100vh - #{$nav-height + 2 * $padding-lg + $button-down-height + 3 * $padding-xs + $header-height-md});
+    min-height: calc(100vh - #{$nav-height + 2 * $padding-lg + $button-down-height + 4 * $padding-xs + $header-height-md});
   }
 
   @media #{$lg-min} {
-    min-height: calc(100vh - #{$nav-height + 2 * $padding-xl + $button-down-height + 3 * $padding-xs + $header-height-lg});
+    min-height: calc(100vh - #{$nav-height + 2 * $padding-xl + $button-down-height + 4 * $padding-xs + $header-height-lg});
+  }
+}
+
+.intro-content {
+  position: absolute;
+  top: 50%;
+  left: $padding-md;
+  right: $padding-md;
+  transform: translateY(-50%);
+
+  @media #{$sm-min} {
+    top: 45%;
+    left: 20%;
+    right: 20%;
+  }
+
+  @media #{$md-min} {
+    left: 25%;
+    right: 25%;
+  }
+
+  @media #{$lg-min} {
+    left: 30%;
+    right: 30%;
   }
 }
 
 .icon-down {
-  display: none;
-
   a {
     display: block;
     height: $button-down-height;
@@ -34,10 +56,6 @@ $button-down-height: 80px;
       margin-top: -0.3em;
       animation: fadeInOutDown 2s infinite;
     }
-  }
-
-  @media #{$sm-min} {
-    display: block;
   }
 
   a:hover {
