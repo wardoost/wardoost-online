@@ -26,8 +26,8 @@ export default class About extends PureComponent {
         <div className='section-animated-bg'>
           <div styleName='intro'>
             <div styleName='intro-content'>
-              <p>Hi, I'm Ward Oosterlijnck and I’m a digital creative… in training at least.</p>
-              <p>I&nbsp;say this because learning is one of the core characteristics of my profession. That became even more apparent when I moved to Melbourne at the end of 2016.</p>
+              <p>Hi, I'm Ward Oosterlijnck and I’m a digital creative…</p>
+              <p>In training at least. I&nbsp;say this because learning is one of the core characteristics of my profession. That became even more apparent when I moved to Melbourne at the end of 2016. New country, new people, new ideas.</p>
               <p>When you scroll down you'll discover my love for code, color, motion and everything interactive. Those are the things I like to learn the most about.</p>
               <p>Enjoy my online ego boost!</p>
             </div>

@@ -27,18 +27,18 @@ $button-down-height: 80px;
   transform: translateY(-50%);
 
   @media #{$sm-min} {
+    left: 10%;
+    right: 10%;
+  }
+
+  @media #{$md-min} {
     left: 20%;
     right: 20%;
   }
 
-  @media #{$md-min} {
-    left: 25%;
-    right: 25%;
-  }
-
   @media #{$lg-min} {
-    left: 30%;
-    right: 30%;
+    left: 28%;
+    right: 28%;
   }
 }
 
