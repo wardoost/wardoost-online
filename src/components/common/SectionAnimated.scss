@@ -94,7 +94,7 @@
       -webkit-text-fill-color: transparent;
     }
 
-    @media #{$sm-min} {
+    @media #{$xs-min} {
       height: $header-height-sm;
 
       h1 {
@@ -103,7 +103,7 @@
       }
     }
 
-    @media #{$md-min} {
+    @media #{$sm-min} {
       height: $header-height-md;
 
       h1 {
@@ -112,12 +112,21 @@
       }
     }
 
-    @media #{$lg-min} {
+    @media #{$md-min} {
       height: $header-height-lg;
 
       h1 {
         font-size: 1.9 * $header-height-lg;
         line-height: $header-height-lg;
+      }
+    }
+
+    @media #{$lg-min} {
+      height: $header-height-xl;
+
+      h1 {
+        font-size: 1.9 * $header-height-xl;
+        line-height: $header-height-xl;
       }
     }
   }

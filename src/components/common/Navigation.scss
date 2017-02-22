@@ -88,15 +88,12 @@
     box-shadow: 0 0 5px rgba($black, 0.2);
   }
   .menu-toggle {
+    left: $menu-width - $nav-height;
+
     &:hover,
     &:focus {
       background-color: rgba($white, 0.2);
       transform: scale(1);
-    }
-  }
-  @media #{$sm-min} {
-    .menu-toggle {
-      left: $menu-width - $nav-height;
     }
   }
 }

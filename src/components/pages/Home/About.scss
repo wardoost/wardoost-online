@@ -4,36 +4,39 @@ $button-down-height: 80px;
 
 .intro {
   position: relative;
-  min-height: calc(100vh - #{2 * $padding-sm + $button-down-height + 4 * $padding-xs + $header-height-xs});
+  min-height: calc(100vh - #{2 * $padding-sm + 3 * $padding-xs + $header-height-xs});
+
+  @media #{$xs-min} {
+    min-height: calc(100vh - #{2 * $padding-sm + $button-down-height + 4 * $padding-xs + $header-height-sm});
+  }
 
   @media #{$sm-min} {
-    min-height: calc(100vh - #{2 * $padding-md + $button-down-height + 4 * $padding-xs + $header-height-sm});
+    min-height: calc(100vh - #{2 * $padding-md + $button-down-height + 4 * $padding-xs + $header-height-md});
   }
 
   @media #{$md-min} {
-    min-height: calc(100vh - #{2 * $padding-lg + $button-down-height + 4 * $padding-xs + $header-height-md});
+    min-height: calc(100vh - #{2 * $padding-lg + $button-down-height + 4 * $padding-xs + $header-height-lg});
   }
 
   @media #{$lg-min} {
-    min-height: calc(100vh - #{2 * $padding-xl + $button-down-height + 4 * $padding-xs + $header-height-lg});
+    min-height: calc(100vh - #{2 * $padding-xl + $button-down-height + 4 * $padding-xs + $header-height-xl});
   }
 }
 
 .intro-content {
-  position: absolute;
-  top: 50%;
-  left: $padding-md;
-  right: $padding-md;
-  transform: translateY(-50%);
+  padding: $padding-lg $padding-md;
 
-  @media #{$sm-min} {
-    left: 10%;
-    right: 10%;
+  @media #{$xs-min} {
+    position: absolute;
+    top: 50%;
+    left: 7%;
+    right: 7%;
+    transform: translateY(-50%);
   }
 
   @media #{$md-min} {
-    left: 20%;
-    right: 20%;
+    left: 18%;
+    right: 18%;
   }
 
   @media #{$lg-min} {
@@ -43,6 +46,8 @@ $button-down-height: 80px;
 }
 
 .icon-down {
+  display: none;
+
   a {
     display: block;
     height: $button-down-height;
@@ -55,6 +60,10 @@ $button-down-height: 80px;
       margin-top: -0.2em;
       animation: fadeInOutDown 2s infinite;
     }
+  }
+
+  @media #{$xs-min} {
+    display: block;
   }
 
   a:hover {
