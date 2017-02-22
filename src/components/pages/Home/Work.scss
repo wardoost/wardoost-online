@@ -1,7 +1,7 @@
 @import '~styles/helpers';
 
 .work-item {
-  padding: $padding-md $padding-lg;
+  padding: $padding-md $padding-lg $padding-md + 65px;
 }
 
 .work-img {
@@ -17,5 +17,24 @@
 }
 
 .work-link {
-  text-align: right;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transition: background-color 200ms linear;
+
+  &:hover,
+  &:focus {
+    background-color: rgba($white, 0.2);
+  }
+
+  a {
+    display: block;
+    padding: $padding-md $padding-lg;
+  }
+
+  svg {
+    color: $white;
+  }
 }

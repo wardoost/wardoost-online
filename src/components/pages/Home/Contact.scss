@@ -37,7 +37,7 @@
     }
 
     &:hover {
-      color: $warning;
+      color: lighten($warning, 10%);
       background-color: rgba($white, 0.5);
       .icon {
         transform: scale(1.5);
