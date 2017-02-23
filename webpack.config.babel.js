@@ -1,6 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const DotenvPlugin = require('dotenv-webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
@@ -10,6 +9,10 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
 
+// Load environment variables from .env file. Surpress warnings using silent if file is missing.
+require('dotenv').config({silent: true})
+
+// Convenient bool to check environment
 const DEV = process.env.NODE_ENV === 'development'
 
 module.exports = {
@@ -96,9 +99,9 @@ module.exports = {
   plugins: ([
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.GOOGLE_ANALYTICS_TRACKING_ID': JSON.stringify(process.env.GOOGLE_ANALYTICS_TRACKING_ID)
     }),
-    new DotenvPlugin(),
     new ExtractTextPlugin({
       filename: DEV ? '[name].css' : '[name].[hash].css',
       allChunks: true,
