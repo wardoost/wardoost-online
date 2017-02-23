@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const DotenvPlugin = require('dotenv-webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
@@ -97,6 +98,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
+    new DotenvPlugin(),
     new ExtractTextPlugin({
       filename: DEV ? '[name].css' : '[name].[hash].css',
       allChunks: true,
