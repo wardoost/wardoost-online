@@ -1,0 +1,79 @@
+@import '~styles/helpers';
+
+.button-loading {
+  overflow: hidden;
+  position: relative;
+
+  &:disabled .content {
+    opacity: 0.5;
+  }
+
+  .content {
+    display: inline-block;
+    position: relative;
+    left: 0;
+    transition: opacity 300ms linear 200ms, left 500ms ease(out-expo) 200ms;
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    opacity: 0;
+    transform: scale(2) translate(-25%, -25%);
+    transition: opacity 100ms linear 200ms, transform 300ms ease(in-back);
+
+    * {
+      display: inline-block;
+      position: relative;
+    }
+  }
+}
+
+.button-loading-active {
+  composes: button-loading;
+
+  &:disabled {
+    opacity: 1;
+  }
+
+  .content {
+    left: -0.75em;
+    transition: opacity 300ms linear, left 500ms ease(out-expo);
+  }
+
+  .icon {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -50%);
+    transition: opacity 100ms linear, transform 300ms ease(out-back);
+  }
+}
+
+.button-loading-replace {
+  .content {
+    left: 0;
+    transition: opacity 100ms linear 200ms;
+  }
+  .icon {
+    left: 50%;
+    * {
+      position: relative;
+      left: 0em;
+    }
+  }
+  &.button-loading-active .content {
+    opacity: 0;
+    transition: opacity 100ms linear;
+  }
+}
+
+.icon-spin {
+  animation-duration: 750ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: spin;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

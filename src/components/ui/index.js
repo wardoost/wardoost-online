@@ -1,6 +1,7 @@
 export {default as Grid} from './grid/Grid.js'
 export {default as Unit} from './grid/Unit.js'
 export {default as Button} from './button/Button.js'
+export {default as ButtonLoading} from './button/ButtonLoading.js'
 export {default as ButtonGroup} from './button/ButtonGroup.js'
 export {default as Form} from './form/Form.js'
 export {default as FormMessage} from './form/FormMessage.js'
