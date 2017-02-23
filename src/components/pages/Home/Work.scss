@@ -12,15 +12,27 @@
   }
 }
 
+.work-title {
+  margin: 0;
+}
+
+.work-when {
+  margin-top: 0;
+  font-size: 0.8em;
+  color: rgba($white, 0.7);
+}
+
+.work-description {
+  > *:first-child {
+    margin-top: 0;
+  }
+}
+
 .work-img {
   border-radius: $radius;
   width: 125px;
   box-shadow: 0 0 5px rgba($black, 0.2);
   margin-bottom: $padding-md;
-}
-
-.work-description {
-  margin: 0;
 }
 
 .work-links {
@@ -47,10 +59,12 @@
 
   svg {
     color: $white;
+    margin-right: 0.2em;
   }
 
   @media #{$md-min} {
     text-align: center;
+
     a {
       padding: $padding-md 0;
     }
