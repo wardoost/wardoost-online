@@ -1,13 +1,20 @@
 @import '~styles/helpers';
 
-.work-item {
-  padding: $padding-md $padding-lg $padding-md + 65px;
+.work {
+  padding: $padding-md $padding-lg;
+
+  @media #{$sm-max} {
+    padding-bottom: $padding-lg !important;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
 }
 
 .work-img {
   border-radius: $radius;
   width: 125px;
-  margin: 0 auto;
   box-shadow: 0 0 5px rgba($black, 0.2);
   margin-bottom: $padding-md;
 }
@@ -16,12 +23,16 @@
   margin: 0;
 }
 
+.work-links {
+  @media #{$sm-min} {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
 .work-link {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
   transition: background-color 200ms linear;
 
   &:hover,
@@ -36,5 +47,12 @@
 
   svg {
     color: $white;
+  }
+
+  @media #{$md-min} {
+    text-align: center;
+    a {
+      padding: $padding-md 0;
+    }
   }
 }

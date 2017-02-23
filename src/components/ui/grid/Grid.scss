@@ -4,7 +4,7 @@
   composes: pure-g from 'purecss/build/grids.css';
   font-family: inherit;
 
-  [class *= "unit"] {
+  > [class *= "unit"] {
     font-family: inherit;
   }
 }
@@ -22,7 +22,7 @@ $paddings: (
     composes: grid;
     margin: 0 #{-$size / 2};
 
-    [class *= "unit"] {
+    > [class *= "unit"] {
       padding: 0 #{$size / 2};
     }
   }
@@ -31,7 +31,7 @@ $paddings: (
 .grid-reverse {
   direction: rtl;
 
-  [class *= "unit"] {
+  > [class *= "unit"] {
     direction: ltr;
   }
 }

@@ -7,7 +7,7 @@
 
   &:before {
     background-color: $primary;
-    background-image: linear-gradient(10deg, $primary, $warning);
+    background-image: linear-gradient(20deg, $primary, $warning);
   }
 
   section:before {
@@ -28,7 +28,7 @@
 
   &:before {
     background-color: $secondary;
-    background-image: linear-gradient(-10deg, $secondary, $primary);
+    background-image: linear-gradient(-20deg, $secondary, $primary);
   }
 
   section:before {
@@ -49,7 +49,7 @@
 
   &:before {
     background-color: $error;
-    background-image: linear-gradient(10deg, $error, $secondary);
+    background-image: linear-gradient(20deg, $error, $secondary);
   }
 
   section:before {
@@ -70,7 +70,7 @@
 
   &:before {
     background-color: $warning;
-    background-image: linear-gradient(-10deg, $warning, $error);
+    background-image: linear-gradient(-20deg, $warning, $error);
   }
 
   section:before {
