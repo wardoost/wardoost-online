@@ -105,7 +105,6 @@ export default class ScrollSpy {
     const increment = 20
 
     window.removeEventListener('scroll', this.onScroll)
-    if (this._enabled) this._cb(to)
 
     const animateScroll = elapsedTime => {
       elapsedTime += increment
@@ -116,6 +115,7 @@ export default class ScrollSpy {
           animateScroll(elapsedTime)
         }, increment)
       } else {
+        if (this._enabled) this._cb(to)
         setTimeout(() => {
           window.addEventListener('scroll', this.onScroll)
         }, increment)
@@ -124,7 +124,7 @@ export default class ScrollSpy {
     animateScroll(0)
   }
 
-  scrollTop (duration) {
+  scrollToTop (duration) {
     this.scrollTo(0, duration || this._duration)
   }
 
