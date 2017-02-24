@@ -44,7 +44,7 @@ export default class Layout extends PureComponent {
   }
 
   removeFocus (e) {
-    e.target.blur()
+    if (e.target.blur) e.target.blur()
   }
 
   createMenu (menu, location) {

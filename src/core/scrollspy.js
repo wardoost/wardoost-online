@@ -10,8 +10,7 @@ export default class ScrollSpy {
     this._duration = options.duration || 1000
     this._offset = options.offset || 0
     this._location = options.location || window.location
-    this._element = options.element || document.body
-    this._scrollTop = this._element.scrollTop
+    this._scrollTop = window.pageYOffset || window.scrollY || 0
     this._delay = options.delay || 50
     this._enabled = true
 
@@ -39,14 +38,15 @@ export default class ScrollSpy {
   @autobind
   @throttle(100)
   onScroll (e) {
-    const scrollTop = this._element.scrollTop < 0 ? 0 : this._element.scrollTop // Minimum of 0, Safari goes under 0
-    const scrollHeight = window.innerHeight
-    const maxScroll = this._element.clientHeight - scrollHeight
-    const correctionTopThreshold = scrollHeight / 2
-    const correctionTop = (scrollTop < correctionTopThreshold ? scrollTop / correctionTopThreshold : 1) * scrollHeight / 2
-    const correctionBottomThreshold = maxScroll - scrollHeight / 2
-    const correctionBottom = (scrollTop > correctionBottomThreshold ? (scrollTop - correctionBottomThreshold) / (maxScroll - correctionBottomThreshold) : 0) * scrollHeight / 2
-    const scrollCheck = scrollTop + correctionTop + correctionBottom + this._offset
+    const scrollTop = window.pageYOffset || window.scrollY || 0
+    const scrollPosition = scrollTop < 0 ? 0 : scrollTop // Minimum of 0, Safari goes under 0
+    const windowHeight = window.innerHeight
+    const scrollHeight = document.body.clientHeight - windowHeight
+    const correctionTopThreshold = windowHeight / 2
+    const correctionTop = (scrollPosition < correctionTopThreshold ? scrollPosition / correctionTopThreshold : 1) * windowHeight / 2
+    const correctionBottomThreshold = scrollHeight - windowHeight / 2
+    const correctionBottom = (scrollPosition > correctionBottomThreshold ? (scrollPosition - correctionBottomThreshold) / (scrollHeight - correctionBottomThreshold) : 0) * windowHeight / 2
+    const scrollCheck = scrollPosition + correctionTop + correctionBottom + this._offset
     const activeItem = scrollTop > this._scrollTop
     ? this._targets.find(item => scrollCheck > item.top)
     : this._targets.find(item => scrollCheck >= item.top)
@@ -97,8 +97,8 @@ export default class ScrollSpy {
 
   scrollTo (to, duration) {
     const dur = duration || this._duration
-    const max = this._element.clientHeight - window.innerHeight
-    const start = this._element.scrollTop
+    const max = document.body.clientHeight - window.innerHeight
+    const start = window.pageYOffset || window.scrollY || 0
     const child = document.getElementById(to)
     const end = (typeof to === 'number' ? to : to ? child ? child.offsetTop : start : 0) - this._offset
     const change = (end > max ? max : end) - start
@@ -110,7 +110,7 @@ export default class ScrollSpy {
     const animateScroll = elapsedTime => {
       elapsedTime += increment
       var position = this.easeInOut(elapsedTime, start, change, dur)
-      this._element.scrollTop = position
+      window.scrollTo(0, position)
       if (elapsedTime < dur) {
         setTimeout(() => {
           animateScroll(elapsedTime)

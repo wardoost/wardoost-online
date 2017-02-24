@@ -79,6 +79,7 @@
     height: $header-height-xs;
     text-align: left;
     opacity: 0.5;
+    overflow: hidden;
     transition: opacity 200ms linear;
 
     h1 {
@@ -88,7 +89,7 @@
       text-transform: uppercase;
       line-height: $header-height-xs;
       display: inline-block;
-      color: $white;
+      color: rgba($white, 0.5);
       background: -webkit-linear-gradient(45deg, $white, rgba($white, 0.3));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;

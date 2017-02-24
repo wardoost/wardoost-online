@@ -11,7 +11,7 @@ export default class About extends PureComponent {
   }
 
   removeFocus (e) {
-    e.target.blur()
+    if (e.target.blur) e.target.blur()
   }
 
   render () {
