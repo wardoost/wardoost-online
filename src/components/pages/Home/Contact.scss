@@ -1,67 +1,42 @@
 @import '~styles/helpers';
 
 .intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: $padding-md $padding-lg;
 }
 
 .mail {
-  a {
-    display: inline-block;
-    text-align: center;
-    font-size: 3em;
-    width: 100%;
-    height: 100%;
-    padding: $padding-md;
-    min-height: 3em;
-    transition: color 0.2s linear, background-color 0.2s linear;
+  display: inline-block;
+  text-align: center;
+  font-size: 3em;
+  width: 100%;
+  height: 100%;
+  padding: $padding-md;
+  transition: color 0.2s linear, background-color 0.2s linear;
 
-    @media #{$md-min} {
-      font-size: 4em;
-    }
-
-    @media #{$lg-min} {
-      font-size: 5em;
-    }
-
-    .icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      transform-origin: 150% 150%;
-      transition: transform 0.3s ease(out-back);
-
-      svg {
-        margin-top: -0.2em;
-      }
-    }
-
-    &:hover {
-      color: lighten($warning, 10%);
-      background-color: rgba($white, 0.5);
-      .icon {
-        transform: scale(1.5);
-      }
-    }
-  }
-}
-
-.contact-form {
-  margin: 0 auto;
   @media #{$md-min} {
-    width: 80%;
+    font-size: 4em;
   }
+
   @media #{$lg-min} {
-    width: 60%;
+    font-size: 5em;
   }
 
-  form {
-    padding: $padding-md;
+  .icon {
+    transition: transform 0.3s ease(out-back);
+
+    svg {
+      margin-top: -0.2em;
+    }
   }
 
-  textarea {
-    width: 100%;
-    resize: vertical;
-    min-height: 7em;
+  &:hover {
+    color: mix($warning, $error);
+    background-color: rgba($white, 0.5);
+    .icon {
+      transform: scale(1.5);
+    }
   }
 }
