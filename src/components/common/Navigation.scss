@@ -33,15 +33,34 @@
 
 .menu-link {
   composes: pure-menu-link from 'purecss/build/menus.css';
-  color: $white;
-  border: none;
+  position: relative;
   padding: 0.7em 0 0.7em 0.7em;
-  transition: background-color 100ms linear, color 100ms linear;
+  border: none;
+  color: $white;
+  transition: color 100ms linear;
 
   &:hover,
   &:focus {
     color: $white;
-    background-color: rgba($white, 0.3);
+    background-color: transparent;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: rgba($white, 0.2);
+    transition: right 500ms ease(out-expo);
+  }
+
+  &:hover,
+  &:focus {
+    &:before {
+      right: 0;
+    }
   }
 }
 
@@ -52,8 +71,19 @@
 
 .menu-link-active {
   composes: menu-link;
-  background-color: rgba($white, 0.2);
   color: $white;
+
+  &:before {
+    right: 0;
+    transition: right 500ms ease(out-expo), background-color 200ms linear;
+  }
+
+  &:hover,
+  &:focus {
+    &:before {
+      background-color: rgba($white, 0.3);
+    }
+  }
 }
 
 .menu-toggle {

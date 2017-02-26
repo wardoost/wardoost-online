@@ -4,7 +4,7 @@
   padding: $padding-md $padding-lg;
 
   @media #{$sm-max} {
-    padding-bottom: $padding-lg !important;
+    padding-bottom: 0 !important;
   }
 
   h2 {
@@ -57,7 +57,7 @@
     bottom: 0;
     left: 0;
     background-color: rgba($white, 0.2);
-    transition: top 200ms ease(out-expo);
+    transition: top 300ms ease(out-expo);
   }
 
   &:hover,

@@ -11,10 +11,10 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: $gray-dark;
   text-size-adjust: none;
-  font-size: 1.2em;
+  font-size: 1.1em;
   line-height: 1.6;
   @media #{$sm-min} {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
   @media #{$md-min} {
     font-size: 1em;
