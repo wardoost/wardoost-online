@@ -35,7 +35,7 @@ export default class Contact extends PureComponent {
           <Unit size='1' smSize='3-4' mdSize='4-5'>
             <div className='section-animated-bg' style={{transitionDelay: `0.2s`}}>
               <div styleName='contact-form'>
-                <Form kind='stacked' name='contact'>
+                <Form kind='stacked' name='contact' data-netlify>
                   <fieldset>
                     <Input type='text' placeholder='Name' size='1' />
                     <Input type='email' placeholder='Email' size='1' required />
