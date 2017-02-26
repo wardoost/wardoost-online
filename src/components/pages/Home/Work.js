@@ -68,11 +68,9 @@ export default class Work extends PureComponent {
             {links.map((link, i) => {
               return (
                 <Unit key={i} smSize={links.length % 2 !== 0 && links.length - i === 1 ? '1' : '1-2'}>
-                  <div styleName='work-link'>
-                    <a href={link.url} target='_blank'>
-                      <FaChain /> {link.label || link.url}
-                    </a>
-                  </div>
+                  <a styleName='work-link' href={link.url} target='_blank'>
+                    <FaChain /> {link.label || link.url}
+                  </a>
                 </Unit>
               )
             })}

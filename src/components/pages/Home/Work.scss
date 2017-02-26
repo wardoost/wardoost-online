@@ -45,16 +45,26 @@
 }
 
 .work-link {
-  transition: background-color 200ms linear;
+  position: relative;
+  display: block;
+  padding: $padding-md $padding-lg;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba($white, 0.2);
+    transition: top 200ms ease(out-expo);
+  }
 
   &:hover,
   &:focus {
-    background-color: rgba($white, 0.2);
-  }
-
-  a {
-    display: block;
-    padding: $padding-md $padding-lg;
+    &:before {
+      top: 0;
+    }
   }
 
   svg {
@@ -63,10 +73,7 @@
   }
 
   @media #{$md-min} {
+    padding: $padding-md 0;
     text-align: center;
-
-    a {
-      padding: $padding-md 0;
-    }
   }
 }
