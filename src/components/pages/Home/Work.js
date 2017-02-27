@@ -3,6 +3,7 @@ import CSSModules from 'react-css-modules'
 import {Grid, Unit, Image} from '../../ui'
 import FaChain from 'react-icons/lib/fa/chain'
 import oink from '../../../assets/oink.jpg'
+import vercamstConsult from '../../../assets/vercamst-consult.jpg'
 import tinderMeCards from '../../../assets/tinderme-cards.jpg'
 import storyMeWellPlayed from '../../../assets/storyme-wellplayed.jpg'
 import shootingTheApes from '../../../assets/shooting-the-apes.jpg'
@@ -18,6 +19,16 @@ const works = [
     link: {
       url: 'https://www.oink.agency/',
       label: 'oink.agency'
+    }
+  },
+  {
+    title: 'Vercamst Consult',
+    when: '2016',
+    description: 'I taught myself <a href="https://facebook.github.io/react/" target="_blank">React</a> and <a href="http://redux.js.org/" target="_blank">Redux</a> while developing this basic but clean website. Content management is powered by <a href="https://firebase.google.com/" target="_blank">Firebase</a>. These are the technologies I will use in the future as they work so well together.',
+    image: vercamstConsult,
+    link: {
+      url: 'https://www.vercamstconsult.be/',
+      label: 'vercamstconsult.be'
     }
   },
   {
@@ -56,7 +67,7 @@ const works = [
   {
     title: 'Envato',
     when: '2008-2010',
-    description: 'Flash might be a thing of the past but in it&apos;s time it was THE tool to make fancy animations. The Envato Market was the ideal place to test out my creations with my first real clients.',
+    description: '<a href="http://www.adobe.com/software/flash/about/" target="_blank">Flash</a> might be a thing of the past but in it&apos;s time it was THE tool to make fancy animations. The <a href="https://market.envato.com/" target="_blank">Envato Market</a> was the ideal place to test out my creations with my first real clients.',
     image: envato,
     link: {
       url: 'https://themeforest.net/user/wardoosterlijnck',
@@ -131,6 +142,9 @@ export default class Work extends PureComponent {
       <div {...props}>
         <div className='section-animated-header'>
           <h1>Work</h1>
+        </div>
+        <div styleName='intro' className='section-animated-bg'>
+          <p>This selection of work shows my journey in the digital world.</p>
         </div>
         <Grid padding='xs'>
           {this.createWorkItems(active)}
