@@ -12,7 +12,7 @@ body {
   color: $gray-dark;
   text-size-adjust: none;
   font-size: 1.1em;
-  line-height: 1.6;
+  line-height: 1.7;
   @media #{$sm-min} {
     font-size: 1.05em;
   }
@@ -33,7 +33,7 @@ p {
 a {
   color: $primary;
   text-decoration: none;
-  transition: color 100ms linear;
+  transition: color 200ms linear;
 
   &:hover,
   &:focus {
@@ -56,4 +56,14 @@ code {
   display: block;
   padding: $padding-md $padding-lg;
   background-color: $gray-lighter;
+}
+
+:global {
+  .emoji {
+    font-size: 1.5em;
+    line-height: 0.75em;
+    text-shadow: 0 0 2px rgba($black, 0.3);
+    position: relative;
+    top: 0.125em;
+  }
 }

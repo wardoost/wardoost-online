@@ -115,7 +115,7 @@
 .nav-active {
   .menu {
     left: $menu-width;
-    box-shadow: 0 0 5px rgba($black, 0.2);
+    box-shadow: 0 0 2px rgba($black, 0.3);
   }
   .menu-toggle {
     left: $menu-width - $nav-height;
