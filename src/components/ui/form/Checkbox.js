@@ -15,7 +15,10 @@ export default class Checkbox extends PureComponent {
 
     return (
       <label htmlFor={this.props.id} styleName={align ? 'checkbox-align' : 'checkbox'}>
-        <input type='checkbox' {...props} />
+        <input
+          type='checkbox'
+          ref='input'
+          {...props} />
         {children}
       </label>
     )

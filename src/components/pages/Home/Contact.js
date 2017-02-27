@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react'
+import {autobind} from 'core-decorators'
 import CSSModules from 'react-css-modules'
 import FaEnvelope from 'react-icons/lib/fa/envelope'
+import FaPaperPlane from 'react-icons/lib/fa/paper-plane'
 import {Grid, Unit, Form, Input, Button} from '../../ui'
 import styles from './Contact.scss'
 
@@ -8,6 +10,33 @@ import styles from './Contact.scss'
 export default class Contact extends PureComponent {
   static propTypes = {
     active: React.PropTypes.bool
+  }
+
+  state = {
+    name: '',
+    email: '',
+    message: ''
+  }
+
+  @autobind
+  handleInputChange (e) {
+    const target = e.target
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const name = target.name
+
+    this.setState({
+      [name]: value
+    })
+  }
+
+  componentDidUpdate (prevProps) {
+    if (prevProps.active !== this.props.active && !this.state.name && !this.state.email && !this.state.message) {
+      if (this.props.active) {
+        this.nameInput.refs.input.focus()
+      } else {
+        this.nameInput.refs.input.blur()
+      }
+    }
   }
 
   render () {
@@ -26,7 +55,7 @@ export default class Contact extends PureComponent {
           <Unit size='1' smSize='1-4' mdSize='1-5' styleName='mail'>
             <div className='section-animated-bg' style={{transitionDelay: `0.1s`}}>
               <a styleName='mail' href='mailto:wardoosterlijnck@gmail.com' target='_blank' title='Send me an email'>
-                <div styleName='icon'>
+                <div styleName='icon-mail'>
                   <FaEnvelope />
                 </div>
               </a>
@@ -45,19 +74,28 @@ export default class Contact extends PureComponent {
                       type='text'
                       placeholder='Name'
                       name='name'
+                      ref={input => { this.nameInput = input }}
+                      value={this.state.name}
+                      onChange={this.handleInputChange}
                       size='1' />
                     <Input
                       type='email'
                       placeholder='Email'
                       name='email'
+                      value={this.state.email}
+                      onChange={this.handleInputChange}
                       size='1'
                       required />
                     <textarea
                       type='text'
                       placeholder='Message'
                       name='message'
+                      value={this.state.message}
+                      onChange={this.handleInputChange}
                       required />
-                    <Button type='submit' kind='primary'>Send</Button>
+                    <Button type='submit' kind='primary'>
+                      <FaPaperPlane styleName='icon-send' /> Send
+                    </Button>
                   </fieldset>
                 </Form>
               </div>

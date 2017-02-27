@@ -62,8 +62,14 @@
 
   &:hover,
   &:focus {
+    color: $white;
+
     &:before {
       top: 0;
+    }
+
+    svg {
+      color: $primary;
     }
   }
 

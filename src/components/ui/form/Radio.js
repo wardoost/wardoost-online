@@ -20,7 +20,10 @@ export default class Radio extends PureComponent {
 
     return (
       <label htmlFor={this.props.id} styleName={align ? 'radio-align' : 'radio'}>
-        <input type='radio' {...props} />
+        <input
+          type='radio'
+          ref='input'
+          {...props} />
         {children}
       </label>
     )

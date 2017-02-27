@@ -23,7 +23,7 @@
       font-size: 5em;
     }
 
-    .icon {
+    .icon-mail {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -39,7 +39,7 @@
     &:hover {
       color: mix($warning, $error);
       background-color: rgba($white, 0.5);
-      .icon {
+      .icon-mail {
         transform: scale(1.5);
       }
     }
@@ -64,4 +64,9 @@
     resize: vertical;
     min-height: 7em;
   }
+}
+
+.icon-send {
+  margin-top: -0.2em;
+  margin-right: 0.2em;
 }

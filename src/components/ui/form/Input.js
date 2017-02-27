@@ -27,7 +27,10 @@ export default class Input extends PureComponent {
     const {size, rounded, ...props} = this.props
 
     return (
-      <input styleName={`${size ? `input-${size}` : ''} ${rounded ? 'input-rounded' : ''}`} {...props} />
+      <input
+        styleName={`${size ? `input-${size}` : ''} ${rounded ? 'input-rounded' : ''}`}
+        ref='input'
+        {...props} />
     )
   }
 }
