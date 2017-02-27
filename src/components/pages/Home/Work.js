@@ -6,6 +6,7 @@ import oink from '../../../assets/oink.jpg'
 import tinderMeCards from '../../../assets/tinderme-cards.jpg'
 import storyMeWellPlayed from '../../../assets/storyme-wellplayed.jpg'
 import shootingTheApes from '../../../assets/shooting-the-apes.jpg'
+import envato from '../../../assets/envato.jpg'
 import styles from './Work.scss'
 
 const works = [
@@ -50,6 +51,16 @@ const works = [
     link: {
       url: 'https://vimeo.com/shootingtheapes',
       label: 'Vimeo profile'
+    }
+  },
+  {
+    title: 'Envato',
+    when: '2008-2010',
+    description: 'Flash might be a thing of the past but in it&apos;s time it was THE tool to make fancy animations. The Envato Market was the ideal place to test out my creations with my first real clients.',
+    image: envato,
+    link: {
+      url: 'https://themeforest.net/user/wardoosterlijnck',
+      label: 'Envato profile'
     }
   }
 ]
