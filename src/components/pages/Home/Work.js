@@ -34,12 +34,15 @@ const works = [
   {
     title: 'TinderMe Cards',
     when: '2016',
-    description: 'Website created in collaboration with <a href="http://driesdepoorter.be/" target="_blank">Dries Depoorter</a> to generate personalised <a href="https://www.gotinder.com/" target="_blank">Tinder</a> business cards. Go create your own and make you business life a little more exciting!',
+    description: 'Website created in collaboration with <a href="http://driesdepoorter.be/" target="_blank">Dries Depoorter</a> to generate personalised <a href="https://www.gotinder.com/" target="_blank">Tinder</a> business cards. Go create your own and make your business life a little more exciting!',
     image: tinderMeCards,
-    link: {
+    links: [{
       url: 'http://www.tinderme.cards/',
       label: 'tinderme.cards'
-    }
+    }, {
+      url: 'https://creators.vice.com/en_au/article/tinder-business-cards-depoorter',
+      label: 'creators.vice.com'
+    }]
   },
   {
     title: 'StoryMe & Well Played',
