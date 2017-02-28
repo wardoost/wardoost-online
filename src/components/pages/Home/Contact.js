@@ -32,7 +32,11 @@ export default class Contact extends PureComponent {
   componentDidUpdate (prevProps) {
     if (prevProps.active !== this.props.active && !this.state.name && !this.state.email && !this.state.message) {
       if (this.props.active) {
+        // Focus without scroll
+        const x = window.scrollX
+        const y = window.scrollY
         this.nameInput.refs.input.focus()
+        window.scrollTo(x, y)
       } else {
         this.nameInput.refs.input.blur()
       }

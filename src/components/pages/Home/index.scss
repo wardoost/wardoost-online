@@ -7,17 +7,13 @@
 
   &:before {
     background-color: $primary;
-    background-image: linear-gradient(20deg, $primary, $warning);
+    background-image: linear-gradient(35deg, $primary, $warning);
   }
 
-  section:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(0deg, $primary, rgba($primary, 0), rgba($primary, 0), rgba($primary, 0));
+  :global {
+    .section-content:before {
+      background-image: linear-gradient(0deg, $primary, rgba($primary, 0), rgba($warning, 0), $warning);
+    }
   }
 }
 
@@ -28,17 +24,13 @@
 
   &:before {
     background-color: $secondary;
-    background-image: linear-gradient(-20deg, $secondary, $primary);
+    background-image: linear-gradient(-35deg, $secondary, $primary);
   }
 
-  section:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(0deg, $secondary, rgba($secondary, 0), rgba($primary, 0), $primary);
+  :global {
+    .section-content:before {
+      background-image: linear-gradient(0deg, $secondary, rgba($secondary, 0), rgba($primary, 0), $primary);
+    }
   }
 }
 
@@ -49,17 +41,13 @@
 
   &:before {
     background-color: $error;
-    background-image: linear-gradient(20deg, $error, $secondary);
+    background-image: linear-gradient(35deg, $error, $secondary);
   }
 
-  section:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(0deg, $error, rgba($error, 0), rgba($secondary, 0), $secondary);
+  :global {
+    .section-content:before {
+      background-image: linear-gradient(0deg, $error, rgba($error, 0), rgba($secondary, 0), $secondary);
+    }
   }
 }
 
@@ -70,16 +58,12 @@
 
   &:before {
     background-color: $warning;
-    background-image: linear-gradient(-20deg, $warning, $error);
+    background-image: linear-gradient(-35deg, $warning, $error);
   }
 
-  section:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(0deg, rgba($error, 0), rgba($error, 0), rgba($error, 0), $error);
+  :global {
+    .section-content:before {
+      background-image: linear-gradient(0deg, $warning, rgba($warning, 0), rgba($error, 0), $error);
+    }
   }
 }
