@@ -1,7 +1,7 @@
 @import '~styles/helpers';
 
 .about {
-  background-image: url(../../../assets/lappy1.jpg);
+  @include responsive-bg('../../../assets/bg/lappy1')
   background-size: cover;
   background-position: bottom;
 
@@ -18,7 +18,7 @@
 }
 
 .work {
-  background-image: url(../../../assets/lappy2.jpg);
+  @include responsive-bg('../../../assets/bg/lappy2')
   background-size: cover;
   background-position: bottom;
 
@@ -35,7 +35,7 @@
 }
 
 .social {
-  background-image: url(../../../assets/lappy3.jpg);
+  @include responsive-bg('../../../assets/bg/lappy3')
   background-size: cover;
   background-position: left bottom;
 
@@ -52,7 +52,7 @@
 }
 
 .contact {
-  background-image: url(../../../assets/lappy4.jpg);
+  @include responsive-bg('../../../assets/bg/lappy4')
   background-size: cover;
   background-position: bottom;
 

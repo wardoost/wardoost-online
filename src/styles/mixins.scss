@@ -57,3 +57,23 @@ $ease: (
     @content;
   }
 }
+
+@mixin responsive-bg($img, $ext: 'jpg') {
+  background-image: url(#{$img}-xs.#{$ext});
+
+  @media #{$xs-min} {
+    background-image: url(#{$img}-sm.#{$ext});
+  }
+
+  @media #{$sm-min} {
+    background-image: url(#{$img}-md.#{$ext});
+  }
+
+  @media #{$md-min} {
+    background-image: url(#{$img}-lg.#{$ext});
+  }
+
+  @media #{$lg-min} {
+    background-image: url(#{$img}-xl.#{$ext});
+  }
+}
