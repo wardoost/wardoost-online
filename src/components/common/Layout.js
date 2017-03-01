@@ -18,13 +18,15 @@ export default class Layout extends PureComponent {
 
   state = {
     navActive: false,
-    activeHash: this.props.location.hash.substring(1)
+    activeHash: this.props.location.hash.substring(1),
+    atPageEnd: false
   }
 
   componentDidMount () {
     this.scrollSpy = new ScrollSpy(menu, {
       location: this.props.location,
-      callback: this.updateActiveHash,
+      onUpdateActive: this.updateActiveHash,
+      onUpdateAtEnd: this.updateAtEnd,
       duration: 400
     })
   }
@@ -41,6 +43,11 @@ export default class Layout extends PureComponent {
   }
 
   @autobind
+  updateAtEnd (val) {
+    this.setState({atPageEnd: val})
+  }
+
+  @autobind
   toggleNav (navActive) {
     document.body.style.overflow = navActive ? 'hidden' : null
     this.setState({ navActive: navActive })
@@ -53,7 +60,8 @@ export default class Layout extends PureComponent {
       if (child.type === Home) {
         return React.cloneElement(child, {
           key: this.props.location.pathname,
-          activeSection: this.state.activeHash
+          activeSection: this.state.activeHash,
+          atPageEnd: this.state.atPageEnd
         })
       } else {
         return React.cloneElement(child, {

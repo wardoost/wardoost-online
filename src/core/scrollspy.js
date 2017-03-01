@@ -6,7 +6,8 @@ export default class ScrollSpy {
     if (typeof options !== 'object') throw new Error('options should be a number')
 
     this._menu = menu
-    this._cb = options.callback || function () {}
+    this._updateActiveCb = options.onUpdateActive || function () {}
+    this._atEndCb = options.onUpdateAtEnd || function () { }
     this._duration = options.duration || 1000
     this._offset = options.offset || 0
     this._location = options.location || window.location
@@ -39,7 +40,7 @@ export default class ScrollSpy {
   @throttle(100)
   onScroll (e) {
     const scrollTop = window.pageYOffset || window.scrollY || 0
-    const scrollPosition = scrollTop < 0 ? 0 : scrollTop // Minimum of 0, Safari goes under 0
+    const scrollPosition = scrollTop < 0 ? 0 : scrollTop // Minimum of 0, Safari goes below 0
     const windowHeight = window.innerHeight
     const scrollHeight = document.body.clientHeight - windowHeight
     const correctionTopThreshold = windowHeight / 2
@@ -54,7 +55,13 @@ export default class ScrollSpy {
 
     if (newHash !== this._activeHash) {
       this._activeHash = newHash
-      this._cb(newHash)
+      this._updateActiveCb(newHash)
+    }
+
+    if (scrollTop > this._scrollTop && scrollTop >= scrollHeight) {
+      this._atEndCb(true)
+    } else if (scrollTop < this._scrollTop) {
+      this._atEndCb(false)
     }
 
     this._scrollTop = scrollTop
@@ -115,7 +122,7 @@ export default class ScrollSpy {
           animateScroll(elapsedTime)
         }, increment)
       } else {
-        if (this._enabled) this._cb(to)
+        if (this._enabled) this._updateActiveCb(to)
         setTimeout(() => {
           window.addEventListener('scroll', this.onScroll)
         }, increment)

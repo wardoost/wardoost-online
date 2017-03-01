@@ -147,7 +147,7 @@ export default class Work extends PureComponent {
           <h1>Work</h1>
         </div>
         <div styleName='intro' className='section-animated-bg'>
-          <p>This selection of work shows my journey in the digital world.</p>
+          <p>This selection of work shows my digital journey over the years.</p>
         </div>
         <Grid padding='xs'>
           {this.createWorkItems(active)}

@@ -9,7 +9,8 @@ import styles from './Contact.scss'
 @CSSModules(styles)
 export default class Contact extends PureComponent {
   static propTypes = {
-    active: React.PropTypes.bool
+    active: React.PropTypes.bool,
+    atPageEnd: React.PropTypes.bool
   }
 
   state = {
@@ -30,22 +31,14 @@ export default class Contact extends PureComponent {
   }
 
   componentDidUpdate (prevProps) {
-    if (prevProps.active !== this.props.active && !this.state.name && !this.state.email && !this.state.message) {
-      if (this.props.active) {
-        // Focus without scroll
-        const x = window.scrollX
-        const y = window.scrollY
-        this.nameInput.refs.input.focus()
-        window.scrollTo(x, y)
-      } else {
-        this.nameInput.refs.input.blur()
-      }
+    if (!prevProps.atPageEnd && this.props.atPageEnd && !this.state.name && !this.state.email && !this.state.message) {
+      this.nameInput.refs.input.focus()
     }
   }
 
   render () {
     // eslint-disable-next-line no-unused-vars
-    const {active, ...props} = this.props
+    const {active, atPageEnd, ...props} = this.props
 
     return (
       <div {...props}>

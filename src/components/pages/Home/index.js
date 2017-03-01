@@ -11,7 +11,8 @@ import styles from './index.scss'
 export default class Home extends PureComponent {
   static propTypes = {
     location: React.PropTypes.object,
-    activeSection: React.PropTypes.string
+    activeSection: React.PropTypes.string,
+    atPageEnd: React.PropTypes.bool
   }
 
   render () {
@@ -39,7 +40,7 @@ export default class Home extends PureComponent {
           id='contact'
           active={this.props.activeSection === 'contact'}
           styleName='contact'>
-          <Contact />
+          <Contact atPageEnd={this.props.atPageEnd} />
         </SectionAnimated>
       </main>
     )
