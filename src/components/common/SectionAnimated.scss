@@ -4,23 +4,21 @@
   position: relative;
   padding: 0 $padding-xs;
 
+  &:first-child,
   & + & {
     padding-top: $padding-xs;
   }
 
-  &:first-child {
-    padding-top: $padding-xs;
-  }
   &:last-child {
     padding-bottom: $padding-xs;
 
-    @media #{sm-min} {
+    @media #{$sm-min} {
       padding-bottom: $padding-sm;
     }
-    @media #{md-min} {
+    @media #{$md-min} {
       padding-bottom: $padding-md;
     }
-    @media #{lg-min} {
+    @media #{$lg-min} {
       padding-bottom: $padding-lg;
     }
   }
