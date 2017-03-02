@@ -11,8 +11,13 @@
   }
 
   :global {
-    .section-content:before {
-      background-image: linear-gradient(0deg, $primary, rgba($primary, 0), rgba($warning, 0), $warning);
+    .section-content {
+      &:before {
+        background-image: linear-gradient(0deg, rgba($warning, 0), $warning);
+      }
+      &:after {
+        background-image: linear-gradient(0deg, $primary, rgba($primary, 0));
+      }
     }
   }
 }
@@ -28,8 +33,13 @@
   }
 
   :global {
-    .section-content:before {
-      background-image: linear-gradient(0deg, $secondary, rgba($secondary, 0), rgba($primary, 0), $primary);
+    .section-content {
+      &:before {
+        background-image: linear-gradient(0deg, rgba($primary, 0), $primary);
+      }
+      &:after {
+        background-image: linear-gradient(0deg, $secondary, rgba($secondary, 0));
+      }
     }
   }
 }
@@ -45,8 +55,13 @@
   }
 
   :global {
-    .section-content:before {
-      background-image: linear-gradient(0deg, $error, rgba($error, 0), rgba($secondary, 0), $secondary);
+    .section-content {
+      &:before {
+        background-image: linear-gradient(0deg, rgba($secondary, 0), $secondary);
+      }
+      &:after {
+        background-image: linear-gradient(0deg, $error, rgba($error, 0));
+      }
     }
   }
 }
@@ -62,8 +77,13 @@
   }
 
   :global {
-    .section-content:before {
-      background-image: linear-gradient(0deg, $warning, rgba($warning, 0), rgba($error, 0), $error);
+    .section-content {
+      &:before {
+        background-image: linear-gradient(0deg, rgba($error, 0), $error);
+      }
+      &:after {
+        background-image: linear-gradient(0deg, $warning, rgba($warning, 0));
+      }
     }
   }
 }
