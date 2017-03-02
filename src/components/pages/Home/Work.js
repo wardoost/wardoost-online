@@ -92,7 +92,7 @@ export default class Work extends PureComponent {
           <Grid>
             {links.map((link, i) => {
               return (
-                <Unit key={i} smSize={links.length % 2 !== 0 && links.length - i === 1 ? '1' : '1-2'}>
+                <Unit key={i} smSize={links.length % 2 !== 0 && links.length - i === 1 ? '1-1' : '1-2'}>
                   <a styleName='work-link' href={link.url} target='_blank'>
                     <FaChain /> {link.label || link.url}
                   </a>
@@ -113,7 +113,7 @@ export default class Work extends PureComponent {
       let links = item.link ? [item.link] : item.links
 
       return (
-        <Unit key={i} size='1' mdSize='1-2' xlSize='1-3'>
+        <Unit key={i} mdSize='1-2' xlSize='1-3'>
           <div
             className='section-animated-bg'
             style={{transitionDelay: `${active ? 100 * (i + 1) : 100 * (works.length - i)}ms`}}>
@@ -122,11 +122,11 @@ export default class Work extends PureComponent {
               style={{paddingBottom: (Math.floor(links.length / 2) + links.length % 2) * 65 - 10}}>
               <h2 styleName='work-title'>{title}</h2>
               <p styleName='work-when'>{when}</p>
-              <Grid padding='md'>
-                <Unit smSize='1-3' mdSize='1' lgSize='1-3'>
+              <Grid gutter='md'>
+                <Unit smSize='1-3' mdSize='1-1' lgSize='1-3'>
                   <Image src={image} alt={title} styleName='work-img' />
                 </Unit>
-                <Unit smSize='2-3' mdSize='1' lgSize='2-3' styleName='work-description'>
+                <Unit smSize='2-3' mdSize='1-1' lgSize='2-3' styleName='work-description'>
                   <p dangerouslySetInnerHTML={{ __html: description }} />
                 </Unit>
               </Grid>
@@ -149,9 +149,11 @@ export default class Work extends PureComponent {
         <div styleName='intro' className='section-animated-bg'>
           <p>This selection of work shows my digital journey over the years.</p>
         </div>
-        <Grid padding='xs'>
-          {this.createWorkItems(active)}
-        </Grid>
+        <div>
+          <Grid gutter='xs'>
+            {this.createWorkItems(active)}
+          </Grid>
+        </div>
       </div>
     )
   }

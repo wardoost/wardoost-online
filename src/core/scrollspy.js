@@ -7,7 +7,7 @@ export default class ScrollSpy {
 
     this._menu = menu
     this._updateActiveCb = options.onUpdateActive || function () {}
-    this._atEndCb = options.onUpdateAtEnd || function () { }
+    this._atEndCb = options.onUpdateAtEnd || function () {}
     this._duration = options.duration || 1000
     this._offset = options.offset || 0
     this._location = options.location || window.location

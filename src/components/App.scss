@@ -8,7 +8,7 @@ html, body, :global(#root) {
 
 body {
   background-color: $white;
-  font-family: 'Open Sans', sans-serif;
+  font-family: $font-primary;
   color: $gray-dark;
   background-color: $warning;
   text-size-adjust: none;
@@ -23,7 +23,7 @@ body {
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'Source Code Pro', monospace;
+  font-family: $font-secondary;
   font-weight: 600;
 }
 

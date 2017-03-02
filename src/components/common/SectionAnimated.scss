@@ -72,14 +72,10 @@
     .section-container {
       max-width: 80em;
       margin: 0 auto;
-    }
 
-    .section-container > *:not(:first-child):not([class *= "grid"]) {
-      margin-top: $padding-xs;
-    }
-
-    .section-container > [class *= "grid"] > [class *= "unit"] {
-      margin-top: $padding-xs;
+      > div + div {
+        margin-top: $padding-xs;
+      }
     }
 
     .section-animated,

@@ -1,3 +1,5 @@
+@import '~styles/helpers';
+
 $grids: 1, 2, 3, 4, 5, 6, 8, 12, 24;
 $breakPoints: 'sm', 'md', 'lg', 'xl';
 
@@ -5,25 +7,34 @@ $breakPoints: 'sm', 'md', 'lg', 'xl';
   $grid: nth($grids, $i);
   @for $width from 1 through $grid {
     @if ($grid % $width != 0) or ($width == 1) {
-      @if ($grid == 1) and ($width == 1) {
-        .unit-#{$grid} {
-          composes: pure-u-#{$grid} from 'purecss/build/grids.css';
-        }
-      }
       .unit-#{$width}-#{$grid} {
         composes: pure-u-#{$width}-#{$grid} from 'purecss/build/grids.css';
+        font-family: $font-primary;
       }
       @for $j from 1 through length($breakPoints) {
         $breakPoint: nth($breakPoints, $j);
-        @if ($grid == 1) and ($width == 1) {
-          .unit-#{$breakPoint}-#{$grid} {
-            composes: pure-u-#{$breakPoint}-#{$grid} from 'purecss/build/grids-responsive.css';
-          }
-        }
         .unit-#{$breakPoint}-#{$width}-#{$grid} {
           composes: pure-u-#{$breakPoint}-#{$width}-#{$grid} from 'purecss/build/grids-responsive.css';
         }
       }
     }
   }
+}
+
+$gutters: (
+  xs: $padding-xs,
+  sm: $padding-sm,
+  md: $padding-md,
+  lg: $padding-lg,
+  xl: $padding-xl
+);
+
+@each $gutter, $size in $gutters {
+  .unit-gutter-#{$gutter} {
+    padding: $size / 2;
+  }
+}
+
+.unit-reverse {
+  direction: ltr;
 }

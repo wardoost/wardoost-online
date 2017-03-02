@@ -2,14 +2,10 @@
 
 .grid {
   composes: pure-g from 'purecss/build/grids.css';
-  font-family: inherit;
-
-  > [class *= "unit"] {
-    font-family: inherit;
-  }
+  font-family: $font-primary;
 }
 
-$paddings: (
+$gutters: (
   xs: $padding-xs,
   sm: $padding-sm,
   md: $padding-md,
@@ -17,21 +13,13 @@ $paddings: (
   xl: $padding-xl
 );
 
-@each $padding, $size in $paddings {
-  .grid-padded-#{$padding} {
+@each $gutter, $size in $gutters {
+  .grid-gutter-#{$gutter} {
     composes: grid;
-    margin: 0 #{-$size / 2};
-
-    > [class *= "unit"] {
-      padding: 0 #{$size / 2};
-    }
+    margin: #{-$size / 2};
   }
 }
 
 .grid-reverse {
   direction: rtl;
-
-  > [class *= "unit"] {
-    direction: ltr;
-  }
 }

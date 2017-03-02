@@ -48,57 +48,59 @@ export default class Contact extends PureComponent {
         <div styleName='intro' className='section-animated-bg'>
           <p>Want to hire me, work with me or just have something awesome to share?<br />Send me an email or fill the contact form.</p>
         </div>
-        <Grid padding='xs'>
-          <Unit size='1' smSize='1-4' mdSize='1-5' styleName='mail'>
-            <div className='section-animated-bg' style={{transitionDelay: `0.1s`}}>
-              <a styleName='mail' href='mailto:wardoosterlijnck@gmail.com' target='_blank' title='Send me an email'>
-                <div styleName='icon-mail'>
-                  <FaEnvelope />
-                </div>
-              </a>
-            </div>
-          </Unit>
-          <Unit size='1' smSize='3-4' mdSize='4-5'>
-            <div className='section-animated-bg' style={{transitionDelay: `0.2s`}}>
-              <div styleName='contact-form'>
-                <Form
-                  kind='stacked'
-                  name='contact'
-                  method='POST'
-                  action='https://formspree.io/wardoosterlijnck@gmail.com'>
-                  <fieldset>
-                    <Input
-                      type='text'
-                      placeholder='Name'
-                      name='name'
-                      ref={input => { this.nameInput = input }}
-                      value={this.state.name}
-                      onChange={this.handleInputChange}
-                      size='1' />
-                    <Input
-                      type='email'
-                      placeholder='Email'
-                      name='email'
-                      value={this.state.email}
-                      onChange={this.handleInputChange}
-                      size='1'
-                      required />
-                    <textarea
-                      type='text'
-                      placeholder='Message'
-                      name='message'
-                      value={this.state.message}
-                      onChange={this.handleInputChange}
-                      required />
-                    <Button type='submit' kind='primary'>
-                      <FaPaperPlane styleName='icon-send' /> Send
-                    </Button>
-                  </fieldset>
-                </Form>
+        <div>
+          <Grid gutter='xs'>
+            <Unit smSize='1-4' mdSize='1-5' styleName='mail'>
+              <div className='section-animated-bg' style={{transitionDelay: `0.1s`}}>
+                <a styleName='mail' href='mailto:wardoosterlijnck@gmail.com' target='_blank' title='Send me an email'>
+                  <div styleName='icon-mail'>
+                    <FaEnvelope />
+                  </div>
+                </a>
               </div>
-            </div>
-          </Unit>
-        </Grid>
+            </Unit>
+            <Unit smSize='3-4' mdSize='4-5'>
+              <div className='section-animated-bg' style={{transitionDelay: `0.2s`}}>
+                <div styleName='contact-form'>
+                  <Form
+                    kind='stacked'
+                    name='contact'
+                    method='POST'
+                    action='https://formspree.io/wardoosterlijnck@gmail.com'>
+                    <fieldset>
+                      <Input
+                        type='text'
+                        placeholder='Name'
+                        name='name'
+                        ref={input => { this.nameInput = input }}
+                        value={this.state.name}
+                        onChange={this.handleInputChange}
+                        size='1' />
+                      <Input
+                        type='email'
+                        placeholder='Email'
+                        name='email'
+                        value={this.state.email}
+                        onChange={this.handleInputChange}
+                        size='1'
+                        required />
+                      <textarea
+                        type='text'
+                        placeholder='Message'
+                        name='message'
+                        value={this.state.message}
+                        onChange={this.handleInputChange}
+                        required />
+                      <Button type='submit' kind='primary'>
+                        <FaPaperPlane styleName='icon-send' /> Send
+                      </Button>
+                    </fieldset>
+                  </Form>
+                </div>
+              </div>
+            </Unit>
+          </Grid>
+        </div>
       </div>
     )
   }
