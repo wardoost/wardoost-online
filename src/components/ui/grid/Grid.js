@@ -1,17 +1,17 @@
 import React, {PureComponent, PropTypes} from 'react'
-import Unit from './Unit'
 import CSSModules from 'react-css-modules'
+import Unit from './Unit'
 import styles from './Grid.scss'
 
 @CSSModules(styles, {allowMultiple: true})
 export default class Grid extends PureComponent {
   static propTypes = {
-    children: React.PropTypes.oneOfType([
-      React.PropTypes.shape({
-        type: React.PropTypes.oneOf([Unit])
+    children: PropTypes.oneOfType([
+      PropTypes.shape({
+        type: PropTypes.oneOf([Unit])
       }),
-      React.PropTypes.arrayOf(React.PropTypes.shape({
-        type: React.PropTypes.oneOf([Unit])
+      PropTypes.arrayOf(PropTypes.shape({
+        type: PropTypes.oneOf([Unit])
       }))
     ]),
     gutter: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
@@ -22,11 +22,11 @@ export default class Grid extends PureComponent {
     reverseDirection: false
   }
 
-  renderChildren (children, gutter) {
+  renderChildren (children, gutter, reverseDirection) {
     return React.Children.map(children, child => {
       return React.cloneElement(child, {
-        gutter: this.props.gutter,
-        reverseDirection: this.props.reverseDirection
+        gutter: gutter,
+        reverseDirection: reverseDirection
       })
     })
   }
@@ -36,7 +36,7 @@ export default class Grid extends PureComponent {
 
     return (
       <div styleName={`${gutter ? `grid-gutter-${gutter}` : 'grid'} ${reverseDirection ? 'grid-reverse' : ''}`} {...props}>
-        {this.renderChildren(children, gutter)}
+        {this.renderChildren(children, gutter, reverseDirection)}
       </div>
     )
   }

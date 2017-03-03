@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent, PropTypes} from 'react'
 import CSSModules from 'react-css-modules'
 import Button from './Button'
 import FaCircleONotch from 'react-icons/lib/fa/circle-o-notch'
@@ -7,12 +7,12 @@ import styles from './ButtonLoading.scss'
 @CSSModules(styles, {allowMultiple: true})
 export default class ButtonLoading extends PureComponent {
   static propTypes = {
-    children: React.PropTypes.node,
-    disabled: React.PropTypes.bool,
-    loading: React.PropTypes.bool.isRequired,
-    loadingDisables: React.PropTypes.bool,
-    LoadIcon: React.PropTypes.func,
-    loadReplace: React.PropTypes.bool
+    children: PropTypes.node,
+    disabled: PropTypes.bool,
+    loading: PropTypes.bool.isRequired,
+    loadingDisables: PropTypes.bool,
+    LoadIcon: PropTypes.func,
+    loadReplace: PropTypes.bool
   }
 
   static defaultProps = {

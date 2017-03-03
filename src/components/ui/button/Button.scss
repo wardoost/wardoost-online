@@ -3,6 +3,15 @@
 .button {
   composes: pure-button from 'purecss/build/buttons.css';
   border-radius: $radius;
+
+  &.button-grouped {
+    &:first-child {
+      border-radius: $radius 0 0 $radius;
+    }
+    &:last-child {
+      border-radius: 0 $radius $radius 0;
+    }
+  }
 }
 
 .button-primary {

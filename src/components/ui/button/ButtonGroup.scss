@@ -2,11 +2,4 @@
 
 .button-group {
   composes: pure-button-group from 'purecss/build/buttons.css';
-
-  [class *= 'button']:first-child {
-    border-radius: $radius 0 0 $radius;
-  }
-  [class *= 'button']:last-child {
-    border-radius: 0 $radius $radius 0;
-  }
 }
