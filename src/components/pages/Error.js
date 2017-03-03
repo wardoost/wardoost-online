@@ -22,9 +22,9 @@ export default class Error extends PureComponent {
     const emoji = emojis[Math.floor(Math.random() * emojis.length)]
 
     return (
-      <main>
+      <main styleName='error'>
         <div styleName='page-middle'>
-          <Grid padding='xl'>
+          <Grid gutter='xl'>
             <Unit mdSize='1-3' lgSize='2-5' styleName='title'>
               <h1>{title}</h1>
             </Unit>
