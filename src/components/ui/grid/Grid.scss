@@ -15,7 +15,6 @@ $gutters: (
 
 @each $gutter, $size in $gutters {
   .grid-gutter-#{$gutter} {
-    composes: grid;
     margin: #{-$size / 2};
   }
 }

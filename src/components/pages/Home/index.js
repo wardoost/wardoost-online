@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
-import SectionAnimated from '../../common/SectionAnimated'
 import About from './About'
 import Work from './Work'
 import Social from './Social'
@@ -18,30 +17,19 @@ export default class Home extends PureComponent {
   render () {
     return (
       <main>
-        <SectionAnimated
-          id='about'
-          active={this.props.activeSection === 'about' || this.props.activeSection === ''}
-          styleName='about'>
-          <About />
-        </SectionAnimated>
-        <SectionAnimated
-          id='work'
-          active={this.props.activeSection === 'work'}
-          styleName='work'>
-          <Work />
-        </SectionAnimated>
-        <SectionAnimated
-          id='social'
-          active={this.props.activeSection === 'social'}
-          styleName='social'>
-          <Social />
-        </SectionAnimated>
-        <SectionAnimated
-          id='contact'
-          active={this.props.activeSection === 'contact'}
-          styleName='contact'>
-          <Contact atPageEnd={this.props.atPageEnd} />
-        </SectionAnimated>
+        <About
+          activeSection={this.props.activeSection}
+          styleName='about' />
+        <Work
+          activeSection={this.props.activeSection}
+          styleName='work' />
+        <Social
+          activeSection={this.props.activeSection}
+          styleName='social' />
+        <Contact
+          activeSection={this.props.activeSection}
+          styleName='contact'
+          atPageEnd={this.props.atPageEnd} />
       </main>
     )
   }

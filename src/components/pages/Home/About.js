@@ -1,13 +1,19 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent, PropTypes} from 'react'
 import {Link} from 'react-router'
 import CSSModules from 'react-css-modules'
 import FaAngleDown from 'react-icons/lib/fa/angle-down'
+import SectionAnimated from '../../common/SectionAnimated'
 import styles from './About.scss'
 
 @CSSModules(styles)
 export default class About extends PureComponent {
   static propTypes = {
-    active: React.PropTypes.bool
+    id: PropTypes.string,
+    activeSection: PropTypes.string
+  }
+
+  static defaultProps = {
+    id: 'about'
   }
 
   removeFocus (e) {
@@ -16,14 +22,12 @@ export default class About extends PureComponent {
 
   render () {
     // eslint-disable-next-line no-unused-vars
-    const {active, ...props} = this.props
+    const {activeSection, ...props} = this.props
+    const active = activeSection === this.props.id || activeSection === ''
 
     return (
-      <div {...props}>
-        <div className='section-animated-header'>
-          <h1>About</h1>
-        </div>
-        <div className='section-animated-bg'>
+      <SectionAnimated title='About' active={active} {...props}>
+        <div>
           <div styleName='intro'>
             <div styleName='intro-content'>
               <p>Hi, I'm Ward Oosterlijnck and I’m a digital creative…</p>
@@ -33,12 +37,12 @@ export default class About extends PureComponent {
             </div>
           </div>
         </div>
-        <div styleName='icon-down' className='section-animated'>
+        <div styleName='icon-down'>
           <Link to='/#work' title='Enough bull💩, show me some real content' onClick={this.removeFocus}>
             <FaAngleDown />
           </Link>
         </div>
-      </div>
+      </SectionAnimated>
     )
   }
 }

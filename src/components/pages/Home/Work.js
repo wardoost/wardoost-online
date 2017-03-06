@@ -1,7 +1,8 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent, PropTypes} from 'react'
 import CSSModules from 'react-css-modules'
 import {Grid, Unit, Image} from '../../ui'
 import FaChain from 'react-icons/lib/fa/chain'
+import SectionAnimated from '../../common/SectionAnimated'
 import oink from '../../../assets/oink.jpg'
 import vercamstConsult from '../../../assets/vercamst-consult.jpg'
 import tinderMeCards from '../../../assets/tinderme-cards.jpg'
@@ -82,7 +83,12 @@ const works = [
 @CSSModules(styles)
 export default class Work extends PureComponent {
   static propTypes = {
-    active: React.PropTypes.bool
+    id: PropTypes.string,
+    activeSection: PropTypes.string
+  }
+
+  static defaultProps = {
+    id: 'work'
   }
 
   createWorkLinks (links) {
@@ -113,48 +119,45 @@ export default class Work extends PureComponent {
       let links = item.link ? [item.link] : item.links
 
       return (
-        <Unit key={i} mdSize='1-2' xlSize='1-3'>
+        <Unit
+          key={i}
+          mdSize='1-2'
+          xlSize='1-3'
+          style={{transitionDelay: `${active ? 100 * (i + 1) : 100 * (works.length - i)}ms`}}
+          >
           <div
-            className='section-animated-bg'
-            style={{transitionDelay: `${active ? 100 * (i + 1) : 100 * (works.length - i)}ms`}}>
-            <div
-              styleName='work'
-              style={{paddingBottom: (Math.floor(links.length / 2) + links.length % 2) * 65 - 10}}>
-              <h2 styleName='work-title'>{title}</h2>
-              <p styleName='work-when'>{when}</p>
-              <Grid gutter='md'>
-                <Unit smSize='1-3' mdSize='1-1' lgSize='1-3'>
-                  <Image src={image} alt={title} styleName='work-img' />
-                </Unit>
-                <Unit smSize='2-3' mdSize='1-1' lgSize='2-3' styleName='work-description'>
-                  <p dangerouslySetInnerHTML={{ __html: description }} />
-                </Unit>
-              </Grid>
-            </div>
-            {this.createWorkLinks(links)}
+            styleName='work'
+            style={{paddingBottom: (Math.floor(links.length / 2) + links.length % 2) * 65 - 10}}>
+            <h2 styleName='work-title'>{title}</h2>
+            <p styleName='work-when'>{when}</p>
+            <Grid gutter='md'>
+              <Unit smSize='1-3' mdSize='1-1' lgSize='1-3'>
+                <Image src={image} alt={title} styleName='work-img' />
+              </Unit>
+              <Unit smSize='2-3' mdSize='1-1' lgSize='2-3' styleName='work-description'>
+                <p dangerouslySetInnerHTML={{ __html: description }} />
+              </Unit>
+            </Grid>
           </div>
+          {this.createWorkLinks(links)}
         </Unit>
       )
     })
   }
 
   render () {
-    const {active, ...props} = this.props
+    const {activeSection, ...props} = this.props
+    const active = activeSection === this.props.id
 
     return (
-      <div {...props}>
-        <div className='section-animated-header'>
-          <h1>Work</h1>
-        </div>
-        <div styleName='intro' className='section-animated-bg'>
+      <SectionAnimated title='Work' active={active} {...props}>
+        <div styleName='intro'>
           <p>This selection of work shows my digital journey over the years.</p>
         </div>
-        <div>
-          <Grid gutter='xs'>
-            {this.createWorkItems(active)}
-          </Grid>
-        </div>
-      </div>
+        <Grid gutter='xs'>
+          {this.createWorkItems(active)}
+        </Grid>
+      </SectionAnimated>
     )
   }
 }

@@ -35,7 +35,7 @@ export default class Grid extends PureComponent {
     const {children, gutter, reverseDirection, ...props} = this.props
 
     return (
-      <div styleName={`${gutter ? `grid-gutter-${gutter}` : 'grid'} ${reverseDirection ? 'grid-reverse' : ''}`} {...props}>
+      <div styleName={`grid ${gutter ? `grid-gutter-${gutter}` : ''} ${reverseDirection ? 'grid-reverse' : ''}`} {...props}>
         {this.renderChildren(children, gutter, reverseDirection)}
       </div>
     )
