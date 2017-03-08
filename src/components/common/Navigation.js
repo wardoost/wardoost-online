@@ -2,8 +2,7 @@ import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import {autobind} from 'core-decorators'
 import {Link} from 'react-router'
-import FaBars from 'react-icons/lib/fa/bars'
-import FaClose from 'react-icons/lib/fa/close'
+import MenuToggle from './MenuToggle'
 import styles from './Navigation.scss'
 
 @CSSModules(styles, {allowMultiple: true})
@@ -76,7 +75,7 @@ export default class Layout extends PureComponent {
     return (
       <nav styleName={menuActive ? 'nav-active' : 'nav'} {...props}>
         <a styleName='menu-toggle' onClick={this.toggleMenu}>
-          <i>{menuActive ? <FaClose /> : <FaBars />}</i>
+          <MenuToggle styleName='menu-toggle-icon' active={menuActive} />
         </a>
         <div styleName='menu' onClick={this.hideMenu}>
           <ul styleName='menu-list'>
