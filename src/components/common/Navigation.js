@@ -74,7 +74,7 @@ export default class Layout extends PureComponent {
 
     return (
       <nav styleName={menuActive ? 'nav-active' : 'nav'} {...props}>
-        <a styleName='menu-toggle' onClick={this.toggleMenu}>
+        <a styleName={activeHash === 'about' || activeHash === '' ? 'menu-toggle' : 'menu-toggle-bg'} onClick={this.toggleMenu}>
           <MenuToggle styleName='menu-toggle-icon' active={menuActive} />
         </a>
         <div styleName='menu' onClick={this.hideMenu}>
