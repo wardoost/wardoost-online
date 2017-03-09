@@ -1,0 +1,23 @@
+@import '~styles/helpers';
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: $footer-height;
+  padding: 0 $padding-xs;
+}
+
+.bug {
+  float: right;
+  color: rgba($white, 0.7);
+  transform-origin: right center;
+  transition: color 200ms linear, transform 300ms ease(out-expo);
+
+  &:hover,
+  &:focus {
+    color: $white;
+    transform: scale(1.5);
+  }
+}

@@ -19,16 +19,6 @@
   &:last-child {
     .section-content {
       padding-bottom: $padding-xs;
-
-      @media #{$sm-min} {
-        padding-bottom: $padding-sm;
-      }
-      @media #{$md-min} {
-        padding-bottom: $padding-md;
-      }
-      @media #{$lg-min} {
-        padding-bottom: $padding-lg;
-      }
     }
   }
 

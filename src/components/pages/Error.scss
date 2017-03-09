@@ -9,13 +9,13 @@
 
 .page-middle {
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh - #{$footer-height});
 
   > * {
     position: absolute;
     top: 50%;
-    left: $padding-md;
-    right: $padding-md;
+    left: $padding-xl / 2;
+    right: $padding-xl / 2;
     transform: translateY(-50%);
   }
 }
