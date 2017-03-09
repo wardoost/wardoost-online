@@ -1,81 +1,21 @@
 @import '~styles/helpers';
 
 .about {
-  @include responsive-bg('../../../assets/bg/lappy1')
-  background-size: cover;
+  @include section-bg('../../../assets/bg/lappy1', $warning, $primary, 35deg)
   background-position: bottom;
-
-  &:before {
-    background-color: $primary;
-    background-image: linear-gradient(35deg, $primary, $warning);
-  }
-
-  > div {
-    &:before {
-      background-image: linear-gradient(0deg, rgba($warning, 0), $warning);
-    }
-    &:after {
-      background-image: linear-gradient(0deg, $primary, rgba($primary, 0));
-    }
-  }
 }
 
 .work {
-  @include responsive-bg('../../../assets/bg/lappy2')
-  background-size: cover;
+  @include section-bg('../../../assets/bg/lappy2', $primary, $secondary, -35deg)
   background-position: bottom;
-
-  &:before {
-    background-color: $secondary;
-    background-image: linear-gradient(-35deg, $secondary, $primary);
-  }
-
-  > div {
-    &:before {
-      background-image: linear-gradient(0deg, rgba($primary, 0), $primary);
-    }
-    &:after {
-      background-image: linear-gradient(0deg, $secondary, rgba($secondary, 0));
-    }
-  }
 }
 
 .social {
-  @include responsive-bg('../../../assets/bg/lappy3')
-  background-size: cover;
+  @include section-bg('../../../assets/bg/lappy3', $secondary, $error, 35deg)
   background-position: left bottom;
-
-  &:before {
-    background-color: $error;
-    background-image: linear-gradient(35deg, $error, $secondary);
-  }
-
-  > div {
-    &:before {
-      background-image: linear-gradient(0deg, rgba($secondary, 0), $secondary);
-    }
-    &:after {
-      background-image: linear-gradient(0deg, $error, rgba($error, 0));
-    }
-  }
 }
 
 .contact {
-  @include responsive-bg('../../../assets/bg/lappy4')
-  background-size: cover;
+  @include section-bg('../../../assets/bg/lappy4', $error, $warning, -35deg)
   background-position: bottom;
-
-  &:before {
-    background-color: $warning;
-    background-image: linear-gradient(-35deg, $warning, $error);
-  }
-
-  > div {
-    &:before {
-      background-image: linear-gradient(0deg, rgba($error, 0), $error);
-    }
-    &:after {
-      background-image: linear-gradient(0deg, $warning, rgba($warning, 0));
-    }
-  }
 }

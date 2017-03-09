@@ -77,3 +77,32 @@ $ease: (
     background-image: url(#{$img}-xl.#{$ext});
   }
 }
+
+@mixin section-bg($img, $color1, $color2, $gradientRotation) {
+  @include responsive-bg($img)
+  background-size: cover;
+
+  &:before {
+    background-color: $color2;
+    background-image: linear-gradient($gradientRotation, $color2, $color1);
+  }
+
+  > div {
+    &:before {
+      background-image: linear-gradient(0deg, rgba($color1, 0), $color1);
+    }
+    &:after {
+      background-image: linear-gradient(0deg, $color2, rgba($color2, 0));
+    }
+  }
+}
+
+@mixin before-cover($z-index: null) {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $z-index;
+}

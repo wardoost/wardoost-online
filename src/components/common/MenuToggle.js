@@ -46,7 +46,7 @@ export default class MenuToggle extends PureComponent {
     }
 
     return (
-      <div styleName='menu-toggle' onClick={this.flipIcon} {...props}>
+      <div styleName='menu-toggle' {...props}>
         <svg
           version='1.1'
           preserveAspectRatio='xMidYMid meet'
@@ -57,17 +57,14 @@ export default class MenuToggle extends PureComponent {
           y='0px'
           viewBox='0 0 1000 1000'>
           <path
-            ref={path => { this.path1 = path }}
             styleName='path1'
             style={path1Style}
             d='M150,250h700c51,0,75,21,75,70v380c0,117-101.5,123.5-175,50L250,250' />
           <path
-            ref={path => { this.path2 = path }}
             styleName='path2'
             style={path2Style}
             d='M150,750h700' />
           <path
-            ref={path => { this.path3 = path }}
             styleName='path3'
             style={path3Style}
             d='M850,500H150c-50,0-75,24-75,70v145.3C75,837,166,834,250,750l500-500' />

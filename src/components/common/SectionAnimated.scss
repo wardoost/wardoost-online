@@ -4,12 +4,7 @@
   position: relative;
 
   &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    @include before-cover;
     opacity: 0.75;
     transition: opacity 500ms linear;
   }
@@ -55,25 +50,21 @@
   z-index: 0;
   padding: 0 $padding-xs;
 
-  &:before {
+  &:before,
+  &:after {
     content: '';
     position: absolute;
-    top: 0;
     right: 0;
     left: 0;
     height: 20vh;
     max-height: 40%;
     z-index: -1;
   }
+  &:before {
+    top: 0;
+  }
   &:after {
-    content: '';
-    position: absolute;
     bottom: 0;
-    right: 0;
-    left: 0;
-    height: 20vh;
-    max-height: 40%;
-    z-index: -1;
   }
 }
 
