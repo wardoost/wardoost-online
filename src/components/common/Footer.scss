@@ -2,18 +2,28 @@
 
 .footer {
   position: absolute;
-  right: 0;
+  right: $padding-xs;
   bottom: 0;
   left: 0;
   height: $footer-height;
-  padding: 0 $padding-xs;
+  text-align: right;
+}
+
+.container {
+  max-width: 80em;
+  margin: 0 auto;
 }
 
 .bug {
-  float: right;
+  display: inline-block;
   color: rgba($white, 0.7);
-  transform-origin: right center;
+  transform-origin: center right;
   transition: color 200ms linear, transform 300ms ease(out-expo);
+
+  i {
+    display: inline-block;
+    transform: rotate(315deg);
+  }
 
   &:hover,
   &:focus {

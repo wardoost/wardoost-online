@@ -8,13 +8,15 @@ export default class Footer extends PureComponent {
   render () {
     return (
       <footer styleName='footer'>
-        <a
-          title='Report a bug'
-          href='https://github.com/wardoost/wardoost-online/issues'
-          target='_blank'
-          styleName='bug'>
-          <FaBug />
-        </a>
+        <div styleName='container'>
+          <a
+            title='Report a bug'
+            href='https://github.com/wardoost/wardoost-online/issues'
+            target='_blank'
+            styleName='bug'>
+            <i><FaBug /></i>
+          </a>
+        </div>
       </footer>
     )
   }
