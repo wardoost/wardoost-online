@@ -9,7 +9,6 @@ import styles from './index.scss'
 @CSSModules(styles)
 export default class Home extends PureComponent {
   static propTypes = {
-    location: React.PropTypes.object,
     activeSection: React.PropTypes.string,
     atPageEnd: React.PropTypes.bool
   }

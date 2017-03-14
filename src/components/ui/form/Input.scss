@@ -6,7 +6,7 @@ $grids: 1, 2, 3, 4;
     @if ($grid % $width != 0) or ($width == 1) {
       @if ($grid == 1) and ($width == 1) {
         .input-#{$grid} {
-          composes: pure-u-#{$grid} from 'purecss/build/grids.css';
+          width: 100%;
         }
       }
       .input-#{$width}-#{$grid} {

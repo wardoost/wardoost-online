@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
+import classNames from 'classnames'
 import {autobind} from 'core-decorators'
 import Animate from 'rc-animate'
 import ScrollSpy from '../../core/scrollspy'
@@ -75,7 +76,7 @@ export default class Layout extends PureComponent {
     const {navActive} = this.state
 
     return (
-      <div styleName={`layout ${navActive ? 'menu-active' : ''}`}>
+      <div styleName={classNames('layout', {'menu-active': navActive})}>
         <Navigation
           menu={menu}
           location={this.props.location}

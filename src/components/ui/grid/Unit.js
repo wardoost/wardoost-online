@@ -1,5 +1,6 @@
 import React, {PureComponent, PropTypes} from 'react'
 import CSSModules from 'react-css-modules'
+import classNames from 'classnames'
 import styles from './Unit.scss'
 
 const getValidSizes = () => {
@@ -36,7 +37,16 @@ export default class Unit extends PureComponent {
     const {size, smSize, mdSize, lgSize, xlSize, gutter, reverseDirection, ...props} = this.props
 
     return (
-      <div styleName={`unit-${size} ${gutter ? `unit-gutter-${gutter}` : ''} ${smSize ? `unit-sm-${smSize}` : ''} ${mdSize ? `unit-md-${mdSize}` : ''} ${lgSize ? `unit-lg-${lgSize}` : ''} ${xlSize ? `unit-xl-${xlSize}` : ''} ${reverseDirection ? 'unit-reverse' : ''}`} {...props} />
+      <div
+        styleName={classNames(`unit-${size}`, {
+          [`unit-sm-${smSize}`]: smSize,
+          [`unit-md-${mdSize}`]: mdSize,
+          [`unit-lg-${lgSize}`]: lgSize,
+          [`unit-xl-${xlSize}`]: xlSize,
+          [`unit-gutter-${gutter}`]: gutter,
+          'unit-reverse': reverseDirection
+        })}
+        {...props} />
     )
   }
 }

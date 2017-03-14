@@ -1,5 +1,6 @@
 import React, {PureComponent, PropTypes} from 'react'
 import CSSModules from 'react-css-modules'
+import classNames from 'classnames'
 import Unit from './Unit'
 import styles from './Grid.scss'
 
@@ -35,7 +36,12 @@ export default class Grid extends PureComponent {
     const {children, gutter, reverseDirection, ...props} = this.props
 
     return (
-      <div styleName={`grid ${gutter ? `grid-gutter-${gutter}` : ''} ${reverseDirection ? 'grid-reverse' : ''}`} {...props}>
+      <div
+        styleName={classNames('grid', {
+          [`grid-gutter-${gutter}`]: gutter,
+          'grid-reverse': reverseDirection
+        })}
+        {...props}>
         {this.renderChildren(children, gutter, reverseDirection)}
       </div>
     )

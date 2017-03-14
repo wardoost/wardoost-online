@@ -1,5 +1,6 @@
 import React, {PureComponent, PropTypes} from 'react'
 import CSSModules from 'react-css-modules'
+import classNames from 'classnames'
 import styles from './Button.scss'
 
 @CSSModules(styles, {allowMultiple: true})
@@ -21,7 +22,12 @@ export default class Button extends PureComponent {
     const {children, kind, size, active, grouped, ...props} = this.props
 
     return (
-      <button styleName={`${!kind ? 'button' : `button-${kind}`} ${active ? 'button-active' : ''} ${size ? `button-${size}` : ''} ${grouped ? 'button-grouped' : ''}`} {...props}>
+      <button
+        styleName={classNames(kind ? `button-${kind}` : 'button', {
+          [`button-${size}`]: size,
+          'button-active': active,
+          'button-grouped': grouped
+        })} {...props}>
         {children}
       </button>
     )

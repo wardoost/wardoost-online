@@ -9,8 +9,13 @@ export default class Image extends PureComponent {
   }
 
   render () {
+    const {src, ...props} = this.props
+
     return (
-      <img styleName='img' {...this.props} />
+      <img
+        src={src}
+        styleName='img'
+        {...props} />
     )
   }
 }
