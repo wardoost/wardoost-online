@@ -1,18 +1,20 @@
-import React, {PureComponent, PropTypes} from 'react'
+/* @flow */
+import React from 'react'
 import CSSModules from 'react-css-modules'
 import {Grid} from '../ui'
 import styles from './SectionAnimated.scss'
 
-@CSSModules(styles)
-export default class SectionAnimated extends PureComponent {
-  static propTypes = {
-    children: PropTypes.node,
-    title: PropTypes.string,
-    id: PropTypes.string.isRequired,
-    active: PropTypes.bool
-  }
+type Props = {
+  children?: React.Element<*>,
+  title?: string,
+  id: string,
+  active: boolean
+}
 
-  renderChildren (children) {
+function SectionAnimated (props: Props): React.Element<*> {
+  const {children, title, active, ...rest} = props
+
+  const renderChildren = () => {
     return React.Children.map(children, child => {
       return React.cloneElement(child, {
         styleName: child.type === Grid ? 'section-animated-grid' : 'section-animated'
@@ -20,22 +22,20 @@ export default class SectionAnimated extends PureComponent {
     })
   }
 
-  render () {
-    const {children, active, title, ...props} = this.props
-
-    return (
-      <div styleName={active ? 'section-active' : 'section'} {...props}>
-        <div styleName='section-content'>
-          <section styleName='section-container'>
-            { title
-            ? <div styleName='section-animated-header'>
-              <h1>{title}</h1>
-            </div>
-            : null}
-            {this.renderChildren(children)}
-          </section>
-        </div>
+  return (
+    <div styleName={active ? 'section-active' : 'section'} {...rest}>
+      <div styleName='section-content'>
+        <section styleName='section-container'>
+          { title
+          ? <div styleName='section-animated-header'>
+            <h1>{title}</h1>
+          </div>
+          : null}
+          {renderChildren()}
+        </section>
       </div>
-    )
-  }
+    </div>
+  )
 }
+
+export default CSSModules(SectionAnimated, styles)

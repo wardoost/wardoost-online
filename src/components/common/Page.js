@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 import React, {PureComponent} from 'react'
 import {findDOMNode} from 'react-dom'
 import CSSModules from 'react-css-modules'

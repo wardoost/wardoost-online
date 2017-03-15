@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 export type Menu = Array<{
   label: string,
   to: string

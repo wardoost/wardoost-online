@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 import React, {PureComponent} from 'react'
 import {Link} from 'react-router'
 import CSSModules from 'react-css-modules'

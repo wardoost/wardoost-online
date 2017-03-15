@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 import React, {PureComponent} from 'react'
 import {autobind} from 'core-decorators'
 import CSSModules from 'react-css-modules'

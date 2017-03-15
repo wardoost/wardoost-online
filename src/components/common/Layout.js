@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import classNames from 'classnames'
@@ -12,7 +12,7 @@ import Home from '../pages/Home'
 import styles from './Layout.scss'
 
 type Props = {
-  children: any,
+  children: React.Element<*>,
   location: Object
 }
 type State = {

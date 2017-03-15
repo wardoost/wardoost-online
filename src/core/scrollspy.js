@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 import {throttle, autobind} from 'core-decorators'
 import type {Menu} from './menu'
 
