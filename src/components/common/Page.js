@@ -1,24 +1,34 @@
+// @flow
 import React, {PureComponent} from 'react'
 import {findDOMNode} from 'react-dom'
 import CSSModules from 'react-css-modules'
 import Footer from './Footer'
 import styles from './Page.scss'
 
+type Props = {
+  children: any
+}
+type State = {
+  animating: boolean,
+  animationHeight: number
+}
+
 @CSSModules(styles)
 export default class Page extends PureComponent {
-  static propTypes = {
-    children: React.PropTypes.node.isRequired
-  }
+  props: Props
+  state: State
 
   state = {
     animating: this.props.children.length > 1,
-    animationHeight: window.innerHeight
+    animationHeight: 0
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps: Props) {
+    const component: Object = findDOMNode(this) || {clientHeight: 0}
+
     this.setState({
       animating: nextProps.children.length > 1,
-      animationHeight: findDOMNode(this).clientHeight
+      animationHeight: component.clientHeight
     })
   }
 

@@ -1,3 +1,4 @@
+// @flow
 import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import classNames from 'classnames'
@@ -10,12 +11,21 @@ import Page from './Page'
 import Home from '../pages/Home'
 import styles from './Layout.scss'
 
+type Props = {
+  children: any,
+  location: Object
+}
+type State = {
+  navActive: boolean,
+  activeHash: string,
+  atPageEnd: boolean
+}
+
 @CSSModules(styles, {allowMultiple: true})
 export default class Layout extends PureComponent {
-  static propTypes = {
-    children: React.PropTypes.node,
-    location: React.PropTypes.object
-  }
+  props: Props
+  state: State
+  scrollSpy: any
 
   state = {
     navActive: false,
@@ -32,26 +42,27 @@ export default class Layout extends PureComponent {
     })
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Props) {
     if (prevProps.location !== this.props.location) {
       this.scrollSpy.updateLocation(this.props.location)
     }
   }
 
   @autobind
-  updateActiveHash (hash) {
+  updateActiveHash (hash: string) {
     this.setState({activeHash: hash})
   }
 
   @autobind
-  updateAtEnd (val) {
+  updateAtEnd (val: boolean) {
     this.setState({atPageEnd: val})
   }
 
   @autobind
-  toggleNav (navActive) {
-    document.body.style.overflow = navActive ? 'hidden' : null
-    this.setState({ navActive: navActive })
+  toggleNav (navActive: boolean, element: ?any = document.body) {
+    if (!element) throw new Error('Failed to find element')
+    element.style.overflow = navActive ? 'hidden' : 'initial'
+    this.setState({navActive: navActive})
   }
 
   hideNav = () => this.toggleNav(false)
@@ -84,11 +95,9 @@ export default class Layout extends PureComponent {
           active={navActive}
           activeHash={this.state.activeHash} />
         <div styleName='overlay' onClick={this.hideNav} />
-        {this.props.children
-        ? <Animate component={Page} transitionName={styles}>
+        <Animate component={Page} transitionName={styles}>
           {this.renderChildren()}
         </Animate>
-        : null}
       </div>
     )
   }

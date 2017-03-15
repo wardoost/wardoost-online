@@ -1,4 +1,5 @@
-import React, {PureComponent, PropTypes} from 'react'
+// @flow
+import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import {Grid, Unit, Image} from '../../ui'
 import FaChain from 'react-icons/lib/fa/chain'
@@ -11,26 +12,37 @@ import shootingTheApes from '../../../assets/shooting-the-apes.jpg'
 import envato from '../../../assets/envato.jpg'
 import styles from './Work.scss'
 
-const works = [
+type WorkItem = {
+  title: string,
+  when: string,
+  description: string,
+  image: any,
+  links: Array<{
+    url: string,
+    label: string
+  }>
+}
+
+const works: Array<WorkItem> = [
   {
     title: 'Oïnk Agency',
     when: '2013-2016',
     description: 'Loved working here for more than 3 years. As it was a small agency when I started I dealt with a broad range of responsibilities over the years. Creating EDM workflows to thinking up social media campaigns to managing a small dev team. Good for gaining a lot of experience really fast.',
     image: oink,
-    link: {
+    links: [{
       url: 'https://www.oink.agency/',
       label: 'oink.agency'
-    }
+    }]
   },
   {
     title: 'Vercamst Consult',
     when: '2016',
     description: 'I taught myself <a href="https://facebook.github.io/react/" target="_blank">React</a> and <a href="http://redux.js.org/" target="_blank">Redux</a> while developing this basic but clean website. Content management is powered by <a href="https://firebase.google.com/" target="_blank">Firebase</a>. These are the technologies I will use in the future as they work so well together.',
     image: vercamstConsult,
-    link: {
+    links: [{
       url: 'https://www.vercamstconsult.be/',
       label: 'vercamstconsult.be'
-    }
+    }]
   },
   {
     title: 'TinderMe Cards',
@@ -63,35 +75,35 @@ const works = [
     when: '2011-2014',
     description: 'Collective I co-created with <a href="http://www.jeroensmans.be/" target="_blank">Jeroen Smans</a> to release event movies for concerts and festivals.',
     image: shootingTheApes,
-    link: {
+    links: [{
       url: 'https://vimeo.com/shootingtheapes',
       label: 'Vimeo profile'
-    }
+    }]
   },
   {
     title: 'Envato',
     when: '2008-2010',
     description: '<a href="http://www.adobe.com/software/flash/about/" target="_blank">Flash</a> might be a thing of the past but in it&apos;s time it was THE tool to make fancy animations. The <a href="https://market.envato.com/" target="_blank">Envato Market</a> was the ideal place to test out my creations with my first real clients.',
     image: envato,
-    link: {
+    links: [{
       url: 'https://themeforest.net/user/wardoosterlijnck',
       label: 'Envato profile'
-    }
+    }]
   }
 ]
 
 @CSSModules(styles)
 export default class Work extends PureComponent {
-  static propTypes = {
-    id: PropTypes.string,
-    activeSection: PropTypes.string
+  props: {
+    id: string,
+    activeSection: string
   }
 
   static defaultProps = {
     id: 'work'
   }
 
-  createWorkLinks (links) {
+  createWorkLinks (links: Array<{label: string, url: string}>) {
     if (links) {
       return (
         <div styleName='work-links'>
@@ -113,10 +125,9 @@ export default class Work extends PureComponent {
     }
   }
 
-  createWorkItems (active) {
+  createWorkItems (active: boolean) {
     return works.map((item, i) => {
-      const {title, when, description, image} = item
-      let links = item.link ? [item.link] : item.links
+      const {title, when, description, image, links} = item
 
       return (
         <Unit

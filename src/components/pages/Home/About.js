@@ -1,4 +1,5 @@
-import React, {PureComponent, PropTypes} from 'react'
+// @flow
+import React, {PureComponent} from 'react'
 import {Link} from 'react-router'
 import CSSModules from 'react-css-modules'
 import FaAngleDown from 'react-icons/lib/fa/angle-down'
@@ -7,21 +8,20 @@ import styles from './About.scss'
 
 @CSSModules(styles)
 export default class About extends PureComponent {
-  static propTypes = {
-    id: PropTypes.string,
-    activeSection: PropTypes.string
+  props: {
+    id: string,
+    activeSection: string
   }
 
   static defaultProps = {
     id: 'about'
   }
 
-  removeFocus (e) {
+  removeFocus (e: Object) {
     if (e.target.blur) e.target.blur()
   }
 
   render () {
-    // eslint-disable-next-line no-unused-vars
     const {activeSection, ...props} = this.props
     const active = activeSection === this.props.id || activeSection === ''
 

@@ -1,15 +1,16 @@
+// @flow
 import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import {Grid, Unit} from '../ui'
 import styles from './Error.scss'
 
-const emojis = ['😭', '😡', '🙄', '🤔', '😕', '🙁', '😦', '😵', '😪', '🤥', '🐒', '😰', '😢', '😱', '😳', '☠️', '💥', '🖕', '👎', '🙃', '😖', '😩', '😫', '😤']
+const emojis: Array<string> = ['😭', '😡', '🙄', '🤔', '😕', '🙁', '😦', '😵', '😪', '🤥', '🐒', '😰', '😢', '😱', '😳', '☠️', '🖕', '👎', '🙃', '😖', '😩', '😫', '😤']
 
 @CSSModules(styles)
 export default class Error extends PureComponent {
-  static propTypes = {
-    title: React.PropTypes.string,
-    message: React.PropTypes.string
+  props: {
+    title: string,
+    message: string
   }
 
   static defaultProps = {

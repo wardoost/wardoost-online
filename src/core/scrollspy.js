@@ -1,10 +1,31 @@
+// @flow
 import {throttle, autobind} from 'core-decorators'
+import type {Menu} from './menu'
+
+type Options = {
+  onUpdateActive?: Function,
+  onUpdateAtEnd?: Function,
+  duration?: number,
+  offset?: number,
+  location?: Object,
+  delay?: number
+}
 
 export default class ScrollSpy {
-  constructor (menu, options) {
-    if (typeof menu !== 'object') throw new Error('menu should be an object')
-    if (typeof options !== 'object') throw new Error('options should be a number')
+  _menu: Menu
+  _updateActiveCb: Function
+  _atEndCb: Function
+  _duration: number
+  _offset: number
+  _location: Object
+  _scrollTop: number
+  _delay: number
+  _enabled: boolean
+  _targets: Array<{ hash: string, top: number}>
+  _activeHash: string
+  _el: Object
 
+  constructor (menu: Menu, options: Options) {
     this._menu = menu
     this._updateActiveCb = options.onUpdateActive || function () {}
     this._atEndCb = options.onUpdateAtEnd || function () {}
@@ -14,16 +35,16 @@ export default class ScrollSpy {
     this._scrollTop = window.pageYOffset || window.scrollY || 0
     this._delay = options.delay || 50
     this._enabled = true
+    this._el = document.body || {clientHeight: 0}
 
     this.init()
   }
 
-  get menu () {
+  get menu (): Menu {
     return this._menu
   }
 
-  set menu (menu) {
-    if (typeof menu !== 'object') throw new Error('menu should be an object')
+  set menu (menu: Menu) {
     this._menu = menu
     this.updateTargets()
   }
@@ -38,11 +59,11 @@ export default class ScrollSpy {
 
   @autobind
   @throttle(100)
-  onScroll (e) {
+  onScroll (e: any) {
     const scrollTop = window.pageYOffset || window.scrollY || 0
     const scrollPosition = scrollTop < 0 ? 0 : scrollTop // Minimum of 0, Safari goes below 0
     const windowHeight = window.innerHeight
-    const scrollHeight = document.body.clientHeight - windowHeight
+    const scrollHeight = this._el.clientHeight - windowHeight
     const correctionTopThreshold = windowHeight / 2
     const correctionTop = (scrollPosition < correctionTopThreshold ? scrollPosition / correctionTopThreshold : 1) * windowHeight / 2
     const correctionBottomThreshold = scrollHeight - windowHeight / 2
@@ -86,7 +107,7 @@ export default class ScrollSpy {
     this.onScroll()
   }
 
-  updateLocation (location) {
+  updateLocation (location: any) {
     if (location !== this._location) {
       const prevLocation = this._location
       this._location = location
@@ -102,11 +123,10 @@ export default class ScrollSpy {
     }
   }
 
-  scrollTo (to, duration) {
-    const dur = duration || this._duration
-    const max = document.body.clientHeight - window.innerHeight
+  scrollTo (to: string | number, duration: number = this._duration) {
+    const max = this._el.clientHeight - window.innerHeight
     const start = window.pageYOffset || window.scrollY || 0
-    const child = document.getElementById(to)
+    const child = typeof to === 'string' ? document.getElementById(to) : null
     const end = (typeof to === 'number' ? to : to ? child ? child.offsetTop : start : 0) - this._offset
     const change = (end > max ? max : end) - start
     const increment = 20
@@ -115,9 +135,9 @@ export default class ScrollSpy {
 
     const animateScroll = elapsedTime => {
       elapsedTime += increment
-      var position = this.easeInOut(elapsedTime, start, change, dur)
+      var position = this.easeInOut(elapsedTime, start, change, duration)
       window.scrollTo(0, position)
-      if (elapsedTime < dur) {
+      if (elapsedTime < duration) {
         setTimeout(() => {
           animateScroll(elapsedTime)
         }, increment)
@@ -131,11 +151,11 @@ export default class ScrollSpy {
     animateScroll(0)
   }
 
-  scrollToTop (duration) {
-    this.scrollTo(0, duration || this._duration)
+  scrollToTop (duration: number = this._duration) {
+    this.scrollTo(0, duration)
   }
 
-  easeInOut (currentTime, start, change, duration) {
+  easeInOut (currentTime: number, start: number, change: number, duration: number): number {
     currentTime /= duration / 2
     if (currentTime < 1) {
       return change / 2 * currentTime * currentTime + start

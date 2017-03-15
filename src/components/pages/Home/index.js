@@ -1,3 +1,4 @@
+// @flow
 import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import About from './About'
@@ -8,9 +9,9 @@ import styles from './index.scss'
 
 @CSSModules(styles)
 export default class Home extends PureComponent {
-  static propTypes = {
-    activeSection: React.PropTypes.string,
-    atPageEnd: React.PropTypes.bool
+  props: {
+    activeSection: string,
+    atPageEnd: boolean
   }
 
   render () {

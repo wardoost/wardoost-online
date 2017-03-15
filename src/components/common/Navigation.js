@@ -1,52 +1,60 @@
+// @flow
 import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import {autobind} from 'core-decorators'
 import {Link} from 'react-router'
 import MenuToggle from './MenuToggle'
+import type {Menu} from '../../core/menu'
 import styles from './Navigation.scss'
+
+type Props = {
+  children?: any,
+  menu: Menu,
+  location: Object,
+  active: boolean,
+  activeHash: string,
+  onToggle: Function
+}
+type State = {
+  menuActive: boolean
+}
 
 @CSSModules(styles, {allowMultiple: true})
 export default class Layout extends PureComponent {
-  static propTypes = {
-    children: React.PropTypes.node,
-    menu: React.PropTypes.array,
-    location: React.PropTypes.object,
-    active: React.PropTypes.bool,
-    activeHash: React.PropTypes.string,
-    onToggle: React.PropTypes.func
-  }
+  props: Props
+  state: State
 
   state = {
     menuActive: this.props.active !== undefined ? this.props.active : false
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps: Props) {
     if (nextProps.active !== undefined && nextProps.active !== this.state.menuActive) {
       this.setState({menuActive: nextProps.active})
     }
   }
 
   @autobind
-  toggleMenu (e) {
+  toggleMenu (e: Object) {
     if (this.props.onToggle) this.props.onToggle(!this.state.menuActive)
-    this.setState(prevState => {
+    this.setState((prevState: State) => {
       return { menuActive: !prevState.menuActive }
     })
     this.removeFocus(e)
   }
 
   @autobind
-  hideMenu (e) {
+  hideMenu (e: Object) {
     if (this.props.onToggle) this.props.onToggle(false)
     this.setState({ menuActive: false })
     this.removeFocus(e)
   }
 
-  removeFocus (e) {
+  removeFocus (e: Object) {
     if (e.target.blur) e.target.blur()
   }
 
-  createMenu (menu, location) {
+  createMenu (menu: Menu, location: Object) {
     return menu.map((item, i) => {
       const path = item.to.split('#')[0]
       const hash = item.to.split('#')[1]

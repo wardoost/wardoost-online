@@ -1,4 +1,5 @@
-import React, {PureComponent, PropTypes} from 'react'
+// @flow
+import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import FaTwitter from 'react-icons/lib/fa/twitter'
 import FaGithub from 'react-icons/lib/fa/github'
@@ -33,16 +34,16 @@ const social = [
 
 @CSSModules(styles)
 export default class Social extends PureComponent {
-  static propTypes = {
-    id: PropTypes.string,
-    activeSection: PropTypes.string
+  props: {
+    id: string,
+    activeSection: string
   }
 
   static defaultProps = {
     id: 'social'
   }
 
-  createSocialLinks (active) {
+  createSocialLinks (active: boolean) {
     return social.map((item, i) => {
       const {title, url, Icon} = item
 

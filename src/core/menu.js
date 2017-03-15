@@ -1,4 +1,10 @@
-const menu = [
+// @flow
+export type Menu = Array<{
+  label: string,
+  to: string
+}>
+
+const menu: Menu = [
   {
     label: 'About',
     to: '/#about'

@@ -1,11 +1,12 @@
-import React, {PureComponent, PropTypes} from 'react'
+// @flow
+import React, {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import styles from './MenuToggle.scss'
 
 @CSSModules(styles)
 export default class MenuToggle extends PureComponent {
-  static propTypes = {
-    active: PropTypes.bool.isRequired
+  props: {
+    active: boolean
   }
 
   path1Length = 2158.35791015625
