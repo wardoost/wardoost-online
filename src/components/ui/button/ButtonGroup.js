@@ -1,23 +1,19 @@
-import React, {PureComponent, PropTypes} from 'react'
-import CSSModules from 'react-css-modules'
+/* @flow */
+import React from 'react'
+import classNames from 'classnames'
 import Button from './Button'
 import ButtonLoading from './ButtonLoading'
 import styles from './ButtonGroup.scss'
 
-@CSSModules(styles)
-export default class ButtonGroup extends PureComponent {
-  static propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.shape({
-        type: PropTypes.oneOf([Button, ButtonLoading])
-      }),
-      PropTypes.arrayOf(PropTypes.shape({
-        type: PropTypes.oneOf([Button, ButtonLoading])
-      }))
-    ])
-  }
+type Props = {
+  className?: string,
+  children?: Array<Button|ButtonLoading>
+}
 
-  renderChildren (children) {
+export default function ButtonGroup (props: Props) {
+  const {className, children, ...rest} = props
+
+  const renderChildren = () => {
     return React.Children.map(children, child => {
       return React.cloneElement(child, {
         grouped: true
@@ -25,13 +21,9 @@ export default class ButtonGroup extends PureComponent {
     })
   }
 
-  render () {
-    const {children, ...props} = this.props
-
-    return (
-      <div styleName='button-group' role='group' {...props}>
-        {this.renderChildren(children)}
-      </div>
-    )
-  }
+  return (
+    <div className={classNames(styles.btnGroup, className)} role='group' {...rest}>
+      {renderChildren()}
+    </div>
+  )
 }

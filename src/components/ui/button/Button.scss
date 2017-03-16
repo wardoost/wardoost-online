@@ -1,65 +1,117 @@
 @import '~styles/helpers';
 
-.button {
-  composes: pure-button from 'purecss/build/buttons.css';
+.btn {
+  display: inline-block;
+  zoom: 1;
+  line-height: normal;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-drag: none;
+  user-select: none;
+  box-sizing: border-box;
+
+  font-family: inherit;
+  font-size: 100%;
+  padding: 0.5em 1em;
+  border: none;
+  color: rgba($black, 0.8);
+  background-color: $gray-lighter;
+  text-decoration: none;
   border-radius: $radius;
 
-  &.button-grouped {
+  &:hover,
+  &:focus {
+    opacity: 0.9;
+    background-image: linear-gradient(transparent, rgba($black, 0.05) 40%, rgba($black, 0.1));
+  }
+  &:focus {
+    outline: 0;
+  }
+  &.active,
+  &:active {
+    box-shadow: 0 0 0 1px rgba($black, 0.15) inset, 0 0 6px rgba($black, 0.2) inset;
+  }
+  &[disabled] {
+    border: none;
+    background-image: none;
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  &.grouped {
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+
+    margin: 0;
+    border-radius: 0;
+    border-right: 1px solid rgba($black, 0.2);
+
     &:first-child {
-      border-radius: $radius 0 0 $radius;
+      border-top-left-radius: $radius;
+      border-bottom-left-radius: $radius;
     }
     &:last-child {
-      border-radius: 0 $radius $radius 0;
+      border-top-right-radius: $radius;
+      border-bottom-right-radius: $radius;
+      border-right: none;
     }
   }
 }
 
-.button-primary {
-  composes: button;
-  composes: pure-button-primary from 'purecss/build/buttons.css';
+/* Firefox: Get rid of the inner focus border */
+.btn::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+.primary {
+  composes: btn;
+  color: $white;
   background-color: $primary;
 }
 
-.button-secondary {
-  composes: button;
+.secondary {
+  composes: btn;
+  color: $white;
   background-color: $secondary;
-  color: $white;
 }
 
-.button-success {
-  composes: button;
+.success {
+  composes: btn;
+  color: $white;
   background-color: $success;
-  color: $white;
 }
 
-.button-warning {
-  composes: button;
+.warning {
+  composes: btn;
+  color: $white;
   background-color: $warning;
-  color: $white;
 }
 
-.button-error {
-  composes: button;
+.error {
+  composes: btn;
+  color: $white;
   background-color: $error;
-  color: $white;
 }
 
-.button-active {
-  composes: pure-button-active from 'purecss/build/buttons.css';
-}
-
-.button-xs {
+.xs {
   font-size: 70%;
 }
 
-.button-sm {
+.sm {
   font-size: 85%;
 }
 
-.button-lg {
+.lg {
   font-size: 110%;
 }
 
-.button-xl {
+.xl {
   font-size: 125%;
 }

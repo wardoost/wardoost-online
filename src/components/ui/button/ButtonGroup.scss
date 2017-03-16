@@ -1,5 +1,13 @@
 @import '~styles/helpers';
 
-.button-group {
-  composes: pure-button-group from 'purecss/build/buttons.css';
+.btnGroup {
+  letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+  *letter-spacing: normal; /* reset IE < 8 */
+  *word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
+  text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+}
+
+:global(.opera-only) :-o-prefocus,
+.btnGroup {
+    word-spacing: -0.43em;
 }

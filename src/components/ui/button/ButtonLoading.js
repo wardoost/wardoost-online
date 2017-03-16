@@ -1,37 +1,46 @@
-import React, {PureComponent, PropTypes} from 'react'
-import CSSModules from 'react-css-modules'
-import Button from './Button'
+/* @flow */
+import React from 'react'
+import classNames from 'classnames'
 import FaCircleONotch from 'react-icons/lib/fa/circle-o-notch'
+import Button from './Button'
 import styles from './ButtonLoading.scss'
 
-@CSSModules(styles, {allowMultiple: true})
-export default class ButtonLoading extends PureComponent {
-  static propTypes = {
-    children: PropTypes.node,
-    disabled: PropTypes.bool,
-    loading: PropTypes.bool.isRequired,
-    loadingDisables: PropTypes.bool,
-    LoadIcon: PropTypes.func,
-    loadReplace: PropTypes.bool
-  }
+type Props = {
+  className?: string,
+  kind?: 'primary' | 'secondary' | 'success' | 'warning' | 'error',
+  size?: 'sm' | 'lg' | 'xl',
+  active?: boolean,
+  grouped?: boolean,
+  children?: React.Element<*>,
+  disabled?: boolean,
+  loading: boolean,
+  loadingDisables?: boolean,
+  LoadIcon?: any,
+  loadReplace?: boolean
+}
 
-  static defaultProps = {
-    loadingDisables: true,
-    LoadIcon: FaCircleONotch,
-    loadReplace: false
-  }
+ButtonLoading.defaultProps = {
+  loadingDisables: true,
+  LoadIcon: FaCircleONotch,
+  loadReplace: false
+}
 
-  render () {
-    const {children, disabled, loading, loadingDisables, LoadIcon, loadReplace, ...props} = this.props
+export default function ButtonLoading (props: Props) {
+  const {className, children, disabled, loading, loadingDisables, LoadIcon, loadReplace, ...rest} = props
 
-    return (
-      <Button
-        styleName={`${loading ? 'button-loading-active' : 'button-loading'} ${loadReplace ? 'button-loading-replace' : ''}`}
-        disabled={loadingDisables ? loading : disabled}
-        {...props}>
-        <span styleName='content'>{children}</span>
-        <span styleName='icon'><LoadIcon styleName='icon-spin' /></span>
-      </Button>
-    )
-  }
+  return (
+    <Button
+      className={classNames(
+        className,
+        loading ? styles.loadingActive : styles.loading,
+        {[styles.loadingReplace]: loadReplace},
+      )}
+      disabled={loadingDisables ? loading : disabled}
+      {...rest}>
+      <span className={styles.content}>{children}</span>
+      {LoadIcon
+      ? <span className={styles.icon}><LoadIcon className={styles.iconSpin} /></span>
+      : null}
+    </Button>
+  )
 }

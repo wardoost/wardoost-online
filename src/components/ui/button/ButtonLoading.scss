@@ -1,6 +1,6 @@
 @import '~styles/helpers';
 
-.button-loading {
+.loading {
   overflow: hidden;
   position: relative;
 
@@ -29,8 +29,8 @@
   }
 }
 
-.button-loading-active {
-  composes: button-loading;
+.loadingActive {
+  composes: loading;
 
   &:disabled {
     opacity: 1;
@@ -48,7 +48,7 @@
   }
 }
 
-.button-loading-replace {
+.loadingReplace {
   .content {
     left: 0;
     transition: opacity 100ms linear 200ms;
@@ -60,13 +60,13 @@
       left: 0em;
     }
   }
-  &.button-loading-active .content {
+  &.loadingActive .content {
     opacity: 0;
     transition: opacity 100ms linear;
   }
 }
 
-.icon-spin {
+.iconSpin {
   animation-duration: 750ms;
   animation-timing-function: linear;
   animation-iteration-count: infinite;

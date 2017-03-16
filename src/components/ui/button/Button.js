@@ -1,35 +1,33 @@
-import React, {PureComponent, PropTypes} from 'react'
-import CSSModules from 'react-css-modules'
+/* @flow */
+import React from 'react'
 import classNames from 'classnames'
 import styles from './Button.scss'
 
-@CSSModules(styles, {allowMultiple: true})
-export default class Button extends PureComponent {
-  static propTypes = {
-    children: PropTypes.node,
-    kind: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'error']),
-    size: PropTypes.oneOf(['sm', 'lg', 'xl']),
-    active: PropTypes.bool,
-    grouped: PropTypes.bool
-  }
+type Props = {
+  className?: string,
+  kind?: 'primary' | 'secondary' | 'success' | 'warning' | 'error',
+  size?: 'sm' | 'lg' | 'xl',
+  active?: boolean,
+  grouped?: boolean
+}
 
-  static defaultProps = {
-    active: false,
-    grouped: false
-  }
+Button.defaultProps = {
+  active: false,
+  grouped: false
+}
 
-  render () {
-    const {children, kind, size, active, grouped, ...props} = this.props
+export default function Button (props: Props) {
+  const {className, kind, size, active, grouped, ...rest} = props
 
-    return (
-      <button
-        styleName={classNames(kind ? `button-${kind}` : 'button', {
-          [`button-${size}`]: size,
-          'button-active': active,
-          'button-grouped': grouped
-        })} {...props}>
-        {children}
-      </button>
-    )
-  }
+  return (
+    <button
+      className={classNames(
+        styles[kind || 'btn'],
+        styles[size],
+        active ? styles.active : null,
+        grouped ? styles.grouped : null,
+        className
+      )}
+      {...rest} />
+  )
 }
