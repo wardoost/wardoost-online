@@ -5,7 +5,7 @@ import FaAngleDown from 'react-icons/lib/fa/angle-down'
 import SectionAnimated from '../../common/SectionAnimated'
 import styles from './About.scss'
 
-export default function Social (props: {activeSection?: string}) {
+export default function About (props: {activeSection?: string}) {
   const id = 'about'
   const {activeSection, ...rest} = props
   const active = activeSection === id || activeSection === ''
