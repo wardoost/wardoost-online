@@ -1,6 +1,5 @@
 /* @flow */
-import React, {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
+import React from 'react'
 import {Grid, Unit, Image} from '../../ui'
 import FaChain from 'react-icons/lib/fa/chain'
 import SectionAnimated from '../../common/SectionAnimated'
@@ -92,40 +91,30 @@ const works: Array<WorkItem> = [
   }
 ]
 
-@CSSModules(styles)
-export default class Work extends PureComponent {
-  props: {
-    id: string,
-    activeSection: string
+export default function Work (props: {activeSection?: string}) {
+  const id = 'work'
+  const {activeSection, ...rest} = props
+  const active = activeSection === id
+
+  const createWorkLinks = (links: Array<{label: string, url: string}>) => {
+    return (
+      <div className={styles.links}>
+        <Grid>
+          {links.map((link, i) => {
+            return (
+              <Unit key={i} smSize={links.length % 2 !== 0 && links.length - i === 1 ? '1-1' : '1-2'}>
+                <a className={styles.link} href={link.url} target='_blank'>
+                  <FaChain /> {link.label || link.url}
+                </a>
+              </Unit>
+            )
+          })}
+        </Grid>
+      </div>
+    )
   }
 
-  static defaultProps = {
-    id: 'work'
-  }
-
-  createWorkLinks (links: Array<{label: string, url: string}>) {
-    if (links) {
-      return (
-        <div styleName='work-links'>
-          <Grid>
-            {links.map((link, i) => {
-              return (
-                <Unit key={i} smSize={links.length % 2 !== 0 && links.length - i === 1 ? '1-1' : '1-2'}>
-                  <a styleName='work-link' href={link.url} target='_blank'>
-                    <FaChain /> {link.label || link.url}
-                  </a>
-                </Unit>
-              )
-            })}
-          </Grid>
-        </div>
-      )
-    } else {
-      return null
-    }
-  }
-
-  createWorkItems (active: boolean) {
+  const createWorkItems = (active: boolean) => {
     return works.map((item, i) => {
       const {title, when, description, image, links} = item
 
@@ -137,38 +126,33 @@ export default class Work extends PureComponent {
           style={{transitionDelay: `${active ? 100 * (i + 1) : 100 * (works.length - i)}ms`}}
           >
           <div
-            styleName='work'
+            className={styles.work}
             style={{paddingBottom: (Math.floor(links.length / 2) + links.length % 2) * 65 - 10}}>
-            <h2 styleName='work-title'>{title}</h2>
-            <p styleName='work-when'>{when}</p>
+            <h2 className={styles.title}>{title}</h2>
+            <p className={styles.when}>{when}</p>
             <Grid gutter='md'>
               <Unit smSize='1-3' mdSize='1-1' lgSize='1-3'>
-                <Image src={image} alt={title} className={styles.workImg} />
+                <Image src={image} alt={title} className={styles.img} />
               </Unit>
-              <Unit smSize='2-3' mdSize='1-1' lgSize='2-3' styleName='work-description'>
+              <Unit smSize='2-3' mdSize='1-1' lgSize='2-3' className={styles.description}>
                 <p dangerouslySetInnerHTML={{ __html: description }} />
               </Unit>
             </Grid>
           </div>
-          {this.createWorkLinks(links)}
+          {createWorkLinks(links)}
         </Unit>
       )
     })
   }
 
-  render () {
-    const {activeSection, ...props} = this.props
-    const active = activeSection === this.props.id
-
-    return (
-      <SectionAnimated title='Work' active={active} {...props}>
-        <div styleName='intro'>
-          <p>This selection of work shows my digital journey over the years.</p>
-        </div>
-        <Grid gutter='xs'>
-          {this.createWorkItems(active)}
-        </Grid>
-      </SectionAnimated>
-    )
-  }
+  return (
+    <SectionAnimated id={id} title='Work' active={active} {...rest}>
+      <div className={styles.intro}>
+        <p>This selection of work shows my digital journey over the years.</p>
+      </div>
+      <Grid gutter='xs'>
+        {createWorkItems(active)}
+      </Grid>
+    </SectionAnimated>
+  )
 }

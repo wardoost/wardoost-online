@@ -1,6 +1,5 @@
 /* @flow */
-import React, {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
+import React from 'react'
 import FaTwitter from 'react-icons/lib/fa/twitter'
 import FaGithub from 'react-icons/lib/fa/github'
 import FaLinkedin from 'react-icons/lib/fa/linkedin'
@@ -9,7 +8,13 @@ import SectionAnimated from '../../common/SectionAnimated'
 import {Grid, Unit} from '../../ui'
 import styles from './Social.scss'
 
-const social = [
+type SocialLinks = Array<{
+  title: string,
+  url: string,
+  Icon: any
+}>
+
+const social: SocialLinks = [
   {
     title: 'Follow me on Twitter',
     url: 'https://twitter.com/wardoost',
@@ -32,18 +37,12 @@ const social = [
   }
 ]
 
-@CSSModules(styles)
-export default class Social extends PureComponent {
-  props: {
-    id: string,
-    activeSection: string
-  }
+export default function Social (props: {activeSection?: string}) {
+  const id = 'social'
+  const {activeSection, ...rest} = props
+  const active = activeSection === id
 
-  static defaultProps = {
-    id: 'social'
-  }
-
-  createSocialLinks (active: boolean) {
+  const createSocialLinks = (active: boolean) => {
     return social.map((item, i) => {
       const {title, url, Icon} = item
 
@@ -52,10 +51,10 @@ export default class Social extends PureComponent {
           key={i}
           size={`1-${Math.ceil(social.length / 2) + (social.length % 2 && i + 1 >= social.length ? 1 : 0)}`}
           smSize={`1-${social.length}`}
-          styleName='social'
+          className={styles.social}
           style={{transitionDelay: `${active ? 100 * (i + 1) : 100 * (social.length - i)}ms`}}>
           <a href={url} target='_blank' title={title}>
-            <div styleName='icon'>
+            <div className={styles.icon}>
               <Icon />
             </div>
           </a>
@@ -64,19 +63,14 @@ export default class Social extends PureComponent {
     })
   }
 
-  render () {
-    const {activeSection, ...props} = this.props
-    const active = activeSection === this.props.id
-
-    return (
-      <SectionAnimated title='Social' active={active} {...props}>
-        <div styleName='intro'>
-          <p>Want to know more about me? Stalk me on these.</p>
-        </div>
-        <Grid gutter='xs'>
-          {this.createSocialLinks(active)}
-        </Grid>
-      </SectionAnimated>
-    )
-  }
+  return (
+    <SectionAnimated id={id} title='Social' active={active} {...rest}>
+      <div className={styles.intro}>
+        <p>Want to know more about me? Stalk me on these.</p>
+      </div>
+      <Grid gutter='xs'>
+        {createSocialLinks(active)}
+      </Grid>
+    </SectionAnimated>
+  )
 }

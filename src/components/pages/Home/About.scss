@@ -25,7 +25,7 @@ $button-down-height: 80px;
   }
 }
 
-.intro-content {
+.content {
   padding: $padding-lg $padding-md;
 
   @media #{$xs-min} {
@@ -41,7 +41,7 @@ $button-down-height: 80px;
   }
 }
 
-.icon-down {
+.next {
   display: none;
 
   a {
