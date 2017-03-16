@@ -1,3 +1,5 @@
 .img {
-  composes: pure-img from 'purecss/build/base.css';
+  max-width: 100%;
+  height: auto;
+  display: block;
 }

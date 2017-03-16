@@ -1,23 +1,22 @@
-import React, {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
+/* @flow */
+import React from 'react'
+import classNames from 'classnames'
 import FaBug from 'react-icons/lib/fa/bug'
 import styles from './Footer.scss'
 
-@CSSModules(styles)
-export default class Footer extends PureComponent {
-  render () {
-    return (
-      <footer styleName='footer'>
-        <div styleName='container'>
-          <a
-            title='Report a bug'
-            href='https://github.com/wardoost/wardoost-online/issues'
-            target='_blank'
-            styleName='bug'>
-            <i><FaBug /></i>
-          </a>
-        </div>
-      </footer>
-    )
-  }
+export default function Footer (props: {className?: string}) {
+  const {className, ...rest} = props
+  return (
+    <footer className={classNames(className, styles.footer)} {...rest}>
+      <div className={styles.container}>
+        <a
+          title='Report a bug'
+          href='https://github.com/wardoost/wardoost-online/issues'
+          target='_blank'
+          className={styles.bug}>
+          <i><FaBug /></i>
+        </a>
+      </div>
+    </footer>
+  )
 }

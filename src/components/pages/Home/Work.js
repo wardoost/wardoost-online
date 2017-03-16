@@ -143,7 +143,7 @@ export default class Work extends PureComponent {
             <p styleName='work-when'>{when}</p>
             <Grid gutter='md'>
               <Unit smSize='1-3' mdSize='1-1' lgSize='1-3'>
-                <Image src={image} alt={title} styleName='work-img' />
+                <Image src={image} alt={title} className={styles.workImg} />
               </Unit>
               <Unit smSize='2-3' mdSize='1-1' lgSize='2-3' styleName='work-description'>
                 <p dangerouslySetInnerHTML={{ __html: description }} />

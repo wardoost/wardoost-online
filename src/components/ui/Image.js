@@ -1,21 +1,12 @@
-import React, {PureComponent, PropTypes} from 'react'
-import CSSModules from 'react-css-modules'
+/* @flow */
+import React from 'react'
+import classNames from 'classnames'
 import styles from './Image.scss'
 
-@CSSModules(styles)
-export default class Image extends PureComponent {
-  static propTypes = {
-    src: PropTypes.string.isRequired
-  }
+export default function Image (props: {className?: string, src: string, alt: string}) {
+  const {className, ...rest} = props
 
-  render () {
-    const {src, ...props} = this.props
-
-    return (
-      <img
-        src={src}
-        styleName='img'
-        {...props} />
-    )
-  }
+  return (
+    <img className={classNames(className, styles.img)} {...rest} />
+  )
 }
