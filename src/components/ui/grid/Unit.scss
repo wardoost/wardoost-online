@@ -1,29 +1,57 @@
 @import '~styles/helpers';
 
 $grids: 1, 2, 3, 4, 5, 6, 8, 12, 24;
-$breakPoints: 'sm', 'md', 'lg', 'xl';
+$breakPoints: (
+  sm: $sm-min,
+  md: $md-min,
+  lg: $lg-min,
+  xl: $xl-min
+);
+
 
 .unit {
-  font-family: $font-primary !important;
+  display: inline-block;
+  *display: inline; /* IE < 8: fake inline-block */
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  vertical-align: top;
+  text-rendering: auto;
+
+  font-family: $font-primary;
 }
 
+// Unit sizes
 @for $i from 1 through length($grids) {
   $grid: nth($grids, $i);
   @for $width from 1 through $grid {
     @if ($grid % $width != 0) or ($width == 1) {
       .unit-#{$width}-#{$grid} {
         composes: unit;
-        composes: pure-u-#{$width}-#{$grid} from 'purecss/build/grids.css';
+        width: percentage($width / $grid);
+        *width: percentage($width / $grid);
       }
-      @for $j from 1 through length($breakPoints) {
-        $breakPoint: nth($breakPoints, $j);
-        .unit-#{$breakPoint}-#{$width}-#{$grid} {
-          composes: pure-u-#{$breakPoint}-#{$width}-#{$grid} from 'purecss/build/grids-responsive.css';
+    }
+  }
+}
+
+// Responsive unit sizes
+@each $breakPoint, $mediaQuery in $breakPoints {
+  @media #{$mediaQuery} {
+    @for $i from 1 through length($grids) {
+      $grid: nth($grids, $i);
+      @for $width from 1 through $grid {
+        @if ($grid % $width != 0) or ($width == 1) {
+          .#{$breakPoint}-#{$width}-#{$grid} {
+            width: percentage($width / $grid);
+            *width: percentage($width / $grid);
+          }
         }
       }
     }
   }
 }
+
 
 $gutters: (
   xs: $padding-xs,
@@ -34,7 +62,7 @@ $gutters: (
 );
 
 @each $gutter, $size in $gutters {
-  .unit-gutter-#{$gutter} {
+  .gutter-#{$gutter} {
     padding: $size / 2;
     &:before {
       position: absolute;
@@ -47,6 +75,6 @@ $gutters: (
   }
 }
 
-.unit-reverse {
+.reverse {
   direction: ltr;
 }

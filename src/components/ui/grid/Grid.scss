@@ -1,8 +1,52 @@
 @import '~styles/helpers';
 
 .grid {
-  composes: pure-g from 'purecss/build/grids.css';
-  font-family: $font-primary;
+  letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+  *letter-spacing: normal; /* reset IE < 8 */
+  *word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
+  text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+
+  /*
+  Sets the font stack to fonts known to work properly with the above letter
+  and word spacings. See: https://github.com/yahoo/pure/issues/41/
+
+  The following font stack makes Pure Grids work on all known environments.
+
+  * FreeSans: Ships with many Linux distros, including Ubuntu
+
+  * Arimo: Ships with Chrome OS. Arimo has to be defined before Helvetica and
+    Arial to get picked up by the browser, even though neither is available
+    in Chrome OS.
+
+  * Droid Sans: Ships with all versions of Android.
+
+  * Helvetica, Arial, sans-serif: Common font stack on OS X and Windows.
+  */
+  font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+
+  /* Use flexbox when possible to avoid `letter-spacing` side-effects. */
+  display: flex;
+  flex-flow: row wrap;
+
+  /* Prevents distributing space between rows */
+  -ms-flex-line-pack: start;
+  align-content: flex-start;
+}
+
+/* IE10 display: -ms-flexbox (and display: flex in IE 11) does not work inside a table; fall back to block and rely on font hack */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	table .grid {
+		display: block;
+	}
+}
+
+/* Opera as of 12 on Windows needs word-spacing.
+   The ".opera-only" selector is used to prevent actual prefocus styling
+   and is not required in markup.
+*/
+:global(.opera-only) :-o-prefocus,
+.grid {
+    word-spacing: -0.43em;
 }
 
 $gutters: (
@@ -14,11 +58,11 @@ $gutters: (
 );
 
 @each $gutter, $size in $gutters {
-  .grid-gutter-#{$gutter} {
+  .gutter-#{$gutter} {
     margin: #{-$size / 2};
   }
 }
 
-.grid-reverse {
+.reverse {
   direction: rtl;
 }

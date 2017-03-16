@@ -1,52 +1,39 @@
-import React, {PureComponent, PropTypes} from 'react'
-import CSSModules from 'react-css-modules'
+/* @flow */
+import React from 'react'
 import classNames from 'classnames'
 import styles from './Unit.scss'
 
-const getValidSizes = () => {
-  const grids = [1, 2, 3, 4, 5, 6, 8, 12, 24]
-  const values = []
-  grids.forEach(grid => {
-    for (let i = 1; i <= grid; i++) {
-      if (grid % i !== 0 || i === 1) {
-        values.push(`${i}-${grid}`)
-      }
-    }
-  })
-  return values
+type Props = {
+  className?: string,
+  size?: string,
+  smSize?: string,
+  mdSize?: string,
+  lgSize?: string,
+  xlSize?: string,
+  gutter?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
+  reverse?: boolean
 }
-const validSizes = getValidSizes()
 
-@CSSModules(styles, {allowMultiple: true})
-export default class Unit extends PureComponent {
-  static propTypes = {
-    size: PropTypes.oneOf(validSizes),
-    smSize: PropTypes.oneOf(validSizes),
-    mdSize: PropTypes.oneOf(validSizes),
-    lgSize: PropTypes.oneOf(validSizes),
-    xlSize: PropTypes.oneOf(validSizes),
-    gutter: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
-    reverseDirection: PropTypes.bool
-  }
+Unit.defaultProps = {
+  size: '1-1',
+  reverse: false
+}
 
-  static defaultProps = {
-    size: '1-1'
-  }
+export default function Unit (props: Props) {
+  const {className, size, smSize, mdSize, lgSize, xlSize, gutter, reverse, ...rest} = props
 
-  render () {
-    const {size, smSize, mdSize, lgSize, xlSize, gutter, reverseDirection, ...props} = this.props
-
-    return (
-      <div
-        styleName={classNames(`unit-${size}`, {
-          [`unit-sm-${smSize}`]: smSize,
-          [`unit-md-${mdSize}`]: mdSize,
-          [`unit-lg-${lgSize}`]: lgSize,
-          [`unit-xl-${xlSize}`]: xlSize,
-          [`unit-gutter-${gutter}`]: gutter,
-          'unit-reverse': reverseDirection
-        })}
-        {...props} />
-    )
-  }
+  return (
+    <div
+      className={classNames(
+        size ? styles[`unit-${size}`] : styles.unit,
+        smSize ? styles[`sm-${smSize}`] : null,
+        mdSize ? styles[`md-${mdSize}`] : null,
+        lgSize ? styles[`lg-${lgSize}`] : null,
+        xlSize ? styles[`xl-${xlSize}`] : null,
+        gutter ? styles[`gutter-${gutter}`] : null,
+        reverse ? styles.reverse : null,
+        className
+      )}
+      {...rest} />
+  )
 }

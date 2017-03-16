@@ -50,7 +50,8 @@ export default class Social extends PureComponent {
       return (
         <Unit
           key={i}
-          size={`1-${Math.ceil(social.length / 2) + (social.length % 2 && i + 1 >= social.length ? 1 : 0)}`} smSize={`1-${social.length}`}
+          size={`1-${Math.ceil(social.length / 2) + (social.length % 2 && i + 1 >= social.length ? 1 : 0)}`}
+          smSize={`1-${social.length}`}
           styleName='social'
           style={{transitionDelay: `${active ? 100 * (i + 1) : 100 * (social.length - i)}ms`}}>
           <a href={url} target='_blank' title={title}>
