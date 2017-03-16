@@ -5,7 +5,7 @@ import Footer from './Footer'
 import styles from './Page.scss'
 
 type Props = {
-  children: React.Element<*>
+  children: any
 }
 
 type State = {
