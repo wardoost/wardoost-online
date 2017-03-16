@@ -1,25 +1,19 @@
-import React, {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
+/* @flow */
+import React from 'react'
 import styles from './Form.scss'
 
-@CSSModules(styles)
-export default class Form extends PureComponent {
-  static propTypes = {
-    children: React.PropTypes.node,
-    kind: React.PropTypes.oneOf(['inline', 'stacked', 'aligned'])
-  }
+type Props = {
+  kind?: 'inline' | 'stacked' | 'aligned'
+}
 
-  static defaultProps = {
-    kind: 'inline'
-  }
+Form.defaultProps = {
+  kind: 'inline'
+}
 
-  render () {
-    const {children, kind, ...props} = this.props
+export default function Form (props: Props) {
+  const {kind, ...rest} = props
 
-    return (
-      <form styleName={`form-${kind}`} {...props}>
-        {children}
-      </form>
-    )
-  }
+  return (
+    <form className={styles[kind]} {...rest} />
+  )
 }

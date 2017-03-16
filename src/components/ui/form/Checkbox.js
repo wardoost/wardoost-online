@@ -1,26 +1,23 @@
-import React, {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
+/* @flow */
+import React from 'react'
 import styles from './Checkbox.scss'
 
-@CSSModules(styles)
-export default class Checkbox extends PureComponent {
-  static propTypes = {
-    children: React.PropTypes.node,
-    id: React.PropTypes.string.isRequired,
-    align: React.PropTypes.bool
-  }
+type Props = {
+  children?: React.Element<*>,
+  id: string,
+  align?: boolean
+}
 
-  render () {
-    const {children, align, ...props} = this.props
+export default function Checkbox (props: Props) {
+  const {children, align, ...rest} = props
 
-    return (
-      <label htmlFor={this.props.id} styleName={align ? 'checkbox-align' : 'checkbox'}>
-        <input
-          type='checkbox'
-          ref='input'
-          {...props} />
-        {children}
-      </label>
-    )
-  }
+  return (
+    <label htmlFor={props.id} className={align ? styles.checkboxAlign : styles.checkbox}>
+      <input
+        type='checkbox'
+        ref='input'
+        {...rest} />
+      {children}
+    </label>
+  )
 }

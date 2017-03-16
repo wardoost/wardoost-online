@@ -5,8 +5,9 @@ import Footer from './Footer'
 import styles from './Page.scss'
 
 type Props = {
-  children: any
+  children: React.Element<*>
 }
+
 type State = {
   animating: boolean,
   animationHeight: number

@@ -16,6 +16,6 @@ $grids: 1, 2, 3, 4;
   }
 }
 
-.input-rounded {
+.rounded {
   composes: pure-input-rounded from 'purecss/build/forms.css';
 }

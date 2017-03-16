@@ -73,7 +73,6 @@
     "purecss": "^0.6.2",
     "rc-animate": "^2.3.1",
     "react": "^15.4.2",
-    "react-css-modules": "^4.1.0",
     "react-dom": "^15.4.2",
     "react-ga": "^2.1.2",
     "react-icons": "^2.2.3",

@@ -1,5 +1,4 @@
 import React, {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
 import classNames from 'classnames'
 import styles from './Input.scss'
 
@@ -17,7 +16,6 @@ const getValidSizes = () => {
 }
 const validSizes = getValidSizes()
 
-@CSSModules(styles, {allowMultiple: true})
 export default class Input extends PureComponent {
   static propTypes = {
     size: React.PropTypes.oneOf(validSizes),
@@ -29,10 +27,10 @@ export default class Input extends PureComponent {
 
     return (
       <input
-        styleName={classNames({
-          [`input-${size}`]: size,
-          'input-rounded': rounded
-        })}
+        className={classNames(
+          size ? styles[`input-${size}`] : styles.input,
+          rounded ? styles.rounded : null
+        )}
         ref='input'
         {...props} />
     )

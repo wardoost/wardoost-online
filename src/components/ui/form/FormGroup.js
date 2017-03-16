@@ -1,12 +1,7 @@
-import React, {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
+/* @flow */
+import React from 'react'
 import styles from './FormGroup.scss'
 
-@CSSModules(styles)
-export default class FormGroup extends PureComponent {
-  render () {
-    return (
-      <fieldset styleName='group' {...this.props} />
-    )
-  }
+export default function FormGroup (props: Object) {
+  return <fieldset className={styles.group} {...props} />
 }

@@ -1,12 +1,7 @@
-import React, {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
+/* @flow */
+import React from 'react'
 import styles from './Controls.scss'
 
-@CSSModules(styles)
-export default class Controls extends PureComponent {
-  render () {
-    return (
-      <div styleName='controls' {...this.props} />
-    )
-  }
+export default function Controls (props: Object) {
+  return <div className={styles.controls} {...props} />
 }

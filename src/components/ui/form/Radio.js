@@ -1,31 +1,28 @@
-import React, {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
+/* @flow */
+import React from 'react'
 import styles from './Radio.scss'
 
-@CSSModules(styles)
-export default class Radio extends PureComponent {
-  static propTypes = {
-    children: React.PropTypes.node,
-    id: React.PropTypes.string.isRequired,
-    name: React.PropTypes.string.isRequired,
-    align: React.PropTypes.bool
-  }
+type Props = {
+  children?: React.Element<*>,
+  id: string,
+  name: string,
+  align?: boolean
+}
 
-  static defaultProps = {
-    align: false
-  }
+Radio.defaultProps = {
+  align: false
+}
 
-  render () {
-    const {children, align, ...props} = this.props
+export default function Radio (props: Props) {
+  const {children, align, ...rest} = props
 
-    return (
-      <label htmlFor={this.props.id} styleName={align ? 'radio-align' : 'radio'}>
-        <input
-          type='radio'
-          ref='input'
-          {...props} />
-        {children}
-      </label>
-    )
-  }
+  return (
+    <label htmlFor={props.id} className={align ? styles.radioAlign : styles.radio}>
+      <input
+        type='radio'
+        ref='input'
+        {...rest} />
+      {children}
+    </label>
+  )
 }

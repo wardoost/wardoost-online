@@ -1,12 +1,7 @@
-import React, {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
+/* @flow */
+import React from 'react'
 import styles from './ControlGroup.scss'
 
-@CSSModules(styles)
-export default class ControlGroup extends PureComponent {
-  render () {
-    return (
-      <div styleName='control-group' {...this.props} />
-    )
-  }
+export default function ControlGroup (props: Object) {
+  return <div className={styles.controlGroup} {...props} />
 }

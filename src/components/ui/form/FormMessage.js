@@ -1,22 +1,21 @@
-import React, {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
+/* @flow */
+import React from 'react'
 import styles from './FormMessage.scss'
 
-@CSSModules(styles)
-export default class FormMessage extends PureComponent {
-  static propTypes = {
-    inline: React.PropTypes.bool
-  }
+type Props = {
+  inline?: boolean
+}
 
-  static defaultProps = {
-    inline: false
-  }
+FormMessage.defaultProps = {
+  inline: false
+}
 
-  render () {
-    const {inline, ...props} = this.props
+export default function FormMessage (props: Props) {
+  const {inline, ...rest} = props
 
-    return (
-      <span styleName={inline ? 'form-message-inline' : 'form-message'} {...props} />
-    )
-  }
+  return (
+    <span
+      className={inline ? styles.formMessageInline : styles.formMessage}
+      {...rest} />
+  )
 }
