@@ -11,19 +11,19 @@
 
   &:first-child,
   & + & {
-    .section-content {
+    .content {
       padding-top: $padding-xs;
     }
   }
 
   &:last-child {
-    .section-content {
+    .content {
       padding-bottom: $padding-xs;
     }
   }
 
   &:nth-child(odd) {
-    .section-animated-header {
+    .animatedHeader {
       text-align: right;
 
       h1 {
@@ -35,7 +35,7 @@
   }
 }
 
-.section-content {
+.content {
   position: relative;
   z-index: 0;
   padding: 0 $padding-xs;
@@ -58,22 +58,22 @@
   }
 }
 
-.section-container {
+.container {
   max-width: 80em;
   margin: 0 auto;
 
-  > .section-animated-header + .section-animated,
-  > .section-animated + .section-animated {
+  > .animatedHeader + .animated,
+  > .animated + .animated {
     margin-top: $padding-xs;
   }
-  > .section-animated-header + .section-animated-grid,
-  > .section-animated + .section-animated-grid,
-  > .section-animated-grid + .section-animated-grid {
+  > .animatedHeader + .animatedGrid,
+  > .animated + .animatedGrid,
+  > .animatedGrid + .animatedGrid {
     margin-top: $padding-xs / 2;
   }
 }
 
-.section-animated {
+.animated {
   color: $white;
   position: relative;
   background-image: linear-gradient(135deg, rgba($white, 0.1), rgba($white, 0.2));
@@ -82,7 +82,7 @@
   transition: opacity 200ms linear, transform 200ms ease(in-expo);
 }
 
-.section-animated-grid {
+.animatedGrid {
   > div {
     color: $white;
     opacity: 0;
@@ -96,7 +96,7 @@
   }
 }
 
-.section-animated-header {
+.animatedHeader {
   position: relative;
   height: $header-height-xs;
   text-align: left;
@@ -154,7 +154,7 @@
   }
 }
 
-.section-active {
+.sectionActive {
   composes: section;
   pointer-events: auto;
 
@@ -162,14 +162,14 @@
     opacity: 1;
   }
 
-  .section-animated-grid > div,
-  .section-animated {
+  .animatedGrid > div,
+  .animated {
     opacity: 1;
     transform: scale(1);
     transition: opacity 200ms linear, transform 300ms ease(out-expo);
   }
 
-  .section-animated-header {
+  .animatedHeader {
     opacity: 1;
   }
 }

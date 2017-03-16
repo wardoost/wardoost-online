@@ -1,7 +1,6 @@
 /* @flow */
 import React, {PureComponent} from 'react'
 import {findDOMNode} from 'react-dom'
-import CSSModules from 'react-css-modules'
 import Footer from './Footer'
 import styles from './Page.scss'
 
@@ -13,7 +12,6 @@ type State = {
   animationHeight: number
 }
 
-@CSSModules(styles)
 export default class Page extends PureComponent {
   props: Props
   state: State
@@ -36,7 +34,7 @@ export default class Page extends PureComponent {
     const {animating, animationHeight} = this.state
 
     return (
-      <div styleName='page' style={animating ? {minHeight: animationHeight} : null}>
+      <div className={styles.page} style={animating ? {minHeight: animationHeight} : null}>
         {this.props.children}
         <Footer />
       </div>

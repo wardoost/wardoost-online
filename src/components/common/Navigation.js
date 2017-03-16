@@ -1,6 +1,6 @@
 /* @flow */
 import React, {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
+import classNames from 'classnames'
 import {autobind} from 'core-decorators'
 import {Link} from 'react-router'
 import MenuToggle from './MenuToggle'
@@ -19,8 +19,7 @@ type State = {
   menuActive: boolean
 }
 
-@CSSModules(styles, {allowMultiple: true})
-export default class Layout extends PureComponent {
+export default class Navigation extends PureComponent {
   props: Props
   state: State
 
@@ -63,9 +62,12 @@ export default class Layout extends PureComponent {
       const active = hash ? pathMatch && hashMatch : pathMatch
 
       return (
-        <li key={i} styleName='menu-item'>
+        <li key={i} className={styles.item}>
           <Link
-            styleName={`${active ? 'menu-link-active' : 'menu-link'} ${hash && path !== '/' ? 'menu-link-sub' : ''}`}
+            className={classNames(
+              active ? styles.linkActive : styles.link,
+              hash && path !== '/' ? styles.subLink : ''
+            )}
             to={item.to}
             onClick={this.removeFocus}>
             {item.label}
@@ -81,12 +83,12 @@ export default class Layout extends PureComponent {
     const {menuActive} = this.state
 
     return (
-      <nav styleName={menuActive ? 'nav-active' : 'nav'} {...props}>
-        <a styleName={activeHash === 'about' || activeHash === '' ? 'menu-toggle' : 'menu-toggle-bg'} onClick={this.toggleMenu}>
-          <MenuToggle styleName='menu-toggle-icon' active={menuActive} />
+      <nav className={menuActive ? styles.navActive : styles.nav} {...props}>
+        <a className={activeHash === 'about' || activeHash === '' ? styles.toggle : styles.toggleBg} onClick={this.toggleMenu}>
+          <MenuToggle className={styles.toggleIcon} active={menuActive} />
         </a>
-        <div styleName='menu' onClick={this.hideMenu}>
-          <ul styleName='menu-list'>
+        <div className={styles.menu} onClick={this.hideMenu}>
+          <ul className={styles.list}>
             {menu ? this.createMenu(menu, location) : children}
           </ul>
         </div>

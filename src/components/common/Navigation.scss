@@ -23,15 +23,15 @@
   transition: left 300ms ease(out-expo);
 }
 
-.menu-list {
+.list {
   composes: pure-menu-list from 'purecss/build/menus.css';
 }
 
-.menu-item {
+.item {
   composes: pure-menu-item from 'purecss/build/menus.css';
 }
 
-.menu-link {
+.link {
   composes: pure-menu-link from 'purecss/build/menus.css';
   position: relative;
   padding: 0.7em 0 0.7em 0.7em;
@@ -64,13 +64,13 @@
   }
 }
 
-.menu-link-sub {
+.subLink {
   font-size: 0.8em;
   padding-left: 1.5em;
 }
 
-.menu-link-active {
-  composes: menu-link;
+.linkActive {
+  composes: link;
   color: $white;
 
   &:before {
@@ -86,7 +86,7 @@
   }
 }
 
-.menu-toggle {
+.toggle {
   position: fixed;
   top: 0;
   left: 0;
@@ -101,7 +101,7 @@
   &:hover,
   &:focus {
     color: $white;
-    .menu-toggle-icon {
+    .toggleIcon {
       transform: scale(0.8);
     }
   }
@@ -121,15 +121,15 @@
   }
 }
 
-.menu-toggle-bg {
-  composes: menu-toggle;
+.toggleBg {
+  composes: toggle;
 
   &:before {
     opacity: 1;
   }
 }
 
-.menu-toggle-icon {
+.toggleIcon {
   transition: transform 300ms ease(out-expo);
 
   path {
@@ -137,7 +137,7 @@
   }
 }
 
-.nav-active {
+.navActive {
   .menu {
     left: $menu-width;
     box-shadow: 0 0 2px rgba($black, 0.3);

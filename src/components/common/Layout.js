@@ -1,6 +1,5 @@
 /* @flow */
 import React, {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
 import classNames from 'classnames'
 import {autobind} from 'core-decorators'
 import Animate from 'rc-animate'
@@ -21,7 +20,6 @@ type State = {
   atPageEnd: boolean
 }
 
-@CSSModules(styles, {allowMultiple: true})
 export default class Layout extends PureComponent {
   props: Props
   state: State
@@ -87,14 +85,14 @@ export default class Layout extends PureComponent {
     const {navActive} = this.state
 
     return (
-      <div styleName={classNames('layout', {'menu-active': navActive})}>
+      <div className={classNames(styles.layout, {[styles.menuActive]: navActive})}>
         <Navigation
           menu={menu}
           location={this.props.location}
           onToggle={this.toggleNav}
           active={navActive}
           activeHash={this.state.activeHash} />
-        <div styleName='overlay' onClick={this.hideNav} />
+        <div className={styles.overlay} onClick={this.hideNav} />
         <Animate component={Page} transitionName={styles}>
           {this.renderChildren()}
         </Animate>

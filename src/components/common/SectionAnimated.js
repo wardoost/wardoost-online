@@ -1,33 +1,39 @@
 /* @flow */
 import React from 'react'
-import CSSModules from 'react-css-modules'
+import classNames from 'classnames'
 import {Grid} from '../ui'
 import styles from './SectionAnimated.scss'
 
 type Props = {
+  className?: string,
   children?: React.Element<*>,
   title?: string,
   id: string,
   active: boolean
 }
 
-function SectionAnimated (props: Props): React.Element<*> {
-  const {children, title, active, ...rest} = props
+export default function SectionAnimated (props: Props) {
+  const {className, children, title, active, ...rest} = props
 
   const renderChildren = () => {
     return React.Children.map(children, child => {
       return React.cloneElement(child, {
-        styleName: child.type === Grid ? 'section-animated-grid' : 'section-animated'
+        className: child.type === Grid
+        ? classNames(child.props.className, styles.animatedGrid)
+        : classNames(child.props.className, styles.animated)
       })
     })
   }
 
   return (
-    <div styleName={active ? 'section-active' : 'section'} {...rest}>
-      <div styleName='section-content'>
-        <section styleName='section-container'>
+    <div className={classNames(
+      active ? styles.sectionActive : styles.section,
+      className
+    )} {...rest}>
+      <div className={styles.content}>
+        <section className={styles.container}>
           { title
-          ? <div styleName='section-animated-header'>
+          ? <div className={styles.animatedHeader}>
             <h1>{title}</h1>
           </div>
           : null}
@@ -37,5 +43,3 @@ function SectionAnimated (props: Props): React.Element<*> {
     </div>
   )
 }
-
-export default CSSModules(SectionAnimated, styles)
