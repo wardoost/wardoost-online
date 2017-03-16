@@ -6,6 +6,7 @@
   ],
   "plugins": [
     "transform-decorators-legacy",
+    "flow-react-proptypes",
     "transform-flow-strip-types"
   ],
   "env": {
