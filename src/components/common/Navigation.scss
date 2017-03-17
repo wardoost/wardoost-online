@@ -142,6 +142,8 @@
 }
 
 .toggleIcon {
+  width: $nav-height;
+  height: $nav-height;
   transition: transform 300ms ease(out-expo);
 
   path {
