@@ -1,29 +1,21 @@
+/* @flow */
 import React, {PureComponent} from 'react'
 import classNames from 'classnames'
 import styles from './Input.scss'
 
-const getValidSizes = () => {
-  const grids = [1, 2, 3, 4]
-  const values = ['1']
-  grids.forEach(grid => {
-    for (let i = 1; i <= grid; i++) {
-      if (grid % i !== 0 || i === 1) {
-        values.push(`${i}-${grid}`)
-      }
-    }
-  })
-  return values
+type Props = {
+  id?: string,
+  name?: string,
+  size?: '1' | '1-1' | '1-2' | '1-3' | '2-3' | '1-4' | '3-4',
+  placeholder?: string,
+  rounded?: boolean
 }
-const validSizes = getValidSizes()
 
 export default class Input extends PureComponent {
-  static propTypes = {
-    size: React.PropTypes.oneOf(validSizes),
-    rounded: React.PropTypes.bool
-  }
+  props: Props
 
   render () {
-    const {size, rounded, ...props} = this.props
+    const {name, size, rounded, ...props} = this.props
 
     return (
       <input
@@ -32,6 +24,7 @@ export default class Input extends PureComponent {
           rounded ? styles.rounded : null
         )}
         ref='input'
+        name={name || this.props.id || 'input'}
         {...props} />
     )
   }

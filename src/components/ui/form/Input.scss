@@ -1,21 +1,28 @@
 $grids: 1, 2, 3, 4;
 
+.input {
+  margin-right: 0;
+}
+
 @for $i from 1 through length($grids) {
   $grid: nth($grids, $i);
   @for $width from 1 through $grid {
     @if ($grid % $width != 0) or ($width == 1) {
       @if ($grid == 1) and ($width == 1) {
         .input-#{$grid} {
+          composes: input;
           width: 100%;
         }
       }
       .input-#{$width}-#{$grid} {
-        composes: pure-input-#{$width}-#{$grid} from 'purecss/build/forms.css';
+        composes: input;
+        width: percentage($width / $grid);
       }
     }
   }
 }
 
 .rounded {
-  composes: pure-input-rounded from 'purecss/build/forms.css';
+  border-radius: 2em !important;
+  padding: 0.5em 1em !important;
 }

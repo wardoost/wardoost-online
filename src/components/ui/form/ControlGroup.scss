@@ -1,5 +1,27 @@
 @import '~styles/helpers';
 
 .controlGroup {
-  composes: pure-control-group from 'purecss/build/forms.css';
+  display: block;
+}
+
+.controlGroupAligned {
+  composes: controlGroup;
+  margin-bottom: 0.5em;
+
+  label {
+    text-align: right;
+    display: inline-block;
+    vertical-align: middle;
+    width: 10em;
+    margin: 0 1em 0 0;
+  }
+
+  @media #{$md-max} {
+    label {
+      margin-bottom: 0.3em;
+      text-align: left;
+      display: block;
+      width: 100%;
+    }
+  }
 }

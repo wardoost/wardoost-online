@@ -1,5 +1,5 @@
 /* @flow */
-import React from 'react'
+import React, {PureComponent} from 'react'
 import styles from './Radio.scss'
 
 type Props = {
@@ -9,20 +9,25 @@ type Props = {
   align?: boolean
 }
 
-Radio.defaultProps = {
-  align: false
-}
+export default class Radio extends PureComponent {
+  props: Props
 
-export default function Radio (props: Props) {
-  const {children, align, ...rest} = props
+  defaultProps = {
+    align: false
+  }
 
-  return (
-    <label htmlFor={props.id} className={align ? styles.radioAlign : styles.radio}>
-      <input
-        type='radio'
-        ref='input'
-        {...rest} />
-      {children}
-    </label>
-  )
+  render () {
+    const {children, align, ...rest} = this.props
+
+    return (
+      <label htmlFor={this.props.id} className={align ? styles.radioAlign : styles.radio}>
+        <input
+          type='radio'
+          value={this.props.id}
+          ref='input'
+          {...rest} />
+        {children}
+      </label>
+    )
+  }
 }

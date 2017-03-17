@@ -31,9 +31,9 @@ export default function ButtonLoading (props: Props) {
   return (
     <Button
       className={classNames(
-        className,
         loading ? styles.loadingActive : styles.loading,
         {[styles.loadingReplace]: loadReplace},
+        className
       )}
       disabled={loadingDisables ? loading : disabled}
       {...rest}>

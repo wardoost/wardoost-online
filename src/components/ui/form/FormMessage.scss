@@ -1,9 +1,26 @@
 @import '~styles/helpers';
 
 .formMessage {
-  composes: pure-form-message from 'purecss/build/forms.css';
+  display: block;
+  color: $gray;
+  font-size: 0.75em;
+
+  @media #{$md-min} {
+    font-size: 0.875em;
+    padding: 0.2em 0 0.8em;
+  }
 }
 
 .formMessageInline {
-  composes: pure-form-message-inline from 'purecss/build/forms.css';
+  composes: formMessage;
+  padding-left: 0.3em;
+  vertical-align: middle;
+  *zoom: 1;
+
+  @media #{$md-min} {
+    display: inline-block;
+    *display: inline;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }

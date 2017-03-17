@@ -6,14 +6,10 @@ type Props = {
   kind?: 'inline' | 'stacked' | 'aligned'
 }
 
-Form.defaultProps = {
-  kind: 'inline'
-}
-
 export default function Form (props: Props) {
   const {kind, ...rest} = props
 
   return (
-    <form className={styles[kind]} {...rest} />
+    <form className={kind ? styles[kind] : styles.form} {...rest} />
   )
 }

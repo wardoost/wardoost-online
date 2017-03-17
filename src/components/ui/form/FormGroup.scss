@@ -1,3 +1,63 @@
+@import '~styles/helpers';
+
 .group {
-  composes: pure-group from 'purecss/build/forms.css';
+  fieldset {
+    margin-bottom: 10px;
+  }
+
+  input,
+  textarea {
+    display: block !important;
+    padding: 10px;
+    margin: 0 0 -1px;
+    border-radius: 0;
+    position: relative;
+    top: -1px;
+
+    &:focus {
+      z-index: 3;
+    }
+
+    &:first-child {
+      top: 1px;
+      border-radius: $radius $radius 0 0;
+      margin: 0;
+    }
+
+    &:first-child:last-child {
+      top: 1px;
+      border-radius: $radius;
+      margin: 0;
+    }
+
+    &:last-child {
+      top: -2px;
+      border-radius: 0 0 4px 4px;
+      margin: 0;
+    }
+  }
+
+  button {
+    margin: 0.35em 0;
+  }
+
+  @media #{$md-max} {
+    input:not([type]),
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="url"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="week"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="color"] {
+      margin-bottom: 0;
+    }
+  }
 }

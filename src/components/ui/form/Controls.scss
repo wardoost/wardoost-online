@@ -1,5 +1,18 @@
 @import '~styles/helpers';
 
 .controls {
-  composes: pure-controls from 'purecss/build/forms.css';
+  display: block;
+}
+
+.controlsAligned {
+  composes: controls;
+  margin: 1.5em 0 0 11em;
+
+  @media #{$md-max} {
+    margin: 1.5em 0 0 0;
+  }
+
+  > * {
+    display: block;
+  }
 }

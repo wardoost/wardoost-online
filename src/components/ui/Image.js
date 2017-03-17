@@ -7,6 +7,6 @@ export default function Image (props: {className?: string, src: string, alt: str
   const {className, ...rest} = props
 
   return (
-    <img className={classNames(className, styles.img)} {...rest} />
+    <img className={classNames(styles.img, className)} {...rest} />
   )
 }

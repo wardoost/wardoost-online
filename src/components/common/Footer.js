@@ -7,7 +7,7 @@ import styles from './Footer.scss'
 export default function Footer (props: {className?: string}) {
   const {className, ...rest} = props
   return (
-    <footer className={classNames(className, styles.footer)} {...rest}>
+    <footer className={classNames(styles.footer, className)} {...rest}>
       <div className={styles.container}>
         <a
           title='Report a bug'

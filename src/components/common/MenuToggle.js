@@ -37,7 +37,7 @@ export default function MenuToggle (props: {className?: string, active: boolean}
   ]
 
   return (
-    <div className={classNames(className, styles.toggle)} {...rest}>
+    <div className={classNames(styles.toggle, className)} {...rest}>
       <svg
         version='1.1'
         preserveAspectRatio='xMidYMid meet'
