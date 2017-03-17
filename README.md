@@ -15,6 +15,7 @@
 - Progressive Web Application ready via a Service Worker, with offline support
 - Long term browser caching of assets with automated cache invalidation
 - Source bundled with [Webpack 2](https://webpack.js.org/) so tree-shaking is enabled
+- Static type checking with [Flow](https://flowtype.org/)
 - [Standard Javascript](http://standardjs.com/) ESlint configuration
 - Testing with [Jest](https://facebook.github.io/jest/)
 
@@ -40,7 +41,13 @@ npm run develop
 npm run lint
 ```
 
-> Lint your code and automatically fix lint errors with [ESLint](http://eslint.org/).
+> Lint your code and automatically fix lint errors with [ESLint](http://eslint.org/) where possible.
+
+```sh
+npm run flow
+```
+
+> Typecheck your files with [Flow](https://flowtype.org/). Use a plugin like [linter-flow](https://atom.io/packages/linter-flow) for your text editor to type check your code while writing code. Add `/* @flow */` to the top of each file you’d like to typecheck.
 
 ```sh
 npm start
