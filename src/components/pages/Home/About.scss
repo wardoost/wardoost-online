@@ -70,3 +70,21 @@ $button-down-height: 80px;
     }
   }
 }
+
+.emoji {
+  @include emoji;
+}
+
+@keyframes fadeInOutDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-$padding-md);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY($padding-md);
+  }
+}

@@ -5,6 +5,8 @@ import styles from './Checkbox.scss'
 type Props = {
   children?: React.Element<*>,
   id: string,
+  value?: string,
+  checked?: boolean,
   name?: string,
   align?: boolean
 }
@@ -13,7 +15,7 @@ export default class Checkbox extends PureComponent {
   props: Props
 
   render () {
-    const {name, children, align, ...rest} = this.props
+    const {value, name, children, align, ...rest} = this.props
 
     return (
       <label
@@ -23,6 +25,7 @@ export default class Checkbox extends PureComponent {
           type='checkbox'
           ref='input'
           name={name || this.props.id}
+          value={value !== undefined ? value : this.props.id}
           {...rest} />
         {children}
       </label>

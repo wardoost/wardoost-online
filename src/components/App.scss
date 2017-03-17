@@ -1,6 +1,6 @@
 @import '~styles/helpers';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Source+Code+Pro:600|Source+Code+Pro:900');
-@import 'purecss/build/base.css';
+@import 'normalize.css/normalize.css';
 
 html, body, :global(#root) {
   min-height: 100%;
@@ -20,6 +20,10 @@ body {
   @media #{$md-min} {
     font-size: 1em;
   }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5 {
@@ -42,10 +46,6 @@ a {
   }
 }
 
-* {
-  box-sizing: border-box;
-}
-
 blockquote {
   margin: 1em 3em;
   padding: $padding-md $padding-lg;
@@ -57,14 +57,4 @@ code {
   display: block;
   padding: $padding-md $padding-lg;
   background-color: $gray-lighter;
-}
-
-:global {
-  .emoji {
-    font-size: 1.5em;
-    line-height: 0.75em;
-    text-shadow: 0 0 2px rgba($black, 0.3);
-    position: relative;
-    top: 0.125em;
-  }
 }

@@ -65,6 +65,10 @@
   textarea {
     &[readonly] {
       background-color: rgba($gray, 0.2);
+
+      &:focus {
+        background-color: rgba($gray, 0.2);
+      }
     }
     &:focus:invalid,
     &:focus:invalid,

@@ -5,6 +5,7 @@ import styles from './Input.scss'
 
 type Props = {
   id?: string,
+  value?: string,
   name?: string,
   size?: '1' | '1-1' | '1-2' | '1-3' | '2-3' | '1-4' | '3-4',
   placeholder?: string,

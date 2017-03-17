@@ -70,6 +70,8 @@
 }
 
 .emoji {
+  @include emoji;
   font-size: 2em;
   margin-left: 0.5em;
+  line-height: inherit;
 }
