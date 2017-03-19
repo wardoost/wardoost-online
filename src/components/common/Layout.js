@@ -23,7 +23,7 @@ type State = {
 export default class Layout extends PureComponent {
   props: Props
   state: State
-  scrollSpy: any
+  scrollSpy: ScrollSpy
 
   state = {
     navActive: false,
@@ -35,15 +35,18 @@ export default class Layout extends PureComponent {
     this.scrollSpy = new ScrollSpy(menu, {
       location: this.props.location,
       onUpdateActive: this.updateActiveHash,
-      onUpdateAtEnd: this.updateAtEnd,
-      duration: 400
+      onUpdateAtEnd: this.updateAtEnd
     })
   }
 
   componentDidUpdate (prevProps: Props) {
     if (prevProps.location !== this.props.location) {
-      this.scrollSpy.updateLocation(this.props.location)
+      this.scrollSpy.update(this.props.location)
     }
+  }
+
+  componentWillUnmount () {
+    this.scrollSpy.disable()
   }
 
   @autobind
@@ -57,7 +60,7 @@ export default class Layout extends PureComponent {
   }
 
   @autobind
-  toggleNav (navActive: boolean, element: ?any = document.body) {
+  toggleNav (navActive: boolean, element?: any = document.body) {
     if (!element) throw new Error('Failed to find element')
     element.style.overflow = navActive ? 'hidden' : 'initial'
     this.setState({navActive: navActive})

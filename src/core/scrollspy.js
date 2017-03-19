@@ -5,7 +5,7 @@ import type {Menu} from './menu'
 type Options = {
   onUpdateActive?: Function,
   onUpdateAtEnd?: Function,
-  duration?: number,
+  speed?: number,
   offset?: number,
   location?: Object,
   delay?: number
@@ -13,29 +13,30 @@ type Options = {
 
 export default class ScrollSpy {
   _menu: Menu
-  _updateActiveCb: Function
-  _atEndCb: Function
-  _duration: number
+  _updateActiveCb: Function | void
+  _atEndCb: Function | void
+  _speed: number
   _offset: number
   _location: Object
   _scrollTop: number
   _delay: number
-  _enabled: boolean
   _targets: Array<{ hash: string, top: number}>
   _activeHash: string
+  _atEnd: boolean
   _el: Object
+  _duration: number
 
   constructor (menu: Menu, options: Options) {
     this._menu = menu
-    this._updateActiveCb = options.onUpdateActive || function () {}
-    this._atEndCb = options.onUpdateAtEnd || function () {}
-    this._duration = options.duration || 1000
+    this._updateActiveCb = options.onUpdateActive
+    this._atEndCb = options.onUpdateAtEnd
+    this._speed = options.speed || 10
     this._offset = options.offset || 0
     this._location = options.location || window.location
     this._scrollTop = window.pageYOffset || window.scrollY || 0
     this._delay = options.delay || 50
-    this._enabled = true
     this._el = document.body || {clientHeight: 0}
+    this._duration = this._el.clientHeight / this._speed
 
     this.init()
   }
@@ -53,7 +54,7 @@ export default class ScrollSpy {
     setTimeout(() => {
       this.updateTargets()
       window.addEventListener('scroll', this.onScroll)
-      window.addEventListener('resize', this.updateTargets)
+      window.addEventListener('resize', this.onResize)
     }, this._delay)
   }
 
@@ -72,17 +73,17 @@ export default class ScrollSpy {
     const activeItem = scrollTop > this._scrollTop
     ? this._targets.find(item => scrollCheck > item.top)
     : this._targets.find(item => scrollCheck >= item.top)
-    const newHash = activeItem ? activeItem.hash : ''
 
-    if (newHash !== this._activeHash) {
+    const newHash = activeItem ? activeItem.hash : ''
+    if (this._updateActiveCb && newHash !== this._activeHash) {
       this._activeHash = newHash
       this._updateActiveCb(newHash)
     }
 
-    if (scrollTop > this._scrollTop && scrollTop >= scrollHeight) {
-      this._atEndCb(true)
-    } else if (scrollTop < this._scrollTop) {
-      this._atEndCb(false)
+    const atEnd = scrollTop >= scrollHeight
+    if (this._atEndCb && atEnd !== this._atEnd) {
+      this._atEnd = atEnd
+      this._atEndCb(atEnd)
     }
 
     this._scrollTop = scrollTop
@@ -90,6 +91,12 @@ export default class ScrollSpy {
 
   @autobind
   @throttle(500)
+  onResize () {
+    this._duration = this._el.clientHeight / this._speed
+    this.updateTargets()
+  }
+
+  @autobind
   updateTargets () {
     this._targets = []
     this._menu.forEach(item => {
@@ -107,7 +114,7 @@ export default class ScrollSpy {
     this.onScroll()
   }
 
-  updateLocation (location: any) {
+  update (location: Object) {
     if (location !== this._location) {
       const prevLocation = this._location
       this._location = location
@@ -140,9 +147,9 @@ export default class ScrollSpy {
       if (elapsedTime < duration) {
         setTimeout(() => {
           animateScroll(elapsedTime)
-        }, increment)
+        }, this._delay)
       } else {
-        if (this._enabled) this._updateActiveCb(to)
+        if (this._updateActiveCb) this._updateActiveCb(to)
         setTimeout(() => {
           window.addEventListener('scroll', this.onScroll)
         }, increment)
@@ -165,14 +172,12 @@ export default class ScrollSpy {
   }
 
   enable () {
-    this._enabled = true
     window.addEventListener('scroll', this.onScroll)
-    window.addEventListener('resize', this.updateTargets)
+    window.addEventListener('resize', this.onResize)
   }
 
   disable () {
-    this._enabled = false
     window.removeEventListener('scroll', this.onScroll)
-    window.removeEventListener('resize', this.updateTargets)
+    window.removeEventListener('resize', this.onResize)
   }
 }
