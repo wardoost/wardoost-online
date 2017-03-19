@@ -24,7 +24,10 @@ module.exports = {
       'react',
       'react-dom'
     ],
-    main: './index.js'
+    main: [
+      'react-hot-loader/patch',
+      './index.js'
+    ]
   },
 
   output: {
@@ -49,17 +52,18 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        use: (DEV ? [
-          'react-hot-loader/webpack'
-        ] : []).concat([
-          'babel-loader'
-        ]),
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
       {
         test: /\.s?css$/,
         use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+          fallback: [{
+            loader: 'style-loader',
+            options: {
+              sourceMap: DEV
+            }
+          }],
           use: [
             {
               loader: 'css-loader',
@@ -68,9 +72,18 @@ module.exports = {
                 localIdentName: DEV ? '[local]-[hash:8]' : '[hash:base64]'
               }
             },
-            { loader: 'postcss-loader' },
             {
-              loader: 'sass-loader'
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: DEV
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: DEV,
+                includePaths: [path.resolve(__dirname, 'src'), 'node_modules']
+              }
             }
           ]
         })
