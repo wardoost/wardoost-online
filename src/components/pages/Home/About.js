@@ -3,6 +3,7 @@ import React from 'react'
 import {Link} from 'react-router'
 import FaAngleDown from 'react-icons/lib/fa/angle-down'
 import SectionAnimated from '../../common/SectionAnimated'
+import Logo from '../../common/Logo'
 import styles from './About.scss'
 
 export default function About (props: {activeSection?: string}) {
@@ -22,7 +23,12 @@ export default function About (props: {activeSection?: string}) {
             <p>Hi, I'm Ward Oosterlijnck and I’m a digital creative…</p>
             <p>In training at least. I&nbsp;say this because learning is one of the core characteristics of my profession. That became even more apparent when I moved from Ghent to Melbourne at the end of 2016. New country, new keyboard layout, new ideas, new emojis <span className={styles.emoji} title='New emojis is a lie 😬'>😉</span>…</p>
             <p>When you scroll down you'll discover my <span className={styles.emoji} title='love'>❤️</span> for code, color, motion and everything interactive. Those are the skills I like to upgrade every single day and night.</p>
-            <p>Enjoy my online ego boost!</p>
+            <p style={{marginBottom: 0}}>Enjoy my online ego boost!</p>
+            <Logo
+              title='Wonky signature'
+              className={styles.logo}
+              active={active}
+            />
           </div>
         </div>
       </div>

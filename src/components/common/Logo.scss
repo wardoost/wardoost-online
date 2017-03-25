@@ -1,0 +1,95 @@
+@import '~styles/helpers';
+
+$path1Length: 1034.4749755859375;
+$path2Length: 892.1820068359375;
+$path3Length: 892.1812133789062;
+$path4Length: 999.9210815429688;
+
+.logo {
+  width: 100%;
+  color: $white;
+
+  svg {
+    display: block;
+  }
+
+  &:hover {
+    .logoPaths {
+      opacity: 0.1;
+    }
+    .path4Active, {
+      animation-duration: 6s;
+    }
+  }
+}
+
+.logoPaths {
+  opacity: 0.3;
+  transition: opacity 300ms linear;
+
+  .path1 {
+    stroke-dashoffset: 0;
+    stroke-dasharray: $path1Length;
+  }
+
+  .path2 {
+    stroke-dashoffset: 0;
+    stroke-dasharray: $path2Length;
+  }
+
+  .path3 {
+    stroke-dashoffset: 0;
+    stroke-dasharray: $path3Length;
+  }
+}
+
+.logoPathsActive {
+  composes: logoPaths;
+
+  .path1 {
+    animation: path1 1500ms ease(out-quad) 200ms both;
+  }
+
+  .path2 {
+    animation: path2 1250ms ease(out-quad) 450ms both;
+  }
+
+  .path3 {
+    animation: path3 1250ms ease(out-quad) 400ms both;
+  }
+}
+
+@keyframes path1 {
+  0% { stroke-dashoffset: $path1Length; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes path2 {
+  0% { stroke-dashoffset: $path2Length; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes path3 {
+  0% { stroke-dashoffset: $path3Length; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.path4 {
+  stroke-dasharray: $path4Length;
+  stroke-dashoffset: $path4Length;
+  opacity: 0.5;
+}
+
+.path4Active {
+  composes: path4;
+  animation: path4 30s infinite linear;
+}
+
+@keyframes path4 {
+  0%, 8% { stroke-dashoffset: $path4Length; stroke: $warning; }
+  16%, 20% { stroke-dashoffset: -$path4Length; stroke: $primary; }
+  28%, 50% { stroke-dashoffset: $path4Length; stroke: $secondary; }
+  56%, 80% { stroke-dashoffset: -$path4Length; stroke: $error; }
+  88%, 90% { stroke-dashoffset: $path4Length; stroke: $warning; }
+  100% { stroke-dashoffset: -$path4Length; stroke: $primary; }
+}
