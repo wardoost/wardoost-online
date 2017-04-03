@@ -6,27 +6,27 @@ $button-down-height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100vh - #{3 * $padding-xs + $header-height-xs});
+  min-height: calc(100vh - #{2 * $padding-xs});
 
   @media #{$xs-min} {
-    min-height: calc(100vh - #{$button-down-height + 4 * $padding-xs + $header-height-sm});
+    min-height: calc(100vh - #{$button-down-height + 3 * $padding-xs});
   }
 
   @media #{$sm-min} {
-    min-height: calc(100vh - #{$button-down-height + 4 * $padding-xs + $header-height-md});
+    min-height: calc(100vh - #{$button-down-height + 3 * $padding-xs});
   }
 
   @media #{$md-min} {
-    min-height: calc(100vh - #{$button-down-height + 4 * $padding-xs + $header-height-lg});
+    min-height: calc(100vh - #{$button-down-height + 3 * $padding-xs});
   }
 
   @media #{$lg-min} {
-    min-height: calc(100vh - #{$button-down-height + 4 * $padding-xs + $header-height-xl});
+    min-height: calc(100vh - #{$button-down-height + 3 * $padding-xs});
   }
 }
 
 .content {
-  padding: $padding-lg $padding-md;
+  padding: 0 $padding-md $padding-lg;
 
   @media #{$xs-min} {
     margin: 0 7%;
@@ -90,6 +90,6 @@ $button-down-height: 80px;
 }
 
 .logo {
-  max-width: 100px;
-  margin-left: auto;
+  max-width: 300px;
+  margin: 0 auto $padding-lg;
 }

@@ -56,7 +56,7 @@ export default class Contact extends PureComponent {
     return (
       <SectionAnimated id={this.id} title='Contact' active={active} {...props}>
         <div className={styles.intro}>
-          <p>Want to hire me, work with me or just have something awesome to share?<br />Send me an email or fill the contact form.</p>
+          <p>Want to hire me, work with me or just have something awesome to share?<br />Send me an email or fill in the contact form.</p>
         </div>
         <Grid gutter='xs'>
           <Unit smSize='1-4' mdSize='1-5' className={styles.mail} style={{transitionDelay: '0.1s'}}>

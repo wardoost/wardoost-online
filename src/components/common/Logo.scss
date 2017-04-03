@@ -14,17 +14,14 @@ $path4Length: 999.9210815429688;
   }
 
   &:hover {
-    .logoPaths {
-      opacity: 0.1;
-    }
     .path4Active, {
-      animation-duration: 6s;
+      animation-duration: 10s;
     }
   }
 }
 
 .logoPaths {
-  opacity: 0.3;
+  opacity: 0.8;
   transition: opacity 300ms linear;
 
   .path1 {

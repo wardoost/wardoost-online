@@ -13,7 +13,7 @@ const Logo = (props: {className?: string, active: boolean}) => {
         preserveAspectRatio='xMidYMid meet'
         fill='none'
         stroke='currentColor'
-        strokeWidth='40'
+        strokeWidth='20'
         strokeLinecap='square'
         x='0px'
         y='0px'

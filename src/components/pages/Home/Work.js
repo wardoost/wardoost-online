@@ -29,8 +29,8 @@ const works: Array<WorkItem> = [
     description: 'Loved working here for more than 3 years. As it was a small agency when I started I dealt with a broad range of responsibilities over the years. Creating EDM workflows to thinking up social media campaigns to managing a small dev team. Good for gaining a lot of experience really fast.',
     image: oink,
     links: [{
-      url: 'https://www.oink.agency/',
-      label: 'oink.agency'
+      url: 'https://www.oink.be/',
+      label: 'oink.be'
     }]
   },
   {

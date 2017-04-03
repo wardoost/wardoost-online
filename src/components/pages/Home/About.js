@@ -16,19 +16,19 @@ export default function About (props: {activeSection?: string}) {
   }
 
   return (
-    <SectionAnimated id={id} title='About' active={active} {...rest}>
+    <SectionAnimated id={id} active={active} {...rest}>
       <div>
         <div className={styles.intro}>
           <div className={styles.content}>
-            <p>Hi, I'm Ward Oosterlijnck and I’m a digital creative…</p>
-            <p>In training at least. I&nbsp;say this because learning is one of the core characteristics of my profession. That became even more apparent when I moved from Ghent to Melbourne at the end of 2016. New country, new keyboard layout, new ideas, new emojis <span className={styles.emoji} title='New emojis is a lie 😬'>😉</span>…</p>
-            <p>When you scroll down you'll discover my <span className={styles.emoji} title='love'>❤️</span> for code, color, motion and everything interactive. Those are the skills I like to upgrade every single day and night.</p>
-            <p style={{marginBottom: 0}}>Enjoy my online ego boost!</p>
             <Logo
-              title='Wonky signature'
+              title='Ward Oosterlijnck'
               className={styles.logo}
               active={active}
             />
+            <p>Hi, I'm Ward Oosterlijnck and I’m a digital creative…</p>
+            <p>In training at least. I&nbsp;say this because learning is one of the core characteristics of my profession. That became even more apparent when I moved from Ghent to Melbourne at the end of 2016. New country, new people, new ideas, new keyboard layout <span className={styles.emoji} title='Cool'>😎</span></p>
+            <p>When you scroll down you'll discover my <span className={styles.emoji} title='love'>❤️</span> for code, color, motion and everything interactive. Those are the skills I like to upgrade every single day and night.</p>
+            <p>Enjoy my online ego boost!</p>
           </div>
         </div>
       </div>
