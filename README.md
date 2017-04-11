@@ -32,7 +32,7 @@ npm install
 ## Development
 
 ```sh
-npm run develop
+npm run dev
 ```
 
 > Starts a web server and open your app in your browser. When you make changes in the `src` folder, it will rebuild your app and refresh your browser.

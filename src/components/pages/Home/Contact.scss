@@ -48,6 +48,7 @@
 
 .form {
   margin: 0 auto;
+
   @media #{$md-min} {
     width: 80%;
   }
@@ -57,6 +58,11 @@
 
   form {
     padding: $padding-md;
+  }
+
+  input,
+  textarea {
+    color: $white;
   }
 
   textarea {

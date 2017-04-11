@@ -6,7 +6,7 @@
   "author": "Ward Oosterlijnck <wardoosterlijnck@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "develop": "cross-env NODE_ENV=development webpack-dev-server --host=0.0.0.0 --hot --inline --history-api-fallback --progress --open",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --host=0.0.0.0 --hot --inline --history-api-fallback --progress --open",
     "prestart": "npm run build",
     "start": "serve build --single --cache 1",
     "build": "cross-env NODE_ENV=production webpack --progress",
