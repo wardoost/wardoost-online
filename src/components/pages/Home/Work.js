@@ -5,10 +5,10 @@ import FaChain from 'react-icons/lib/fa/chain'
 import SectionAnimated from '../../common/SectionAnimated'
 import dotdev from '../../../assets/dotdev.jpg'
 import oink from '../../../assets/oink.jpg'
-import vercamstConsult from '../../../assets/vercamst-consult.jpg'
 import tinderMeCards from '../../../assets/tinderme-cards.jpg'
 import storyMeWellPlayed from '../../../assets/storyme-wellplayed.jpg'
 import shootingTheApes from '../../../assets/shooting-the-apes.jpg'
+import envato from '../../../assets/envato.jpg'
 import styles from './Work.scss'
 
 type WorkItem = {
@@ -26,7 +26,7 @@ const works: Array<WorkItem> = [
   {
     title: 'DotDev',
     when: '2017',
-    description: '<a href="https://www.instagram.com/p/BMdlRj9l7-1/" target="_blank">Code. Everyday. DotDev.</a> My new Melbournian mates know what it\'s about! My <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript</a> and <a href="https://facebook.github.io/react-native/" target="_blank">React Native</a> skills are growing exponentially. This is the future. The future is code.',
+    description: '<a href="https://www.instagram.com/p/BMdlRj9l7-1/" target="_blank">Code, everyday, DotDev.</a> My new Melbournian mates know what it\'s about! My <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript</a> and <a href="https://facebook.github.io/react/" target="_blank">React</a>/<a href="https://facebook.github.io/react-native/" target="_blank">React Native</a> skills are growing exponentially. This is the future, the future is code, my future is code + code.',
     image: dotdev,
     links: [{
       url: 'https://dotdev.com.au/',
@@ -41,16 +41,6 @@ const works: Array<WorkItem> = [
     links: [{
       url: 'https://www.oink.be/',
       label: 'oink.be'
-    }]
-  },
-  {
-    title: 'Vercamst Consult',
-    when: '2016',
-    description: 'I taught myself <a href="https://facebook.github.io/react/" target="_blank">React</a> and <a href="http://redux.js.org/" target="_blank">Redux</a> while developing this basic but clean website. Content management is powered by <a href="https://firebase.google.com/" target="_blank">Firebase</a>. These are the technologies I will use in the future as they work so well together.',
-    image: vercamstConsult,
-    links: [{
-      url: 'https://www.vercamstconsult.be/',
-      label: 'vercamstconsult.be'
     }]
   },
   {
@@ -87,6 +77,16 @@ const works: Array<WorkItem> = [
     links: [{
       url: 'https://vimeo.com/shootingtheapes',
       label: 'Vimeo profile'
+    }]
+  },
+  {
+    title: 'Envato',
+    when: '2008-2010',
+    description: '<a href="http://www.adobe.com/software/flash/about/" target="_blank">Flash</a> might be a thing of the past but in it&apos;s time it was THE tool to make fancy animations. The <a href="https://market.envato.com/" target="_blank">Envato Market</a> was an ideal place to test out my creations with my first real clients.',
+    image: envato,
+    links: [{
+      url: 'https://themeforest.net/user/wardoosterlijnck',
+      label: 'Envato profile'
     }]
   }
 ]
