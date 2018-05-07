@@ -26,7 +26,7 @@ const works: Array<WorkItem> = [
   {
     title: 'DotDev',
     when: '2017',
-    description: '<a href="https://www.instagram.com/p/BMdlRj9l7-1/" target="_blank">Code, everyday, DotDev.</a> My new Melbournian mates know what it\'s about! My <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript</a> and <a href="https://facebook.github.io/react/" target="_blank">React</a>/<a href="https://facebook.github.io/react-native/" target="_blank">React Native</a> skills are growing exponentially. This is the future, the future is code, my future is code + code.',
+    description: '<a href="https://www.instagram.com/p/BMdlRj9l7-1/" target="_blank">Code, everyday, DotDev.</a> My new Melbournian mates know what it\'s about! My <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript</a> and <a href="https://facebook.github.io/react/" target="_blank">React</a>/<a href="https://facebook.github.io/react-native/" target="_blank">React Native</a> skills are growing exponentially. This is the future, the future is code.',
     image: dotdev,
     links: [{
       url: 'https://dotdev.com.au/',
