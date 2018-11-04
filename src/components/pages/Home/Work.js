@@ -140,7 +140,7 @@ export default function Work (props: {activeSection?: string}) {
   return (
     <SectionAnimated id={id} title='Work' active={active} {...rest}>
       <div className={styles.intro}>
-        <p>This selection of work shows my digital journey over the years.</p>
+        <p>You don't become a full stack developer overnight.</p>
       </div>
       <Grid gutter='xs'>
         {works.map(renderWorkItem)}
