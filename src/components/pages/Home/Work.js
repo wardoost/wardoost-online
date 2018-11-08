@@ -4,7 +4,7 @@ import {Grid, Unit, Image} from '../../ui'
 import FaChain from 'react-icons/lib/fa/chain'
 import SectionAnimated from '../../common/SectionAnimated'
 import dotdev from '../../../assets/dotdev.jpg'
-import oink from '../../../assets/oink.jpg'
+import superkraft from '../../../assets/superkraft.jpg'
 import tinderMeCards from '../../../assets/tinderme-cards.jpg'
 import storyMeWellPlayed from '../../../assets/storyme-wellplayed.jpg'
 import shootingTheApes from '../../../assets/shooting-the-apes.jpg'
@@ -34,13 +34,13 @@ const works: Array<WorkItem> = [
     }]
   },
   {
-    title: 'Oïnk Agency',
+    title: 'SuperKraft',
     when: '2013-2016',
     description: 'Loved working here for more than 3 years. As it was a small agency when I started I dealt with a broad range of responsibilities over the years. Creating EDM workflows to thinking up social media campaigns to managing a small dev team. Good for gaining a lot of experience really fast.',
-    image: oink,
+    image: superkraft,
     links: [{
-      url: 'https://www.oink.be/',
-      label: 'oink.be'
+      url: 'https://www.superkraft.be/',
+      label: 'superkraft.be'
     }]
   },
   {
