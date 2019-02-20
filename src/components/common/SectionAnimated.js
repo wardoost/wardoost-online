@@ -8,12 +8,15 @@ type Props = {
   className?: string,
   children?: React.Element<*>,
   title?: string,
+  titleBackgroundColor?: string,
+  titleBackgroundEndColor?: string,
+  titleBackgroundImage?: string,
   id: string,
   active: boolean
 }
 
 export default function SectionAnimated (props: Props) {
-  const {className, children, title, active, ...rest} = props
+  const {className, children, title, titleBackgroundColor, titleBackgroundEndColor, titleBackgroundImage, active, ...rest} = props
 
   const renderChildren = () => {
     return React.Children.map(children, child => {
@@ -25,6 +28,22 @@ export default function SectionAnimated (props: Props) {
     })
   }
 
+  const createTitleStyle = () => {
+    if (!titleBackgroundColor ||
+      !titleBackgroundEndColor ||
+      !titleBackgroundImage) {
+      return null
+    }
+
+    return {
+      background: `-webkit-linear-gradient(45deg, ${titleBackgroundColor}, ${titleBackgroundEndColor}), url("${titleBackgroundImage}")`,
+      // background: -webkit-linear-gradient(45deg, $primary, rgba($white, 0.3));
+      '-webkit-background-clip': 'text',
+      '-webkit-text-fill-color': 'transparent',
+      backgroundPosition: 'center'
+    }
+  }
+
   return (
     <div className={classNames(
       active ? styles.sectionActive : styles.section,
@@ -34,7 +53,9 @@ export default function SectionAnimated (props: Props) {
         <section className={styles.container}>
           { title
           ? <div className={styles.animatedHeader}>
-            <h1>{title}</h1>
+            <h1 style={createTitleStyle()}>
+              {title}
+            </h1>
           </div>
           : null}
           {renderChildren()}

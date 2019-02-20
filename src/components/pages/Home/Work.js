@@ -3,6 +3,7 @@ import React from 'react'
 import {Grid, Unit, Image} from '../../ui'
 import FaChain from 'react-icons/lib/fa/chain'
 import SectionAnimated from '../../common/SectionAnimated'
+import DandG from '../../../assets/d-and-g-fall2018.gif'
 import dotdev from '../../../assets/dotdev.jpg'
 import superkraft from '../../../assets/superkraft.jpg'
 import tinderMeCards from '../../../assets/tinderme-cards.jpg'
@@ -138,7 +139,14 @@ export default function Work (props: {activeSection?: string}) {
   }
 
   return (
-    <SectionAnimated id={id} title='Work' active={active} {...rest}>
+    <SectionAnimated
+      id={id}
+      title='Work'
+      titleBackgroundColor='rgba(0, 234, 149, 0.3)'
+      titleBackgroundEndColor='rgba(85, 0, 255, 0.3)'
+      titleBackgroundImage={DandG}
+      active={active}
+      {...rest}>
       <div className={styles.intro}>
         <p>You don't become a full stack developer overnight.</p>
       </div>

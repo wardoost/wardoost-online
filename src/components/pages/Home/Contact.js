@@ -5,6 +5,7 @@ import FaEnvelope from 'react-icons/lib/fa/envelope'
 import FaPaperPlane from 'react-icons/lib/fa/paper-plane'
 import SectionAnimated from '../../common/SectionAnimated'
 import {Grid, Unit, Form, Input, Button} from '../../ui'
+import Noice from '../../../assets/noice.gif'
 import styles from './Contact.scss'
 
 type Props = {
@@ -54,7 +55,14 @@ export default class Contact extends PureComponent {
     const active = activeSection === this.id
 
     return (
-      <SectionAnimated id={this.id} title='Contact' active={active} {...props}>
+      <SectionAnimated
+        id={this.id}
+        title='Contact'
+        active={active}
+        titleBackgroundColor='rgba(218, 39, 0, 0.7)'
+        titleBackgroundEndColor='rgba(218, 177, 0, 0.5)'
+        titleBackgroundImage={Noice}
+        {...props}>
         <div className={styles.intro}>
           <p>Want to hire me, work with me or just have something awesome to share?<br />Send me an email or fill in the contact form.</p>
         </div>

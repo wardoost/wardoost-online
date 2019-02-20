@@ -5,6 +5,7 @@ import FaGithub from 'react-icons/lib/fa/github'
 import FaLinkedin from 'react-icons/lib/fa/linkedin'
 import SectionAnimated from '../../common/SectionAnimated'
 import {Grid, Unit} from '../../ui'
+import Future from '../../../assets/future.gif'
 import styles from './Social.scss'
 
 type SocialLinks = Array<{
@@ -82,7 +83,14 @@ export default function Social (props: {activeSection?: string}) {
   }
 
   return (
-    <SectionAnimated id={id} title='Social' active={active} {...rest}>
+    <SectionAnimated
+      id={id}
+      title='Social'
+      active={active}
+      titleBackgroundColor='rgba(218, 39, 0, 0.7)'
+      titleBackgroundEndColor='rgba(85, 0, 255, 0.3)'
+      titleBackgroundImage={Future}
+      {...rest}>
       <div className={styles.intro}>
         <p>Want to know more about me? Stalk me on these.</p>
       </div>

@@ -52,6 +52,7 @@
   position: relative;
   display: block;
   padding: $padding-md $padding-lg;
+  text-align: center;
 
   &:before {
     content: '';
@@ -85,6 +86,5 @@
 
   @media #{$md-min} {
     padding: $padding-md 0;
-    text-align: center;
   }
 }

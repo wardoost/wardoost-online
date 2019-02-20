@@ -113,6 +113,9 @@
     display: inline-block;
     color: rgba($white, 0.5);
     background: -webkit-linear-gradient(45deg, $white, rgba($white, 0.3));
+    background-blend-mode: lighten;
+    background-size: cover;
+    background-position: center;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
