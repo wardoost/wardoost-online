@@ -1,3 +1,16 @@
 [build]
   command = "npm run build"
   publish = "build"
+
+# Redirect to support single page app internal routing system
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Redirect default Netlify subdomain to primary domain
+[[redirects]]
+  from = "https://wardoost-online.netlify.com/*"
+  to = "https://wardoost.online/:splat"
+  status = 301
+  force = true

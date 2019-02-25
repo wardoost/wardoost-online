@@ -140,8 +140,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: './assets/icons/**/*', to: './' },
-      { from: './manifest.json', to: './' },
-      { from: './_redirects', to: './' }
+      { from: './manifest.json', to: './' }
     ])
   ]).concat(DEV ? [
     new webpack.NamedModulesPlugin()
@@ -169,7 +168,7 @@ module.exports = {
     }),
     new OfflinePlugin({
       relativePaths: false,
-      excludes: ['**/.*', '**/*.map', '_redirects'],
+      excludes: ['**/.*', '**/*.map'],
       AppCache: false,
       ServiceWorker: {
         events: true
