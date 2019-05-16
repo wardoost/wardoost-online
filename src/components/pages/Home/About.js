@@ -25,6 +25,7 @@ export default function About (props: {activeSection?: string}) {
               className={styles.logo}
               active={active}
             />
+            <p className={styles.tagline}>Full stack developer specialised in bespoke JavaScript&nbsp;applications</p>
           </div>
         </div>
       </div>

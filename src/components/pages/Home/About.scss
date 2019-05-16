@@ -27,18 +27,6 @@ $button-down-height: 80px;
 
 .content {
   padding: 0 $padding-md $padding-lg;
-
-  @media #{$xs-min} {
-    margin: 0 7%;
-  }
-
-  @media #{$md-min} {
-    margin: 0 18%;
-  }
-
-  @media #{$lg-min} {
-    margin: 0 28%;
-  }
 }
 
 .next {
@@ -88,4 +76,8 @@ $button-down-height: 80px;
 .logo {
   max-width: 300px;
   margin: 0 auto $padding-lg;
+}
+
+.tagline {
+  text-align: center;
 }
