@@ -26,7 +26,9 @@ export default function About (props: {activeSection?: string}) {
           />
           <div className={styles.content}>
             <h1>Ward Oosterlijnck</h1>
-            <p>Full stack developer specialised in bespoke JavaScript&nbsp;applications</p>
+            <p>
+              Full stack developer specialised in bespoke JavaScript applications, with a hunger for Web3.
+              </p>
           </div>
         </div>
       </div>
