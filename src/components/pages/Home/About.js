@@ -19,13 +19,14 @@ export default function About (props: {activeSection?: string}) {
     <SectionAnimated id={id} active={active} {...rest}>
       <div>
         <div className={styles.intro}>
+          <Logo
+            title='Online ego boost of Ward Oosterlijnck'
+            className={styles.logo}
+            active={active}
+          />
           <div className={styles.content}>
-            <Logo
-              title='Ward Oosterlijnck'
-              className={styles.logo}
-              active={active}
-            />
-            <p className={styles.tagline}>Full stack developer specialised in bespoke JavaScript&nbsp;applications</p>
+            <h1>Ward Oosterlijnck</h1>
+            <p>Full stack developer specialised in bespoke JavaScript&nbsp;applications</p>
           </div>
         </div>
       </div>

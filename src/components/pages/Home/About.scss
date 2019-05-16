@@ -6,7 +6,10 @@ $button-down-height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   min-height: calc(100vh - #{2 * $padding-xs});
+  padding: 0 $padding-md $padding-lg;
+  text-align: center;
 
   @media #{$xs-min} {
     min-height: calc(100vh - #{$button-down-height + 3 * $padding-xs});
@@ -14,6 +17,7 @@ $button-down-height: 80px;
 
   @media #{$sm-min} {
     min-height: calc(100vh - #{$button-down-height + 3 * $padding-xs});
+    text-align: left;
   }
 
   @media #{$md-min} {
@@ -75,9 +79,5 @@ $button-down-height: 80px;
 
 .logo {
   max-width: 300px;
-  margin: 0 auto $padding-lg;
-}
-
-.tagline {
-  text-align: center;
+  margin-bottom: $padding-lg;
 }
