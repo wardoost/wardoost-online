@@ -3,12 +3,12 @@ import React from 'react'
 import {Grid, Unit, Image} from '../../ui'
 import FaChain from 'react-icons/lib/fa/chain'
 import SectionAnimated from '../../common/SectionAnimated'
+import portable from '../../../assets/portable.jpg'
 import dotdev from '../../../assets/dotdev.jpg'
 import superkraft from '../../../assets/superkraft.jpg'
 import tinderMeCards from '../../../assets/tinderme-cards.jpg'
 import storyMeWellPlayed from '../../../assets/storyme-wellplayed.jpg'
 import shootingTheApes from '../../../assets/shooting-the-apes.jpg'
-import envato from '../../../assets/envato.jpg'
 import styles from './Work.scss'
 
 type WorkItem = {
@@ -24,9 +24,23 @@ type WorkItem = {
 
 const works: Array<WorkItem> = [
   {
+    title: 'Portable',
+    when: '2019',
+    where: 'Melbourne',
+    what: 'Creative technologist',
+    description: 'Agile development of web applications, backed by design research. Working closely together with designers in an iterative human-centered design process resulting in effective solutions that work for its users.',
+    image: portable,
+    links: [{
+      url: 'https://portable.com.au',
+      label: 'portable.com.au'
+    }]
+  },
+  {
     title: 'DotDev',
-    when: '2017',
-    description: '<a href="https://www.instagram.com/p/BMdlRj9l7-1/" target="_blank">Code, everyday, DotDev.</a> My new Melbournian mates know what it\'s about! My <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript</a> and <a href="https://facebook.github.io/react/" target="_blank">React</a>/<a href="https://facebook.github.io/react-native/" target="_blank">React Native</a> skills are growing exponentially. This is the future, the future is code.',
+    when: '2017‑2019',
+    where: 'Melbourne',
+    what: 'Full stack developer',
+    description: 'Tackling a high variety UI and UX problems and prototyping JavaScript applications for web, hybrid mobile and ChromeOS. Communicating with clients, and working as part of a software development team.',
     image: dotdev,
     links: [{
       url: 'https://dotdev.com.au/',
@@ -35,8 +49,10 @@ const works: Array<WorkItem> = [
   },
   {
     title: 'SuperKraft',
-    when: '2013-2016',
-    description: 'Loved working here for more than 3 years. As it was a small agency when I started I dealt with a broad range of responsibilities over the years. Creating EDM workflows to thinking up social media campaigns to managing a small dev team. Good for gaining a lot of experience really fast.',
+    when: '2013‑2016',
+    where: 'Belgium',
+    what: 'Multimedia developer',
+    description: 'Motion design, EDM and web development with exposure to a broad range of technologies and methodologies.',
     image: superkraft,
     links: [{
       url: 'https://www.superkraft.be/',
@@ -58,7 +74,7 @@ const works: Array<WorkItem> = [
   },
   {
     title: 'StoryMe & Well Played',
-    when: '2012-2013',
+    when: '2012‑2013',
     description: 'Motion designing short explainer videos as a freelancer for <a href="http://www.storyme.com/" target="_blank">StoryMe</a> and <a href="http://www.wellplayed.video/" target="_blank">Well Played</a>. Saw every hidden panel of After Effects while doing this.',
     image: storyMeWellPlayed,
     links: [{
@@ -71,22 +87,12 @@ const works: Array<WorkItem> = [
   },
   {
     title: 'Shooting the Apes',
-    when: '2011-2014',
+    when: '2011‑2014',
     description: 'Collective I co-created with <a href="http://www.jeroensmans.be/" target="_blank">Jeroen Smans</a> to release event movies for concerts and festivals.',
     image: shootingTheApes,
     links: [{
       url: 'https://vimeo.com/shootingtheapes',
       label: 'Vimeo profile'
-    }]
-  },
-  {
-    title: 'Envato',
-    when: '2008-2010',
-    description: '<a href="http://www.adobe.com/software/flash/about/" target="_blank">Flash</a> might be a thing of the past but in it&apos;s time it was THE tool to make fancy animations. The <a href="https://market.envato.com/" target="_blank">Envato Market</a> was an ideal place to test out my creations with my first real clients.',
-    image: envato,
-    links: [{
-      url: 'https://themeforest.net/user/wardoosterlijnck',
-      label: 'Envato profile'
     }]
   }
 ]
@@ -97,7 +103,8 @@ export default function Work (props: {activeSection?: string}) {
   const active = activeSection === id
 
   const renderWorkItem = (item: WorkItem, i) => {
-    const {title, when, description, image, links} = item
+    const {title, when, where, what, description, image, links} = item
+    const summary = [what, where, when].filter(Boolean).join(', ')
 
     return (
       <Unit
@@ -110,7 +117,7 @@ export default function Work (props: {activeSection?: string}) {
           className={styles.work}
           style={{paddingBottom: (Math.floor(links.length / 2) + links.length % 2) * 65 - 10}}>
           <h2 className={styles.title}>{title}</h2>
-          <p className={styles.when}>{when}</p>
+          <p className={styles.summary}>{summary}</p>
           <Grid gutter='md'>
             <Unit smSize='1-3' mdSize='1-1' lgSize='1-3'>
               <Image src={image} alt={title} className={styles.img} />
