@@ -40,7 +40,7 @@ const works: Array<WorkItem> = [
     when: '2017‑2019',
     where: 'Melbourne',
     what: 'Full stack developer',
-    description: 'Tackling a high variety UI and UX problems and prototyping JAMstack, hybrid mobile and ChromeOS applications. Communicating with clients, and working as part of a software development team.',
+    description: 'Tackling a high variety UI and UX problems and prototyping web, hybrid mobile and ChromeOS applications. Communicating with clients, and working as part of a software development team.',
     image: dotdev,
     links: [{
       url: 'https://dotdev.com.au/',
